@@ -79,6 +79,13 @@
           <Subnet name="DMZ_650_[dept]_Srvcs_IA">
             <AddressPrefix>10.130.122.0/24</AddressPrefix>
           </Subnet>
+          <Subnet name="User_Tier0_660_[dept]_Srvcs_IA">
+            <AddressPrefix>10.130.123.0/25</AddressPrefix>
+          </Subnet>
+          </Subnet>
+          <Subnet name="Users_Tier1_661_dept_Srvcs_IA">
+            <AddressPrefix>10.130.123.128/25</AddressPrefix>
+          </Subnet>
           <!-- May need to set back to 10.130.121.0/29 -->
           <Subnet name="GatewaySubnet">
             <AddressPrefix>10.130.121.0/29</AddressPrefix>
@@ -98,6 +105,13 @@
           </Subnet>
           <Subnet name="DMZ_650_[dept]_Srvcs_VA">
             <AddressPrefix>10.130.58.0/24</AddressPrefix>
+          </Subnet>
+          <Subnet name="User_Tier0_660_[dept]_Srvcs_VA">
+            <AddressPrefix>10.130.59.0/25</AddressPrefix>
+          </Subnet>
+          </Subnet>
+          <Subnet name="Users_Tier1_661_dept_Srvcs_VA">
+            <AddressPrefix>10.130.59.128/25</AddressPrefix>
           </Subnet>
           <!-- May have to set it back to 10.130.63.0/29 -->
           <Subnet name="GatewaySubnet">
