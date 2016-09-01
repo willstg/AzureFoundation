@@ -1,0 +1,168 @@
+<NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+  <VirtualNetworkConfiguration>
+    <Dns>
+      <DnsServers>
+        <DnsServer name="ns1-01.azure-dns.com" IPAddress="40.90.4.1" />
+      </DnsServers>
+    </Dns>
+    <LocalNetworkSites>
+      <LocalNetworkSite name="mag_[dept]_managed_cjis_ia">
+        <AddressSpace>
+          <AddressPrefix>10.130.80.0/20</AddressPrefix>
+        </AddressSpace>
+        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
+      </LocalNetworkSite>
+      <LocalNetworkSite name="mag_[dept]_managed_preprod_ia">
+        <AddressSpace>
+          <AddressPrefix>10.130.96.0/20</AddressPrefix>
+        </AddressSpace>
+        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
+      </LocalNetworkSite>
+      <LocalNetworkSite name="mag_[dept]_managed_prod_ia">
+        <AddressSpace>
+          <AddressPrefix>10.130.64.0/20</AddressPrefix>
+        </AddressSpace>
+        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
+      </LocalNetworkSite>
+        <LocalNetworkSite name="mag_[dept]_managed_storage_ia">
+        <AddressSpace>
+          <AddressPrefix>10.130.112.0/21</AddressPrefix>
+        </AddressSpace>
+        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
+      </LocalNetworkSite>
+      <LocalNetworkSite name="mag_[dept]_managed_cjis_VA">
+        <AddressSpace>
+          <AddressPrefix>10.130.16.0/20</AddressPrefix>
+        </AddressSpace>
+        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
+      </LocalNetworkSite>
+      <LocalNetworkSite name="mag_[dept]_managed_prod_VA">
+        <AddressSpace>
+          <AddressPrefix>10.130.0.0/20</AddressPrefix>
+        </AddressSpace>
+        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
+      </LocalNetworkSite>
+      <LocalNetworkSite name="mag_[dept]_managed_preprod_va">
+        <AddressSpace>
+          <AddressPrefix>10.130.32.0/20</AddressPrefix>
+        </AddressSpace>
+        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
+      </LocalNetworkSite>
+      <LocalNetworkSite name="mag_[dept]_managed_storage_va">
+        <AddressSpace>
+          <AddressPrefix>10.130.48.0/21</AddressPrefix>
+        </AddressSpace>
+        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
+      </LocalNetworkSite>
+      <LocalNetworkSite name="mag_[dept]_managed_services_VA">
+        <AddressSpace>
+          <AddressPrefix>10.130.56.0/21</AddressPrefix>
+        </AddressSpace>
+        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
+      </LocalNetworkSite>
+      <LocalNetworkSite name="mag_[dept]_managed_services_IA">
+        <AddressSpace>
+          <AddressPrefix>10.130.120.0/21</AddressPrefix>
+        </AddressSpace>
+        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
+      </LocalNetworkSite>
+    </LocalNetworkSites>
+    <VirtualNetworkSites>
+      <VirtualNetworkSite name="[dept]_managed_services_IA" Location="USGov Iowa">
+        <AddressSpace>
+          <AddressPrefix>10.130.120.0/21</AddressPrefix>
+        </AddressSpace>
+        <Subnets>
+          <Subnet name="Services_600_[dept]_Srvcs_IA">
+            <AddressPrefix>10.130.120.0/24</AddressPrefix>
+          </Subnet>
+          <Subnet name="DMZ_650_[dept]_Srvcs_IA">
+            <AddressPrefix>10.130.122.0/24</AddressPrefix>
+          </Subnet>
+          <!-- May need to set back to 10.130.121.0/29 -->
+          <Subnet name="GatewaySubnet">
+            <AddressPrefix>10.130.121.0/29</AddressPrefix>
+          </Subnet>
+        </Subnets>
+        <DnsServersRef>
+          <DnsServerRef name="ns1-01.azure-dns.com" />
+        </DnsServersRef>
+        <Gateway>
+          <ConnectionsToLocalNetwork>
+            <!-- 1 of 10 -->
+            <LocalNetworkSiteRef name="mag_[dept]_managed_cjis_ia">
+              <Connection type="IPsec" />
+            </LocalNetworkSiteRef>
+            <!-- 2 of 10 -->
+            <LocalNetworkSiteRef name="mag_[dept]_managed_preprod_ia">
+              <Connection type="IPsec" />
+            </LocalNetworkSiteRef>
+            <!-- 3 of 10 -->
+            <LocalNetworkSiteRef name="mag_[dept]_managed_prod_ia">
+              <Connection type="IPsec" />
+            </LocalNetworkSiteRef>
+            <!-- 4 of 10  This one may not count since it is itself -->
+            <!-- 5 of 10 -->
+              <LocalNetworkSiteRef name="mag_[dept]_managed_storage_ia">
+                <Connection type="IPsec" />
+              </LocalNetworkSiteRef>
+            <!-- 6 of 10 -->
+              <LocalNetworkSiteRef name="mag_[dept]_managed_services_VA">
+                <Connection type="IPsec" />
+            </LocalNetworkSiteRef>
+            <!-- 7 of 10 -->
+            <!-- 8 of 10 -->
+            <!-- 9 of 10 -->
+            <!-- 10 of 10 -->
+          </ConnectionsToLocalNetwork>
+        </Gateway>
+      </VirtualNetworkSite>
+      <VirtualNetworkSite name="[dept]_managed_services_VA" Location="USGov Virginia">
+        <AddressSpace>
+          <AddressPrefix>10.130.56.0/21</AddressPrefix>
+        </AddressSpace>
+        <Subnets>
+          <Subnet name="Services_600_[dept]_Srvcs_VA">
+            <AddressPrefix>10.130.56.0/24</AddressPrefix>
+          </Subnet>
+          <Subnet name="DMZ_650_[dept]_Srvcs_VA">
+            <AddressPrefix>10.130.58.0/24</AddressPrefix>
+          </Subnet>
+          <!-- May have to set it back to 10.130.63.0/29 -->
+          <Subnet name="GatewaySubnet">
+            <AddressPrefix>10.130.63.0/29</AddressPrefix>
+          </Subnet>
+        </Subnets>
+        <DnsServersRef>
+          <DnsServerRef name="ns1-01.azure-dns.com" />
+        </DnsServersRef>
+        <Gateway>
+          <ConnectionsToLocalNetwork>
+            <!-- 1 of 10 -->
+            <LocalNetworkSiteRef name="mag_[dept]_managed_cjis_va">
+              <Connection type="IPsec" />
+            </LocalNetworkSiteRef>
+            <!-- 2 of 10 -->
+            <LocalNetworkSiteRef name="mag_[dept]_managed_preprod_va">
+              <Connection type="IPsec" />
+            </LocalNetworkSiteRef>
+            <!-- 3 of 10 -->
+            <LocalNetworkSiteRef name="mag_[dept]_managed_prod_va">
+              <Connection type="IPsec" />
+            </LocalNetworkSiteRef>
+            <!-- 4 of 10  This one may not count since it is itself -->
+            <!-- 5 of 10 -->
+            <LocalNetworkSiteRef name="mag_[dept]_managed_storage_va">
+              <Connection type="IPsec" />
+            </LocalNetworkSiteRef>
+            <!-- 6 of 10 -->
+            <LocalNetworkSiteRef name="mag_[dept]_managed_services_IA">
+              <Connection type="IPsec" />
+            </LocalNetworkSiteRef>
+            <!-- 7 of 10 -->
+          </ConnectionsToLocalNetwork>
+        </Gateway>
+      </VirtualNetworkSite>
+    </VirtualNetworkSites>
+  </VirtualNetworkConfiguration>
+</NetworkConfiguration>
