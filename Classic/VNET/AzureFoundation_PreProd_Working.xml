@@ -1,0 +1,167 @@
+<NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+  <VirtualNetworkConfiguration>
+    <Dns>
+      <DnsServers>
+        <DnsServer name="ns1-01.azure-dns.com" IPAddress="40.90.4.1" />
+      </DnsServers>
+    </Dns>
+    <LocalNetworkSites>
+      <LocalNetworkSite name="mag_dept_managed_preprod_ia">
+        <AddressSpace>
+          <AddressPrefix>10.130.96.0/20</AddressPrefix>
+        </AddressSpace>
+        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
+      </LocalNetworkSite>
+      <LocalNetworkSite name="mag_dept_managed_preprod_va">
+        <AddressSpace>
+          <AddressPrefix>10.130.32.0/20</AddressPrefix>
+        </AddressSpace>
+        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
+      </LocalNetworkSite>
+      <LocalNetworkSite name="mag_dept_managed_services_VA">
+        <AddressSpace>
+          <AddressPrefix>10.130.56.0/21</AddressPrefix>
+        </AddressSpace>
+        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
+      </LocalNetworkSite>
+      <LocalNetworkSite name="mag_dept_managed_services_IA">
+        <AddressSpace>
+          <AddressPrefix>10.130.120.0/21</AddressPrefix>
+        </AddressSpace>
+        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
+      </LocalNetworkSite>
+    </LocalNetworkSites>
+    <VirtualNetworkSites>
+      <VirtualNetworkSite name="dept_managed_preprod_IA" Location="USGov Iowa">
+        <AddressSpace>
+          <AddressPrefix>10.130.96.0/20</AddressPrefix>
+        </AddressSpace>
+        <Subnets>
+          <Subnet name="Web_310_dept_test_IA">
+            <AddressPrefix>10.130.96.0/24</AddressPrefix>
+          </Subnet>
+          <Subnet name="App_320_dept_test_IA">
+            <AddressPrefix>10.130.97.0/24</AddressPrefix>
+          </Subnet>
+          <Subnet name="Database_330_dept_test_IA">
+            <AddressPrefix>10.130.98.0/24</AddressPrefix>
+          </Subnet>
+          <Subnet name="DMZ_350_dept_test_IA">
+            <AddressPrefix>10.130.99.0/24</AddressPrefix>
+          </Subnet>
+          <Subnet name="Users_Tier0_360_dept_Test_ia">
+            <AddressPrefix>10.130.100.0/25</AddressPrefix>
+          </Subnet>
+          <Subnet name="Users_Tier1_361_dept_Test_ia">
+            <AddressPrefix>10.130.100.128/25</AddressPrefix>
+          </Subnet>
+          <Subnet name="Users_Tier2_362_dept_Test_ia">
+            <AddressPrefix>10.130.101.0/25</AddressPrefix>
+          </Subnet>
+          <Subnet name="Users_Tier0_363_dept_Dev_ia">
+            <AddressPrefix>10.130.101.128/25</AddressPrefix>
+          </Subnet>
+          <Subnet name="Users_Tier1_364_dept_Dev_ia">
+            <AddressPrefix>10.130.102.0/25</AddressPrefix>
+          </Subnet>
+          <Subnet name="Users_Tier2_365_dept_Dev_ia">
+            <AddressPrefix>10.130.102.128/25</AddressPrefix>
+          </Subnet>
+          <Subnet name="Web_410_dept_dev_IA">
+            <AddressPrefix>10.130.103.0/24</AddressPrefix>
+          </Subnet>
+          <Subnet name="App_420_dept_dev_IA">
+            <AddressPrefix>10.130.104.0/24</AddressPrefix>
+          </Subnet>
+          <Subnet name="Database_430_dept_dev_IA">
+            <AddressPrefix>10.130.105.0/24</AddressPrefix>
+          </Subnet>
+          <Subnet name="DMZ_450_dept_dev_IA">
+            <AddressPrefix>10.130.106.0/24</AddressPrefix>
+          </Subnet>
+          <Subnet name="GatewaySubnet">
+            <AddressPrefix>10.130.111.248/29</AddressPrefix>
+          </Subnet>
+        </Subnets>
+        <DnsServersRef>
+          <DnsServerRef name="ns1-01.azure-dns.com" />
+        </DnsServersRef>
+        <Gateway>
+          <ConnectionsToLocalNetwork>
+            <LocalNetworkSiteRef name="mag_dept_managed_preprod_va">
+              <Connection type="IPsec" />
+            </LocalNetworkSiteRef>
+            <LocalNetworkSiteRef name="mag_dept_managed_services_ia">
+              <Connection type="IPsec" />
+            </LocalNetworkSiteRef>
+          </ConnectionsToLocalNetwork>
+        </Gateway>
+      </VirtualNetworkSite>
+      <VirtualNetworkSite name="dept_managed_PreProd_VA" Location="USGov Virginia">
+        <AddressSpace>
+          <AddressPrefix>10.130.32.0/20</AddressPrefix>
+        </AddressSpace>
+        <Subnets>
+          <Subnet name="Web_310_dept_test_VA">
+            <AddressPrefix>10.130.32.0/24</AddressPrefix>
+          </Subnet>
+          <Subnet name="App_320_dept_test_VA">
+            <AddressPrefix>10.130.33.0/24</AddressPrefix>
+          </Subnet>
+          <Subnet name="Database_330_dept_test_VA">
+            <AddressPrefix>10.130.34.0/24</AddressPrefix>
+          </Subnet>
+          <Subnet name="DMZ_350_dept_test_VA">
+            <AddressPrefix>10.130.35.0/24</AddressPrefix>
+          </Subnet>
+          <Subnet name="Users_Tier0_360_dept_Test_va">
+            <AddressPrefix>10.130.36.0/25</AddressPrefix>
+          </Subnet>
+          <Subnet name="Users_Tier1_361_dept_Test_va">
+            <AddressPrefix>10.130.36.128/25</AddressPrefix>
+          </Subnet>
+          <Subnet name="Users_Tier2_362_dept_Test_va">
+            <AddressPrefix>10.130.37.0/25</AddressPrefix>
+          </Subnet>
+          <Subnet name="Users_Tier0_363_dept_Dev_va">
+            <AddressPrefix>10.130.37.128/25</AddressPrefix>
+          </Subnet>
+          <Subnet name="Users_Tier1_364_dept_Dev_va">
+            <AddressPrefix>10.130.38.0/25</AddressPrefix>
+          </Subnet>
+          <Subnet name="Users_Tier2_365_dept_Dev_va">
+            <AddressPrefix>10.130.38.128/25</AddressPrefix>
+          </Subnet>
+          <Subnet name="Web_410_dept_dev_VA">
+            <AddressPrefix>10.130.40.0/24</AddressPrefix>
+          </Subnet>
+          <Subnet name="App_420_dept_dev_VA">
+            <AddressPrefix>10.130.41.0/24</AddressPrefix>
+          </Subnet>
+          <Subnet name="Database_430_dept_dev_VA">
+            <AddressPrefix>10.130.42.0/24</AddressPrefix>
+          </Subnet>
+          <Subnet name="DMZ_450_dept_dev_VA">
+            <AddressPrefix>10.130.43.0/24</AddressPrefix>
+          </Subnet>
+          <Subnet name="GatewaySubnet">
+            <AddressPrefix>10.130.47.248/29</AddressPrefix>
+          </Subnet>
+        </Subnets>
+        <DnsServersRef>
+          <DnsServerRef name="ns1-01.azure-dns.com" />
+        </DnsServersRef>
+        <Gateway>
+          <ConnectionsToLocalNetwork>
+            <LocalNetworkSiteRef name="mag_dept_managed_preprod_ia">
+              <Connection type="IPsec" />
+            </LocalNetworkSiteRef>
+            <LocalNetworkSiteRef name="mag_dept_managed_services_va">
+              <Connection type="IPsec" />
+            </LocalNetworkSiteRef>
+          </ConnectionsToLocalNetwork>
+        </Gateway>
+      </VirtualNetworkSite>
+    </VirtualNetworkSites>
+  </VirtualNetworkConfiguration>
+</NetworkConfiguration>
