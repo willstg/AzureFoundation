@@ -68,21 +68,21 @@
       </LocalNetworkSite>
     </LocalNetworkSites>
     <VirtualNetworkSites>
-      <VirtualNetworkSite name="dept_managed_services_IA" Location="USGov Iowa">
+      <VirtualNetworkSite name="mag_dept_managed_services_IA" Location="USGov Iowa">
         <AddressSpace>
           <AddressPrefix>10.130.120.0/21</AddressPrefix>
         </AddressSpace>
         <Subnets>
-          <Subnet name="Services_600_dept_Srvcs_IA">
+          <Subnet name="Services_600_mag_dept_Srvcs_IA">
             <AddressPrefix>10.130.120.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="DMZ_650_dept_Srvcs_IA">
+          <Subnet name="DMZ_650_mag_dept_Srvcs_IA">
             <AddressPrefix>10.130.122.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="User_Tier0_660_dept_Srvcs_ia">
+          <Subnet name="User_Tier0_660_mag_dept_Srvcs_ia">
             <AddressPrefix>10.130.123.0/25</AddressPrefix>
           </Subnet>
-          <Subnet name="User_Tier1_661_dept_Srvcs_ia">
+          <Subnet name="User_Tier1_661_mag_dept_Srvcs_ia">
             <AddressPrefix>10.130.123.128/25</AddressPrefix>
           </Subnet>
           <!-- May need to set back to 10.130.127.248/29 -->
@@ -123,21 +123,21 @@
           </ConnectionsToLocalNetwork>
         </Gateway>
       </VirtualNetworkSite>
-      <VirtualNetworkSite name="dept_managed_services_VA" Location="USGov Virginia">
+      <VirtualNetworkSite name="mag_dept_managed_services_VA" Location="USGov Virginia">
         <AddressSpace>
           <AddressPrefix>10.130.56.0/21</AddressPrefix>
         </AddressSpace>
         <Subnets>
-          <Subnet name="Services_600_dept_Srvcs_VA">
+          <Subnet name="Services_600_mag_dept_Srvcs_VA">
             <AddressPrefix>10.130.56.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="DMZ_650_dept_Srvcs_VA">
+          <Subnet name="DMZ_650_mag_dept_Srvcs_VA">
             <AddressPrefix>10.130.58.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="User_Tier0_660_dept_Srvcs_va">
+          <Subnet name="User_Tier0_660_mag_dept_Srvcs_va">
             <AddressPrefix>10.130.59.0/25</AddressPrefix>
           </Subnet>
-          <Subnet name="User_Tier1_661_dept_Srvcs_va">
+          <Subnet name="User_Tier1_661_mag_dept_Srvcs_va">
             <AddressPrefix>10.130.59.128/25</AddressPrefix>
           </Subnet>
           <!-- May have to set it back to 10.130.63.0/29 -->

@@ -33,27 +33,27 @@
       </LocalNetworkSite>
     </LocalNetworkSites>
     <VirtualNetworkSites>
-      <VirtualNetworkSite name="dept_managed_cjis_IA" Location="USGov Iowa">
+      <VirtualNetworkSite name="mag_dept_managed_cjis_IA" Location="USGov Iowa">
         <AddressSpace>
           <AddressPrefix>10.130.80.0/20</AddressPrefix>
         </AddressSpace>
         <Subnets>
-          <Subnet name="web_210_dept_cjis_IA">
+          <Subnet name="web_210_mag_dept_cjis_IA">
             <AddressPrefix>10.130.80.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="app_220_dept_cjis_IA">
+          <Subnet name="app_220_mag_dept_cjis_IA">
             <AddressPrefix>10.130.82.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="database_230_dept_cjis_IA">
+          <Subnet name="database_230_mag_dept_cjis_IA">
             <AddressPrefix>10.130.84.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="dmz_250_dept_cjis_IA">
+          <Subnet name="dmz_250_mag_dept_cjis_IA">
             <AddressPrefix>10.130.86.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="User_Tier0_260_dept_CJIS_ia">
+          <Subnet name="User_Tier0_260_mag_dept_CJIS_ia">
             <AddressPrefix>10.130.88.0/25</AddressPrefix>
           </Subnet>
-          <Subnet name="User_Tier1_261_dept_CJIS_ia">
+          <Subnet name="User_Tier1_261_mag_dept_CJIS_ia">
             <AddressPrefix>10.130.88.128/25</AddressPrefix>
           </Subnet>
           <Subnet name="GatewaySubnet">
@@ -74,27 +74,27 @@
           </ConnectionsToLocalNetwork>
         </Gateway>
       </VirtualNetworkSite>
-      <VirtualNetworkSite name="dept_managed_cjis_VA" Location="USGov Virginia">
+      <VirtualNetworkSite name="mag_dept_managed_cjis_VA" Location="USGov Virginia">
         <AddressSpace>
           <AddressPrefix>10.130.16.0/20</AddressPrefix>
         </AddressSpace>
         <Subnets>
-          <Subnet name="Web_210_dept_cjis_VA">
+          <Subnet name="Web_210_mag_dept_cjis_VA">
             <AddressPrefix>10.130.16.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="App_220_dept_cjis_VA">
+          <Subnet name="App_220_mag_dept_cjis_VA">
             <AddressPrefix>10.130.18.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="Database_230_dept_cjis_VA">
+          <Subnet name="Database_230_mag_dept_cjis_VA">
             <AddressPrefix>10.130.20.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="DMZ_250_dept_cjis_VA">
+          <Subnet name="DMZ_250_mag_dept_cjis_VA">
             <AddressPrefix>10.130.22.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="User_Tier0_260_dept_CJIS_VA">
+          <Subnet name="User_Tier0_260_mag_dept_CJIS_VA">
             <AddressPrefix>10.130.26.0/25</AddressPrefix>
           </Subnet>
-          <Subnet name="User_Tier1_261_dept_CJIS_VA">
+          <Subnet name="User_Tier1_261_mag_dept_CJIS_VA">
             <AddressPrefix>10.130.26.128/25</AddressPrefix>
           </Subnet>
           <Subnet name="GatewaySubnet">
