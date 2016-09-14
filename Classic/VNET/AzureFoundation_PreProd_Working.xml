@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
   <VirtualNetworkConfiguration>
     <Dns>
@@ -6,77 +7,77 @@
       </DnsServers>
     </Dns>
     <LocalNetworkSites>
-      <LocalNetworkSite name="mag_dept_managed_preprod_ia">
+      <LocalNetworkSite name="mac_dept_managed_preprod_w1">
         <AddressSpace>
           <AddressPrefix>10.130.96.0/20</AddressPrefix>
         </AddressSpace>
-        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
+        <VPNGatewayAddress>52.161.24.117</VPNGatewayAddress>
       </LocalNetworkSite>
-      <LocalNetworkSite name="mag_dept_managed_preprod_va">
+      <LocalNetworkSite name="mac_dept_managed_preprod_w2">
         <AddressSpace>
           <AddressPrefix>10.130.32.0/20</AddressPrefix>
         </AddressSpace>
-        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
+        <VPNGatewayAddress>13.66.217.153</VPNGatewayAddress>
       </LocalNetworkSite>
-      <LocalNetworkSite name="mag_dept_managed_services_VA">
-        <AddressSpace>
-          <AddressPrefix>10.130.56.0/21</AddressPrefix>
-        </AddressSpace>
-        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
-      </LocalNetworkSite>
-      <LocalNetworkSite name="mag_dept_managed_services_IA">
+      <LocalNetworkSite name="mac_dept_managed_services_w1">
         <AddressSpace>
           <AddressPrefix>10.130.120.0/21</AddressPrefix>
         </AddressSpace>
-        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
+        <VPNGatewayAddress>52.161.30.133</VPNGatewayAddress>
+      </LocalNetworkSite>
+      <LocalNetworkSite name="mac_dept_managed_services_w2">
+        <AddressSpace>
+          <AddressPrefix>10.130.56.0/21</AddressPrefix>
+        </AddressSpace>
+        <VPNGatewayAddress>13.66.217.88</VPNGatewayAddress>
       </LocalNetworkSite>
     </LocalNetworkSites>
     <VirtualNetworkSites>
-      <VirtualNetworkSite name="mag_dept_managed_preprod_IA" Location="USGov Iowa">
+      <VirtualNetworkSite name="mac_dept_managed_preprod_w1" Location="West Central US">
         <AddressSpace>
           <AddressPrefix>10.130.96.0/20</AddressPrefix>
         </AddressSpace>
         <Subnets>
-          <Subnet name="Web_310_mag_dept_test_IA">
+          <Subnet name="Web_310_dept_test_w1">
             <AddressPrefix>10.130.96.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="App_320_mag_dept_test_IA">
+          <Subnet name="App_320_dept_test_w1">
             <AddressPrefix>10.130.97.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="Database_330_mag_dept_test_IA">
+          <Subnet name="Database_330_dept_test_w1">
             <AddressPrefix>10.130.98.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="DMZ_350_mag_dept_test_IA">
+          <Subnet name="DMZ_350_dept_test_w1">
             <AddressPrefix>10.130.99.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="Users_Tier0_360_mag_dept_Test_ia">
+          <Subnet name="user_Tier0_360_dept_Test_w1">
             <AddressPrefix>10.130.100.0/25</AddressPrefix>
           </Subnet>
-          <Subnet name="Users_Tier1_361_mag_dept_Test_ia">
+          <Subnet name="user_Tier1_361_dept_Test_w1">
             <AddressPrefix>10.130.100.128/25</AddressPrefix>
           </Subnet>
-          <Subnet name="Users_Tier2_362_mag_dept_Test_ia">
+          <Subnet name="user_Tier2_362_dept_Test_w1">
             <AddressPrefix>10.130.101.0/25</AddressPrefix>
           </Subnet>
-          <Subnet name="Users_Tier0_363_mag_dept_Dev_ia">
+          <Subnet name="user_Tier0_363_dept_Dev_w1">
             <AddressPrefix>10.130.101.128/25</AddressPrefix>
           </Subnet>
-          <Subnet name="Users_Tier1_364_mag_dept_Dev_ia">
+          <Subnet name="user_Tier1_364_dept_Dev_w1">
             <AddressPrefix>10.130.102.0/25</AddressPrefix>
           </Subnet>
-          <Subnet name="Users_Tier2_365_mag_dept_Dev_ia">
+          <Subnet name="user_Tier2_365_dept_Dev_w1">
             <AddressPrefix>10.130.102.128/25</AddressPrefix>
           </Subnet>
-          <Subnet name="Web_410_mag_dept_dev_IA">
+          <Subnet name="Web_410_dept_dev_w1">
             <AddressPrefix>10.130.103.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="App_420_mag_dept_dev_IA">
+          <Subnet name="App_420_dept_dev_w1">
             <AddressPrefix>10.130.104.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="Database_430_mag_dept_dev_IA">
+          <Subnet name="Database_430_dept_dev_w1">
             <AddressPrefix>10.130.105.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="DMZ_450_mag_dept_dev_IA">
+          <Subnet name="DMZ_450_dept_dev_w1">
             <AddressPrefix>10.130.106.0/24</AddressPrefix>
           </Subnet>
           <Subnet name="GatewaySubnet">
@@ -88,60 +89,60 @@
         </DnsServersRef>
         <Gateway>
           <ConnectionsToLocalNetwork>
-            <LocalNetworkSiteRef name="mag_dept_managed_preprod_va">
+            <LocalNetworkSiteRef name="mac_dept_managed_preprod_w2">
               <Connection type="IPsec" />
             </LocalNetworkSiteRef>
-            <LocalNetworkSiteRef name="mag_dept_managed_services_ia">
+            <LocalNetworkSiteRef name="mac_dept_managed_services_w1">
               <Connection type="IPsec" />
             </LocalNetworkSiteRef>
           </ConnectionsToLocalNetwork>
         </Gateway>
       </VirtualNetworkSite>
-      <VirtualNetworkSite name="mag_dept_managed_PreProd_VA" Location="USGov Virginia">
+      <VirtualNetworkSite name="mac_dept_managed_PreProd_w2" Location="West US 2">
         <AddressSpace>
           <AddressPrefix>10.130.32.0/20</AddressPrefix>
         </AddressSpace>
         <Subnets>
-          <Subnet name="Web_310_mag_dept_test_VA">
+          <Subnet name="Web_310_dept_test_w2">
             <AddressPrefix>10.130.32.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="App_320_mag_dept_test_VA">
+          <Subnet name="App_320_dept_test_w2">
             <AddressPrefix>10.130.33.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="Database_330_mag_dept_test_VA">
+          <Subnet name="Database_330_dept_test_w2">
             <AddressPrefix>10.130.34.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="DMZ_350_mag_dept_test_VA">
+          <Subnet name="DMZ_350_dept_test_w2">
             <AddressPrefix>10.130.35.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="Users_Tier0_360_mag_dept_Test_va">
+          <Subnet name="user_Tier0_360_dept_Test_w2">
             <AddressPrefix>10.130.36.0/25</AddressPrefix>
           </Subnet>
-          <Subnet name="Users_Tier1_361_mag_dept_Test_va">
+          <Subnet name="user_Tier1_361_dept_Test_w2">
             <AddressPrefix>10.130.36.128/25</AddressPrefix>
           </Subnet>
-          <Subnet name="Users_Tier2_362_mag_dept_Test_va">
+          <Subnet name="user_Tier2_362_dept_Test_w2">
             <AddressPrefix>10.130.37.0/25</AddressPrefix>
           </Subnet>
-          <Subnet name="Users_Tier0_363_mag_dept_Dev_va">
+          <Subnet name="user_Tier0_363_dept_Dev_w2">
             <AddressPrefix>10.130.37.128/25</AddressPrefix>
           </Subnet>
-          <Subnet name="Users_Tier1_364_mag_dept_Dev_va">
+          <Subnet name="user_Tier1_364_dept_Dev_w2">
             <AddressPrefix>10.130.38.0/25</AddressPrefix>
           </Subnet>
-          <Subnet name="Users_Tier2_365_mag_dept_Dev_va">
+          <Subnet name="user_Tier2_365_dept_Dev_w2">
             <AddressPrefix>10.130.38.128/25</AddressPrefix>
           </Subnet>
-          <Subnet name="Web_410_mag_dept_dev_VA">
+          <Subnet name="Web_410_dept_dev_w2">
             <AddressPrefix>10.130.40.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="App_420_mag_dept_dev_VA">
+          <Subnet name="App_420_dept_dev_w2">
             <AddressPrefix>10.130.41.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="Database_430_mag_dept_dev_VA">
+          <Subnet name="Database_430_dept_dev_w2">
             <AddressPrefix>10.130.42.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="DMZ_450_mag_dept_dev_VA">
+          <Subnet name="DMZ_450_dept_dev_w2">
             <AddressPrefix>10.130.43.0/24</AddressPrefix>
           </Subnet>
           <Subnet name="GatewaySubnet">
@@ -153,10 +154,10 @@
         </DnsServersRef>
         <Gateway>
           <ConnectionsToLocalNetwork>
-            <LocalNetworkSiteRef name="mag_dept_managed_preprod_ia">
+            <LocalNetworkSiteRef name="mac_dept_managed_preprod_w1">
               <Connection type="IPsec" />
             </LocalNetworkSiteRef>
-            <LocalNetworkSiteRef name="mag_dept_managed_services_va">
+            <LocalNetworkSiteRef name="mac_dept_managed_services_w2">
               <Connection type="IPsec" />
             </LocalNetworkSiteRef>
           </ConnectionsToLocalNetwork>

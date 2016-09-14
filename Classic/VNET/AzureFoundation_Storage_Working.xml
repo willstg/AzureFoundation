@@ -26,13 +26,13 @@
           <AddressPrefix>10.130.112.0/21</AddressPrefix>
         </AddressSpace>
         <Subnets>
-          <Subnet name="Storage_500_mag_dept_Storage_IA">
+          <Subnet name="Storage_500_dept_Storage_IA">
             <AddressPrefix>10.130.112.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="User_Tier0_560_mag_dept_Storage_ia">
+          <Subnet name="User_Tier0_560_dept_Storage_ia">
             <AddressPrefix>10.130.113.0/25</AddressPrefix>
           </Subnet>
-          <Subnet name="User_Tier1_561_mag_dept_Storage_ia">
+          <Subnet name="User_Tier1_561_dept_Storage_ia">
             <AddressPrefix>10.130.113.128/25</AddressPrefix>
           </Subnet>
           <Subnet name="GatewaySubnet">
@@ -55,13 +55,13 @@
           <AddressPrefix>10.130.48.0/21</AddressPrefix>
         </AddressSpace>
         <Subnets>
-          <Subnet name="Storage_500_mag_dept_Storage_VA">
+          <Subnet name="Storage_500_dept_Storage_VA">
             <AddressPrefix>10.130.48.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="User_Tier0_560_mag_dept_Storage_va">
+          <Subnet name="User_Tier0_560_dept_Storage_va">
             <AddressPrefix>10.130.49.0/25</AddressPrefix>
           </Subnet>
-          <Subnet name="User_Tier1_561_mag_dept_Storage_va">
+          <Subnet name="User_Tier1_561_dept_Storage_va">
             <AddressPrefix>10.130.49.128/25</AddressPrefix>
           </Subnet>
           <Subnet name="GatewaySubnet">

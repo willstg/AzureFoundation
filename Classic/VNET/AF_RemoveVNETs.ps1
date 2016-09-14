@@ -8,7 +8,8 @@ $VNETName_CJIS1= "dept_managed_CJIS_VA"
 $VNETName_CJIS2= "dept_managed_CJIS_IA"
 $VNETName_Prod1= "dept_managed_Prod_VA"
 $VNETName_Prod2= "dept_managed_Prod_IA"
-
+$VNETName_HBI1= "mac_slg_managed_hbi_w1"
+$VNETName_HBI2= "mac_slg_managed_HBI_w2"
 #
 #Services
 #
@@ -43,4 +44,12 @@ Remove-AzureVNetConfig
 Select-AzureSubscription -SubscriptionName $SubName_CJIS -Current
 Remove-AzureVNetGateway -vnetname $VNETName_CJIS1
 Remove-AzureVNetGateway -vnetname $VNETName_CJIS2
+Remove-AzureVNetConfig
+#CJIS
+#
+Select-AzureSubscription -SubscriptionName $SubName_HBI -Current
+Select-AzureSubscription -subscriptionname 'MAC_Dept_Managed_HBI' -Current
+
+Remove-AzureVNetGateway -vnetname $VNETName_HBI1
+Remove-AzureVNetGateway -vnetname $VNETName_HBI2
 Remove-AzureVNetConfig

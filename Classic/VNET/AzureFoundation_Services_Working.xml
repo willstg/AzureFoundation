@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
   <VirtualNetworkConfiguration>
     <Dns>
@@ -6,86 +7,85 @@
       </DnsServers>
     </Dns>
     <LocalNetworkSites>
-      <LocalNetworkSite name="mag_dept_managed_cjis_ia">
+      <LocalNetworkSite name="mac_dept_managed_hbi_w1">
         <AddressSpace>
           <AddressPrefix>10.130.80.0/20</AddressPrefix>
         </AddressSpace>
-        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
+        <VPNGatewayAddress>52.161.29.236</VPNGatewayAddress>
       </LocalNetworkSite>
-      <LocalNetworkSite name="mag_dept_managed_preprod_ia">
-        <AddressSpace>
-          <AddressPrefix>10.130.96.0/20</AddressPrefix>
-        </AddressSpace>
-        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
-      </LocalNetworkSite>
-      <LocalNetworkSite name="mag_dept_managed_prod_ia">
-        <AddressSpace>
-          <AddressPrefix>10.130.64.0/20</AddressPrefix>
-        </AddressSpace>
-        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
-      </LocalNetworkSite>
-        <LocalNetworkSite name="mag_dept_managed_storage_ia">
-        <AddressSpace>
-          <AddressPrefix>10.130.112.0/21</AddressPrefix>
-        </AddressSpace>
-        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
-      </LocalNetworkSite>
-      <LocalNetworkSite name="mag_dept_managed_cjis_VA">
+      <LocalNetworkSite name="mac_dept_managed_hbi_w2">
         <AddressSpace>
           <AddressPrefix>10.130.16.0/20</AddressPrefix>
         </AddressSpace>
-        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
+        <VPNGatewayAddress>13.66.217.251</VPNGatewayAddress>
       </LocalNetworkSite>
-      <LocalNetworkSite name="mag_dept_managed_prod_VA">
+      <LocalNetworkSite name="mac_dept_managed_preprod_w1">
         <AddressSpace>
-          <AddressPrefix>10.130.0.0/20</AddressPrefix>
+          <AddressPrefix>10.130.96.0/20</AddressPrefix>
         </AddressSpace>
-        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
+        <VPNGatewayAddress>52.161.24.117</VPNGatewayAddress>
       </LocalNetworkSite>
-      <LocalNetworkSite name="mag_dept_managed_preprod_va">
+      <LocalNetworkSite name="mac_dept_managed_preprod_w2">
         <AddressSpace>
           <AddressPrefix>10.130.32.0/20</AddressPrefix>
         </AddressSpace>
-        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
+        <VPNGatewayAddress>13.66.217.153</VPNGatewayAddress>
       </LocalNetworkSite>
-      <LocalNetworkSite name="mag_dept_managed_storage_va">
+      <LocalNetworkSite name="mac_dept_managed_prod_w1">
         <AddressSpace>
-          <AddressPrefix>10.130.48.0/21</AddressPrefix>
+          <AddressPrefix>10.130.64.0/20</AddressPrefix>
         </AddressSpace>
-        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
+        <VPNGatewayAddress>52.161.26.88</VPNGatewayAddress>
       </LocalNetworkSite>
-      <LocalNetworkSite name="mag_dept_managed_services_VA">
+      <LocalNetworkSite name="mac_dept_managed_prod_w2">
         <AddressSpace>
-          <AddressPrefix>10.130.56.0/21</AddressPrefix>
+          <AddressPrefix>10.130.0.0/20</AddressPrefix>
         </AddressSpace>
-        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
+        <VPNGatewayAddress>13.66.216.193</VPNGatewayAddress>
       </LocalNetworkSite>
-      <LocalNetworkSite name="mag_dept_managed_services_IA">
+      <LocalNetworkSite name="mac_dept_managed_services_w1">
         <AddressSpace>
           <AddressPrefix>10.130.120.0/21</AddressPrefix>
         </AddressSpace>
-        <VPNGatewayAddress>10.0.0.1</VPNGatewayAddress>
+        <VPNGatewayAddress>52.161.30.133</VPNGatewayAddress>
+      </LocalNetworkSite>
+      <LocalNetworkSite name="mac_dept_managed_services_w2">
+        <AddressSpace>
+          <AddressPrefix>10.130.56.0/21</AddressPrefix>
+        </AddressSpace>
+        <VPNGatewayAddress>13.66.217.88</VPNGatewayAddress>
+      </LocalNetworkSite>
+      <LocalNetworkSite name="mac_dept_managed_storage_w1">
+        <AddressSpace>
+          <AddressPrefix>10.130.112.0/21</AddressPrefix>
+        </AddressSpace>
+        <VPNGatewayAddress>52.161.28.95</VPNGatewayAddress>
+      </LocalNetworkSite>
+      <LocalNetworkSite name="mac_dept_managed_storage_w2">
+        <AddressSpace>
+          <AddressPrefix>10.130.48.0/21</AddressPrefix>
+        </AddressSpace>
+        <VPNGatewayAddress>13.66.216.81</VPNGatewayAddress>
       </LocalNetworkSite>
     </LocalNetworkSites>
     <VirtualNetworkSites>
-      <VirtualNetworkSite name="mag_dept_managed_services_IA" Location="USGov Iowa">
+      <VirtualNetworkSite name="mac_dept_managed_services_w1" Location="West Central US">
         <AddressSpace>
           <AddressPrefix>10.130.120.0/21</AddressPrefix>
         </AddressSpace>
         <Subnets>
-          <Subnet name="Services_600_mag_dept_Srvcs_IA">
+          <Subnet name="Services_600_dept_Srvcs_w1">
             <AddressPrefix>10.130.120.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="DMZ_650_mag_dept_Srvcs_IA">
+          <Subnet name="DMZ_650_dept_Srvcs_w1">
             <AddressPrefix>10.130.122.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="User_Tier0_660_mag_dept_Srvcs_ia">
+          <Subnet name="User_Tier0_660_dept_Srvcs_w1">
             <AddressPrefix>10.130.123.0/25</AddressPrefix>
           </Subnet>
-          <Subnet name="User_Tier1_661_mag_dept_Srvcs_ia">
+          <Subnet name="User_Tier1_661_dept_Srvcs_w1">
             <AddressPrefix>10.130.123.128/25</AddressPrefix>
           </Subnet>
-          <!-- May need to set back to 10.130.127.248/29 -->
           <Subnet name="GatewaySubnet">
             <AddressPrefix>10.130.127.248/29</AddressPrefix>
           </Subnet>
@@ -95,52 +95,41 @@
         </DnsServersRef>
         <Gateway>
           <ConnectionsToLocalNetwork>
-            <!-- 1 of 10 -->
-            <LocalNetworkSiteRef name="mag_dept_managed_cjis_ia">
+            <LocalNetworkSiteRef name="mac_dept_managed_hbi_w1">
               <Connection type="IPsec" />
             </LocalNetworkSiteRef>
-            <!-- 2 of 10 -->
-            <LocalNetworkSiteRef name="mag_dept_managed_preprod_ia">
+            <LocalNetworkSiteRef name="mac_dept_managed_preprod_w1">
               <Connection type="IPsec" />
             </LocalNetworkSiteRef>
-            <!-- 3 of 10 -->
-            <LocalNetworkSiteRef name="mag_dept_managed_prod_ia">
+            <LocalNetworkSiteRef name="mac_dept_managed_prod_w1">
               <Connection type="IPsec" />
             </LocalNetworkSiteRef>
-            <!-- 4 of 10  This one may not count since it is itself -->
-            <!-- 5 of 10 -->
-              <LocalNetworkSiteRef name="mag_dept_managed_storage_ia">
-                <Connection type="IPsec" />
-              </LocalNetworkSiteRef>
-            <!-- 6 of 10 -->
-              <LocalNetworkSiteRef name="mag_dept_managed_services_VA">
-                <Connection type="IPsec" />
+            <LocalNetworkSiteRef name="mac_dept_managed_storage_w1">
+              <Connection type="IPsec" />
             </LocalNetworkSiteRef>
-            <!-- 7 of 10 -->
-            <!-- 8 of 10 -->
-            <!-- 9 of 10 -->
-            <!-- 10 of 10 -->
+            <LocalNetworkSiteRef name="mac_dept_managed_services_w2">
+              <Connection type="IPsec" />
+            </LocalNetworkSiteRef>
           </ConnectionsToLocalNetwork>
         </Gateway>
       </VirtualNetworkSite>
-      <VirtualNetworkSite name="mag_dept_managed_services_VA" Location="USGov Virginia">
+      <VirtualNetworkSite name="mac_dept_managed_services_w2" Location="West US 2">
         <AddressSpace>
           <AddressPrefix>10.130.56.0/21</AddressPrefix>
         </AddressSpace>
         <Subnets>
-          <Subnet name="Services_600_mag_dept_Srvcs_VA">
+          <Subnet name="Services_600_dept_Srvcs_w2">
             <AddressPrefix>10.130.56.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="DMZ_650_mag_dept_Srvcs_VA">
+          <Subnet name="DMZ_650_dept_Srvcs_w2">
             <AddressPrefix>10.130.58.0/24</AddressPrefix>
           </Subnet>
-          <Subnet name="User_Tier0_660_mag_dept_Srvcs_va">
+          <Subnet name="User_Tier0_660_dept_Srvcs_w2">
             <AddressPrefix>10.130.59.0/25</AddressPrefix>
           </Subnet>
-          <Subnet name="User_Tier1_661_mag_dept_Srvcs_va">
+          <Subnet name="User_Tier1_661_dept_Srvcs_w2">
             <AddressPrefix>10.130.59.128/25</AddressPrefix>
           </Subnet>
-          <!-- May have to set it back to 10.130.63.0/29 -->
           <Subnet name="GatewaySubnet">
             <AddressPrefix>10.130.63.248/29</AddressPrefix>
           </Subnet>
@@ -150,28 +139,21 @@
         </DnsServersRef>
         <Gateway>
           <ConnectionsToLocalNetwork>
-            <!-- 1 of 10 -->
-            <LocalNetworkSiteRef name="mag_dept_managed_cjis_va">
+            <LocalNetworkSiteRef name="mac_dept_managed_hbi_w2">
               <Connection type="IPsec" />
             </LocalNetworkSiteRef>
-            <!-- 2 of 10 -->
-            <LocalNetworkSiteRef name="mag_dept_managed_preprod_va">
+            <LocalNetworkSiteRef name="mac_dept_managed_preprod_w2">
               <Connection type="IPsec" />
             </LocalNetworkSiteRef>
-            <!-- 3 of 10 -->
-            <LocalNetworkSiteRef name="mag_dept_managed_prod_va">
+            <LocalNetworkSiteRef name="mac_dept_managed_prod_w2">
               <Connection type="IPsec" />
             </LocalNetworkSiteRef>
-            <!-- 4 of 10  This one may not count since it is itself -->
-            <!-- 5 of 10 -->
-            <LocalNetworkSiteRef name="mag_dept_managed_storage_va">
+            <LocalNetworkSiteRef name="mac_dept_managed_storage_w2">
               <Connection type="IPsec" />
             </LocalNetworkSiteRef>
-            <!-- 6 of 10 -->
-            <LocalNetworkSiteRef name="mag_dept_managed_services_IA">
+            <LocalNetworkSiteRef name="mac_dept_managed_services_w1">
               <Connection type="IPsec" />
             </LocalNetworkSiteRef>
-            <!-- 7 of 10 -->
           </ConnectionsToLocalNetwork>
         </Gateway>
       </VirtualNetworkSite>

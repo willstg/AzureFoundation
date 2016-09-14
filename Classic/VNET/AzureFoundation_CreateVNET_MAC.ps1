@@ -26,7 +26,7 @@
     Five XML files and search for "10.130" and replace with "10.xxx" that matches the IP space you 
     have determined for the agency.  Save these files to a working directory that matches the 
     variable below.  Next make a copy of this script and save it in the working directory.  (Opportunity,
-    to make a branch off of the source and use source control for the new agency).  Search for "mac_slg" and 
+    to make a branch off of the source and use source control for the new agency).  Search for "mac_dept" and 
     replace with "mag_*" where * is the Agency name.  THe variable names will line up with the XML 
     Documents now.
 
@@ -115,14 +115,14 @@ Write-Output $XMLPath + $LogPath
             $LNS.VPNGatewayAddress=$VPNGW_Prod2.VIPAddress
             }
           
-        If($LNS.name -eq $VNETName_CJIS1)
+        If($LNS.name -eq $VNETName_HBI1)
             {
-            $LNS.VPNGatewayAddress=$VPNGW_CJIS1.VIPAddress
+            $LNS.VPNGatewayAddress=$VPNGW_HBI1.VIPAddress
             }
             
-        If($LNS.name -eq $VNETName_CJIS2)
+        If($LNS.name -eq $VNETName_HBI2)
             {
-            $LNS.VPNGatewayAddress=$VPNGW_CJIS2.VIPAddress
+            $LNS.VPNGatewayAddress=$VPNGW_HBI2.VIPAddress
             }
       } 
 
@@ -131,17 +131,14 @@ $VNETXML.save($XMLPath)
 
 
 function connectLocalNetworks {
-    param([Parameter(Mandatory=$true)] [System.String] $XMLPath, [Parameter(Mandatory=$true)][System.String] $VNETName, [System.String] $LogName)
+    param([Parameter(Mandatory=$true)] [System.String] $XMLPath, [Parameter(Mandatory=$true)][System.String] $VNETName, [System.String] $LogName, [Parameter(Mandatory=$true)][string] $SharedKey)
 #Test
-#$XMLPath = $XML_Storage
-#$VNETName = $VNETName_services2
+
 
 [XML]$VNETXML = Get-Content($XMLPath)
-if ($SharedKey -eq $null){
-$sharekey = Read-Host "Enter the Shared Key for the Gateway"
-}
+#$SharedKey='fjNGNbZuTFHx4BEH'
 
-Write-Output $XMLPath + $LogPath
+Write-Output $XMLPath + $LogName
 
     foreach($LNS in $VNetXML.NetworkConfiguration.VirtualNetworkConfiguration.LocalNetworkSites.LocalNetworkSite)
     {
@@ -154,8 +151,12 @@ Write-Output $XMLPath + $LogPath
      }
 #Set the Network Configuration file
 
-$WorkingPath='c:\temp\slg\'
-$Path="c:\temp\slg\"
+#Wishlist:
+    #1.  Prompt user for the first two octets of IP address, and search and replace in the XML File
+    #2.  Prompt user for regional pair of data centers and search and replace in the XML
+    #3.  The VNET name determins if the subscriptions are in MAG or MAC, replace VNET Name
+$WorkingPath='c:\temp\dept\'
+$Path="c:\temp\dept\"
 $date = Get-Date
 $filedate = $date.ToString("yyyyMMdd")
 #What kind of a gateway do you want?  Default, Standard, HighPerformance are the choices
@@ -169,8 +170,8 @@ $Connect = 1
 $file_services=$Path+"AzureFoundation_Services_Working.xml"
 $XML_Services = $WorkingPath+"AzureFoundation_Services_Working.xml"
 #The following variables come out of the XML file for the VNET name.
-$VNETName_Services1= "mac_slg_managed_services_VA"
-$VNETName_Services2= "mac_slg_managed_services_IA"
+$VNETName_Services1= "mac_dept_managed_services_w1"
+$VNETName_Services2= "mac_dept_managed_services_w2"
 
 #Backup the current file incase something goes wrong and you use the wrong path
 $ErrorLog_Services = $WorkingPath + "ErrorLog_Servivces"+$filedate+".txt"
@@ -184,47 +185,48 @@ $ErrorLog_Storage = $WorkingPath + "ErrorLog_Storage"+$filedate+".txt"
 $Backup_Storage=$WorkingPath+"AzureFoundation_Storage_Working.xml.backup"+$fileDate
 $File_storage=$Path+"AzureFoundation_storage_Working.xml"
 $XML_Storage = $WorkingPath+"AzureFoundation_Storage_Working.xml"
-$VNETName_Storage1= "mac_slg_managed_storage_VA"
-$VNETName_Storage2= "mac_slg_managed_storage_IA"
+$VNETName_Storage1= "mac_dept_managed_storage_w1"
+$VNETName_Storage2= "mac_dept_managed_storage_w2"
 #PreProd Subscription
 #
 
 $ErrorLog_PreProd = $WorkingPath + "ErrorLog_PreProd"+$filedate+".txt"
 $File_PreProd=$Path+"AzureFoundation_PreProd_Working.xml"
 $XML_PreProd = $WorkingPath+"AzureFoundation_PreProd_Working.xml"
-$VNETName_PreProd1= "mac_slg_managed_PreProd_VA"
-$VNETName_PreProd2= "mac_slg_managed_PreProd_IA"
+$VNETName_PreProd1= "mac_dept_managed_PreProd_w1"
+$VNETName_PreProd2= "mac_dept_managed_PreProd_w2"
 #Prod Subscription
 #
 
 $ErrorLog_Prod = $WorkingPath + "ErrorLog_Prod"+$filedate+".txt"
 $File_Prod=$Path+"AzureFoundation_Prod_Working.xml"
 $XML_Prod = $WorkingPath+"AzureFoundation_Prod_Working.xml"
-$VNETName_Prod1= "mac_slg_managed_Prod_VA"
-$VNETName_Prod2= "mac_slg_managed_Prod_IA"
+$VNETName_Prod1= "mac_dept_managed_Prod_w1"
+$VNETName_Prod2= "mac_dept_managed_Prod_w2"
 $Backup_Prod=$WorkingPath+"AzureFoundation_Prod_Working.xml.backup"+$fileDate
-#CJIS Subscription
-#
+#HBI Subscription
+#HBI Subscription
 
-$ErrorLog_CJIS = $WorkingPath + "ErrorLog_CJIS"+$filedate+".txt"
-$File_CJIS=$Path+"AzureFoundation_CJIS_Working.xml"
-$XML_CJIS = $WorkingPath+"AzureFoundation_CJIS_Working.xml"
-$VNETName_CJIS1= "mac_slg_managed_CJIS_VA"
-$VNETName_CJIS2= "mac_slg_managed_CJIS_IA"
-$Backup_CJIS=$WorkingPath+"AzureFoundation_CJIS_Working.xml.backup"+$fileDate
+$ErrorLog_HBI = $WorkingPath + "ErrorLog_HBI"+$filedate+".txt"
+$File_HBI=$Path+"AzureFoundation_HBI_Working.xml"
+$XML_HBI = $WorkingPath+"AzureFoundation_HBI_Working.xml"
+$VNETName_HBI1= "mac_dept_managed_hbi_w1"
+$VNETName_HBI2= "mac_dept_managed_HBI_w2"
+$Backup_HBI=$WorkingPath+"AzureFoundation_HBI_Working.xml.backup"+$fileDate
 
 #
 #Services Subscription
 #
+Write-Host 'Starting Step 1 of 3:  Create VNET for Subscription ' $VNETName_Services1 '.'
 Select-AzureSubscription -SubscriptionName $SubName_Services -Current
-$BackupVnet_Services=Get-AzureVNetConfig -ExportToFile $Backup_Services
+$BackupVnet_Services=Get-AzureVNetConfig -ExportToFile $Backup_Services #(this errors out on the first try)
 #Are Gateways aleady defined?  One file is used for both sites.
 If(-not ($Gateway_Services1=Get-AzureVNETGateway -VNETName $VNETName_Services1 -ErrorAction SilentlyContinue))
 {
 Set-AzureVNetConfig -ConfigurationPath $file_Services
 $Gateway_Services1=Get-AzureVNETGateway -VNETName $VNETName_Services1
 }
-
+Write-Host "Starting Step 2 of 3:  Create VNET Gateways for Subscription" $VNETName_Services1  "."
 #Now we check the first Gateway to see if it is provisioned.
 if($Gateway_Services1.State -eq "NotProvisioned")
 {
@@ -245,6 +247,7 @@ $VPNGW_Services2 = Get-AzureVNetGateway -VnetName $VNETName_Services2
 #
 #Storage Subscription
 #
+Write-Host 'Continuing Step 1 of 3:  Create VNET for Subscription '  $VNETName_Storage1 '.'
 Select-AzureSubscription -SubscriptionName $SubName_Storage -Current
 #Backup the current file incase something goes wrong and you use the wrong path
 $Vnet_Storage=Get-AzureVNetConfig -ExportToFile $Backup_Storage
@@ -254,6 +257,7 @@ If(-not ($Gateway_Storage1=Get-AzureVNETGateway -VNETName $VNETName_Storage1 -Er
 Set-AzureVNetConfig -ConfigurationPath $file_Storage
 $Gateway_Storage1=Get-AzureVNETGateway -VNETName $VNETName_Storage1 -ErrorAction SilentlyContinue
 }
+Write-Host 'Starting Step 2 of 3:  Create VNET Gateways for Subscription ' $VNETName_Storage1 '.'
 #Are Gateways aleady defined?
 if($Gateway_Storage1.State -eq "NotProvisioned")
 {
@@ -271,12 +275,12 @@ New-AzureVNetGateway -VNetName $VNETName_Storage2 -GatewayType "DynamicRouting" 
 }
 $VPNGW_Storage1 = Get-AzureVNetGateway -VNetName $VnetName_Storage1
 $VPNGW_Storage2 = Get-AzureVNetGateway -VnetName $VNETName_Storage2
+
 #
 #PreProd Subscription
 #
-
+Write-Host 'Continuing Step 1 of 3:  Create VNET for Subscription '  $VNETName_PreProd1  '.'
 Select-AzureSubscription -SubscriptionName $SubName_PreProd -Current
-
 #Backup the current file in case something goes wrong and you use the wrong path
 $Backup_PreProd=$WorkingPath+"AzureFoundation_PreProd_Working.xml.backup"+$fileDate
 $Vnet_PreProd=Get-AzureVNetConfig -ExportToFile $Backup_PreProd
@@ -286,6 +290,7 @@ If(-not ($Gateway_PreProd1=Get-AzureVNETGateway -VNETName $VNETName_PreProd1 -Er
 Set-AzureVNetConfig -ConfigurationPath $file_PreProd
 $Gateway_PreProd1=Get-AzureVNETGateway -VNETName $VNETName_PreProd1 -ErrorAction SilentlyContinue
 }
+Write-Host 'Starting Step 2 of 3:  Create VNET Gateways for Subscription ' $VNETName_PreProd1  '.'
 if($Gateway_PreProd1.State -eq "NotProvisioned")
 {
 Set-AzureVNetConfig -ConfigurationPath $file_PreProd
@@ -305,7 +310,7 @@ $VPNGW_PreProd2 = Get-AzureVNetGateway -VnetName $VNETName_PreProd2
 #
 #Prod Subscription
 #
-
+Write-Host 'Continuing Step 1 of 3:  Create VNET for Subscription ' $VNETName_Prod1  '.'
 Select-AzureSubscription -SubscriptionName $SubName_Prod -Current
 $Vnet_Prod=Get-AzureVNetConfig -ExportToFile $Backup_Prod
 #Are Gateways aleady defined?
@@ -314,6 +319,8 @@ If(-not ($Gateway_Prod1=Get-AzureVNETGateway -VNETName $VNETName_Prod1 -ErrorAct
 Set-AzureVNetConfig -ConfigurationPath $file_Prod
 $Gateway_Prod1=Get-AzureVNETGateway -VNETName $VNETName_Prod1 -ErrorAction SilentlyContinue
 }
+Write-Host 'Starting Step 2 of 3:  Create VNET Gateways for Subscription ' $VNETName_Prod1 '.'
+
 if($Gateway_Prod1.State -eq "NotProvisioned")
 {
 Set-AzureVNetConfig -ConfigurationPath $file_Prod
@@ -331,34 +338,37 @@ New-AzureVNetGateway -VNetName $VNETName_Prod2 -GatewayType "DynamicRouting" -Ga
 $VPNGW_Prod1 = Get-AzureVNetGateway -VNetName $VnetName_Prod1
 $VPNGW_Prod2 = Get-AzureVNetGateway -VnetName $VNETName_Prod2
 #
-#CJIS Subscription
+#HBI Subscription
 #
-Select-AzureSubscription -SubscriptionName $SubName_CJIS -Current
+Write-Host 'Continuing Step 1 of 3:  Create VNET for Subscription ' $VNETName_HBI1 '.'
+Select-AzureSubscription -SubscriptionName $SubName_HBI -Current
 
 #Backup the current file incase something goes wrong and you use the wrong path
-$Vnet_CJIS=Get-AzureVNetConfig -ExportToFile $Backup_CJIS
+$Vnet_HBI=Get-AzureVNetConfig -ExportToFile $Backup_HBI
 #Are Gateways aleady defined?
-If(-not ($Gateway_CJIS1=Get-AzureVNETGateway -VNETName $VNETName_CJIS1 -ErrorAction SilentlyContinue))
+
+If(-not ($Gateway_HBI1=Get-AzureVNETGateway -VNETName $VNETName_HBI1 -ErrorAction SilentlyContinue))
 {
-Set-AzureVNetConfig -ConfigurationPath $file_CJIS
-$Gateway_CJIS1=Get-AzureVNETGateway -VNETName $VNETName_CJIS1 -ErrorAction SilentlyContinue
+Set-AzureVNetConfig -ConfigurationPath $file_HBI
+$Gateway_HBI1=Get-AzureVNETGateway -VNETName $VNETName_HBI1 -ErrorAction SilentlyContinue
 }
-if($Gateway_CJIS1.State -eq "NotProvisioned")
+Write-Host 'Starting Step 2 of 3:  Create VNET Gateways for Subscription' $VNETName_HBI1 '.'
+if($Gateway_HBI1.State -eq "NotProvisioned")
 {
-Set-AzureVNetConfig -ConfigurationPath $file_CJIS
-New-AzureVNetGateway -VNetName $VNETName_CJIS1 -GatewayType "DynamicRouting" -GatewaySKU $GatewaySKU
+Set-AzureVNetConfig -ConfigurationPath $file_HBI
+New-AzureVNetGateway -VNetName $VNETName_HBI1 -GatewayType "DynamicRouting" -GatewaySKU $GatewaySKU
 }
-If(-not ($Gateway_CJIS2=Get-AzureVNETGateway -VNETName $VNETName_CJIS2 -ErrorAction SilentlyContinue))
+If(-not ($Gateway_HBI2=Get-AzureVNETGateway -VNETName $VNETName_HBI2 -ErrorAction SilentlyContinue))
 {
-Set-AzureVNetConfig -ConfigurationPath $file_CJIS
+Set-AzureVNetConfig -ConfigurationPath $file_HBI
 }
-if($Gateway_CJIS2.State -eq "NotProvisioned")
+if($Gateway_HBI2.State -eq "NotProvisioned")
 {
-Set-AzureVNetConfig -ConfigurationPath $file_CJIS
-New-AzureVNetGateway -VNetName $VNETName_CJIS2 -GatewayType "DynamicRouting" -GatewaySKU $GatewaySKU
+Set-AzureVNetConfig -ConfigurationPath $file_HBI
+New-AzureVNetGateway -VNetName $VNETName_HBI2 -GatewayType "DynamicRouting" -GatewaySKU $GatewaySKU
 }
-$VPNGW_CJIS1 = Get-AzureVNetGateway -VNetName $VnetName_CJIS1
-$VPNGW_CJIS2 = Get-AzureVNetGateway -VnetName $VNETName_CJIS2
+$VPNGW_HBI1 = Get-AzureVNetGateway -VNetName $VnetName_HBI1
+$VPNGW_HBI2 = Get-AzureVNetGateway -VnetName $VNETName_HBI2
 #Now everything should be set for the Networks, and we need to update the other networks so they 
 #Can have a VPN connection back to each other.  This wasn't possible until now because we
 #Didn't have the gateways assisgned.
@@ -366,6 +376,7 @@ $VPNGW_CJIS2 = Get-AzureVNetGateway -VnetName $VNETName_CJIS2
 #
 #Services
 #
+Write-Host 'Continuing Step 3 of 3:  Update Gateway for LocalNetworks for Subscription '  $VNETName_Services1  '.'
 Select-AzureSubscription -SubscriptionName $SubName_Services -Current
 #Set the XML File for the VNET now that we have the Gateway configured
 Get-AzureVNetConfig -ExportToFile $XML_Services
@@ -374,6 +385,7 @@ Set-AzureVNetConfig -ConfigurationPath $XML_Services
 #
 #Storage
 #
+Write-Host 'Continuing Step 3 of 3:  Update Gateway for LocalNetworks for Subscription '  $VNETName_Storage1  '.'
 Select-AzureSubscription -SubscriptionName $SubName_Storage -Current
 #Set the XML File for the VNET now that we have the Gateway configured
 Get-AzureVNetConfig -ExportToFile $XML_Storage
@@ -382,6 +394,7 @@ Set-AzureVNetConfig -ConfigurationPath $XML_Storage
 #
 #Prod
 #
+Write-Host 'Continuing Step 3 of 3:  Update Gateway for LocalNetworks for Subscription '  $VNETName_Prod1  '.'
 Select-AzureSubscription -SubscriptionName $SubName_Prod -Current
 #Set the XML File for the VNET now that we have the Gateway configured
 Get-AzureVNetConfig -ExportToFile $XML_Prod
@@ -390,61 +403,72 @@ Set-AzureVNetConfig -ConfigurationPath $XML_Prod
 #
 #PreProd
 #
+Write-Host 'Continuing Step 3 of 3:  Update Gateway for LocalNetworks for Subscription '  $VNETName_PreProd1  '.'
 Select-AzureSubscription -SubscriptionName $SubName_PreProd -Current
 #Set the XML File for the VNET now that we have the Gateway configured
 Get-AzureVNetConfig -ExportToFile $XML_PreProd
 SetLocalNetworkSiteGateways $XML_PreProd $ErrorLog_PreProd
 Set-AzureVNetConfig -ConfigurationPath $XML_PreProd
 #
-#CJIS
+#HBI
 #
-Select-AzureSubscription -SubscriptionName $SubName_CJIS -Current
+Write-Host 'Continuing Step 3 of 3:  Update Gateway for LocalNetworks for Subscription '  $VNETName_HBI1  '.'
+Select-AzureSubscription -SubscriptionName $SubName_HBI -Current
 #Set the XML File for the VNET now that we have the Gateway configured
-Get-AzureVNetConfig -ExportToFile $XML_CJIS
-SetLocalNetworkSiteGateways $XML_CJIS $ErrorLog_CJIS
-Set-AzureVNetConfig -ConfigurationPath $XML_CJIS
+Get-AzureVNetConfig -ExportToFile $XML_HBI
+SetLocalNetworkSiteGateways $XML_HBI $ErrorLog_HBI
+Set-AzureVNetConfig -ConfigurationPath $XML_HBI
 
 #Now all of the local network gateways are set correctly and we need to make the decision to connect 
 #The VPN gateways between the Subscription's VPN and the Local Networks it is expected to Connecto to
 #
 
 if($Connect -eq 1){
+if ($SharedKey1 -eq $null){
+$sharedkey1 = Read-Host "Enter the Shared Key for the Gateway"
+}
+Write-Host 'Connect Gateways:  Subscription ' $VNETName_Services1 '.'
+
 #
 #Services
 #
 Select-AzureSubscription -SubscriptionName $SubName_Services -Current
 Get-AzureVNetConfig -ExportToFile $XML_Services
-connectLocalNetworks $XML_Services $VNETName_Services1 $ErrorLog_Services
-connectLocalNetworks $XML_Services $VNETName_Services2 $ErrorLog_Services
+connectLocalNetworks $XML_Services $VNETName_Services1 $ErrorLog_Services $SharedKey1
+connectLocalNetworks $XML_Services $VNETName_Services2 $ErrorLog_Services $SharedKey1
 #
 #Storage
 #
+Write-Host 'Connect Gateways:  Subscription '  $VNETName_Storage1  '.'
 Select-AzureSubscription -SubscriptionName $SubName_Storage -Current
 #Set the XML File for the VNET now that we have the Gateway configured
 Get-AzureVNetConfig -ExportToFile $XML_Storage
-connectLocalNetworks $XML_Storage $VNETName_Storage1 $ErrorLog_Storage
-connectLocalNetworks $XML_Storage $VNETName_Storage2 $ErrorLog_Storage
+connectLocalNetworks $XML_Storage $VNETName_Storage1 $ErrorLog_Storage $SharedKey1
+connectLocalNetworks $XML_Storage $VNETName_Storage2 $ErrorLog_Storage $SharedKey1
 #
 #Prod
 #
+Write-Host 'Connect Gateways:  Subscription '  $VNETName_Prod1  '.'
 Select-AzureSubscription -SubscriptionName $SubName_Prod -Current
 Get-AzureVNetConfig -ExportToFile $XML_Prod
-connectLocalNetworks $XML_Prod $VNETName_Prod1 $ErrorLog_Prod
-connectLocalNetworks $XML_Prod $VNETName_Prod2 $ErrorLog_Prod
+connectLocalNetworks $XML_Prod $VNETName_Prod1 $ErrorLog_Prod $SharedKey1
+connectLocalNetworks $XML_Prod $VNETName_Prod2 $ErrorLog_Prod $SharedKey1
 #
 #PreProd
 #
+Write-Host 'Connect Gateways:  Subscription '  $VNETName_PreProd1 '.'
 Select-AzureSubscription -SubscriptionName $SubName_PreProd -Current
 #Set the XML File for the VNET now that we have the Gateway configured
 Get-AzureVNetConfig -ExportToFile $XML_PreProd
-connectLocalNetworks $XML_PreProd $VNETName_PreProd1 $ErrorLog_PreProd
-connectLocalNetworks $XML_PreProd $VNETName_PreProd2 $ErrorLog_PreProd
+connectLocalNetworks $XML_PreProd $VNETName_PreProd1 $ErrorLog_PreProd $SharedKey1
+connectLocalNetworks $XML_PreProd $VNETName_PreProd2 $ErrorLog_PreProd $SharedKey1
 #
-#CJIS
+#HBI
 #
-Select-AzureSubscription -SubscriptionName $SubName_CJIS -Current
+Write-Host 'Connect Gateways:  Subscription ' $VNETName_HBI1 '.'
+Select-AzureSubscription -SubscriptionName $SubName_HBI -Current
 #Set the XML File for the VNET now that we have the Gateway configured
-Get-AzureVNetConfig -ExportToFile $XML_CJIS
-connectLocalNetworks $XML_CJIS $VNETName_CJIS1 $ErrorLog_CJIS
-connectLocalNetworks $XML_CJIS $VNETName_CJIS2 $ErrorLog_CJIS
+Get-AzureVNetConfig -ExportToFile $XML_HBI
+connectLocalNetworks $XML_HBI $VNETName_HBI1 $ErrorLog_HBI $SharedKey1
+connectLocalNetworks $XML_HBI $VNETName_HBI2 $ErrorLog_HBI $SharedKey1
 }
