@@ -15,7 +15,7 @@
  NAME: 
     AzureFoundation_CreateVNET.ps1 
  Description:
-    The prescriptive pattern of the AzureFoundation includes preconfigured XML documents.
+    The prescriptive pattern of the AzureFoundation VNET includes preconfigured XML documents.
     The implimentation of the network VNETS and Subnets are coordinated with the 
     EA_AzureFoundation_Working spreadsheet that has step by step instructions in the Notes
     worksheet.
