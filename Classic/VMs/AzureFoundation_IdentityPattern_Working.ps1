@@ -39,14 +39,14 @@ $cred_DMZ = Get-Credential -Message 'DMZ Server Credentials'
 $Path="C:\Temp\hasaz\"
 $Location='USGov Iowa'
 $VMimage=(Get-AzureVMImage | Where { $_.Label -match 'Windows Server 2012 R2 Datacenter, August 2016' } | Sort-Object PublishedDate)[-1]
-$SubnetOct1="192"
+$SubnetOct1="172"
 $SubnetOct2="23"
 $Dept="ext"
 $Site1="st1"
 $site2="st2"
 #ServicesSubNet
-$VNETName_Services1= "mag_ext_managed_services_IA"
-$VNETName_Services2= "mag_ext_managed_services_VA"
+$VNETName_Services1= 'mag_external_managed_services_IA'
+$VNETName_Services2= 'mag_external_managed_services_VA'
 $DCSUBNET="Services_600_dept_Srvcs_IA"
 $DISKSIZEAD=24
 #Domain Controllers
@@ -81,7 +81,7 @@ $SIZE_AADConnect="Small"
 #$size_AADConnect=$vmimage.RecommendedVMSize
 
 #ServicesDMZSubnet
-$PRXYSUBNET="DMZ_650_dept_Srvcs_st1"
+$PRXYSUBNET="DMZ_650_dept_Srvcs_ia"
 
 #Proxy
 $IP_WAP1a=$subnetOct1+'.'+$subnetoct2+".122.11"
@@ -130,7 +130,7 @@ if ((Get-AzureStorageContainer -Context $osStorageContext -Name vhds -ErrorActio
 Set-AzureSubscription -SubscriptionId $SubID_Services -CurrentStorageAccountName $OSStorageAccountName
 
 #Data Storage Account
-$DataStorageAccountName='st1extservicesdataa'
+$DataStorageAccountName=$site1+$dept+'servicesdataa'
 $DataSTORAGE=Get-AzureStorageAccount -StorageAccountName $DataStorageAccountName -ErrorAction SilentlyContinue
 if ($DataStorage -eq $null)
 {	
@@ -155,13 +155,12 @@ $date = Get-Date
 
 		#Get date / time stamp for DD disk label
 		$date = $date.AddSeconds(10)	#original code had a 10 second sleep. 
-		$DDdate = $date.ToString("yyyyMMddHHmmssfff")
+		$DDdate = $date.ToString("yyyyMMdd")
 $osfulldisklabel = $CS_DC1 + "-" + $VM_DC1a + "-" + "0" + "-" + $OSdate
 
 #LUN0 Drive
 	
 		$ddfulldisklabel = $CS_DC1 + "-" + $VM_DC1a + "-" + $LUN + "-" + $DDdate
-
 
 $OSMedia=$OSSTORAGEContext.BlobEndpoint+"vhds/"+$osfulldisklabel + ".vhd"
 $DataMedia=$dataStorageContext.BlobEndPoint+"vhds/"+$ddfulldisklabel + ".vhd"
@@ -177,12 +176,10 @@ else
         {
             $VMCFG1=New-AzureVMConfig -Name $VM_DC1a -InstanceSize $Size_DC -ImageName $vmimage.ImageName -MediaLocation $OSMedia 
 		}
-
 $VMCFG1 | Add-AzureProvisioningConfig -Windows -AdminUsername $cred_Services.GetNetworkCredential().Username -Password $cred_Services.GetNetworkCredential().Password
 $VMCFG1 | Set-AzureSubnet -SubnetNames $DCSUBNET
 $VMCFG1 | Set-AzureStaticVNetIP -IPAddress $IP_DC1a
 $VMCFG1 | Add-AzureDataDisk -CreateNew -DiskSizeInGB $DISKSIZEAD -DiskLabel $DISKLABEL -LUN $LUN -HostCaching $hcaching -MediaLocation $dataMedia
-		
 #Check if specified Cloud Service already exists
 if (-not(Get-AzureService | Where-Object {$_.ServiceName -eq $cs_dc1}))
 		{
