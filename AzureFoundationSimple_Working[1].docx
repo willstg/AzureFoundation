@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no' />
+	<meta name='robots' content='noindex' />
+	<link rel="shortcut icon" href="https://PPC-word-view.officeapps.live.com/wv/resources/1033/FavIcon_Word.ico" />
+	<title>AzureFoundationSimple_Working.docx</title>
+	
+	<script type="text/javascript">
+	   var WOPIPerf_UserClick = null;
+	   if (window.sessionStorage)
+	   {
+		   WOPIPerf_UserClick = window.sessionStorage.getItem("WOPIPerf_UserClickTime");
+		   window.sessionStorage.removeItem("WOPIPerf_UserClickTime");
+	   }
+	</script>
+	<script type="text/javascript">
+function ULS6zp(){var o=new Object;o.ULSTeamName="Microsoft SharePoint Foundation";o.ULSFileName="WOPIFrame.aspx";return o;}
+		function getWopiIFrameElement()
+		{ULS6zp:;
+			return document.querySelector("iframe[name=WebApplicationFrame]");
+		}
+		function WACRedirector()
+		{ULS6zp:;
+			var myFrame = getWopiIFrameElement();
+			myFrame.id = "WebApplicationFrame";
+			var ifr = null;
+			ifr = document.createElement("IFRAME");
+			ifr.name = "TEST_WORKER";
+			document.body.appendChild(ifr);
+			g_PreventResizeHandler = true;
+			WOPIPerf_WACIframeCreate = new Date().getTime();
+			var elm = document.getElementById("canvas_form");
+			var userClickOrigin = window.sessionStorage.getItem("WOPIPerf_UserClickOrigin");
+			if (userClickOrigin != null)
+			{
+				elm.action += (((elm.action.indexOf("?") == -1) ? "?" : "&") + "wdo=" + encodeURI(userClickOrigin.toString()));
+			}
+			WOPIPerf_WACTarget = elm.action.substring(0, elm.action.indexOf('?'));
+			elm.submit();
+			if(ifr != null)
+				document.body.removeChild(ifr);
+		}
+	</script>
+</head>
+<body style="margin: 0; padding: 0; overflow:hidden; -ms-content-zooming: none;">
+
+<form target="WebApplicationFrame" action="https://PPC-word-view.officeapps.live.com/wv/wordviewerframe.aspx?ui=en%2DUS&rs=en%2DUS&WOPISrc=https%3A%2F%2Fmicrosoft%2Esharepoint%2Ecom%2Fteams%2FSLGCloudTeam%2Fazure%2F%5Fvti%5Fbin%2Fwopi%2Eashx%2Ffiles%2F42474b432eb64af18fe0156914ec9dc2&wdEnableRoaming=1" id="canvas_form" method="post">
+  <input name="access_token" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImlZR1ZYcU1YbDZuSkI5MldBdW9jN1V3RHI0WSJ9.eyJhdWQiOiJ3b3BpL21pY3Jvc29mdC5zaGFyZXBvaW50LmNvbUA3MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDciLCJpc3MiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDBAOTAxNDAxMjItODUxNi0xMWUxLThlZmYtNDkzMDQ5MjQwMTliIiwibmJmIjoiMTQ3NzA2NjIwOCIsImV4cCI6IjE0NzcxMDIyMDgiLCJuYW1laWQiOiIwIy5mfG1lbWJlcnNoaXB8d2lsbHN0QG1pY3Jvc29mdC5jb20iLCJuaWkiOiJtaWNyb3NvZnQuc2hhcmVwb2ludCIsImlzdXNlciI6InRydWUiLCJjYWNoZWtleSI6IjBoLmZ8bWVtYmVyc2hpcHwxMDAzM2ZmZjgxNTMyNzYzQGxpdmUuY29tIiwiaXNsb29wYmFjayI6IlRydWUiLCJhcHBjdHgiOiI0MjQ3NGI0MzJlYjY0YWYxOGZlMDE1NjkxNGVjOWRjMjtNaWlUWGE5eEh0amVCYnR1U2dDWWZKaGgxaTA9O0RlZmF1bHQ7OzFCMDNDNDMxQUVGO1RydWU7OzswIn0.HY45o38thW038VEVCwfNNJx_UnL709PZft7JzWP1yxVxZm7WyL6HAmC7VOgB_KhGpVWCX8G4ubyjDfSt_va1GCOSMJcElszi5HWuVFbtJopJ_HmEKfxQBMbyvIRzyovu2p189T9DdDR-OIPqNNDHqbybnpJJR7-lTC7pHmsyiWm008_KyeB02xmvhWMOgtQGOb54T8E0x3qtg4fBtQcTzldT1Ycd9m4oNIJiwZK8yKS9U6m7mdrJvNYI8LLpwMX5z7DZvjpiWZp1xAUXUSCVW9O7r34dZzdigPsVpekRPfhx7pu9C91qUuigTzCgyP_fVTgKXoNFwGBIaIiY46bFAQ" type="hidden" />
+  <input name="access_token_ttl" value="1477102208671" type="hidden" />
+  <input name="wdCorrelationId" value="{E8A2AF9D-40CC-0000-4BBF-F53EC1D7DCED}" type="hidden" />
+</form>
+<div id="WACContainer" style="overflow:hidden">
+	<iframe name="WebApplicationFrame" allowfullscreen="true" src="" width="100%" height="100%" style="position: relative; top: 0; left: 0; right: 0; bottom: 0; display: block" frameborder="0" marginwidth="0" marginheight="0"></iframe>
+</div>
+<script type="text/javascript">
+   WACRedirector();
+</script>
+	<script type="text/javascript">// <![CDATA[ 
+
+var g_SPOffSwitches={"808A0286-CC05-48B0-83CD-57D7AF7B60E5":1,"46D80455-B82A-4B85-80DA-CC41DA0F659C":1,"E857AD9B-3F32-4542-84EB-A4DE6042231F":1,"5535C9AF-4B92-49CA-AD1E-E765B3327923":1,"42C233C6-E93A-4762-88BE-45A107E861EB":1,"80044A6D-05BD-437A-B1DB-1DD3002E4E0A":1,"598D0255-ABCE-43DD-B52C-EE3047AC6D66":1,"273455A6-BD56-4BA7-A9DC-2A50C223B5DA":1,"B66476AF-2FFF-4F44-B26B-5359D5C4A170":1,"0BBB5877-5E62-4C83-9A9A-AD35E2567058":1,"D3082C2C-5A32-488D-B9F2-8C0959E2182A":1,"A47ED94D-7389-4B11-9C9B-E39D4538E4B8":1,"24E56E5A-2784-4E64-AF58-DCE416F6E4E4":1,"6AE2B779-94A6-45B7-BD3D-57C0CFBF2E6C":1,"78DDB9A0-F62E-4E2A-AE4F-A17C18BE19AE":1,"838E4A24-6FF9-4BCD-A806-BDD74307BCFF":1,"3548EF73-3346-4E7B-9DA3-26BC9A5344C4":1,"27252559-342C-4BF4-8259-5740DF72632C":1,"610E4BF5-15EB-438A-8659-FAC6414A5513":1,"720DD850-9F26-473C-8406-85C4311481C6":1,"1EFABADE-60D9-4563-9BBC-1556592DF5D2":1,"F2A1E3A4-AC8F-49BD-9F55-0EB15A210E2E":1,"B5F7385C-A503-4916-AFC2-39AEE7667ED7":1,"D6868365-BF77-4591-BF06-F66F4618CA4A":1,"3302D80F-687C-4568-866B-25BB4D27B588":1,"2663E973-DF97-491F-A886-17EE86B0C578":1,"FDBBE403-7680-4CD6-A8C4-B2D077490AD5":1,"395E5C0B-AAA2-4DD2-8BA1-8E146EB3162E":1,"37D7706E-E8B0-4BE4-804B-58C0474887C9":1,"C3B96395-48CD-4BDF-A73A-6C00C9760B0D":1,"AADE9D18-30B1-40A9-89C7-E70E34801872":1,"6B844D77-2D08-412E-9CF4-3992304FFA78":1,"03FD4C47-F23E-4EF5-B06C-3015F99BC00D":1,"7242F8EB-667C-4F46-A8B0-4863AD1185C6":1,"88B1434C-7A22-4EAA-994B-418C99E197EB":1,"51531545-876F-47E0-97B2-B9C104FD8231":1,"D50299E1-23CC-42A6-9AC4-D6164F47B644":1,"610E51BB-AF62-4612-8839-C65134B9CB10":1,"0CB1887D-EC62-48B2-87ED-3CD52E211CF5":1,"D32CE9EA-11DF-41B6-BBA8-400E7F766644":1};
+// ]]>
+</script>
+<script type="text/javascript" src="https://static.sharepointonline.com/bld/_layouts/15/16.0.5813.1205/1033/initstrings.js"></script>
+<script type="text/javascript" src="https://static.sharepointonline.com/bld/_layouts/15/16.0.5813.1205/init.js"></script>
+<script type="text/javascript" src="https://static.sharepointonline.com/bld/_layouts/15/16.0.5813.1205/msajaxbundle.js"></script>
+<script type="text/javascript" src="https://static.sharepointonline.com/bld/_layouts/15/16.0.5813.1205/blank.js"></script>
+<script type="text/javascript" src="https://static.sharepointonline.com/bld/_layouts/15/16.0.5813.1205/blank.js"></script>
+<script type="text/javascript">RegisterSod("require.js", "https:\u002f\u002fstatic.sharepointonline.com\u002fbld\u002f_layouts\u002f15\u002f16.0.5813.1205\u002frequire.js");</script>
+<script type="text/javascript">RegisterSod("strings.js", "https:\u002f\u002fstatic.sharepointonline.com\u002fbld\u002f_layouts\u002f15\u002f16.0.5813.1205\u002f1033\u002fstrings.js");</script>
+<script type="text/javascript">RegisterSod("sp.res.resx", "https:\u002f\u002fstatic.sharepointonline.com\u002fbld\u002f_layouts\u002f15\u002f16.0.5813.1205\u002f1033\u002fsp.res.js");</script>
+<script type="text/javascript">RegisterSod("sp.runtime.js", "https:\u002f\u002fstatic.sharepointonline.com\u002fbld\u002f_layouts\u002f15\u002f16.0.5813.1205\u002fsp.runtime.js");RegisterSodDep("sp.runtime.js", "sp.res.resx");</script>
+<script type="text/javascript">RegisterSod("sp.init.js", "https:\u002f\u002fstatic.sharepointonline.com\u002fbld\u002f_layouts\u002f15\u002f16.0.5813.1205\u002fsp.init.js");</script>
+<script type="text/javascript">RegisterSod("sp.ui.dialog.js", "https:\u002f\u002fstatic.sharepointonline.com\u002fbld\u002f_layouts\u002f15\u002f16.0.5813.1205\u002fsp.ui.dialog.js");RegisterSodDep("sp.ui.dialog.js", "sp.init.js");RegisterSodDep("sp.ui.dialog.js", "sp.res.resx");</script>
+<script type="text/javascript">RegisterSod("sp.js", "https:\u002f\u002fstatic.sharepointonline.com\u002fbld\u002f_layouts\u002f15\u002f16.0.5813.1205\u002fsp.js");RegisterSodDep("sp.js", "sp.runtime.js");RegisterSodDep("sp.js", "sp.ui.dialog.js");RegisterSodDep("sp.js", "sp.res.resx");</script>
+<script type="text/javascript">RegisterSod("sp.wopimessagehandler.js", "https:\u002f\u002fstatic.sharepointonline.com\u002fbld\u002f_layouts\u002f15\u002f16.0.5813.1205\u002fsp.wopimessagehandler.js");RegisterSodDep("sp.wopimessagehandler.js", "sp.js");RegisterSodDep("sp.wopimessagehandler.js", "sp.init.js");</script>
+<script type="text/javascript">RegisterSod("mQuery.js", "https:\u002f\u002fstatic.sharepointonline.com\u002fbld\u002f_layouts\u002f15\u002f16.0.5813.1205\u002fmquery.js");</script>
+<script type="text/javascript">RegisterSod("core.js", "https:\u002f\u002fstatic.sharepointonline.com\u002fbld\u002f_layouts\u002f15\u002f16.0.5813.1205\u002fcore.js");RegisterSodDep("core.js", "strings.js");</script>
+<script type="text/javascript">RegisterSod("sp.core.js", "https:\u002f\u002fstatic.sharepointonline.com\u002fbld\u002f_layouts\u002f15\u002f16.0.5813.1205\u002fsp.core.js");RegisterSodDep("sp.core.js", "strings.js");RegisterSodDep("sp.core.js", "sp.init.js");RegisterSodDep("sp.core.js", "core.js");</script>
+<script type="text/javascript">RegisterSod("sharedhovercard.strings.js", "https:\u002f\u002fstatic.sharepointonline.com\u002fbld\u002f_layouts\u002f15\u002f16.0.5813.1205\u002f1033\u002fsharedhovercard.strings.js");</script>
+<script type="text/javascript">RegisterSod("sharedhovercard.js", "https:\u002f\u002fstatic.sharepointonline.com\u002fbld\u002f_layouts\u002f15\u002f16.0.5813.1205\u002fsharedhovercard.js");RegisterSodDep("sharedhovercard.js", "sharedhovercard.strings.js");</script>
+<script type="text/javascript">RegisterSod("clienttemplates.js", "https:\u002f\u002fstatic.sharepointonline.com\u002fbld\u002f_layouts\u002f15\u002f16.0.5813.1205\u002fclienttemplates.js");</script>
+<script type="text/javascript">RegisterSod("sharing.js", "https:\u002f\u002fstatic.sharepointonline.com\u002fbld\u002f_layouts\u002f15\u002f16.0.5813.1205\u002fsharing.js");RegisterSodDep("sharing.js", "strings.js");RegisterSodDep("sharing.js", "mQuery.js");RegisterSodDep("sharing.js", "clienttemplates.js");RegisterSodDep("sharing.js", "core.js");</script>
+
+	
+	
+	
+<form method="post" action="./WopiFrame.aspx?sourcedoc=%7b42474B43-2EB6-4AF1-8FE0-156914EC9DC2%7d&amp;file=AzureFoundationSimple_Working.docx&amp;action=default" id="ctl04">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="SideBySideToken" id="SideBySideToken" value="16.0.5813.1205" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE1NTkwNzU1MjRkZGtwkkkD7raRrD6gF1q3kA3C85dm2NMmkm38ZUjy0vOx" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['ctl04'];
+if (!theForm) {
+    theForm = document.ctl04;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+var g_presenceEnabled = true;
+var g_wsaEnabled = true;
+var g_correlationId = 'e8a2af9d-40cc-0000-4bbf-f53ec1d7dced';
+var g_wsaQoSEnabled = false;
+var g_wsaQoSDataPoints = [];
+var g_wsaRUMEnabled = false;
+var g_wsaLCID = 1033;
+var g_wsaListTemplateId = null;
+var g_wsaSiteTemplateId = 'STS#0';
+var _spPageContextInfo={"webServerRelativeUrl":"/teams/SLGCloudTeam/azure","webAbsoluteUrl":"https://microsoft.sharepoint.com/teams/SLGCloudTeam/azure","viewId":"","listId":"","listPermsMask":null,"listUrl":"","listTitle":null,"listBaseTemplate":-1,"viewOnlyExperienceEnabled":false,"blockDownloadExperienceEnabled":false,"cdnPrefix":"static.sharepointonline.com/bld","siteAbsoluteUrl":"https://microsoft.sharepoint.com/teams/SLGCloudTeam","siteId":"{f8e933b2-4e74-446e-b6ec-3d1c5e5775a0}","supportPoundStorePath":false,"supportPercentStorePath":false,"siteSubscriptionId":"ec63b09b-9748-47ba-9018-beeadd405204","isSPO":true,"farmLabel":"MSIT_Content","serverRequestPath":"/_layouts/15/WopiFrame.aspx","layoutsUrl":"_layouts/15","webId":"{c0a86418-2b64-471f-9481-49bf08eb0dd7}","webTitle":"Azure Team","webTemplate":"1","tenantAppVersion":"1535579208","isAppWeb":false,"webLogoUrl":"https://microsoft.sharepoint.com/teams/SLGCloudTeam/Style%20Library/Images/LogoSmall.png","webLanguage":1033,"currentLanguage":1033,"currentUICultureName":"en-US","currentCultureName":"en-US","env":"ProdBubble","nid":64,"fid":9376,"serverTime":"2016-10-21T16:10:08.7025084Z","siteClientTag":"0$$16.0.5813.1205","crossDomainPhotosEnabled":true,"openInClient":false,"webUIVersion":15,"webPermMasks":{"High":432,"Low":1011030767},"pageListId":null,"pageItemId":-1,"pagePersonalizationScope":1,"userId":7313,"userLoginName":"willst@microsoft.com","userDisplayName":"Will St. Germain","isAnonymousGuestUser":false,"isExternalGuestUser":false,"systemUserKey":"i:0h.f|membership|10033fff81532763@live.com","alertsEnabled":true,"siteServerRelativeUrl":"/teams/SLGCloudTeam","allowSilverlightPrompt":"True","themeCacheToken":"/teams/SLGCloudTeam/azure:/teams/SLGCloudTeam/_catalogs/theme/Themed/3D9122EC:2:16.0.5813.1205","themedCssFolderUrl":"/teams/SLGCloudTeam/_catalogs/theme/Themed/3D9122EC","themedImageFileNames":{"spcommon.png":"spcommon-B35BB0A9.themedpng?ctag=2","ellipsis.11x11x32.png":"ellipsis.11x11x32-2F01F47D.themedpng?ctag=2","O365BrandSuite.95x30x32.png":"O365BrandSuite.95x30x32-C212E2FD.themedpng?ctag=2","socialcommon.png":"socialcommon-6F3394A9.themedpng?ctag=2","spnav.png":"spnav-230C537D.themedpng?ctag=2"},"isSiteAdmin":false,"ExpFeatures":[-1935703664,2014575433,1427198016,33629084,320014138,-1798545536,12582914,57158685,1405682724,-2079981567,1442712,-536676072,-133987776,1100022147,67172228,1879965696,-1776261262,-251980026,26729119,0,0,-1879048192,-1850474380,-402775610,102367232,-1066172375,514,0,3152,398458880,0,4096,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,32768],"killSwitches":{"808A0286-CC05-48B0-83CD-57D7AF7B60E5":true,"46D80455-B82A-4B85-80DA-CC41DA0F659C":true,"E857AD9B-3F32-4542-84EB-A4DE6042231F":true,"5535C9AF-4B92-49CA-AD1E-E765B3327923":true,"42C233C6-E93A-4762-88BE-45A107E861EB":true,"80044A6D-05BD-437A-B1DB-1DD3002E4E0A":true,"598D0255-ABCE-43DD-B52C-EE3047AC6D66":true,"273455A6-BD56-4BA7-A9DC-2A50C223B5DA":true,"B66476AF-2FFF-4F44-B26B-5359D5C4A170":true,"0BBB5877-5E62-4C83-9A9A-AD35E2567058":true,"D3082C2C-5A32-488D-B9F2-8C0959E2182A":true,"A47ED94D-7389-4B11-9C9B-E39D4538E4B8":true,"24E56E5A-2784-4E64-AF58-DCE416F6E4E4":true,"6AE2B779-94A6-45B7-BD3D-57C0CFBF2E6C":true,"78DDB9A0-F62E-4E2A-AE4F-A17C18BE19AE":true,"838E4A24-6FF9-4BCD-A806-BDD74307BCFF":true,"3548EF73-3346-4E7B-9DA3-26BC9A5344C4":true,"27252559-342C-4BF4-8259-5740DF72632C":true,"610E4BF5-15EB-438A-8659-FAC6414A5513":true,"720DD850-9F26-473C-8406-85C4311481C6":true,"1EFABADE-60D9-4563-9BBC-1556592DF5D2":true,"F2A1E3A4-AC8F-49BD-9F55-0EB15A210E2E":true,"B5F7385C-A503-4916-AFC2-39AEE7667ED7":true,"D6868365-BF77-4591-BF06-F66F4618CA4A":true,"3302D80F-687C-4568-866B-25BB4D27B588":true,"2663E973-DF97-491F-A886-17EE86B0C578":true,"FDBBE403-7680-4CD6-A8C4-B2D077490AD5":true,"395E5C0B-AAA2-4DD2-8BA1-8E146EB3162E":true,"37D7706E-E8B0-4BE4-804B-58C0474887C9":true,"C3B96395-48CD-4BDF-A73A-6C00C9760B0D":true,"AADE9D18-30B1-40A9-89C7-E70E34801872":true,"6B844D77-2D08-412E-9CF4-3992304FFA78":true,"03FD4C47-F23E-4EF5-B06C-3015F99BC00D":true,"7242F8EB-667C-4F46-A8B0-4863AD1185C6":true,"88B1434C-7A22-4EAA-994B-418C99E197EB":true,"51531545-876F-47E0-97B2-B9C104FD8231":true,"D50299E1-23CC-42A6-9AC4-D6164F47B644":true,"610E51BB-AF62-4612-8839-C65134B9CB10":true,"0CB1887D-EC62-48B2-87ED-3CD52E211CF5":true,"D32CE9EA-11DF-41B6-BBA8-400E7F766644":true},"CorrelationId":"e8a2af9d-40cc-0000-4bbf-f53ec1d7dced","hasManageWebPermissions":false,"isNoScriptEnabled":true,"groupId":null,"groupHasHomepage":false,"isWebWelcomePage":false,"siteClassification":"MBI","hideSyncButtonOnODB":false,"showNGSCDialogForSyncOnODB":false,"sitePagesEnabled":true,"groupType":null,"groupColor":"#004e8c","navigationInfo":null,"guestsEnabled":false,"MenuData":{"SettingsData":[{"Id":"SuiteMenu_zz8_MenuItemAddPage","Text":"Add a page","Url":"/teams/SLGCloudTeam/azure/_layouts/15/CreateSitePage.aspx"},{"Id":"SuiteMenu_zz5_MenuItemCreate","Text":"Add an app","Url":"/teams/SLGCloudTeam/azure/_layouts/15/addanapp.aspx"},{"Id":"SuiteMenu_zz6_MenuItem_ViewAllSiteContents","Text":"Site contents","Url":"/teams/SLGCloudTeam/azure/_layouts/15/viewlsts.aspx"},null,{"Id":"SuiteMenu_zz7_MenuItem_Settings","Text":"Site settings","Url":"/teams/SLGCloudTeam/azure/_layouts/15/settings.aspx"},null,{"Id":"GettingStarted","Text":"Getting started","Url":"/teams/SLGCloudTeam/azure/GettingStarted.aspx"}],"SignOutUrl":"https://microsoft.sharepoint.com/teams/SLGCloudTeam/azure/_layouts/15/SignOut.aspx"},"RecycleBinItemCount":-1,"PreviewFeaturesEnabled":true,"disableAppViews":false,"disableFlows":false,"serverRedirectedUrl":null};_spPageContextInfo.updateFormDigestPageLoaded=new Date(_spPageContextInfo.serverTime);_spPageContextInfo.clientServerTimeDelta=new Date(_spPageContextInfo.serverTime)-new Date();if(typeof(define)=='function'){define('SPPageContextInfo',[],function(){return _spPageContextInfo;});}var MSOWebPartPageFormName = 'ctl04';Flighting.ExpFeatures = [-1935703664,2014575433,1427198016,33629084,320014138,-1798545536,12582914,57158685,1405682724,-2079981567,1442712,-536676072,-133987776,1100022147,67172228,1879965696,-1776261262,-251980026,26729119,0,0,-1879048192,-1850474380,-402775610,102367232,-1066172375,514,0,3152,398458880,0,4096,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,32768];//]]>
+</script>
+
+<script src="https://static.sharepointonline.com/bld/_layouts/15/16.0.5813.1205/blank.js" type="text/javascript"></script>
+<script src="https://static.sharepointonline.com/bld/_layouts/15/16.0.5813.1205/msformbundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(DeferWebFormInitCallback) == 'function') DeferWebFormInitCallback();//]]>
+</script>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="39E8A7C7" />
+</div>
+	<script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ScriptManager', 'ctl04', [], [], [], 90, '');
+//]]>
+</script>
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+var _fV4UI = true;var g_MinimalDownload = true;var g_WebServerRelativeUrl = "/teams/SLGCloudTeam/azure";var _spFullDownloadList = ['closeconnection', 'download', 'signout', 'xlviewer', 'wordviewer', 'wordeditor', 'powerpoint', 'powerpointframe', 'onenote', 'visiowebaccess', 'storefront', 'wopiembedframe', 'wopihiddenframe', 'wopiframe', 'appredirect', 'wfstart', 'developertools'];
+//]]>
+</script>
+</form>
+<script type="text/javascript">
+    window.onresize = ResizeWacFrame;
+    document.body.onload = ResizeWacFrame;
+
+    function ResizeWacFrame()
+    {
+        var wacFrame = getWopiIFrameElement();
+        if (wacFrame != null)
+        {
+            var iframeHeight = GetWindowHeight() - wacFrame.offsetTop;
+            if (iframeHeight > 0)
+            {
+                wacFrame.style.height = iframeHeight + 'px';
+            }
+            else
+            {
+                wacFrame.style.height = '0px';
+            }
+        }
+    }
+
+    function GetWindowHeight()
+    {
+        if (typeof(window.innerHeight) == 'number' &&
+            !(document.documentMode && document.documentMode >= 10) &&
+            navigator.userAgent.indexOf('iPad') == -1)
+        {
+            // Do not use in IE10 or iPad, as they report incorrect value when the on-screen keyboard is up
+            // We should probably just always use the 'else if' block, but minimizing risk at this point in the cycle.
+            return window.innerHeight;
+        }
+        else if (typeof(document.documentElement.clientHeight) == 'number')
+        {
+            // IE8, IE10 compatible, and iPad
+            return document.documentElement.clientHeight;
+        }
+
+        return(0);
+    }
+
+    // resize the WAC iframe as soon as we can
+    ResizeWacFrame();
+
+    var webUrl = 'https:\u002f\u002fmicrosoft.sharepoint.com\u002fteams\u002fSLGCloudTeam\u002fazure';
+    var wopiServerUrl = 'https:\u002f\u002fppc-word-view.officeapps.live.com';
+    var listGuid = '7a9f8e20-9135-4b1d-8fdd-6b6159e7b6d9';
+    var wopiAllowedOrigins = 'https:\u002f\u002fppc-word-view.officeapps.live.com;https:\u002f\u002fppc-word-edit.officeapps.live.com';
+    var listItemID = 514;
+    var isShareByLinkGuestUser = false;
+    EnsureScriptFunc('SP.WOPIMessageHandler.js', 'SP.WOPIMessageHandler.WOPIMessageHandler', function () {
+        SP.WOPIMessageHandler.WOPIMessageHandler.initialize(webUrl, wopiServerUrl, listGuid, listItemID, wopiAllowedOrigins, isShareByLinkGuestUser);
+    });
+
+                          function LoadCoreCSS()
+                          {
+                              var head = document.getElementsByTagName('head')[0];
+                              var cssLink = '/_layouts/15/1033/styles/corev15.css?rev=LUTJO1meg3F7Dp9fde5u%2Fg%3D%3DTAG856';
+                              var aLink = document.createElement('link');
+                              aLink.rel = 'stylesheet';
+                              aLink.type = 'text/css';
+                              aLink.href = cssLink;
+                              head.appendChild(aLink);
+                          }
+                          LoadCoreCSS();</script>
+
+</body>
+</html>
+<script type="text/javascript">
+	var g_duration = 328;
+var g_iisLatency = 18;
+var g_requireJSDone = new Date().getTime();
+</script>
