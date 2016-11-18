@@ -1,0 +1,315 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "resources": [
+    {
+      "type": "Microsoft.Network/virtualNetworks",
+      "apiVersion": "2015-06-15",
+      "name": "mac_slg_managed_services_w2",
+      "location": "West US 2",
+      "tags": {
+        "migAz": "599f58ec-cee3-41e2-a41e-97468c93a525"
+      },
+      "dependsOn": [],
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.130.56.0/21"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "Services_600_dept_Srvcs_w2",
+            "properties": {
+              "addressPrefix": "10.130.56.0/24"
+            }
+          },
+          {
+            "name": "DMZ_650_dept_Srvcs_w2",
+            "properties": {
+              "addressPrefix": "10.130.58.0/24"
+            }
+          },
+          {
+            "name": "User_Tier0_660_dept_Srvcs_w2",
+            "properties": {
+              "addressPrefix": "10.130.59.0/25"
+            }
+          },
+          {
+            "name": "User_Tier1_661_dept_Srvcs_w2",
+            "properties": {
+              "addressPrefix": "10.130.59.128/25"
+            }
+          },
+          {
+            "name": "GatewaySubnet",
+            "properties": {
+              "addressPrefix": "10.130.63.248/29"
+            }
+          }
+        ],
+        "dhcpOptions": {
+          "dnsServers": [
+            "10.130.120.11",
+            "10.130.120.12"
+          ]
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Network/publicIPAddresses",
+      "apiVersion": "2015-06-15",
+      "name": "mac_slg_managed_services_w2-Gateway-PIP",
+      "location": "West US 2",
+      "tags": {
+        "migAz": "599f58ec-cee3-41e2-a41e-97468c93a525"
+      },
+      "properties": {
+        "publicIPAllocationMethod": "Dynamic"
+      }
+    },
+    {
+      "type": "Microsoft.Network/virtualNetworkGateways",
+      "apiVersion": "2015-06-15",
+      "name": "mac_slg_managed_services_w2-Gateway",
+      "location": "West US 2",
+      "tags": {
+        "migAz": "599f58ec-cee3-41e2-a41e-97468c93a525"
+      },
+      "dependsOn": [
+        "[concat(resourceGroup().id, '/providers/Microsoft.Network/virtualNetworks/mac_slg_managed_services_w2')]",
+        "[concat(resourceGroup().id, '/providers/Microsoft.Network/publicIPAddresses/mac_slg_managed_services_w2-Gateway-PIP')]"
+      ],
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "GatewayIPConfig",
+            "properties": {
+              "privateIPAllocationMethod": "Dynamic",
+              "publicIPAddress": {
+                "id": "[concat(resourceGroup().id, '/providers/Microsoft.Network/publicIPAddresses/mac_slg_managed_services_w2-Gateway-PIP')]"
+              },
+              "subnet": {
+                "id": "[concat(resourceGroup().id, '/providers/Microsoft.Network/virtualNetworks/mac_slg_managed_services_w2/subnets/GatewaySubnet')]"
+              }
+            }
+          }
+        ],
+        "sku": {
+          "name": "Basic",
+          "tier": "Basic"
+        },
+        "gatewayType": "Vpn",
+        "vpnType": "RouteBased",
+        "enableBgp": "false"
+      }
+    },
+    {
+      "type": "Microsoft.Network/localNetworkGateways",
+      "apiVersion": "2015-06-15",
+      "name": "mac_slg_managed_hbi_w2-LocalGateway",
+      "location": "West US 2",
+      "tags": {
+        "migAz": "599f58ec-cee3-41e2-a41e-97468c93a525"
+      },
+      "properties": {
+        "localNetworkAddressSpace": {
+          "addressPrefixes": [
+            "10.130.16.0/20"
+          ]
+        },
+        "gatewayIpAddress": "13.66.217.251"
+      }
+    },
+    {
+      "type": "Microsoft.Network/connections",
+      "apiVersion": "2015-06-15",
+      "name": "mac_slg_managed_services_w2-Gateway-mac_slg_managed_hbi_w2-connection",
+      "location": "West US 2",
+      "tags": {
+        "migAz": "599f58ec-cee3-41e2-a41e-97468c93a525"
+      },
+      "dependsOn": [
+        "[concat(resourceGroup().id, '/providers/Microsoft.Network/localNetworkGateways/mac_slg_managed_hbi_w2-LocalGateway')]",
+        "[concat(resourceGroup().id, '/providers/Microsoft.Network/virtualNetworkGateways/mac_slg_managed_services_w2-Gateway')]"
+      ],
+      "properties": {
+        "virtualNetworkGateway1": {
+          "id": "[concat(resourceGroup().id, '/providers/Microsoft.Network/virtualNetworkGateways/mac_slg_managed_services_w2-Gateway')]"
+        },
+        "localNetworkGateway2": {
+          "id": "[concat(resourceGroup().id, '/providers/Microsoft.Network/localNetworkGateways/mac_slg_managed_hbi_w2-LocalGateway')]"
+        },
+        "connectionType": "IPsec",
+        "routingWeight": 10,
+        "sharedKey": "fjNGNbZuTFHx4BEH"
+      }
+    },
+    {
+      "type": "Microsoft.Network/localNetworkGateways",
+      "apiVersion": "2015-06-15",
+      "name": "mac_slg_managed_preprod_w2-LocalGateway",
+      "location": "West US 2",
+      "tags": {
+        "migAz": "599f58ec-cee3-41e2-a41e-97468c93a525"
+      },
+      "properties": {
+        "localNetworkAddressSpace": {
+          "addressPrefixes": [
+            "10.130.32.0/20"
+          ]
+        },
+        "gatewayIpAddress": "13.66.217.153"
+      }
+    },
+    {
+      "type": "Microsoft.Network/connections",
+      "apiVersion": "2015-06-15",
+      "name": "mac_slg_managed_services_w2-Gateway-mac_slg_managed_preprod_w2-connection",
+      "location": "West US 2",
+      "tags": {
+        "migAz": "599f58ec-cee3-41e2-a41e-97468c93a525"
+      },
+      "dependsOn": [
+        "[concat(resourceGroup().id, '/providers/Microsoft.Network/localNetworkGateways/mac_slg_managed_preprod_w2-LocalGateway')]",
+        "[concat(resourceGroup().id, '/providers/Microsoft.Network/virtualNetworkGateways/mac_slg_managed_services_w2-Gateway')]"
+      ],
+      "properties": {
+        "virtualNetworkGateway1": {
+          "id": "[concat(resourceGroup().id, '/providers/Microsoft.Network/virtualNetworkGateways/mac_slg_managed_services_w2-Gateway')]"
+        },
+        "localNetworkGateway2": {
+          "id": "[concat(resourceGroup().id, '/providers/Microsoft.Network/localNetworkGateways/mac_slg_managed_preprod_w2-LocalGateway')]"
+        },
+        "connectionType": "IPsec",
+        "routingWeight": 10,
+        "sharedKey": "fjNGNbZuTFHx4BEH"
+      }
+    },
+    {
+      "type": "Microsoft.Network/localNetworkGateways",
+      "apiVersion": "2015-06-15",
+      "name": "mac_slg_managed_prod_w2-LocalGateway",
+      "location": "West US 2",
+      "tags": {
+        "migAz": "599f58ec-cee3-41e2-a41e-97468c93a525"
+      },
+      "properties": {
+        "localNetworkAddressSpace": {
+          "addressPrefixes": [
+            "10.130.0.0/20"
+          ]
+        },
+        "gatewayIpAddress": "13.66.216.193"
+      }
+    },
+    {
+      "type": "Microsoft.Network/connections",
+      "apiVersion": "2015-06-15",
+      "name": "mac_slg_managed_services_w2-Gateway-mac_slg_managed_prod_w2-connection",
+      "location": "West US 2",
+      "tags": {
+        "migAz": "599f58ec-cee3-41e2-a41e-97468c93a525"
+      },
+      "dependsOn": [
+        "[concat(resourceGroup().id, '/providers/Microsoft.Network/localNetworkGateways/mac_slg_managed_prod_w2-LocalGateway')]",
+        "[concat(resourceGroup().id, '/providers/Microsoft.Network/virtualNetworkGateways/mac_slg_managed_services_w2-Gateway')]"
+      ],
+      "properties": {
+        "virtualNetworkGateway1": {
+          "id": "[concat(resourceGroup().id, '/providers/Microsoft.Network/virtualNetworkGateways/mac_slg_managed_services_w2-Gateway')]"
+        },
+        "localNetworkGateway2": {
+          "id": "[concat(resourceGroup().id, '/providers/Microsoft.Network/localNetworkGateways/mac_slg_managed_prod_w2-LocalGateway')]"
+        },
+        "connectionType": "IPsec",
+        "routingWeight": 10,
+        "sharedKey": "fjNGNbZuTFHx4BEH"
+      }
+    },
+    {
+      "type": "Microsoft.Network/localNetworkGateways",
+      "apiVersion": "2015-06-15",
+      "name": "mac_slg_managed_storage_w2-LocalGateway",
+      "location": "West US 2",
+      "tags": {
+        "migAz": "599f58ec-cee3-41e2-a41e-97468c93a525"
+      },
+      "properties": {
+        "localNetworkAddressSpace": {
+          "addressPrefixes": [
+            "10.130.48.0/21"
+          ]
+        },
+        "gatewayIpAddress": "13.66.216.81"
+      }
+    },
+    {
+      "type": "Microsoft.Network/connections",
+      "apiVersion": "2015-06-15",
+      "name": "mac_slg_managed_services_w2-Gateway-mac_slg_managed_storage_w2-connection",
+      "location": "West US 2",
+      "tags": {
+        "migAz": "599f58ec-cee3-41e2-a41e-97468c93a525"
+      },
+      "dependsOn": [
+        "[concat(resourceGroup().id, '/providers/Microsoft.Network/localNetworkGateways/mac_slg_managed_storage_w2-LocalGateway')]",
+        "[concat(resourceGroup().id, '/providers/Microsoft.Network/virtualNetworkGateways/mac_slg_managed_services_w2-Gateway')]"
+      ],
+      "properties": {
+        "virtualNetworkGateway1": {
+          "id": "[concat(resourceGroup().id, '/providers/Microsoft.Network/virtualNetworkGateways/mac_slg_managed_services_w2-Gateway')]"
+        },
+        "localNetworkGateway2": {
+          "id": "[concat(resourceGroup().id, '/providers/Microsoft.Network/localNetworkGateways/mac_slg_managed_storage_w2-LocalGateway')]"
+        },
+        "connectionType": "IPsec",
+        "routingWeight": 10,
+        "sharedKey": "fjNGNbZuTFHx4BEH"
+      }
+    },
+    {
+      "type": "Microsoft.Network/localNetworkGateways",
+      "apiVersion": "2015-06-15",
+      "name": "mac_slg_managed_services_w1-LocalGateway",
+      "location": "West US 2",
+      "tags": {
+        "migAz": "599f58ec-cee3-41e2-a41e-97468c93a525"
+      },
+      "properties": {
+        "localNetworkAddressSpace": {
+          "addressPrefixes": [
+            "10.130.120.0/21"
+          ]
+        },
+        "gatewayIpAddress": "52.161.30.133"
+      }
+    },
+    {
+      "type": "Microsoft.Network/connections",
+      "apiVersion": "2015-06-15",
+      "name": "mac_slg_managed_services_w2-Gateway-mac_slg_managed_services_w1-connection",
+      "location": "West US 2",
+      "tags": {
+        "migAz": "599f58ec-cee3-41e2-a41e-97468c93a525"
+      },
+      "dependsOn": [
+        "[concat(resourceGroup().id, '/providers/Microsoft.Network/localNetworkGateways/mac_slg_managed_services_w1-LocalGateway')]",
+        "[concat(resourceGroup().id, '/providers/Microsoft.Network/virtualNetworkGateways/mac_slg_managed_services_w2-Gateway')]"
+      ],
+      "properties": {
+        "virtualNetworkGateway1": {
+          "id": "[concat(resourceGroup().id, '/providers/Microsoft.Network/virtualNetworkGateways/mac_slg_managed_services_w2-Gateway')]"
+        },
+        "localNetworkGateway2": {
+          "id": "[concat(resourceGroup().id, '/providers/Microsoft.Network/localNetworkGateways/mac_slg_managed_services_w1-LocalGateway')]"
+        },
+        "connectionType": "IPsec",
+        "routingWeight": 10,
+        "sharedKey": "fjNGNbZuTFHx4BEH"
+      }
+    }
+  ]
+}

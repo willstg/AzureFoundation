@@ -1,0 +1,252 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "resources": [
+    {
+      "type": "Microsoft.Network/virtualNetworks",
+      "apiVersion": "2015-06-15",
+      "name": "mac_slg_managed_PreProd_w2",
+      "location": "West US 2",
+      "tags": {
+        "migAz": "0b10f199-6bd8-4e2d-8ce0-9a234e491d21"
+      },
+      "dependsOn": [],
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.130.32.0/20"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "Web_310_dept_test_w2",
+            "properties": {
+              "addressPrefix": "10.130.32.0/24"
+            }
+          },
+          {
+            "name": "App_320_dept_test_w2",
+            "properties": {
+              "addressPrefix": "10.130.33.0/24"
+            }
+          },
+          {
+            "name": "Database_330_dept_test_w2",
+            "properties": {
+              "addressPrefix": "10.130.34.0/24"
+            }
+          },
+          {
+            "name": "DMZ_350_dept_test_w2",
+            "properties": {
+              "addressPrefix": "10.130.35.0/24"
+            }
+          },
+          {
+            "name": "user_Tier0_360_dept_Test_w2",
+            "properties": {
+              "addressPrefix": "10.130.36.0/25"
+            }
+          },
+          {
+            "name": "user_Tier1_361_dept_Test_w2",
+            "properties": {
+              "addressPrefix": "10.130.36.128/25"
+            }
+          },
+          {
+            "name": "user_Tier2_362_dept_Test_w2",
+            "properties": {
+              "addressPrefix": "10.130.37.0/25"
+            }
+          },
+          {
+            "name": "user_Tier0_363_dept_Dev_w2",
+            "properties": {
+              "addressPrefix": "10.130.37.128/25"
+            }
+          },
+          {
+            "name": "user_Tier1_364_dept_Dev_w2",
+            "properties": {
+              "addressPrefix": "10.130.38.0/25"
+            }
+          },
+          {
+            "name": "user_Tier2_365_dept_Dev_w2",
+            "properties": {
+              "addressPrefix": "10.130.38.128/25"
+            }
+          },
+          {
+            "name": "Web_410_dept_dev_w2",
+            "properties": {
+              "addressPrefix": "10.130.40.0/24"
+            }
+          },
+          {
+            "name": "App_420_dept_dev_w2",
+            "properties": {
+              "addressPrefix": "10.130.41.0/24"
+            }
+          },
+          {
+            "name": "Database_430_dept_dev_w2",
+            "properties": {
+              "addressPrefix": "10.130.42.0/24"
+            }
+          },
+          {
+            "name": "DMZ_450_dept_dev_w2",
+            "properties": {
+              "addressPrefix": "10.130.43.0/24"
+            }
+          },
+          {
+            "name": "GatewaySubnet",
+            "properties": {
+              "addressPrefix": "10.130.47.248/29"
+            }
+          }
+        ],
+        "dhcpOptions": {
+          "dnsServers": [
+            "10.130.120.11",
+            "10.130.120.12"
+          ]
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Network/publicIPAddresses",
+      "apiVersion": "2015-06-15",
+      "name": "mac_slg_managed_PreProd_w2-Gateway-PIP",
+      "location": "West US 2",
+      "tags": {
+        "migAz": "0b10f199-6bd8-4e2d-8ce0-9a234e491d21"
+      },
+      "properties": {
+        "publicIPAllocationMethod": "Dynamic"
+      }
+    },
+    {
+      "type": "Microsoft.Network/virtualNetworkGateways",
+      "apiVersion": "2015-06-15",
+      "name": "mac_slg_managed_PreProd_w2-Gateway",
+      "location": "West US 2",
+      "tags": {
+        "migAz": "0b10f199-6bd8-4e2d-8ce0-9a234e491d21"
+      },
+      "dependsOn": [
+        "[concat(resourceGroup().id, '/providers/Microsoft.Network/virtualNetworks/mac_slg_managed_PreProd_w2')]",
+        "[concat(resourceGroup().id, '/providers/Microsoft.Network/publicIPAddresses/mac_slg_managed_PreProd_w2-Gateway-PIP')]"
+      ],
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "GatewayIPConfig",
+            "properties": {
+              "privateIPAllocationMethod": "Dynamic",
+              "publicIPAddress": {
+                "id": "[concat(resourceGroup().id, '/providers/Microsoft.Network/publicIPAddresses/mac_slg_managed_PreProd_w2-Gateway-PIP')]"
+              },
+              "subnet": {
+                "id": "[concat(resourceGroup().id, '/providers/Microsoft.Network/virtualNetworks/mac_slg_managed_PreProd_w2/subnets/GatewaySubnet')]"
+              }
+            }
+          }
+        ],
+        "sku": {
+          "name": "Basic",
+          "tier": "Basic"
+        },
+        "gatewayType": "Vpn",
+        "vpnType": "RouteBased",
+        "enableBgp": "false"
+      }
+    },
+    {
+      "type": "Microsoft.Network/localNetworkGateways",
+      "apiVersion": "2015-06-15",
+      "name": "mac_slg_managed_preprod_w1-LocalGateway",
+      "location": "West US 2",
+      "tags": {
+        "migAz": "0b10f199-6bd8-4e2d-8ce0-9a234e491d21"
+      },
+      "properties": {
+        "localNetworkAddressSpace": {
+          "addressPrefixes": [
+            "10.130.96.0/20"
+          ]
+        },
+        "gatewayIpAddress": "52.161.24.117"
+      }
+    },
+    {
+      "type": "Microsoft.Network/connections",
+      "apiVersion": "2015-06-15",
+      "name": "mac_slg_managed_PreProd_w2-Gateway-mac_slg_managed_preprod_w1-connection",
+      "location": "West US 2",
+      "tags": {
+        "migAz": "0b10f199-6bd8-4e2d-8ce0-9a234e491d21"
+      },
+      "dependsOn": [
+        "[concat(resourceGroup().id, '/providers/Microsoft.Network/localNetworkGateways/mac_slg_managed_preprod_w1-LocalGateway')]",
+        "[concat(resourceGroup().id, '/providers/Microsoft.Network/virtualNetworkGateways/mac_slg_managed_PreProd_w2-Gateway')]"
+      ],
+      "properties": {
+        "virtualNetworkGateway1": {
+          "id": "[concat(resourceGroup().id, '/providers/Microsoft.Network/virtualNetworkGateways/mac_slg_managed_PreProd_w2-Gateway')]"
+        },
+        "localNetworkGateway2": {
+          "id": "[concat(resourceGroup().id, '/providers/Microsoft.Network/localNetworkGateways/mac_slg_managed_preprod_w1-LocalGateway')]"
+        },
+        "connectionType": "IPsec",
+        "routingWeight": 10,
+        "sharedKey": "fjNGNbZuTFHx4BEH"
+      }
+    },
+    {
+      "type": "Microsoft.Network/localNetworkGateways",
+      "apiVersion": "2015-06-15",
+      "name": "mac_slg_managed_services_w2-LocalGateway",
+      "location": "West US 2",
+      "tags": {
+        "migAz": "0b10f199-6bd8-4e2d-8ce0-9a234e491d21"
+      },
+      "properties": {
+        "localNetworkAddressSpace": {
+          "addressPrefixes": [
+            "10.130.56.0/21"
+          ]
+        },
+        "gatewayIpAddress": "13.66.217.88"
+      }
+    },
+    {
+      "type": "Microsoft.Network/connections",
+      "apiVersion": "2015-06-15",
+      "name": "mac_slg_managed_PreProd_w2-Gateway-mac_slg_managed_services_w2-connection",
+      "location": "West US 2",
+      "tags": {
+        "migAz": "0b10f199-6bd8-4e2d-8ce0-9a234e491d21"
+      },
+      "dependsOn": [
+        "[concat(resourceGroup().id, '/providers/Microsoft.Network/localNetworkGateways/mac_slg_managed_services_w2-LocalGateway')]",
+        "[concat(resourceGroup().id, '/providers/Microsoft.Network/virtualNetworkGateways/mac_slg_managed_PreProd_w2-Gateway')]"
+      ],
+      "properties": {
+        "virtualNetworkGateway1": {
+          "id": "[concat(resourceGroup().id, '/providers/Microsoft.Network/virtualNetworkGateways/mac_slg_managed_PreProd_w2-Gateway')]"
+        },
+        "localNetworkGateway2": {
+          "id": "[concat(resourceGroup().id, '/providers/Microsoft.Network/localNetworkGateways/mac_slg_managed_services_w2-LocalGateway')]"
+        },
+        "connectionType": "IPsec",
+        "routingWeight": 10,
+        "sharedKey": "fjNGNbZuTFHx4BEH"
+      }
+    }
+  ]
+}
