@@ -35,17 +35,17 @@ param(
  $resourceGroupName,
 
  [string]
- $resourceGroupLocation,
+ $location,
 
  [Parameter(Mandatory=$True)]
  [string]
  $deploymentName,
 
  [string]
- $templateFilePath = "template.json",
+ $templateFilePath = "C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site1\af_vnet_azuredeploy.parameters1.json",
 
  [string]
- $parametersFilePath = "parameters.json"
+ $parametersFilePath = "C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site1\af_vnet_azuredeploy.parameters1_Services.json"
 )
 
 <#
@@ -70,14 +70,14 @@ $ErrorActionPreference = "Stop"
 # sign in
 Write-Host "Logging in...";
 Login-AzureRmAccount -EnvironmentName $Environment;
-$resourceGroupLocation = 'South Central US'
-$location="South Central US"
+$resourceGroupLocation = 'West Central US'
+$location="westcentralus"
 
 # select subscription
 #Write-Host "Selecting subscription '$subscriptionId'";
 $subscriptionId=$SubID_Services
 Select-AzureRmSubscription -SubscriptionID $subscriptionId;
-$resourceGroupName="vdc_vnet_tx_temp"
+$resourceGroupName="vnet_services_w1"
 # Register RPs
 $resourceProviders = @("microsoft.compute","microsoft.network");
 if($resourceProviders.length) {
@@ -105,8 +105,8 @@ else{
 This section is where we build the NSG for the VNET
 #>
 Site 1:  Texas MAC
-$localparametersFilePath="C:\Users\WILLS\Source\Repos\VDC\VDC_VNET_TX\azuredeploy.parameters1.json"
-$localtemplateFilePath="C:\Users\WILLS\Source\Repos\VDC\VDC_VNET_TX\azuredeploy1.json"
+$localparametersFilePath="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site1\af_vnet_azuredeploy.parameters1_Services.json"
+$localtemplateFilePath="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site1\af_vnet_azuredeploy1_services.json"
 #Site 2:  Illiniois MAC
 
 #Site 3:  Virginia MAG

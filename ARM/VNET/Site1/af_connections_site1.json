@@ -1,0 +1,107 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "gatewayName": {
+      "type": "string",
+      "defaultValue": "gw_SLGa_HBI_W1",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalName": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
+    },
+
+    "localIPAddress": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalIPPrefix": {
+      "type": "array",
+      "defaultValue": "10.70.0.0/16",
+      "metadata": { "description": "An array of Local IP address prefixes that this gateway will route traffic to." }
+    },
+
+
+    "ConnectionName": {
+      "type": "string",
+      "defaultValue": "Datacenter1",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+
+
+
+    "connectionType1": {
+      "type": "string",
+      "defaultValue": "ExpressRoute",
+      "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
+    },
+
+    "sharedKey": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": { "description": "The shared key to negotiate the VPN connection.  KeyVault will hold this secret." }
+    },
+    "routingWeight": {
+      "type": "int",
+      "value": 10,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+
+
+
+
+    "erCircuitName": {
+      "type": "String",
+      "defaultValue": "dept_subscription_ERCircuit",
+      "metadata": { "description": "The name of the ER Circuit" }
+    }
+
+  },
+  "variables": {
+    "vnetID": "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]",
+
+    "apiVersion": "2015-06-15",
+    "subnet799Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet799Name'))]"
+  },
+  "resources": [
+
+    {
+      "apiVersion": "[variables('apiversion')]",
+      "type": "Microsoft.Network/localNetworkGateways",
+      "name": "[parameters('localName')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "localNetworkAddressSpace": { "addressPrefixes": "[parameters('localIpPrefix')]" },
+        "gatewayIpAddress": "[parameters('localIpAddress')]"
+      }
+    },
+
+
+    {
+      "apiVersion": "[variables('apiversion')]",
+      "name": "[parameters('ConnectionName')]",
+      "type": "Microsoft.Network/connections",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('gatewayName'))]",
+        "[concat('Microsoft.Network/localNetworkGateways/', parameters('LocalName'))]"
+      ],
+      "properties": {
+        "virtualNetworkGateway1": {
+          "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('gatewayName'))]"
+        },
+        "localNetworkGateway2": {
+          "id": "[resourceId('Microsoft.Network/localNetworkGateways', parameters('LocalName'))]"
+        },
+        "connectionType": "IPsec",
+        "routingWeight": 10,
+        "sharedKey": "[parameters('SharedKey')]"
+      }
+    }
+  ],
+  "outputs": {
+  }
+}
