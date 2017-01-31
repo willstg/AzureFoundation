@@ -79,7 +79,7 @@
       }
     },
 
-
+   
     {
       "apiVersion": "[variables('apiversion')]",
       "name": "[parameters('ConnectionName')]",
@@ -96,8 +96,8 @@
         "localNetworkGateway2": {
           "id": "[resourceId('Microsoft.Network/localNetworkGateways', parameters('LocalName'))]"
         },
-        "connectionType": "IPsec",
-        "routingWeight": 10,
+        "connectionType": "[parameters('connectionType1')]",
+        "routingWeight": "[parameters('routingWeight')]",
         "sharedKey": "[parameters('SharedKey')]"
       }
     }

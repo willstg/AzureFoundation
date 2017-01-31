@@ -69,7 +69,7 @@ $ErrorActionPreference = "Stop"
 
 # sign in
 Write-Host "Logging in...";
-Login-AzureRmAccount -EnvironmentName $Environment;
+#Login-AzureRmAccount -EnvironmentName $Environment;
 $resourceGroupLocation = 'West Central US'
 $location="westcentralus"
 
