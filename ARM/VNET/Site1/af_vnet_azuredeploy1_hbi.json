@@ -10,18 +10,13 @@
         "description": "URL to acquire other templates"
       }
     },
-
-    "location": {
+    "locationName": {
       "type": "string",
-      "defaultValue": "South Central US",
-      "metadata": {
-        "description": "Deployment location. (example: USGov Virginia)"
-      }
+      "defaultValue": "rg_westcentralus"
     },
-
-    "resourceGroupName": {
+    "ResourceGroupName": {
       "type": "string",
-      "defaultValue": "rg_vnet_hbi_w1"
+      "defaultValue": "rg_rg_vnet_hbi_w1"
     },
     "vnetName": {
       "type": "string",
@@ -41,7 +36,7 @@
     },
     "VPNType": {
       "type": "string",
-      "defaultValue": "PolicyBased",
+      "defaultValue": "RouteBased",
       "allowedValues": [ "RouteBased", "PolicyBased" ],
       "metadata": { "description": "The type of VPN connection Route or Policy based." }
     },
@@ -58,7 +53,7 @@
     },
     "GatewayType": {
       "type": "string",
-      "defaultValue": "ExpressRoute",
+      "defaultValue": "Vpn",
       "metadata": { "description": "The type of gateway that is being created.  This can be either StaticRouting or DynamicRouting." }
     },
     "erCircuitName": {
@@ -90,6 +85,16 @@
       "type": "string",
       "metadata": { "description": "The ExpressRoute Peering Location." }
     },
+    "SubID": {
+      "type": "string",
+      "metadata": { "description": "The Subscrition ID" }
+    },
+    "BGP": {
+      "type": "bool",
+      "metadata": { "description": "Will the gateway use BGP routing?" }
+    },
+
+
     "subnet110Prefix": {
       "type": "string",
       "defaultValue": "10.128.2.0/24",
@@ -375,7 +380,7 @@
       "defaultValue": "GatewaySubnet",
       "metadata": { "description": "Gateway Services to Local Networks" }
     },
-    FALSE
+    "FALSE": null,
     "subnet199NSG": {
       "type": "string",
       "defaultValue": "199_NSG_GW",
@@ -385,7 +390,7 @@
       "type": "string",
       "defaultValue": "199_UDR_GW",
       "metadata": { "description": "UDR: Gateway Services to Local Networks" }
-    },
+    }
 
 
 

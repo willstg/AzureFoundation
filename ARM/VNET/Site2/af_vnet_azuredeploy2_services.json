@@ -3,67 +3,482 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "baseUrl": {
-      "defaultValue": "https://github.com/willstg/VDC/tree/master/VDC_VNET_TX",
+      "defaultValue": "https://github.com/willstg/AzureFoundation/tree/master/arm/vnet/site1",
       "type": "string",
       "metadata": {
         "artifactsBaseUrl": "",
         "description": "URL to acquire other templates"
       }
     },
-    "location": {
-      "type": "string",
-      "defaultValue": "South Central US",
-      "metadata": {
-        "description": "Deployment location. (example: USGov Virginia)"
-      }
-    },
 
-    "ResourceGroupName": {
+    "locationName": {
       "type": "string",
-      "defaultValue": "vdc_vnet_tx_v01"
+      "defaultValue": "westus2"
     },
-
+    "resourceGroupName": {
+      "type": "string",
+      "defaultValue": "rg_vnet_services_w2"
+    },
     "vnetName": {
       "type": "string",
-      "defaultValue": "vnet_vdc_tx",
-      "metadata": {
-        "description": "AzureFoundation VNET for Virtual Data Center"
-      }
+      "defaultValue": "vnet_services_w2",
+      "metadata": { "description": "AzureFoundation VNET Name for virtual data center subscription in a specific data center." }
     },
     "vnetAddressPrefix": {
       "type": "string",
-      "defaultValue": "10.190.184.0/21",
-      "metadata": {
-        "description": "CIDR prefix for the VNet address space."
-      }
-    },
-    "GatewayName": {
-      "type": "string",
-      "defaultValue": "gw_HBI_VA_2_LocalNetwork",
-      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+      "defaultValue": "10.128.120.0/21",
+      "metadata": { "description": "AzureFoundation VNET Address Prefix, the range of addresses for a specific data center." }
     },
 
+
+
+    "GatewayName": {
+      "type": "string",
+      "defaultValue": "gw_Services_W2",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
     "VPNType": {
       "type": "string",
-      "defaultValue": "PolicyBased",
+      "defaultValue": "RouteBased",
       "allowedValues": [ "RouteBased", "PolicyBased" ],
       "metadata": { "description": "The type of VPN connection Route or Policy based." }
     },
+    "PublicIPName": {
+      "type": "string",
+      "defaultValue": "gwpip_Services_W2",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "gatewaySKU": {
+      "type": "string",
+      "defaultValue": "Standard",
+      "allowedValues": [ "Basic", "Standard", "HighPerformance" ],
+      "metadata": { "description": "Gateway SKU, the type of gateway Basic, Standard, High Performance" }
+    },
+    "GatewayType": {
+      "type": "string",
+      "defaultValue": "Vpn",
+      "metadata": { "description": "The type of gateway that is being created.  This can be either StaticRouting or DynamicRouting." }
+    },
+    "erCircuitName": {
+      "type": "String",
+      "defaultValue": "SLGa_Services_ER",
+      "metadata": { "description": "The name of the ER Circuit" }
+    },
+    "erSKUTier": {
+      "type": "string",
+      "defaultValue": "Standard",
+      "allowedValues": [ "Standard", "Premium" ],
+      "metadata": { "description": "Chosen SKU Tier of ExpressRoute circuit. Choose from Premium or Standard SKU tiers." }
+    },
+    "erSKUFamily": {
+      "type": "string",
+      "defaultValue": "MeteredData",
+      "allowedValues": [ "MeteredData", "UnlimitedData" ],
+      "metadata": { "description": "Chosen SKU family of ExpressRoute circuit. Choose from MeteredData or UnlimitedData SKU families." }
+    },
+    "erBandwidth": {
+      "type": "int",
+      "metadata": { "description": "This is the bandwidth in Mbps of the circuit being created. It must exactly match one of the available bandwidth offers List ExpressRoute Service Providers API call." }
+    },
+    "erSPName": {
+      "type": "string",
+      "metadata": { "description": "ExpressRoute Service Provider Name" }
+    },
+    "erPeeringLocation": {
+      "type": "string",
+      "metadata": { "description": "The ExpressRoute Peering Location." }
+    },
+    "SubID": {
+      "type": "string",
+      "metadata": { "description": "The Subscrition ID" }
+    },
+    "BGP": {
+      "type": "bool",
+      "metadata": { "description": "Will the gateway use BGP routing?" }
+    },
+
+
+    "ConnectionNamecnct240": {
+      "type": "string",
+      "defaultValue": "IPSec_SLGa_Services_To_Net1_DC1",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalNamecnct240": {
+      "type": "string",
+      "defaultValue": "Net1_DC1",
+      "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
+    },
+    "localGWIPcnct240": {
+      "type": "string",
+      "defaultValue": "1.1.1.1",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalIPPrefixcnct240": {
+      "type": "array",
+      "defaultValue": [ "..." ],
+      "metadata": { "description": "An array of Local IP address prefixes that this gateway will route traffic to." }
+    },
+    "connectionType1cnct240": {
+      "type": "string",
+      "defaultValue": "IPSec",
+      "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
+    },
+    "sharedKeycnct240": {
+      "type": "string",
+      "defaultValue": "mysharedkey",
+      "metadata": { "description": "The shared key to negotiate the VPN connection.  KeyVault will hold this secret." }
+    },
+    "routingWeightcnct240": {
+      "type": "int",
+      "defaultValue": 10,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "ConnectionNamecnct241": {
+      "type": "string",
+      "defaultValue": "Vnet2Vnet_SLGa_Services_To_Services_W1",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalNamecnct241": {
+      "type": "string",
+      "defaultValue": "Services_W1",
+      "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
+    },
+    "remoteGWNamecnct241": {
+      "type": "string",
+      "defaultValue": "gw_Services_W1",
+      "metadata": { "description": "Name for the remote VNET for a VNET to VNET connection" }
+    },
+    "localGWIPcnct241": {
+      "type": "string",
+      "defaultValue": "1.1.1.1",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalIPPrefixcnct241": {
+      "type": "array",
+      "defaultValue": [ "10.128.56.0/21" ],
+      "metadata": { "description": "An array of Local IP address prefixes that this gateway will route traffic to." }
+    },
+    "connectionType1cnct241": {
+      "type": "string",
+      "defaultValue": "Vnet2Vnet",
+      "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
+    },
+    "sharedKeycnct241": {
+      "type": "string",
+      "defaultValue": "mysharedkey",
+      "metadata": { "description": "The shared key to negotiate the VPN connection.  KeyVault will hold this secret." }
+    },
+    "routingWeightcnct241": {
+      "type": "int",
+      "defaultValue": 10,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "rmtSubIDcnct241": {
+      "type": "string",
+      "defaultValue": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9",
+      "metadata": { "description": "The subscription ID of the peer VNET." }
+    },
+    "rmtRGNamecnct241": {
+      "type": "string",
+      "defaultValue": "rg_vnet_services_w1",
+      "metadata": { "description": "The resource group for the remote subscriptions VNET gateway." }
+    },
+    "ConnectionNamecnct242": {
+      "type": "string",
+      "defaultValue": "Peering_SLGa_Services_To_HBI_W2",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalNamecnct242": {
+      "type": "string",
+      "defaultValue": "HBI_W2",
+      "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
+    },
+    "localGWIPcnct242": {
+      "type": "string",
+      "defaultValue": "1.1.1.1",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalIPPrefixcnct242": {
+      "type": "array",
+      "defaultValue": [ "10.128.64.0/20" ],
+      "metadata": { "description": "An array of Local IP address prefixes that this gateway will route traffic to." }
+    },
+    "connectionType1cnct242": {
+      "type": "string",
+      "defaultValue": "Peering",
+      "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
+    },
+    "sharedKeycnct242": {
+      "type": "string",
+      "defaultValue": "mysharedkey",
+      "metadata": { "description": "The shared key to negotiate the VPN connection.  KeyVault will hold this secret." }
+    },
+    "routingWeightcnct242": {
+      "type": "int",
+      "defaultValue": 10,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowVNETAccesscnct242": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowFwdAccesscnct242": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowGWAccesscnct242": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "useRemoteGatewaycnct242": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "peerVNETNamecnct242": {
+      "type": "string",
+      "defaultValue": "vnet_hbi_w2",
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "rmtSubIDcnct242": {
+      "type": "string",
+      "defaultValue": "ce38c0ef-22f5-458d-b1f7-e3890e2471f2",
+      "metadata": { "description": "The subscription ID of the peer VNET." }
+    },
+    "rmtRGNamecnct242": {
+      "type": "string",
+      "defaultValue": "rg_vnet_hbi_w2",
+      "metadata": { "description": "The resource group for the remote subscription VNET." }
+    },
+    "ConnectionNamecnct243": {
+      "type": "string",
+      "defaultValue": "Peering_SLGa_Services_To_PreProd_W2",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalNamecnct243": {
+      "type": "string",
+      "defaultValue": "PreProd_W2",
+      "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
+    },
+    "localGWIPcnct243": {
+      "type": "string",
+      "defaultValue": "1.1.1.1",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalIPPrefixcnct243": {
+      "type": "array",
+      "defaultValue": [ "10.128.80.0/20" ],
+      "metadata": { "description": "An array of Local IP address prefixes that this gateway will route traffic to." }
+    },
+    "connectionType1cnct243": {
+      "type": "string",
+      "defaultValue": "Peering",
+      "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
+    },
+    "sharedKeycnct243": {
+      "type": "string",
+      "defaultValue": "mysharedkey",
+      "metadata": { "description": "The shared key to negotiate the VPN connection.  KeyVault will hold this secret." }
+    },
+    "routingWeightcnct243": {
+      "type": "int",
+      "defaultValue": 50,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowVNETAccesscnct243": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowFwdAccesscnct243": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowGWAccesscnct243": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "useRemoteGatewaycnct243": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "peerVNETNamecnct243": {
+      "type": "string",
+      "defaultValue": "vnet_preprod_w2",
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "rmtSubIDcnct243": {
+      "type": "string",
+      "defaultValue": "a7d928df-fc97-4f02-adae-3d7cdeb7c8cb",
+      "metadata": { "description": "The subscription ID of the peer VNET." }
+    },
+    "rmtRGNamecnct243": {
+      "type": "string",
+      "defaultValue": "rg_vnet_preprod_w2",
+      "metadata": { "description": "The resource group for the remote subscription VNET." }
+    },
+    "ConnectionNamecnct244": {
+      "type": "string",
+      "defaultValue": "Peering_SLGa_Services_To_Prod_W2",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalNamecnct244": {
+      "type": "string",
+      "defaultValue": "Prod_W2",
+      "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
+    },
+    "localGWIPcnct244": {
+      "type": "string",
+      "defaultValue": "1.1.1.1",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalIPPrefixcnct244": {
+      "type": "array",
+      "defaultValue": [ "10.128.96.0/20" ],
+      "metadata": { "description": "An array of Local IP address prefixes that this gateway will route traffic to." }
+    },
+    "connectionType1cnct244": {
+      "type": "string",
+      "defaultValue": "Peering",
+      "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
+    },
+    "sharedKeycnct244": {
+      "type": "string",
+      "defaultValue": "mysharedkey",
+      "metadata": { "description": "The shared key to negotiate the VPN connection.  KeyVault will hold this secret." }
+    },
+    "routingWeightcnct244": {
+      "type": "int",
+      "defaultValue": 10,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowVNETAccesscnct244": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowFwdAccesscnct244": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowGWAccesscnct244": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "useRemoteGatewaycnct244": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "peerVNETNamecnct244": {
+      "type": "string",
+      "defaultValue": "vnet_prod_w2",
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "rmtSubIDcnct244": {
+      "type": "string",
+      "defaultValue": "ec1cea2e-92aa-45a7-89b0-d9fc40df2beb",
+      "metadata": { "description": "The subscription ID of the peer VNET." }
+    },
+    "rmtRGNamecnct244": {
+      "type": "string",
+      "defaultValue": "rg_vnet_prod_w2",
+      "metadata": { "description": "The resource group for the remote subscription VNET." }
+    },
+    "ConnectionNamecnct245": {
+      "type": "string",
+      "defaultValue": "Peering_SLGa_Services_To_Storage_W2",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalNamecnct245": {
+      "type": "string",
+      "defaultValue": "Storage_W2",
+      "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
+    },
+    "localGWIPcnct245": {
+      "type": "string",
+      "defaultValue": "1.1.1.1",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalIPPrefixcnct245": {
+      "type": "array",
+      "defaultValue": [ "10.128.112.0/21" ],
+      "metadata": { "description": "An array of Local IP address prefixes that this gateway will route traffic to." }
+    },
+    "connectionType1cnct245": {
+      "type": "string",
+      "defaultValue": "Peering",
+      "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
+    },
+    "sharedKeycnct245": {
+      "type": "string",
+      "defaultValue": "mysharedkey",
+      "metadata": { "description": "The shared key to negotiate the VPN connection.  KeyVault will hold this secret." }
+    },
+    "routingWeightcnct245": {
+      "type": "int",
+      "defaultValue": 10,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowVNETAccesscnct245": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowFwdAccesscnct245": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowGWAccesscnct245": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "useRemoteGatewaycnct245": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "peerVNETNamecnct245": {
+      "type": "string",
+      "defaultValue": "vnet_storage_w2",
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "rmtSubIDcnct245": {
+      "type": "string",
+      "defaultValue": "6e5d19d2-a324-470a-b24f-57ac0d3221a1",
+      "metadata": { "description": "The subscription ID of the peer VNET." }
+    },
+    "rmtRGNamecnct245": {
+      "type": "string",
+      "defaultValue": "rg_vnet_storage_w2",
+      "metadata": { "description": "The resource group for the remote subscription VNET." }
+    },
+
 
 
     "subnet600Prefix": {
       "type": "string",
-      "defaultValue": "10.190.184.0/24",
+      "defaultValue": "10.128.120.0/24",
       "metadata": { "description": "Used to host highly sensitive data that is also highly accessed." }
     },
     "subnet600Name": {
       "type": "string",
-      "defaultValue": "600_Services_Srvcs_VDCMac_TX",
+      "defaultValue": "600_Services_Srvcs_SLGa_W2",
       "metadata": { "description": "Used to host highly sensitive data that is also highly accessed." }
     },
-    "subnet600VNAIP": {
+    "subnet600VNIP": {
       "type": "string",
-      "defaultValue": "10.190.191.84",
+      "defaultValue": "10.128.127.84",
       "metadata": { "description": "UDR: Used to host highly sensitive data that is also highly accessed." }
     },
     "subnet600NSG": {
@@ -71,24 +486,19 @@
       "defaultValue": "600_NSG_Services",
       "metadata": { "description": "NSG: Used to host highly sensitive data that is also highly accessed." }
     },
-    "subnet600UDR": {
-      "type": "string",
-      "defaultValue": "600_UDR_Services",
-      "metadata": { "description": "UDR: Used to host highly sensitive data that is also highly accessed." }
-    },
     "subnet605Prefix": {
       "type": "string",
-      "defaultValue": "10.190.185.0/24",
+      "defaultValue": "10.128.122.0/25",
       "metadata": { "description": "Loadbalanced Services (internal) systems" }
     },
     "subnet605Name": {
       "type": "string",
-      "defaultValue": "605_LB_Services_Srvcs_VDCMac_TX",
+      "defaultValue": "605_LB_Services_Srvcs_SLGa_W2",
       "metadata": { "description": "Loadbalanced Services (internal) systems" }
     },
-    "subnet605VNAIP": {
+    "subnet605VNIP": {
       "type": "string",
-      "defaultValue": "10.190.191.132",
+      "defaultValue": "10.128.127.132",
       "metadata": { "description": "UDR: Loadbalanced Services (internal) systems" }
     },
     "subnet605NSG": {
@@ -96,24 +506,19 @@
       "defaultValue": "605_NSG_LB_Services",
       "metadata": { "description": "NSG: Loadbalanced Services (internal) systems" }
     },
-    "subnet605UDR": {
-      "type": "string",
-      "defaultValue": "605_UDR_LB_Services",
-      "metadata": { "description": "UDR: Loadbalanced Services (internal) systems" }
-    },
     "subnet650Prefix": {
       "type": "string",
-      "defaultValue": "10.190.186.0/24",
+      "defaultValue": "10.128.124.0/24",
       "metadata": { "description": "Internet EndPoint Machines" }
     },
     "subnet650Name": {
       "type": "string",
-      "defaultValue": "650_DMZ_Srvcs_VDCMac_TX",
+      "defaultValue": "650_DMZ_Srvcs_SLGa_W2",
       "metadata": { "description": "Internet EndPoint Machines" }
     },
-    "subnet650VNAIP": {
+    "subnet650VNIP": {
       "type": "string",
-      "defaultValue": "10.190.191.164",
+      "defaultValue": "10.128.127.164",
       "metadata": { "description": "UDR: Internet EndPoint Machines" }
     },
     "subnet650NSG": {
@@ -121,74 +526,19 @@
       "defaultValue": "650_NSG_DMZ",
       "metadata": { "description": "NSG: Internet EndPoint Machines" }
     },
-    "subnet650UDR": {
-      "type": "string",
-      "defaultValue": "650_UDR_DMZ",
-      "metadata": { "description": "UDR: Internet EndPoint Machines" }
-    },
-    "subnet660Prefix": {
-      "type": "string",
-      "defaultValue": "10.190.187.0/25",
-      "metadata": { "description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
-    },
-    "subnet660Name": {
-      "type": "string",
-      "defaultValue": "660_User_Tier0_Srvcs_VDCMac_TX",
-      "metadata": { "description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
-    },
-    "subnet660VNAIP": {
-      "type": "string",
-      "defaultValue": "10.190.191.84",
-      "metadata": { "description": "UDR: Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
-    },
-    "subnet660NSG": {
-      "type": "string",
-      "defaultValue": "660_NSG_User_Tier0",
-      "metadata": { "description": "NSG: Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
-    },
-    "subnet660UDR": {
-      "type": "string",
-      "defaultValue": "660_UDR_User_Tier0",
-      "metadata": { "description": "UDR: Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
-    },
-    "subnet661Prefix": {
-      "type": "string",
-      "defaultValue": "10.190.187.128/25",
-      "metadata": { "description": "Tier 1 administrator - manage enterprise servers, services, and applications" }
-    },
-    "subnet661Name": {
-      "type": "string",
-      "defaultValue": "661_User_Tier1_Srvcs_VDCMac_TX",
-      "metadata": { "description": "Tier 1 administrator - manage enterprise servers, services, and applications" }
-    },
-    "subnet661VNAIP": {
-      "type": "string",
-      "defaultValue": "10.190.191.84",
-      "metadata": { "description": "UDR: Tier 1 administrator - manage enterprise servers, services, and applications" }
-    },
-    "subnet661NSG": {
-      "type": "string",
-      "defaultValue": "661_NSG_User_Tier1",
-      "metadata": { "description": "NSG: Tier 1 administrator - manage enterprise servers, services, and applications" }
-    },
-    "subnet661UDR": {
-      "type": "string",
-      "defaultValue": "661_UDR_User_Tier1",
-      "metadata": { "description": "UDR: Tier 1 administrator - manage enterprise servers, services, and applications" }
-    },
     "subnet655Prefix": {
       "type": "string",
-      "defaultValue": "10.190.188.0/24",
+      "defaultValue": "10.128.125.0/24",
       "metadata": { "description": "Loadbalanced Services DMZ systems" }
     },
     "subnet655Name": {
       "type": "string",
-      "defaultValue": "655_LB_DMZ_Srvcs_VDCMac_TX",
+      "defaultValue": "655_LB_DMZ_Srvcs_SLGa_W2",
       "metadata": { "description": "Loadbalanced Services DMZ systems" }
     },
-    "subnet655VNAIP": {
+    "subnet655VNIP": {
       "type": "string",
-      "defaultValue": "10.190.191.212",
+      "defaultValue": "10.128.127.212",
       "metadata": { "description": "UDR: Loadbalanced Services DMZ systems" }
     },
     "subnet655NSG": {
@@ -196,24 +546,79 @@
       "defaultValue": "655_NSG_LB_DMZ",
       "metadata": { "description": "NSG: Loadbalanced Services DMZ systems" }
     },
-    "subnet655UDR": {
+    "subnet660Prefix": {
       "type": "string",
-      "defaultValue": "655_UDR_LB_DMZ",
-      "metadata": { "description": "UDR: Loadbalanced Services DMZ systems" }
+      "defaultValue": "10.128.126.0/26",
+      "metadata": { "description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
+    },
+    "subnet660Name": {
+      "type": "string",
+      "defaultValue": "660_User_Tier0_Srvcs_SLGa_W2",
+      "metadata": { "description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
+    },
+    "subnet660VNIP": {
+      "type": "string",
+      "defaultValue": "10.128.127.84",
+      "metadata": { "description": "UDR: Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
+    },
+    "subnet660NSG": {
+      "type": "string",
+      "defaultValue": "660_NSG_User_Tier0",
+      "metadata": { "description": "NSG: Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
+    },
+    "subnet661Prefix": {
+      "type": "string",
+      "defaultValue": "10.128.126.64/26",
+      "metadata": { "description": "Tier 1 administrator - manage enterprise servers, services, and applications" }
+    },
+    "subnet661Name": {
+      "type": "string",
+      "defaultValue": "661_User_Tier1_Srvcs_SLGa_W2",
+      "metadata": { "description": "Tier 1 administrator - manage enterprise servers, services, and applications" }
+    },
+    "subnet661VNIP": {
+      "type": "string",
+      "defaultValue": "10.128.127.84",
+      "metadata": { "description": "UDR: Tier 1 administrator - manage enterprise servers, services, and applications" }
+    },
+    "subnet661NSG": {
+      "type": "string",
+      "defaultValue": "661_NSG_User_Tier1",
+      "metadata": { "description": "NSG: Tier 1 administrator - manage enterprise servers, services, and applications" }
+    },
+    "subnet662Prefix": {
+      "type": "string",
+      "defaultValue": "10.128.126.128/26",
+      "metadata": { "description": "Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices" }
+    },
+    "subnet662Name": {
+      "type": "string",
+      "defaultValue": "662_User_Tier2_Srvcs_SLGa_W2",
+      "metadata": { "description": "Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices" }
+    },
+    "subnet662VNIP": {
+      "type": "string",
+      "defaultValue": "10.128.191.84",
+      "metadata": { "description": "UDR: Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices" }
+    },
+    "subnet662NSG": {
+      "type": "string",
+      "defaultValue": "662_NSG_User_Tier2",
+      "metadata": { "description": "NSG: Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices" }
     },
     "subnet680Prefix": {
       "type": "string",
-      "defaultValue": "10.190.189.0/28",
+      "defaultValue": "10.128.123.0/28",
       "metadata": { "description": "Used to Test the routing to the inside interface of the CSR" }
     },
     "subnet680Name": {
       "type": "string",
-      "defaultValue": "680_CSR_InsideTest_Srvcs_VDCMac_TX",
+      "defaultValue": "680_CSR_InsideTest_Srvcs_SLGa_W2",
       "metadata": { "description": "Used to Test the routing to the inside interface of the CSR" }
     },
-    "subnet680VNAIP": {
+    "subnet680VNIP": {
       "type": "string",
-      "defaultValue": "10.190.191.4",
+      "defaultValue": "10.128.127.4",
       "metadata": { "description": "UDR: Used to Test the routing to the inside interface of the CSR" }
     },
     "subnet680NSG": {
@@ -221,24 +626,19 @@
       "defaultValue": "680_NSG_CSR_InsideTest",
       "metadata": { "description": "NSG: Used to Test the routing to the inside interface of the CSR" }
     },
-    "subnet680UDR": {
-      "type": "string",
-      "defaultValue": "680_UDR_CSR_InsideTest",
-      "metadata": { "description": "UDR: Used to Test the routing to the inside interface of the CSR" }
-    },
     "subnet681Prefix": {
       "type": "string",
-      "defaultValue": "10.190.189.16/28",
+      "defaultValue": "10.128.123.16/28",
       "metadata": { "description": "Used to Test the routing to the inside interface of the CSR" }
     },
     "subnet681Name": {
       "type": "string",
-      "defaultValue": "681_CSR_OutsideTest_Srvcs_VDCMac_TX",
+      "defaultValue": "681_CSR_OutsideTest_Srvcs_SLGa_W2",
       "metadata": { "description": "Used to Test the routing to the inside interface of the CSR" }
     },
-    "subnet681VNAIP": {
+    "subnet681VNIP": {
       "type": "string",
-      "defaultValue": "10.190.191.20",
+      "defaultValue": "10.128.127.20",
       "metadata": { "description": "UDR: Used to Test the routing to the inside interface of the CSR" }
     },
     "subnet681NSG": {
@@ -246,24 +646,59 @@
       "defaultValue": "681_NSG_CSR_OutsideTest",
       "metadata": { "description": "NSG: Used to Test the routing to the inside interface of the CSR" }
     },
-    "subnet681UDR": {
+    "subnet682Prefix": {
       "type": "string",
-      "defaultValue": "681_UDR_CSR_OutsideTest",
+      "defaultValue": "10.128.123.32/28",
+      "metadata": { "description": "Used to Test the routing to the inside interface of the CSR" }
+    },
+    "subnet682Name": {
+      "type": "string",
+      "defaultValue": "682_FW_IntTest_Srvcs_SLGa_W2",
+      "metadata": { "description": "Used to Test the routing to the inside interface of the CSR" }
+    },
+    "subnet682VNIP": {
+      "type": "string",
+      "defaultValue": "10.128.63.84",
       "metadata": { "description": "UDR: Used to Test the routing to the inside interface of the CSR" }
+    },
+    "subnet682NSG": {
+      "type": "string",
+      "defaultValue": "682_NSG_FW_IntTest",
+      "metadata": { "description": "NSG: Used to Test the routing to the inside interface of the CSR" }
+    },
+    "subnet683Prefix": {
+      "type": "string",
+      "defaultValue": "10.128.123.64/28",
+      "metadata": { "description": "Used to Test the routing to the inside interface of the CSR" }
+    },
+    "subnet683Name": {
+      "type": "string",
+      "defaultValue": "683_FW_ExtTest_Srvcs_SLGa_W2",
+      "metadata": { "description": "Used to Test the routing to the inside interface of the CSR" }
+    },
+    "subnet683VNIP": {
+      "type": "string",
+      "defaultValue": "10.128.127.164",
+      "metadata": { "description": "UDR: Used to Test the routing to the inside interface of the CSR" }
+    },
+    "subnet683NSG": {
+      "type": "string",
+      "defaultValue": "683_NSG_FW_ExtTest",
+      "metadata": { "description": "NSG: Used to Test the routing to the inside interface of the CSR" }
     },
     "subnet700Prefix": {
       "type": "string",
-      "defaultValue": "10.190.191.0/28",
+      "defaultValue": "10.128.127.0/28",
       "metadata": { "description": "Subnet for CSR for Inside interface" }
     },
     "subnet700Name": {
       "type": "string",
-      "defaultValue": "700_CSR_In_Srvcs_VDCMac_TX",
+      "defaultValue": "700_CSR_In_Srvcs_SLGa_W2",
       "metadata": { "description": "Subnet for CSR for Inside interface" }
     },
-    "subnet700VNAIP": {
+    "subnet700VNIP": {
       "type": "string",
-      "defaultValue": "10.190.191.4",
+      "defaultValue": "10.128.127.4",
       "metadata": { "description": "UDR: Subnet for CSR for Inside interface" }
     },
     "subnet700NSG": {
@@ -271,24 +706,19 @@
       "defaultValue": "700_NSG_CSR_In",
       "metadata": { "description": "NSG: Subnet for CSR for Inside interface" }
     },
-    "subnet700UDR": {
-      "type": "string",
-      "defaultValue": "700_UDR_CSR_In",
-      "metadata": { "description": "UDR: Subnet for CSR for Inside interface" }
-    },
     "subnet701Prefix": {
       "type": "string",
-      "defaultValue": "10.190.191.16/28",
+      "defaultValue": "10.128.127.16/28",
       "metadata": { "description": "Subnet for CSR for Outside" }
     },
     "subnet701Name": {
       "type": "string",
-      "defaultValue": "701_CSR_Out_Srvcs_VDCMac_TX",
+      "defaultValue": "701_CSR_Out_Srvcs_SLGa_W2",
       "metadata": { "description": "Subnet for CSR for Outside" }
     },
-    "subnet701VNAIP": {
+    "subnet701VNIP": {
       "type": "string",
-      "defaultValue": "10.190.191.20",
+      "defaultValue": "10.128.127.20",
       "metadata": { "description": "UDR: Subnet for CSR for Outside" }
     },
     "subnet701NSG": {
@@ -296,24 +726,19 @@
       "defaultValue": "701_NSG_CSR_Out",
       "metadata": { "description": "NSG: Subnet for CSR for Outside" }
     },
-    "subnet701UDR": {
-      "type": "string",
-      "defaultValue": "701_UDR_CSR_Out",
-      "metadata": { "description": "UDR: Subnet for CSR for Outside" }
-    },
     "subnet702Prefix": {
       "type": "string",
-      "defaultValue": "10.190.191.32/28",
+      "defaultValue": "10.128.127.32/28",
       "metadata": { "description": "Subnet for the CSR Tunnel" }
     },
     "subnet702Name": {
       "type": "string",
-      "defaultValue": "702_CSR_Tunnel_Srvcs_VDCMac_TX",
+      "defaultValue": "702_CSR_Tunnel_Srvcs_SLGa_W2",
       "metadata": { "description": "Subnet for the CSR Tunnel" }
     },
-    "subnet702VNAIP": {
+    "subnet702VNIP": {
       "type": "string",
-      "defaultValue": "10.190.191.36",
+      "defaultValue": "10.128.127.36",
       "metadata": { "description": "UDR: Subnet for the CSR Tunnel" }
     },
     "subnet702NSG": {
@@ -321,24 +746,19 @@
       "defaultValue": "702_NSG_CSR_Tunnel",
       "metadata": { "description": "NSG: Subnet for the CSR Tunnel" }
     },
-    "subnet702UDR": {
-      "type": "string",
-      "defaultValue": "702_UDR_CSR_Tunnel",
-      "metadata": { "description": "UDR: Subnet for the CSR Tunnel" }
-    },
     "subnet703Prefix": {
       "type": "string",
-      "defaultValue": "10.190.191.48/28",
+      "defaultValue": "10.128.127.48/28",
       "metadata": { "description": "Failover subnet" }
     },
     "subnet703Name": {
       "type": "string",
-      "defaultValue": "703_CSR_HA_Srvcs_VDCMac_TX",
+      "defaultValue": "703_CSR_HA_Srvcs_SLGa_W2",
       "metadata": { "description": "Failover subnet" }
     },
-    "subnet703VNAIP": {
+    "subnet703VNIP": {
       "type": "string",
-      "defaultValue": "10.190.191.52",
+      "defaultValue": "10.128.127.52",
       "metadata": { "description": "UDR: Failover subnet" }
     },
     "subnet703NSG": {
@@ -346,24 +766,19 @@
       "defaultValue": "703_NSG_CSR_HA",
       "metadata": { "description": "NSG: Failover subnet" }
     },
-    "subnet703UDR": {
-      "type": "string",
-      "defaultValue": "703_UDR_CSR_HA",
-      "metadata": { "description": "UDR: Failover subnet" }
-    },
     "subnet710Prefix": {
       "type": "string",
-      "defaultValue": "10.190.191.64/28",
+      "defaultValue": "10.128.127.64/28",
       "metadata": { "description": "ASA management interface" }
     },
     "subnet710Name": {
       "type": "string",
-      "defaultValue": "710_IntASA_Mgnt_Srvcs_VDCMac_TX",
+      "defaultValue": "710_IntASA_Mgnt_Srvcs_SLGa_W2",
       "metadata": { "description": "ASA management interface" }
     },
-    "subnet710VNAIP": {
+    "subnet710VNIP": {
       "type": "string",
-      "defaultValue": "10.190.191.68",
+      "defaultValue": "10.128.127.68",
       "metadata": { "description": "UDR: ASA management interface" }
     },
     "subnet710NSG": {
@@ -371,24 +786,19 @@
       "defaultValue": "710_NSG_IntASA_Mgnt",
       "metadata": { "description": "NSG: ASA management interface" }
     },
-    "subnet710UDR": {
-      "type": "string",
-      "defaultValue": "710_UDR_IntASA_Mgnt",
-      "metadata": { "description": "UDR: ASA management interface" }
-    },
     "subnet711Prefix": {
       "type": "string",
-      "defaultValue": "10.190.191.80/28",
+      "defaultValue": "10.128.127.80/28",
       "metadata": { "description": "ASA Inside Interface" }
     },
     "subnet711Name": {
       "type": "string",
-      "defaultValue": "711_IntASA_In_Srvcs_VDCMac_TX",
+      "defaultValue": "711_IntASA_In_Srvcs_SLGa_W2",
       "metadata": { "description": "ASA Inside Interface" }
     },
-    "subnet711VNAIP": {
+    "subnet711VNIP": {
       "type": "string",
-      "defaultValue": "10.190.191.84",
+      "defaultValue": "10.128.127.84",
       "metadata": { "description": "UDR: ASA Inside Interface" }
     },
     "subnet711NSG": {
@@ -396,24 +806,19 @@
       "defaultValue": "711_NSG_IntASA_In",
       "metadata": { "description": "NSG: ASA Inside Interface" }
     },
-    "subnet711UDR": {
-      "type": "string",
-      "defaultValue": "711_UDR_IntASA_In",
-      "metadata": { "description": "UDR: ASA Inside Interface" }
-    },
     "subnet712Prefix": {
       "type": "string",
-      "defaultValue": "10.190.191.96/28",
+      "defaultValue": "10.128.127.96/28",
       "metadata": { "description": "ASA Outside Interface" }
     },
     "subnet712Name": {
       "type": "string",
-      "defaultValue": "712_IntASA_Out_Srvcs_VDCMac_TX",
+      "defaultValue": "712_IntASA_Out_Srvcs_SLGa_W2",
       "metadata": { "description": "ASA Outside Interface" }
     },
-    "subnet712VNAIP": {
+    "subnet712VNIP": {
       "type": "string",
-      "defaultValue": "10.190.191.100",
+      "defaultValue": "10.128.127.100",
       "metadata": { "description": "UDR: ASA Outside Interface" }
     },
     "subnet712NSG": {
@@ -421,24 +826,19 @@
       "defaultValue": "712_NSG_IntASA_Out",
       "metadata": { "description": "NSG: ASA Outside Interface" }
     },
-    "subnet712UDR": {
-      "type": "string",
-      "defaultValue": "712_UDR_IntASA_Out",
-      "metadata": { "description": "UDR: ASA Outside Interface" }
-    },
     "subnet713Prefix": {
       "type": "string",
-      "defaultValue": "10.190.191.112/28",
+      "defaultValue": "10.128.127.112/28",
       "metadata": { "description": "ASA DMZ Interface" }
     },
     "subnet713Name": {
       "type": "string",
-      "defaultValue": "713_IntASA_DMZ_Srvcs_VDCMac_TX",
+      "defaultValue": "713_IntASA_DMZ_Srvcs_SLGa_W2",
       "metadata": { "description": "ASA DMZ Interface" }
     },
-    "subnet713VNAIP": {
+    "subnet713VNIP": {
       "type": "string",
-      "defaultValue": "10.190.191.116",
+      "defaultValue": "10.128.127.116",
       "metadata": { "description": "UDR: ASA DMZ Interface" }
     },
     "subnet713NSG": {
@@ -446,24 +846,19 @@
       "defaultValue": "713_NSG_IntASA_DMZ",
       "metadata": { "description": "NSG: ASA DMZ Interface" }
     },
-    "subnet713UDR": {
-      "type": "string",
-      "defaultValue": "713_UDR_IntASA_DMZ",
-      "metadata": { "description": "UDR: ASA DMZ Interface" }
-    },
     "subnet715Prefix": {
       "type": "string",
-      "defaultValue": "10.190.191.128/28",
+      "defaultValue": "10.128.127.128/28",
       "metadata": { "description": "Internal Loadbalancer virtual appliance" }
     },
     "subnet715Name": {
       "type": "string",
-      "defaultValue": "715_IntLB_Srvcs_VDCMac_TX",
+      "defaultValue": "715_IntLB_Srvcs_SLGa_W2",
       "metadata": { "description": "Internal Loadbalancer virtual appliance" }
     },
-    "subnet715VNAIP": {
+    "subnet715VNIP": {
       "type": "string",
-      "defaultValue": "10.190.191.132",
+      "defaultValue": "10.128.127.132",
       "metadata": { "description": "UDR: Internal Loadbalancer virtual appliance" }
     },
     "subnet715NSG": {
@@ -471,24 +866,19 @@
       "defaultValue": "715_NSG_IntLB",
       "metadata": { "description": "NSG: Internal Loadbalancer virtual appliance" }
     },
-    "subnet715UDR": {
-      "type": "string",
-      "defaultValue": "715_UDR_IntLB",
-      "metadata": { "description": "UDR: Internal Loadbalancer virtual appliance" }
-    },
     "subnet750Prefix": {
       "type": "string",
-      "defaultValue": "10.190.191.144/28",
+      "defaultValue": "10.128.127.144/28",
       "metadata": { "description": "ASA Management interface" }
     },
     "subnet750Name": {
       "type": "string",
-      "defaultValue": "750_ExtASA_Mgnt_Srvcs_VDCMac_TX",
+      "defaultValue": "750_ExtASA_Mgnt_Srvcs_SLGa_W2",
       "metadata": { "description": "ASA Management interface" }
     },
-    "subnet750VNAIP": {
+    "subnet750VNIP": {
       "type": "string",
-      "defaultValue": "10.190.191.148",
+      "defaultValue": "10.128.127.148",
       "metadata": { "description": "UDR: ASA Management interface" }
     },
     "subnet750NSG": {
@@ -496,24 +886,19 @@
       "defaultValue": "750_NSG_ExtASA_Mgnt",
       "metadata": { "description": "NSG: ASA Management interface" }
     },
-    "subnet750UDR": {
-      "type": "string",
-      "defaultValue": "750_UDR_ExtASA_Mgnt",
-      "metadata": { "description": "UDR: ASA Management interface" }
-    },
     "subnet751Prefix": {
       "type": "string",
-      "defaultValue": "10.190.191.160/28",
+      "defaultValue": "10.128.127.160/28",
       "metadata": { "description": "ASA Inside Interface" }
     },
     "subnet751Name": {
       "type": "string",
-      "defaultValue": "751_ExtASA_In_Srvcs_VDCMac_TX",
+      "defaultValue": "751_ExtASA_In_Srvcs_SLGa_W2",
       "metadata": { "description": "ASA Inside Interface" }
     },
-    "subnet751VNAIP": {
+    "subnet751VNIP": {
       "type": "string",
-      "defaultValue": "10.190.191.164",
+      "defaultValue": "10.128.127.164",
       "metadata": { "description": "UDR: ASA Inside Interface" }
     },
     "subnet751NSG": {
@@ -521,24 +906,19 @@
       "defaultValue": "751_NSG_ExtASA_In",
       "metadata": { "description": "NSG: ASA Inside Interface" }
     },
-    "subnet751UDR": {
-      "type": "string",
-      "defaultValue": "751_UDR_ExtASA_In",
-      "metadata": { "description": "UDR: ASA Inside Interface" }
-    },
     "subnet752Prefix": {
       "type": "string",
-      "defaultValue": "10.190.191.176/28",
+      "defaultValue": "10.128.127.176/28",
       "metadata": { "description": "ASA Outside Interface" }
     },
     "subnet752Name": {
       "type": "string",
-      "defaultValue": "752_ExtASA_Out_Srvcs_VDCMac_TX",
+      "defaultValue": "752_ExtASA_Out_Srvcs_SLGa_W2",
       "metadata": { "description": "ASA Outside Interface" }
     },
-    "subnet752VNAIP": {
+    "subnet752VNIP": {
       "type": "string",
-      "defaultValue": "10.190.191.180",
+      "defaultValue": "10.128.127.180",
       "metadata": { "description": "UDR: ASA Outside Interface" }
     },
     "subnet752NSG": {
@@ -546,24 +926,19 @@
       "defaultValue": "752_NSG_ExtASA_Out",
       "metadata": { "description": "NSG: ASA Outside Interface" }
     },
-    "subnet752UDR": {
-      "type": "string",
-      "defaultValue": "752_UDR_ExtASA_Out",
-      "metadata": { "description": "UDR: ASA Outside Interface" }
-    },
     "subnet753Prefix": {
       "type": "string",
-      "defaultValue": "10.190.191.192/28",
+      "defaultValue": "10.128.127.192/28",
       "metadata": { "description": "ASA DMZ Interface" }
     },
     "subnet753Name": {
       "type": "string",
-      "defaultValue": "753_ExtASA_DMZ_Srvcs_VDCMac_TX",
+      "defaultValue": "753_ExtASA_DMZ_Srvcs_SLGa_W2",
       "metadata": { "description": "ASA DMZ Interface" }
     },
-    "subnet753VNAIP": {
+    "subnet753VNIP": {
       "type": "string",
-      "defaultValue": "10.190.191.196",
+      "defaultValue": "10.128.127.196",
       "metadata": { "description": "UDR: ASA DMZ Interface" }
     },
     "subnet753NSG": {
@@ -571,24 +946,19 @@
       "defaultValue": "753_NSG_ExtASA_DMZ",
       "metadata": { "description": "NSG: ASA DMZ Interface" }
     },
-    "subnet753UDR": {
-      "type": "string",
-      "defaultValue": "753_UDR_ExtASA_DMZ",
-      "metadata": { "description": "UDR: ASA DMZ Interface" }
-    },
     "subnet755Prefix": {
       "type": "string",
-      "defaultValue": "10.190.191.208/28",
+      "defaultValue": "10.128.127.208/28",
       "metadata": { "description": "External Loadbalancer Virtual Network Appliance " }
     },
     "subnet755Name": {
       "type": "string",
-      "defaultValue": "755_ExtLB_Srvcs_VDCMac_TX",
+      "defaultValue": "755_ExtLB_Srvcs_SLGa_W2",
       "metadata": { "description": "External Loadbalancer Virtual Network Appliance " }
     },
-    "subnet755VNAIP": {
+    "subnet755VNIP": {
       "type": "string",
-      "defaultValue": "10.190.191.212",
+      "defaultValue": "10.128.127.212",
       "metadata": { "description": "UDR: External Loadbalancer Virtual Network Appliance " }
     },
     "subnet755NSG": {
@@ -596,51 +966,55 @@
       "defaultValue": "755_NSG_ExtLB",
       "metadata": { "description": "NSG: External Loadbalancer Virtual Network Appliance " }
     },
-    "subnet755UDR": {
+    "subnet798Prefix": {
       "type": "string",
-      "defaultValue": "755_UDR_ExtLB",
-      "metadata": { "description": "UDR: External Loadbalancer Virtual Network Appliance " }
+      "defaultValue": "10.128.127.224/28",
+      "metadata": { "description": "ExpressRoute Termination" }
+    },
+    "subnet798Name": {
+      "type": "string",
+      "defaultValue": "798_ER_Srvcs_SLGa_W2",
+      "metadata": { "description": "ExpressRoute Termination" }
+    },
+    "subnet798VNIP": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": { "description": "UDR: ExpressRoute Termination" }
+    },
+    "subnet798NSG": {
+      "type": "string",
+      "defaultValue": "798_NSG_ER",
+      "metadata": { "description": "NSG: ExpressRoute Termination" }
     },
     "subnet799Prefix": {
       "type": "string",
-      "defaultValue": "10.190.191.240/28",
-      "metadata": { "description": "Gateway Services to Local Networks" }
+      "defaultValue": "10.128.127.240/28",
+      "metadata": { "description": "The Azure gateway network " }
     },
     "subnet799Name": {
       "type": "string",
       "defaultValue": "GatewaySubnet",
-      "metadata": { "description": "Gateway Services to Local Networks" }
-    },
-
-    "subnet799UDR": {
-      "type": "string",
-      "defaultValue": "799_UDR_GW",
-      "metadata": { "description": "UDR: Gateway Services to Local Networks" }
+      "metadata": { "description": "The Azure gateway network " }
     }
-
 
 
   },
   "variables": {
     "apiVersion": "2015-06-15",
-    "templateBaseUrl": "https://raw.githubusercontent.com/willstg/azurefoundation/master/ARM/VNET",
-
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]",
     "subnet799Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet799Name'))]",
-
     "subnet700Ref": "[concat(variables('vnetID'),'/subnets/', parameters('Subnet700Name'))]",
     "subnet701Ref": "[concat(variables('vnetID'),'/subnets/', parameters('Subnet701Name'))]",
     "subnet702Ref": "[concat(variables('vnetID'),'/subnets/', parameters('Subnet702Name'))]",
     "subnet703Ref": "[concat(variables('vnetID'),'/subnets/', parameters('Subnet703Name'))]"
-
   },
   "resources": [
     {
+      "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet600NSG')]",
-      "apiVersion": "[variables('apiVersion')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "600_NSG_ServicesTX" },
+      "tags": { "displayName": "600_NSG_Services" },
       "properties": {
         "securityRules": [
           {
@@ -661,11 +1035,11 @@
       }
     },
     {
+      "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet605NSG')]",
-      "apiVersion": "[variables('apiVersion')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "605_NSG_LB_ServicesTX" },
+      "tags": { "displayName": "605_NSG_LB_Services" },
       "properties": {
         "securityRules": [
           {
@@ -686,11 +1060,11 @@
       }
     },
     {
+      "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet650NSG')]",
-      "apiVersion": "[variables('apiVersion')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "650_NSG_DMZTX" },
+      "tags": { "displayName": "650_NSG_DMZ" },
       "properties": {
         "securityRules": [
           {
@@ -711,11 +1085,11 @@
       }
     },
     {
+      "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet655NSG')]",
-      "apiVersion": "[variables('apiVersion')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "655_NSG_LB_DMZTX" },
+      "tags": { "displayName": "655_NSG_LB_DMZ" },
       "properties": {
         "securityRules": [
           {
@@ -736,38 +1110,27 @@
       }
     },
     {
-      "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('subnet655NSG')]",
-      "apiVersion": "[variables('apiVersion')]",
-      "location": "[resourceGroup().location]",
-      "tags": { "displayName": "655_NSG_LB_DMZTX" },
-      "properties": {
-        "securityRules": [
-          {
-            "name": "All_Internet.Inbound.Deny",
-            "properties": {
-              "description": "All_Internet.Inbound.Deny",
-              "protocol": "TCP",
-              "sourcePortRange": "*",
-              "destinationPortRange": "*",
-              "sourceAddressPrefix": "Internet",
-              "destinationAddressPrefix": "*",
-              "access": "Deny",
-              "priority": 150,
-              "direction": "Inbound"
-            }
-          }
-        ]
-      }
-    },
-    {
+      "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet660NSG')]",
-      "apiVersion": "[variables('apiVersion')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "660_NSG_User_Tier0TX" },
+      "tags": { "displayName": "660_NSG_User_Tier0" },
       "properties": {
         "securityRules": [
+          {
+            "name": "SSH.Inbound.Allow",
+            "properties": {
+              "description": "SSH.Inbound.Allow",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
           {
             "name": "RDP.Inbound.Allow",
             "properties": {
@@ -800,13 +1163,27 @@
       }
     },
     {
+      "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet661NSG')]",
-      "apiVersion": "[variables('apiVersion')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "661_NSG_User_Tier1TX" },
+      "tags": { "displayName": "661_NSG_User_Tier1" },
       "properties": {
         "securityRules": [
+          {
+            "name": "SSH.Inbound.Allow",
+            "properties": {
+              "description": "SSH.Inbound.Allow",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
           {
             "name": "RDP.Inbound.Allow",
             "properties": {
@@ -839,27 +1216,66 @@
       }
     },
     {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('subnet662NSG')]",
+      "location": "[resourceGroup().location]",
+      "tags": { "displayName": "662_NSG_User_Tier2" },
+      "properties": {
+        "securityRules": [
+          {
+            "name": "SSH.Inbound.Allow",
+            "properties": {
+              "description": "SSH.Inbound.Allow",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "RDP.Inbound.Allow",
+            "properties": {
+              "description": "RDP.Inbound.Allow",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "3389",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 105,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "All_Internet.Inbound.Deny",
+            "properties": {
+              "description": "All_Internet.Inbound.Deny",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "*",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Deny",
+              "priority": 150,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet680NSG')]",
-      "apiVersion": "[variables('apiVersion')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "680_NSG_CSR_InsideTestTX" },
+      "tags": { "displayName": "680_NSG_CSR_InsideTest" },
       "properties": {
         "securityRules": [
-          {
-            "name": "RDP.Inbound.Allow",
-            "properties": {
-              "description": "RDP.Inbound.Allow",
-              "protocol": "TCP",
-              "sourcePortRange": "*",
-              "destinationPortRange": "3389",
-              "sourceAddressPrefix": "Internet",
-              "destinationAddressPrefix": "*",
-              "access": "Allow",
-              "priority": 105,
-              "direction": "Inbound"
-            }
-          },
           {
             "name": "All_Internet.Inbound.Deny",
             "properties": {
@@ -878,27 +1294,13 @@
       }
     },
     {
+      "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet681NSG')]",
-      "apiVersion": "[variables('apiVersion')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "681_NSG_CSR_OutsideTestTX" },
+      "tags": { "displayName": "681_NSG_CSR_OutsideTest" },
       "properties": {
         "securityRules": [
-          {
-            "name": "RDP.Inbound.Allow",
-            "properties": {
-              "description": "RDP.Inbound.Allow",
-              "protocol": "TCP",
-              "sourcePortRange": "*",
-              "destinationPortRange": "3389",
-              "sourceAddressPrefix": "Internet",
-              "destinationAddressPrefix": "*",
-              "access": "Allow",
-              "priority": 105,
-              "direction": "Inbound"
-            }
-          },
           {
             "name": "All_Internet.Inbound.Deny",
             "properties": {
@@ -916,13 +1318,62 @@
         ]
       }
     },
-   
     {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('subnet682NSG')]",
+      "location": "[resourceGroup().location]",
+      "tags": { "displayName": "682_NSG_FW_IntTest" },
+      "properties": {
+        "securityRules": [
+          {
+            "name": "All_Internet.Inbound.Deny",
+            "properties": {
+              "description": "All_Internet.Inbound.Deny",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "*",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Deny",
+              "priority": 150,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('subnet683NSG')]",
+      "location": "[resourceGroup().location]",
+      "tags": { "displayName": "683_NSG_FW_ExtTest" },
+      "properties": {
+        "securityRules": [
+          {
+            "name": "All_Internet.Inbound.Deny",
+            "properties": {
+              "description": "All_Internet.Inbound.Deny",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "*",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Deny",
+              "priority": 150,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet700NSG')]",
-      "apiVersion": "[variables('apiVersion')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "700_NSG_CSR_InTX" },
+      "tags": { "displayName": "700_NSG_CSR_In" },
       "properties": {
         "securityRules": [
           {
@@ -985,11 +1436,11 @@
       }
     },
     {
+      "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet701NSG')]",
-      "apiVersion": "[variables('apiVersion')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "701_NSG_CSR_OutTX" },
+      "tags": { "displayName": "701_NSG_CSR_Out" },
       "properties": {
         "securityRules": [
           {
@@ -1010,11 +1461,11 @@
       }
     },
     {
+      "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet702NSG')]",
-      "apiVersion": "[variables('apiVersion')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "702_NSG_CSR_TunnelTX" },
+      "tags": { "displayName": "702_NSG_CSR_Tunnel" },
       "properties": {
         "securityRules": [
           {
@@ -1035,11 +1486,11 @@
       }
     },
     {
+      "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet703NSG')]",
-      "apiVersion": "[variables('apiVersion')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "703_NSG_CSR_HATX" },
+      "tags": { "displayName": "703_NSG_CSR_HA" },
       "properties": {
         "securityRules": [
           {
@@ -1060,11 +1511,11 @@
       }
     },
     {
+      "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet710NSG')]",
-      "apiVersion": "[variables('apiVersion')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "710_NSG_IntASA_MgntTX" },
+      "tags": { "displayName": "710_NSG_IntASA_Mgnt" },
       "properties": {
         "securityRules": [
           {
@@ -1127,11 +1578,11 @@
       }
     },
     {
+      "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet711NSG')]",
-      "apiVersion": "[variables('apiVersion')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "711_NSG_IntASA_InTX" },
+      "tags": { "displayName": "711_NSG_IntASA_In" },
       "properties": {
         "securityRules": [
           {
@@ -1152,11 +1603,11 @@
       }
     },
     {
+      "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet712NSG')]",
-      "apiVersion": "[variables('apiVersion')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "712_NSG_IntASA_OutTX" },
+      "tags": { "displayName": "712_NSG_IntASA_Out" },
       "properties": {
         "securityRules": [
           {
@@ -1177,11 +1628,11 @@
       }
     },
     {
+      "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet713NSG')]",
-      "apiVersion": "[variables('apiVersion')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "713_NSG_IntASA_DMZTX" },
+      "tags": { "displayName": "713_NSG_IntASA_DMZ" },
       "properties": {
         "securityRules": [
           {
@@ -1202,11 +1653,11 @@
       }
     },
     {
+      "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet715NSG')]",
-      "apiVersion": "[variables('apiVersion')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "715_NSG_IntLBTX" },
+      "tags": { "displayName": "715_NSG_IntLB" },
       "properties": {
         "securityRules": [
           {
@@ -1227,11 +1678,11 @@
       }
     },
     {
+      "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet750NSG')]",
-      "apiVersion": "[variables('apiVersion')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "750_NSG_ExtASA_MgntTX" },
+      "tags": { "displayName": "750_NSG_ExtASA_Mgnt" },
       "properties": {
         "securityRules": [
           {
@@ -1294,11 +1745,11 @@
       }
     },
     {
+      "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet751NSG')]",
-      "apiVersion": "[variables('apiVersion')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "751_NSG_ExtASA_InTX" },
+      "tags": { "displayName": "751_NSG_ExtASA_In" },
       "properties": {
         "securityRules": [
           {
@@ -1319,11 +1770,11 @@
       }
     },
     {
+      "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet752NSG')]",
-      "apiVersion": "[variables('apiVersion')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "752_NSG_ExtASA_OutTX" },
+      "tags": { "displayName": "752_NSG_ExtASA_Out" },
       "properties": {
         "securityRules": [
           {
@@ -1344,11 +1795,11 @@
       }
     },
     {
+      "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet753NSG')]",
-      "apiVersion": "[variables('apiVersion')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "753_NSG_ExtASA_DMZTX" },
+      "tags": { "displayName": "753_NSG_ExtASA_DMZ" },
       "properties": {
         "securityRules": [
           {
@@ -1369,11 +1820,11 @@
       }
     },
     {
+      "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet755NSG')]",
-      "apiVersion": "[variables('apiVersion')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "755_NSG_ExtLBTX" },
+      "tags": { "displayName": "755_NSG_ExtLB" },
       "properties": {
         "securityRules": [
           {
@@ -1394,673 +1845,6 @@
       }
     },
 
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/routeTables",
-      "name": "[parameters('subnet700UDR')]",
-      "location": "[resourceGroup().location]",
-      "tags": { "displayName": "[parameters('subnet700UDR')]" },
-      "properties": {
-        "routes": [
-          {
-            "name": "RouteFrom700To701_CSR_Out",
-            "properties": {
-              "addressPrefix": "10.190.255.16/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet700VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom700To713_IntASA_DMZ",
-            "properties": {
-              "addressPrefix": "10.190.248.0/21",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet700VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom700To753_ExtASA_DMZ",
-            "properties": {
-              "addressPrefix": "10.190.250.0/24",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet700VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom700To753_ExtASA_DMZ2",
-            "properties": {
-              "addressPrefix": "10.190.252.0/24",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet700VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom700To700_CSR_In",
-            "properties": {
-              "addressPrefix": "10.190.255.0/28",
-              "nextHopType": "VNetLocal"
-            }
-          },
-          {
-            "name": "RouteFrom700To701_CSR_Out1",
-            "properties": {
-              "addressPrefix": "204.67.210.0/23",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet700VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom700To701_CSR_Out2",
-            "properties": {
-              "addressPrefix": "204.67.15.0/26",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet700VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom700To701_CSR_Out3",
-            "properties": {
-              "addressPrefix": "204.67.120.0/24",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet700VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom700To701_CSR_Out4",
-            "properties": {
-              "addressPrefix": "168.44.244.0/23",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet700VNAIP')]"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/routeTables",
-      "name": "[parameters('subnet701UDR')]",
-      "location": "[resourceGroup().location]",
-      "tags": { "displayName": "[parameters('subnet701UDR')]" },
-      "properties": {
-        "routes": [
-          {
-            "name": "RouteFrom701To700_CSR_In",
-            "properties": {
-              "addressPrefix": "10.190.248.0/18",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet701VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom701To701_CSR_Out",
-            "properties": {
-              "addressPrefix": "10.190.255.16/28",
-              "nextHopType": "VNetLocal"
-            }
-          },
-          {
-            "name": "RouteFrom701To701_CSR_Out2",
-            "properties": {
-              "addressPrefix": "204.67.210.0/23",
-              "nextHopType": "VirtualNetworkGateway"
-            }
-          },
-          {
-            "name": "RouteFrom701To701_CSR_Out3",
-            "properties": {
-              "addressPrefix": "204.67.15.0/26",
-              "nextHopType": "VirtualNetworkGateway"
-            }
-          },
-          {
-            "name": "RouteFrom701To701_CSR_Out4",
-            "properties": {
-              "addressPrefix": "204.67.120.0/24",
-              "nextHopType": "VirtualNetworkGateway"
-            }
-          },
-          {
-            "name": "RouteFrom701To701_CSR_Out5",
-            "properties": {
-              "addressPrefix": "168.44.244.0/23",
-              "nextHopType": "VirtualNetworkGateway"
-            }
-          }
-        ]
-      }
-    },
-
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/routeTables",
-      "name": "[parameters('subnet702UDR')]",
-      "location": "[resourceGroup().location]",
-      "tags": { "displayName": "[parameters('subnet702UDR')]" },
-      "properties": {
-        "routes": [
-          {
-            "name": "RouteFrom702To703_CSR_HA",
-            "properties": {
-              "addressPrefix": "10.190.255.48/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet702VNAIP')]"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/routeTables",
-      "name": "[parameters('subnet703UDR')]",
-      "location": "[resourceGroup().location]",
-      "tags": { "displayName": "[parameters('subnet703UDR')]" },
-      "properties": {
-        "routes": [
-          {
-            "name": "RouteFrom703To702_CSR_Tunnel",
-            "properties": {
-              "addressPrefix": "10.190.255.32/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet703VNAIP')]"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/routeTables",
-      "name": "[parameters('subnet710UDR')]",
-      "location": "[resourceGroup().location]",
-      "tags": { "displayName": "[parameters('subnet710UDR')]" },
-      "properties": {
-        "routes": [
-          {
-            "name": "RouteFrom710To711_IntASA_In",
-            "properties": {
-              "addressPrefix": "10.190.255.80/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet710VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom710To712_IntASA_Out",
-            "properties": {
-              "addressPrefix": "10.190.255.96/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet710VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom710To713_IntASA_DMZ",
-            "properties": {
-              "addressPrefix": "10.190.255.112/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet710VNAIP')]"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/routeTables",
-      "name": "[parameters('subnet711UDR')]",
-      "location": "[resourceGroup().location]",
-      "tags": { "displayName": "[parameters('subnet711UDR')]" },
-      "properties": {
-        "routes": [
-          {
-            "name": "RouteFrom711To710_IntASA_Mgnt",
-            "properties": {
-              "addressPrefix": "10.190.255.64/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet711VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom711To712_IntASA_Out",
-            "properties": {
-              "addressPrefix": "10.190.255.96/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet711VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom711To713_IntASA_DMZ",
-            "properties": {
-              "addressPrefix": "10.190.255.112/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet711VNAIP')]"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/routeTables",
-      "name": "[parameters('subnet712UDR')]",
-      "location": "[resourceGroup().location]",
-      "tags": { "displayName": "[parameters('subnet712UDR')]" },
-      "properties": {
-        "routes": [
-          {
-            "name": "RouteFrom712To710_IntASA_Mgnt",
-            "properties": {
-              "addressPrefix": "10.190.255.64/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet712VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom712To711_IntASA_In",
-            "properties": {
-              "addressPrefix": "10.190.255.80/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet712VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom712To713_IntASA_DMZ",
-            "properties": {
-              "addressPrefix": "10.190.255.112/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet712VNAIP')]"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/routeTables",
-      "name": "[parameters('subnet713UDR')]",
-      "location": "[resourceGroup().location]",
-      "tags": { "displayName": "[parameters('subnet713UDR')]" },
-      "properties": {
-        "routes": [
-          {
-            "name": "RouteFrom713To710_IntASA_Mgnt",
-            "properties": {
-              "addressPrefix": "10.190.255.64/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet713VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom713To711_IntASA_In",
-            "properties": {
-              "addressPrefix": "10.190.255.80/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet713VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom713To712_IntASA_Out",
-            "properties": {
-              "addressPrefix": "10.190.255.96/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet713VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom713To753_ExtASA_DMZ",
-            "properties": {
-              "addressPrefix": "10.190.255.192/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet713VNAIP')]"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/routeTables",
-      "name": "[parameters('subnet715UDR')]",
-      "location": "[resourceGroup().location]",
-      "tags": { "displayName": "[parameters('subnet715UDR')]" },
-      "properties": {
-        "routes": [
-          {
-            "name": "RouteFrom715To711_IntASA_In",
-            "properties": {
-              "addressPrefix": "10.190.255.80/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet715VNAIP')]"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/routeTables",
-      "name": "[parameters('subnet750UDR')]",
-      "location": "[resourceGroup().location]",
-      "tags": { "displayName": "[parameters('subnet750UDR')]" },
-      "properties": {
-        "routes": [
-          {
-            "name": "RouteFrom750To751_ExtASA_In",
-            "properties": {
-              "addressPrefix": "10.190.255.160/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet750VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom750To752_ExtASA_Out",
-            "properties": {
-              "addressPrefix": "10.190.255.176/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet750VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom750To753_ExtASA_DMZ",
-            "properties": {
-              "addressPrefix": "10.190.255.192/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet750VNAIP')]"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/routeTables",
-      "name": "[parameters('subnet751UDR')]",
-      "location": "[resourceGroup().location]",
-      "tags": { "displayName": "[parameters('subnet751UDR')]" },
-      "properties": {
-        "routes": [
-          {
-            "name": "RouteFrom751To750_ExtASA_Mgnt",
-            "properties": {
-              "addressPrefix": "10.190.255.144/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet751VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom751To752_ExtASA_Out",
-            "properties": {
-              "addressPrefix": "10.190.255.176/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet751VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom751To753_ExtASA_DMZ",
-            "properties": {
-              "addressPrefix": "10.190.255.192/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet751VNAIP')]"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/routeTables",
-      "name": "[parameters('subnet752UDR')]",
-      "location": "[resourceGroup().location]",
-      "tags": { "displayName": "[parameters('subnet752UDR')]" },
-      "properties": {
-        "routes": [
-          {
-            "name": "RouteFrom752To750_ExtASA_Mgnt",
-            "properties": {
-              "addressPrefix": "10.190.255.144/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet752VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom752To751_ExtASA_In",
-            "properties": {
-              "addressPrefix": "10.190.255.160/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet752VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom752To753_ExtASA_DMZ",
-            "properties": {
-              "addressPrefix": "10.190.255.192/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet752VNAIP')]"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/routeTables",
-      "name": "[parameters('subnet753UDR')]",
-      "location": "[resourceGroup().location]",
-      "tags": { "displayName": "[parameters('subnet753UDR')]" },
-      "properties": {
-        "routes": [
-          {
-            "name": "RouteFrom753To750_ExtASA_Mgnt",
-            "properties": {
-              "addressPrefix": "10.190.255.144/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet753VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom753To751_ExtASA_In",
-            "properties": {
-              "addressPrefix": "10.190.255.160/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet753VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom753To752_ExtASA_Out",
-            "properties": {
-              "addressPrefix": "10.190.255.176/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet753VNAIP')]"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/routeTables",
-      "name": "[parameters('subnet755UDR')]",
-      "location": "[resourceGroup().location]",
-      "tags": { "displayName": "[parameters('subnet755UDR')]" },
-      "properties": {
-        "routes": [
-          {
-            "name": "RouteFrom755To751_ExtASA_In",
-            "properties": {
-              "addressPrefix": "10.190.255.160/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet755VNAIP')]"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/routeTables",
-      "name": "[parameters('subnet600UDR')]",
-      "location": "[resourceGroup().location]",
-      "tags": { "displayName": "[parameters('subnet600UDR')]" },
-      "properties": {
-        "routes": [
-          {
-            "name": "RouteFrom600To711_IntASA_In",
-            "properties": {
-              "addressPrefix": "10.190.255.80/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet600VNAIP')]"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/routeTables",
-      "name": "[parameters('subnet605UDR')]",
-      "location": "[resourceGroup().location]",
-      "tags": { "displayName": "[parameters('subnet605UDR')]" },
-      "properties": {
-        "routes": [
-          {
-            "name": "RouteFrom605To715_IntLB",
-            "properties": {
-              "addressPrefix": "10.190.255.128/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet605VNAIP')]"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/routeTables",
-      "name": "[parameters('subnet650UDR')]",
-      "location": "[resourceGroup().location]",
-      "tags": { "displayName": "[parameters('subnet650UDR')]" },
-      "properties": {
-        "routes": [
-          {
-            "name": "RouteFrom650To751_ExtASA_In",
-            "properties": {
-              "addressPrefix": "10.190.255.160/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet650VNAIP')]"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/routeTables",
-      "name": "[parameters('subnet660UDR')]",
-      "location": "[resourceGroup().location]",
-      "tags": { "displayName": "[parameters('subnet660UDR')]" },
-      "properties": {
-        "routes": [
-          {
-            "name": "RouteFrom660To711_IntASA_In",
-            "properties": {
-              "addressPrefix": "10.190.255.80/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet660VNAIP')]"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/routeTables",
-      "name": "[parameters('subnet661UDR')]",
-      "location": "[resourceGroup().location]",
-      "tags": { "displayName": "[parameters('subnet661UDR')]" },
-      "properties": {
-        "routes": [
-          {
-            "name": "RouteFrom661To711_IntASA_In",
-            "properties": {
-              "addressPrefix": "10.190.255.80/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet661VNAIP')]"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/routeTables",
-      "name": "[parameters('subnet655UDR')]",
-      "location": "[resourceGroup().location]",
-      "tags": { "displayName": "[parameters('subnet655UDR')]" },
-      "properties": {
-        "routes": [
-          {
-            "name": "RouteFrom655To755_ExtLB",
-            "properties": {
-              "addressPrefix": "10.190.255.208/28",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet655VNAIP')]"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/routeTables",
-      "name": "[parameters('subnet680UDR')]",
-      "location": "[resourceGroup().location]",
-      "tags": { "displayName": "[parameters('subnet680UDR')]" },
-      "properties": {
-        "routes": [
-          {
-            "name": "RouteFrom680To700_CSR_In",
-            "properties": {
-              "addressPrefix": "10.190.248.0/21",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet680VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom680To680_CSR_InsideTest",
-            "properties": {
-              "addressPrefix": "10.190.253.0/28",
-              "nextHopType": "VNetLocal"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/routeTables",
-      "name": "[parameters('subnet681UDR')]",
-      "location": "[resourceGroup().location]",
-      "tags": { "displayName": "[parameters('subnet681UDR')]" },
-      "properties": {
-        "routes": [
-          {
-            "name": "RouteFrom681To701_CSR_Out",
-            "properties": {
-              "addressPrefix": "10.190.248.0/21",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "[parameters('subnet681VNAIP')]"
-            }
-          },
-          {
-            "name": "RouteFrom681To681_CSR_OutsideTest",
-            "properties": {
-              "addressPrefix": "10.190.253.16/28",
-              "nextHopType": "VNetLocal"
-            }
-          }
-        ]
-      }
-    },
 
 
     {
@@ -2069,7 +1853,7 @@
       "name": "[parameters('vnetName')]",
       "location": "[resourceGroup().location]",
       "dependsOn": [],
-      "tags": { "displayName": "VDC VNet TX" },
+      "tags": { "displayName": "AzureFoundation VNet Definition" },
       "properties": {
         "addressSpace": { "addressPrefixes": [ "[parameters('vnetAddressPrefix')]" ] },
         "subnets": [
@@ -2077,190 +1861,285 @@
             "name": "[parameters('subnet600name')]",
             "properties": {
               "addressPrefix": "[parameters('subnet600prefix')]",
-              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet600NSG'))]" },
-              "routeTable": { "id": "[resourceID('Microsoft.Network/routeTables', parameters('subnet600UDR'))]" }
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet600NSG'))]" }
             }
           },
           {
             "name": "[parameters('subnet605name')]",
             "properties": {
               "addressPrefix": "[parameters('subnet605prefix')]",
-              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet605NSG'))]" },
-              "routeTable": { "id": "[resourceID('Microsoft.Network/routeTables', parameters('subnet605UDR'))]" }
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet605NSG'))]" }
             }
           },
           {
             "name": "[parameters('subnet650name')]",
             "properties": {
               "addressPrefix": "[parameters('subnet650prefix')]",
-              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet650NSG'))]" },
-              "routeTable": { "id": "[resourceID('Microsoft.Network/routeTables', parameters('subnet650UDR'))]" }
-            }
-          },
-          {
-            "name": "[parameters('subnet660name')]",
-            "properties": {
-              "addressPrefix": "[parameters('subnet660prefix')]",
-              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet660NSG'))]" },
-              "routeTable": { "id": "[resourceID('Microsoft.Network/routeTables', parameters('subnet660UDR'))]" }
-            }
-          },
-          {
-            "name": "[parameters('subnet661name')]",
-            "properties": {
-              "addressPrefix": "[parameters('subnet661prefix')]",
-              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet661NSG'))]" },
-              "routeTable": { "id": "[resourceID('Microsoft.Network/routeTables', parameters('subnet661UDR'))]" }
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet650NSG'))]" }
             }
           },
           {
             "name": "[parameters('subnet655name')]",
             "properties": {
               "addressPrefix": "[parameters('subnet655prefix')]",
-              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet655NSG'))]" },
-              "routeTable": { "id": "[resourceID('Microsoft.Network/routeTables', parameters('subnet655UDR'))]" }
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet655NSG'))]" }
+            }
+          },
+          {
+            "name": "[parameters('subnet660name')]",
+            "properties": {
+              "addressPrefix": "[parameters('subnet660prefix')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet660NSG'))]" }
+            }
+          },
+          {
+            "name": "[parameters('subnet661name')]",
+            "properties": {
+              "addressPrefix": "[parameters('subnet661prefix')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet661NSG'))]" }
+            }
+          },
+          {
+            "name": "[parameters('subnet662name')]",
+            "properties": {
+              "addressPrefix": "[parameters('subnet662prefix')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet662NSG'))]" }
             }
           },
           {
             "name": "[parameters('subnet680name')]",
             "properties": {
-              "addressPrefix": "[parameters('subnet680prefix')]"
+              "addressPrefix": "[parameters('subnet680prefix')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet680NSG'))]" }
             }
           },
           {
             "name": "[parameters('subnet681name')]",
             "properties": {
               "addressPrefix": "[parameters('subnet681prefix')]",
-              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet681NSG'))]" },
-              "routeTable": { "id": "[resourceID('Microsoft.Network/routeTables', parameters('subnet681UDR'))]" }
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet681NSG'))]" }
+            }
+          },
+          {
+            "name": "[parameters('subnet682name')]",
+            "properties": {
+              "addressPrefix": "[parameters('subnet682prefix')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet682NSG'))]" }
+            }
+          },
+          {
+            "name": "[parameters('subnet683name')]",
+            "properties": {
+              "addressPrefix": "[parameters('subnet683prefix')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet683NSG'))]" }
             }
           },
           {
             "name": "[parameters('subnet700name')]",
             "properties": {
               "addressPrefix": "[parameters('subnet700prefix')]",
-              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet700NSG'))]" },
-              "routeTable": { "id": "[resourceID('Microsoft.Network/routeTables', parameters('subnet700UDR'))]" }
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet700NSG'))]" }
             }
           },
           {
             "name": "[parameters('subnet701name')]",
             "properties": {
               "addressPrefix": "[parameters('subnet701prefix')]",
-              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet701NSG'))]" },
-              "routeTable": { "id": "[resourceID('Microsoft.Network/routeTables', parameters('subnet701UDR'))]" }
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet701NSG'))]" }
             }
           },
           {
             "name": "[parameters('subnet702name')]",
             "properties": {
               "addressPrefix": "[parameters('subnet702prefix')]",
-              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet702NSG'))]" },
-              "routeTable": { "id": "[resourceID('Microsoft.Network/routeTables', parameters('subnet702UDR'))]" }
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet702NSG'))]" }
             }
           },
           {
             "name": "[parameters('subnet703name')]",
             "properties": {
               "addressPrefix": "[parameters('subnet703prefix')]",
-              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet703NSG'))]" },
-              "routeTable": { "id": "[resourceID('Microsoft.Network/routeTables', parameters('subnet703UDR'))]" }
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet703NSG'))]" }
             }
           },
           {
             "name": "[parameters('subnet710name')]",
             "properties": {
               "addressPrefix": "[parameters('subnet710prefix')]",
-              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet710NSG'))]" },
-              "routeTable": { "id": "[resourceID('Microsoft.Network/routeTables', parameters('subnet710UDR'))]" }
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet710NSG'))]" }
             }
           },
           {
             "name": "[parameters('subnet711name')]",
             "properties": {
               "addressPrefix": "[parameters('subnet711prefix')]",
-              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet711NSG'))]" },
-              "routeTable": { "id": "[resourceID('Microsoft.Network/routeTables', parameters('subnet711UDR'))]" }
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet711NSG'))]" }
             }
           },
           {
             "name": "[parameters('subnet712name')]",
             "properties": {
               "addressPrefix": "[parameters('subnet712prefix')]",
-              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet712NSG'))]" },
-              "routeTable": { "id": "[resourceID('Microsoft.Network/routeTables', parameters('subnet712UDR'))]" }
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet712NSG'))]" }
             }
           },
           {
             "name": "[parameters('subnet713name')]",
             "properties": {
               "addressPrefix": "[parameters('subnet713prefix')]",
-              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet713NSG'))]" },
-              "routeTable": { "id": "[resourceID('Microsoft.Network/routeTables', parameters('subnet713UDR'))]" }
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet713NSG'))]" }
             }
           },
           {
             "name": "[parameters('subnet715name')]",
             "properties": {
               "addressPrefix": "[parameters('subnet715prefix')]",
-              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet715NSG'))]" },
-              "routeTable": { "id": "[resourceID('Microsoft.Network/routeTables', parameters('subnet715UDR'))]" }
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet715NSG'))]" }
             }
           },
           {
             "name": "[parameters('subnet750name')]",
             "properties": {
               "addressPrefix": "[parameters('subnet750prefix')]",
-              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet750NSG'))]" },
-              "routeTable": { "id": "[resourceID('Microsoft.Network/routeTables', parameters('subnet750UDR'))]" }
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet750NSG'))]" }
             }
           },
           {
             "name": "[parameters('subnet751name')]",
             "properties": {
               "addressPrefix": "[parameters('subnet751prefix')]",
-              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet751NSG'))]" },
-              "routeTable": { "id": "[resourceID('Microsoft.Network/routeTables', parameters('subnet751UDR'))]" }
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet751NSG'))]" }
             }
           },
           {
             "name": "[parameters('subnet752name')]",
             "properties": {
               "addressPrefix": "[parameters('subnet752prefix')]",
-              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet752NSG'))]" },
-              "routeTable": { "id": "[resourceID('Microsoft.Network/routeTables', parameters('subnet752UDR'))]" }
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet752NSG'))]" }
             }
           },
           {
             "name": "[parameters('subnet753name')]",
             "properties": {
               "addressPrefix": "[parameters('subnet753prefix')]",
-              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet753NSG'))]" },
-              "routeTable": { "id": "[resourceID('Microsoft.Network/routeTables', parameters('subnet753UDR'))]" }
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet753NSG'))]" }
             }
           },
           {
             "name": "[parameters('subnet755name')]",
             "properties": {
               "addressPrefix": "[parameters('subnet755prefix')]",
-              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet755NSG'))]" },
-              "routeTable": { "id": "[resourceID('Microsoft.Network/routeTables', parameters('subnet755UDR'))]" }
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet755NSG'))]" }
             }
           },
-
+          {
+            "name": "[parameters('subnet798name')]",
+            "properties": { "addressPrefix": "[parameters('subnet798prefix')]" }
+          },
           {
             "name": "[parameters('subnet799name')]",
-            "properties": {
-              "addressPrefix": "[parameters('subnet799prefix')]"
-            }
+            "properties": { "addressPrefix": "[parameters('subnet799prefix')]" }
           }
-
         ]
+      }
+    },
+
+
+
+    {
+      "apiVersion": "[variables('apiversion')]",
+      "type": "Microsoft.Network/publicIPAddresses",
+      "name": "[parameters('PublicIPName')]",
+      "location": "[resourceGroup().location]",
+      "properties": { "publicIPAllocationMethod": "Dynamic" }
+    },
+    {
+      "apiVersion": "[variables('apiversion')]",
+      "type": "Microsoft.Network/virtualNetworkGateways",
+      "name": "[parameters('GatewayName')]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [ "[concat('Microsoft.Network/publicIPAddresses/', parameters('PublicIPName'))]", "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]" ],
+      "properties": {
+        "ipConfigurations": [
+          {
+            "properties": {
+              "privateIPAllocationMethod": "Dynamic",
+              "subnet": { "id": "[variables('subnet799Ref')]" },
+              "publicIPAddress": { "id": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('PublicIPName'))]" }
+            },
+            "name": "[parameters('GatewayName')]"
+          }
+        ],
+        "gatewayType": "Vpn",
+        "vpnType": "[parameters('VPNType')]",
+        "enableBGP": "[parameters('BGP')]"
+      }
+    },
+    {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Network/expressRouteCircuits",
+      "name": "[parameters('erCircuitName')]",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "[concat(parameters('erSKUTier'),'_', parameters('erSKUFamily'))]",
+        "tier": "[parameters('erSKUTier')]",
+        "family": "[parameters('erSKUFamily')]"
+      },
+      "properties": {
+        "serviceProviderProperties": {
+          "serviceProviderName": "[parameters('erSPName')]",
+          "peeringLocation": "[parameters('erPeeringLocation')]",
+          "bandwidthInMbps": "[parameters('erBandwidth')]"
+        }
+      }
+    },
+
+
+    {
+      "apiVersion": "[variables('apiversion')]",
+      "type": "Microsoft.Network/localNetworkGateways",
+      "name": "[parameters('LocalNamecnct240')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "localNetworkAddressSpace": { "addressPrefixes": "[parameters('LocalIPPrefixcnct240')]" },
+        "gatewayIpAddress": "[parameters('localGWIPcnct240')]"
+      }
+    },
+    {
+      "apiVersion": "[variables('apiversion')]",
+      "name": "[parameters('ConnectionNamecnct240')]",
+      "type": "Microsoft.Network/connections",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [ "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('gatewayName'))]", "[concat('Microsoft.Network/localNetworkGateways/', parameters('LocalNamecnct240'))]" ],
+      "properties": {
+        "virtualNetworkGateway1": { "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('gatewayName'))]" },
+        "localNetworkGateway2": { "id": "[resourceId('Microsoft.Network/localNetworkGateways', parameters('LocalNamecnct240'))]" },
+        "sharedKey": "[parameters('sharedKeycnct240')]",
+        "connectionType": "[parameters('connectionType1cnct240')]",
+        "routingWeight": "[parameters('routingWeightcnct240')]"
+      }
+    },
+    {
+      "apiVersion": "[variables('apiversion')]",
+      "name": "[parameters('ConnectionNamecnct241')]",
+      "type": "Microsoft.Network/connections",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [ "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('gatewayName'))]" ],
+      "properties": {
+        "virtualNetworkGateway1": { "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('gatewayName'))]" },
+        "virtualNetworkGateway2": { "id": "[concat('/subscriptions/',parameters('rmtSubIDcnct241'),'/resourceGroups/',parameters('rmtRGNamecnct241'),'/providers/Microsoft.Network/VirtualNetworkGateways/', parameters('remoteGWNamecnct241'))]" },
+        "sharedKey": "[parameters('sharedKeycnct241')]",
+        "connectionType": "[parameters('connectionType1cnct241')]",
+        "routingWeight": "[parameters('routingWeightcnct241')]"
       }
     }
 
-  ],
-  "outputs": {
-  }
 
-}
+
+  ],
+
+
+
+        "outputs": {
+        }
+      }

@@ -22,6 +22,16 @@
       "type": "string",
       "defaultValue": "rg_vnet_services_w1"
     },
+    "SubID": {
+      "type": "string",
+      "metadata": { "description": "The Subscrition ID" }
+    },
+    "peerRGNamegw100": {
+      "type": "string",
+      "defaultValue": "rg_vnet_net1_dc1",
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+
     "vnetName": {
       "type": "string",
       "defaultValue": "vnet_services_w1",
@@ -32,7 +42,6 @@
       "defaultValue": "10.128.56.0/21",
       "metadata": { "description": "AzureFoundation VNET Address Prefix, the range of addresses for a specific data center." }
     },
-
     "GatewayName": {
       "type": "string",
       "defaultValue": "gw_Services_W1",
@@ -40,7 +49,7 @@
     },
     "VPNType": {
       "type": "string",
-      "defaultValue": "PolicyBased",
+      "defaultValue": "RouteBased",
       "allowedValues": [ "RouteBased", "PolicyBased" ],
       "metadata": { "description": "The type of VPN connection Route or Policy based." }
     },
@@ -57,7 +66,7 @@
     },
     "GatewayType": {
       "type": "string",
-      "defaultValue": "ExpressRoute",
+      "defaultValue": "Vpn",
       "metadata": { "description": "The type of gateway that is being created.  This can be either StaticRouting or DynamicRouting." }
     },
     "erCircuitName": {
@@ -88,6 +97,375 @@
     "erPeeringLocation": {
       "type": "string",
       "metadata": { "description": "The ExpressRoute Peering Location." }
+    },
+    "BGP": {
+      "type": "bool",
+      "metadata": { "description": "Will the gateway use BGP routing?" }
+    },
+    "ConnectionNamecnct140": {
+      "type": "string",
+      "defaultValue": "IPSec_SLGa_Services_To_Net1_DC1",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalNamecnct140": {
+      "type": "string",
+      "defaultValue": "Net1_DC1",
+      "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
+    },
+    "localGWIPcnct140": {
+      "type": "string",
+      "defaultValue": "1.1.1.1",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalIPPrefixcnct140": {
+      "type": "array",
+      "defaultValue": [ "10.0.0.0/16", "10.1.0.0/16", "10.2.0.0/16", "10.3.0.0/16" ],
+      "metadata": { "description": "An array of Local IP address prefixes that this gateway will route traffic to." }
+    },
+    "connectionType1cnct140": {
+      "type": "string",
+      "defaultValue": "IPSec",
+      "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
+    },
+    "sharedKeycnct140": {
+      "type": "string",
+      "defaultValue": "mysharedkey",
+      "metadata": { "description": "The shared key to negotiate the VPN connection.  KeyVault will hold this secret." }
+    },
+    "routingWeightcnct140": {
+      "type": "int",
+      "defaultValue": 10,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "ConnectionNamecnct141": {
+      "type": "string",
+      "defaultValue": "Vnet2Vnet_SLGa_Services_To_Services_W2",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalNamecnct141": {
+      "type": "string",
+      "defaultValue": "Services_W2",
+      "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
+    },
+    "remoteGWNamecnct141": {
+      "type": "string",
+      "defaultValue": "gw_Services_W2",
+      "metadata": { "description": "Name for the remote VNET for a VNET to VNET connection" }
+    },
+    "localGWIPcnct141": {
+      "type": "string",
+      "defaultValue": "1.1.1.1",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalIPPrefixcnct141": {
+      "type": "array",
+      "defaultValue": [ "10.128.120.0/21" ],
+      "metadata": { "description": "An array of Local IP address prefixes that this gateway will route traffic to." }
+    },
+    "connectionType1cnct141": {
+      "type": "string",
+      "defaultValue": "Vnet2Vnet",
+      "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
+    },
+    "sharedKeycnct141": {
+      "type": "string",
+      "defaultValue": "mysharedkey",
+      "metadata": { "description": "The shared key to negotiate the VPN connection.  KeyVault will hold this secret." }
+    },
+    "routingWeightcnct141": {
+      "type": "int",
+      "defaultValue": 10,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "rmtSubIDcnct141": {
+      "type": "string",
+      "defaultValue": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9",
+      "metadata": { "description": "The subscription ID of the peer VNET." }
+    },
+    "rmtRGNamecnct141": {
+      "type": "string",
+      "defaultValue": "rg_vnet_services_w2",
+      "metadata": { "description": "The resource group for the remote subscriptions VNET gateway." }
+    },
+    "ConnectionNamecnct142": {
+      "type": "string",
+      "defaultValue": "Peering_SLGa_Services_To_HBI_W1",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalNamecnct142": {
+      "type": "string",
+      "defaultValue": "HBI_W1",
+      "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
+    },
+    "localGWIPcnct142": {
+      "type": "string",
+      "defaultValue": "1.1.1.1",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalIPPrefixcnct142": {
+      "type": "array",
+      "defaultValue": [ "10.128.0.0/20" ],
+      "metadata": { "description": "An array of Local IP address prefixes that this gateway will route traffic to." }
+    },
+    "connectionType1cnct142": {
+      "type": "string",
+      "defaultValue": "Peering",
+      "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
+    },
+    "sharedKeycnct142": {
+      "type": "string",
+      "defaultValue": "mysharedkey",
+      "metadata": { "description": "The shared key to negotiate the VPN connection.  KeyVault will hold this secret." }
+    },
+    "routingWeightcnct142": {
+      "type": "int",
+      "defaultValue": 10,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowVNETAccesscnct142": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowFwdAccesscnct142": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowGWAccesscnct142": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "useRemoteGatewaycnct142": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "peerVNETNamecnct142": {
+      "type": "string",
+      "defaultValue": "vnet_hbi_w1",
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "rmtSubIDcnct142": {
+      "type": "string",
+      "defaultValue": "ce38c0ef-22f5-458d-b1f7-e3890e2471f2",
+      "metadata": { "description": "The subscription ID of the peer VNET." }
+    },
+    "rmtRGNamecnct142": {
+      "type": "string",
+      "defaultValue": "rg_vnet_hbi_w1",
+      "metadata": { "description": "The resource group for the remote subscription VNET." }
+    },
+    "ConnectionNamecnct143": {
+      "type": "string",
+      "defaultValue": "Peering_SLGa_Services_To_PreProd_W1",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalNamecnct143": {
+      "type": "string",
+      "defaultValue": "PreProd_W1",
+      "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
+    },
+    "localGWIPcnct143": {
+      "type": "string",
+      "defaultValue": "1.1.1.1",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalIPPrefixcnct143": {
+      "type": "array",
+      "defaultValue": [ "10.0.0.0/16", "10.1.0.0/16", "10.2.0.0/16", "10.3.0.0/16" ],
+      "metadata": { "description": "An array of Local IP address prefixes that this gateway will route traffic to." }
+    },
+    "connectionType1cnct143": {
+      "type": "string",
+      "defaultValue": "Peering",
+      "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
+    },
+    "sharedKeycnct143": {
+      "type": "string",
+      "defaultValue": "mysharedkey",
+      "metadata": { "description": "The shared key to negotiate the VPN connection.  KeyVault will hold this secret." }
+    },
+    "routingWeightcnct143": {
+      "type": "int",
+      "defaultValue": 50,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowVNETAccesscnct143": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowFwdAccesscnct143": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowGWAccesscnct143": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "useRemoteGatewaycnct143": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "peerVNETNamecnct143": {
+      "type": "string",
+      "defaultValue": "vnet_preprod_w1",
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "rmtSubIDcnct143": {
+      "type": "string",
+      "defaultValue": "a7d928df-fc97-4f02-adae-3d7cdeb7c8cb",
+      "metadata": { "description": "The subscription ID of the peer VNET." }
+    },
+    "rmtRGNamecnct143": {
+      "type": "string",
+      "defaultValue": "rg_vnet_preprod_w1",
+      "metadata": { "description": "The resource group for the remote subscription VNET." }
+    },
+    "ConnectionNamecnct144": {
+      "type": "string",
+      "defaultValue": "Peering_SLGa_Services_To_Prod_W1",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalNamecnct144": {
+      "type": "string",
+      "defaultValue": "Prod_W1",
+      "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
+    },
+    "localGWIPcnct144": {
+      "type": "string",
+      "defaultValue": "1.1.1.1",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalIPPrefixcnct144": {
+      "type": "array",
+      "defaultValue": [ "10.128.32.0/20" ],
+      "metadata": { "description": "An array of Local IP address prefixes that this gateway will route traffic to." }
+    },
+    "connectionType1cnct144": {
+      "type": "string",
+      "defaultValue": "Peering",
+      "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
+    },
+    "sharedKeycnct144": {
+      "type": "string",
+      "defaultValue": "mysharedkey",
+      "metadata": { "description": "The shared key to negotiate the VPN connection.  KeyVault will hold this secret." }
+    },
+    "routingWeightcnct144": {
+      "type": "int",
+      "defaultValue": 10,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowVNETAccesscnct144": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowFwdAccesscnct144": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowGWAccesscnct144": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "useRemoteGatewaycnct144": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "peerVNETNamecnct144": {
+      "type": "string",
+      "defaultValue": "vnet_prod_w1",
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "rmtSubIDcnct144": {
+      "type": "string",
+      "defaultValue": "ec1cea2e-92aa-45a7-89b0-d9fc40df2beb",
+      "metadata": { "description": "The subscription ID of the peer VNET." }
+    },
+    "rmtRGNamecnct144": {
+      "type": "string",
+      "defaultValue": "rg_vnet_prod_w1",
+      "metadata": { "description": "The resource group for the remote subscription VNET." }
+    },
+    "ConnectionNamecnct145": {
+      "type": "string",
+      "defaultValue": "Peering_SLGa_Services_To_Storage_W1",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalNamecnct145": {
+      "type": "string",
+      "defaultValue": "Storage_W1",
+      "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
+    },
+    "localGWIPcnct145": {
+      "type": "string",
+      "defaultValue": "1.1.1.1",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalIPPrefixcnct145": {
+      "type": "array",
+      "defaultValue": [ "10.128.48.0/21" ],
+      "metadata": { "description": "An array of Local IP address prefixes that this gateway will route traffic to." }
+    },
+    "connectionType1cnct145": {
+      "type": "string",
+      "defaultValue": "Peering",
+      "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
+    },
+    "sharedKeycnct145": {
+      "type": "string",
+      "defaultValue": "mysharedkey",
+      "metadata": { "description": "The shared key to negotiate the VPN connection.  KeyVault will hold this secret." }
+    },
+    "routingWeightcnct145": {
+      "type": "int",
+      "defaultValue": 10,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowVNETAccesscnct145": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowFwdAccesscnct145": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowGWAccesscnct145": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "useRemoteGatewaycnct145": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "peerVNETNamecnct145": {
+      "type": "string",
+      "defaultValue": "vnet_storage_w1",
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "rmtSubIDcnct145": {
+      "type": "string",
+      "defaultValue": "6e5d19d2-a324-470a-b24f-57ac0d3221a1",
+      "metadata": { "description": "The subscription ID of the peer VNET." }
+    },
+    "rmtRGNamecnct145": {
+      "type": "string",
+      "defaultValue": "rg_vnet_storage_w1",
+      "metadata": { "description": "The resource group for the remote subscription VNET." }
     },
 
 
@@ -753,7 +1131,6 @@
     "subnet701Ref": "[concat(variables('vnetID'),'/subnets/', parameters('Subnet701Name'))]",
     "subnet702Ref": "[concat(variables('vnetID'),'/subnets/', parameters('Subnet702Name'))]",
     "subnet703Ref": "[concat(variables('vnetID'),'/subnets/', parameters('Subnet703Name'))]"
-
   },
   "resources": [
     {
@@ -1677,6 +2054,7 @@
 
 
 
+
     {
       "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/publicIPAddresses",
@@ -1702,37 +2080,66 @@
             "name": "[parameters('GatewayName')]"
           }
         ],
-        "sku": {
-          "name": "[parameters('gatewaySku')]",
-          "tier": "[parameters('gatewaySku')]"
-        },
-        "gatewayType": "ExpressRoute"
+        "gatewayType": "Vpn",
+        "vpnType": "[parameters('VPNType')]",
+        "enableBGP": "[parameters('BGP')]"
       }
     },
 
+    {
+      "apiVersion": "[variables('apiversion')]",
+      "type": "Microsoft.Network/localNetworkGateways",
+      "name": "[parameters('LocalNamecnct140')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "localNetworkAddressSpace": { "addressPrefixes": "[parameters('LocalIPPrefixcnct140')]" },
+        "gatewayIpAddress": "[parameters('localGWIPcnct140')]"
+      }
+    },
 
     {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/expressRouteCircuits",
-      "name": "[parameters('erCircuitName')]",
+      "apiVersion": "[variables('apiversion')]",
+      "name": "[parameters('ConnectionNamecnct140')]",
+      "type": "Microsoft.Network/connections",
       "location": "[resourceGroup().location]",
-      "sku": {
-        "name": "[concat(parameters('erSKUTier'),'_', parameters('erSKUFamily'))]",
-        "tier": "[parameters('erSKUTier')]",
-        "family": "[parameters('erSKUFamily')]"
-      },
+      "dependsOn": [
+        "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('gatewayName'))]",
+        "[concat('Microsoft.Network/localNetworkGateways/', parameters('LocalNamecnct140'))]"
+      ],
       "properties": {
-        "serviceProviderProperties": {
-          "serviceProviderName": "[parameters('erSPName')]",
-          "peeringLocation": "[parameters('erPeeringLocation')]",
-          "bandwidthInMbps": "[parameters('erBandwidth')]"
-        }
+        "virtualNetworkGateway1": { "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('gatewayName'))]" },
+        "localNetworkGateway2": { "id": "[resourceId('Microsoft.Network/localNetworkGateways', parameters('LocalNamecnct140'))]" },
+        "sharedKey": "[parameters('sharedKeycnct140')]",
+        "connectionType": "[parameters('connectionType1cnct140')]",
+        "routingWeight": "[parameters('routingWeightcnct140')]"
+      }
+    },
+
+    {
+      "apiVersion": "[variables('apiversion')]",
+      "name": "[parameters('ConnectionNamecnct141')]",
+      "type": "Microsoft.Network/connections",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [ "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('gatewayName'))]" ],
+      "properties": {
+        "virtualNetworkGateway1": { "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('gatewayName'))]" },
+        "virtualNetworkGateway2": {
+          "id": "[concat('/subscriptions/',parameters('rmtSubIDcnct141'),'/resourceGroups/',parameters('rmtRGNamecnct141'),'/providers/Microsoft.Network/VirtualNetworkGateways/', parameters('remoteGWNamecnct141'))]"
+        },
+        "sharedKey": "[parameters('sharedKeycnct141')]",
+        "connectionType": "[parameters('connectionType1cnct141')]",
+        "routingWeight": "[parameters('routingWeightcnct141')]"
       }
     }
+
+
+
+
+
   ],
 
-    "outputs":
-    {
-    }
 
-      }
+
+  "outputs": {
+  }
+}

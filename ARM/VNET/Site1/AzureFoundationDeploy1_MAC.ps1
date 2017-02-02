@@ -69,15 +69,31 @@ $ErrorActionPreference = "Stop"
 
 # sign in
 Write-Host "Logging in...";
-#Login-AzureRmAccount -EnvironmentName $Environment;
+#$Environment = 'AzureUSGovernment'
+$Environment = 'AzureCloud'
+
+$UserName='willst@microsoft.onmicrosoft.com'
+$subID_CJIS=""
+$SubName_CJIS='mac_slg_Managed_CJIS'
+$subID_HBI="ce38c0ef-22f5-458d-b1f7-e3890e2471f2"
+$SubName_HBI= 'MAC_SLG_Managed_HBI'
+$subID_PreProd="a7d928df-fc97-4f02-adae-3d7cdeb7c8cb"
+$subName_PreProd='MAC_SLG_Managed_PreProd'
+$SubID_Prod="ec1cea2e-92aa-45a7-89b0-d9fc40df2beb"
+$SubName_Prod='MAC_SLG_Managed_Prod'
+$SubID_Services="730f26b5-ebf5-4518-999f-0b4eb0cdc8f9"
+$SubName_Services="MAC_SLG_Managed_Services"
+$SubID_Storage="6e5d19d2-a324-470a-b24f-57ac0d3221a1"
+$SubName_Storage="MAC_SLG_Managed_Storage"
+Login-AzureRmAccount -EnvironmentName $Environment;
 $resourceGroupLocation = 'West Central US'
 $location="westcentralus"
 
 # select subscription
 #Write-Host "Selecting subscription '$subscriptionId'";
 $subscriptionId=$SubID_Services
-Select-AzureRmSubscription -SubscriptionID $subscriptionId;
-$resourceGroupName="vnet_services_w1"
+Select-AzureRmSubscription -SubscriptionID $SubID_Services;
+$servicesResourceGroupName="rg_vnet_services_w1"
 # Register RPs
 $resourceProviders = @("microsoft.compute","microsoft.network");
 if($resourceProviders.length) {
@@ -88,25 +104,25 @@ if($resourceProviders.length) {
 }
 
 #Create or check for existing resource group
-$resourceGroup = Get-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue
-if(!$resourceGroup)
+$servicesResourceGroup = Get-AzureRmResourceGroup -Name $servicesResourceGroupName -ErrorAction SilentlyContinue
+if(!$servicesResourceGroup)
 {
-    Write-Host "Resource group '$resourceGroupName' does not exist. To create a new resource group, please enter a location.";
+    Write-Host "Resource group '$servicesResourceGroupName' does not exist. To create a new resource group, please enter a location.";
     if(!$Location) {
         $Location = Read-Host "resourceGroupLocation";
     }
-    Write-Host "Creating resource group '$resourceGroupName' in location '$Location'";
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $Location
+    Write-Host "Creating resource group '$servicesResourceGroupName' in location '$Location'";
+    New-AzureRmResourceGroup -Name $servicesResourceGroupName -Location $Location
 }
 else{
-    Write-Host "Using existing resource group '$resourceGroupName'";
+    Write-Host "Using existing resource group '$servicesResourceGroupName'";
 }
 <#
 This section is where we build the NSG for the VNET
 #>
-Site 1:  Texas MAC
-$localparametersFilePath="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site1\af_vnet_azuredeploy.parameters1_Services.json"
-$localtemplateFilePath="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site1\af_vnet_azuredeploy1_services.json"
+#Site 1:  Services VNET
+$servicesParametersFilePath="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site1\af_vnet_azuredeploy.parameters1_Services.json"
+$servicesTemplateFilePath="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site1\af_vnet_azuredeploy1_services.json"
 #Site 2:  Illiniois MAC
 
 #Site 3:  Virginia MAG
@@ -115,7 +131,37 @@ $localtemplateFilePath="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Sit
 
 
 # Start the deployment
-Test-AzureRmResourceGroupDeployment -ResourceGroupName $resourcegroupname -TemplateFile $localtemplateFilePath -TemplateParameterFile $localParametersFilePath;
+Test-AzureRmResourceGroupDeployment -ResourceGroupName $servicesResourceGroupName -Templatefile $servicesTemplateFilePath -TemplateParameterfile $servicesParametersFilePath;
+                                                                                                                                                                                                                                                                                                                                                                                                            Test-AzureRmResourceGroupDeployment -ResourceGroupName $servicesResourcegroupname -TemplateFile $servicesTemplateFilePath -TemplateParameterFile $servicesParametersFilePath;
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -Templatefile $localtemplateFilePath -TemplateParameterfile $localparametersFilePath;
+New-AzureRmResourceGroupDeployment -ResourceGroupName $servicesResourceGroupName -Templatefile $servicesTemplateFilePath -TemplateParameterfile $servicesParametersFilePath;
+
+<#
+#>
+
+Select-AzureRmSubscription -SubscriptionID $subID_Prod;
+$ProdResourceGroupName="rg_vnet_prod_w1"
+#Create or check for existing resource group
+$ProdResourceGroup = Get-AzureRmResourceGroup -Name $ProdResourceGroupName -ErrorAction SilentlyContinue
+if(!$ProdResourceGroup)
+{
+    Write-Host "Resource group '$ProdResourceGroupName' does not exist. To create a new resource group, please enter a location.";
+    if(!$Location) {
+        $Location = Read-Host "resourceGroupLocation";
+    }
+    Write-Host "Creating resource group '$ProdResourceGroupName' in location '$Location'";
+    New-AzureRmResourceGroup -Name $ProdResourceGroupName -Location $Location
+}
+else{
+    Write-Host "Using existing resource group '$ProdResourceGroupName'";
+}
+
+$prodParametersFilePath="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site1\af_vnet_azuredeploy.parameters1_Prod.json"
+$prodTemplateFilePath="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site1\af_vnet_azuredeploy1_Prod.json"
+
+
+# Start the deployment
+Test-AzureRmResourceGroupDeployment -ResourceGroupName $prodResourcegroupname -TemplateFile $prodTemplateFilePath -TemplateParameterFile $prodParametersFilePath;
+
+New-AzureRmResourceGroupDeployment -ResourceGroupName $prodResourceGroupName -Templatefile $prodTemplateFilePath -TemplateParameterfile $prodparametersFilePath;
 

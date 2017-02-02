@@ -5,23 +5,24 @@
 
     "baseURL": { "value": "https://github.com/willstg/AzureFoundation/tree/master/arm/vnet/site1" },
 
-    "location": { "value": "westcentralus" },
-
-    "resourceGroupName": { "value": "rgvnet_services_w1" },
+    "locationName": { "value": "westcentralus" },
+    "ResourceGroupName": { "value": "rg_vnet_services_w1" },
     "vnetName": { "value": "vnet_services_w1" },
     "vnetAddressPrefix": { "value": "10.128.56.0/21" },
 
-    "GatewayName": { "value": "gw_Services_W1" },
-    "VPNType": { "value": "PolicyBased" },
-    "PublicIPName": { "value": "gwpip_Services_W1" },
+    "GatewayName": { "value": "gw_Services_W2" },
+    "SubID": { "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9" },
+    "VPNType": { "value": "RouteBased" },
+    "PublicIPName": { "value": "gwpip_Services_W2" },
     "gatewaySKU": { "value": "Standard" },
-    "GatewayType": { "value": "ExpressRoute" },
+    "GatewayType": { "value": "Vpn" },
     "erCircuitName": { "value": "SLGa_Services_ER" },
     "erSKUTier": { "value": "Standard" },
     "erSKUFamily": { "value": "MeteredData" },
     "erBandwidth": { "value": 50 },
     "erSPName": { "value": "Equinix" },
     "erPeeringLocation": { "value": "Dallas" },
+    "BGP": { "value": "False" },
 
 
     "subnet600Prefix": { "value": "10.128.56.0/24" },
