@@ -9,6 +9,7 @@
     "ResourceGroupName": { "value": "rg_vnet_preprod_w1" },
     "vnetName": { "value": "vnet_preprod_w1" },
     "vnetAddressPrefix": { "value": "10.128.32.0/20" },
+    "dnsServers": { "value": [ "10.128.59.36" ] },
 
 
     "subnet310Prefix": { "value": "10.128.32.0/25" },

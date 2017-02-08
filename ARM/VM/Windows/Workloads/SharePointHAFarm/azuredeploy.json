@@ -166,13 +166,21 @@
         "description": "The DNS Prefix for the Public IP Address for the Sharepoint Web Application"
       }
     },
-    "virtualNetworkName": {
+    "sharepointVirtualNetworkName": {
       "type": "string",
       "defaultValue": "spfarmhaVNET",
       "metadata": {
-        "description": "Name of virtual network to be created"
+        "description": "Name of virtual network for SharePoint and SQL Server"
       }
     },
+  "activeDirectoryVirtualNetworkName": {
+      "type": "string",
+      "defaultValue": "adVNET",
+      "metadata": {
+        "description": "Name of the virtual network for Active Directory"
+      }
+    },
+
     "baseUrl": {
       "type": "string",
       "metadata": {
@@ -189,7 +197,21 @@
       },
       "defaultValue": "https://azurefoundation.blob.core.windows.net/assets"
     },
-    "CoreInfrastructureResourceGroupName": {
+    "ActiveDirectoryVnetResourceGroupName": {
+      "type" : "string",
+      "metadata" :{
+        "description": "The name of the resource group where a Domain Controller is provisioned."
+      },
+      "defaultValue": "AzureFoundationCommon"
+    },
+    "ActiveDirectoryVnetSubscriptionID": {
+      "type" : "string",
+      "metadata" :{
+        "description": "There subscription ID where a Domain Controller is provisioned."
+      },
+      "defaultValue": ""
+    },
+  "SharePointVnetResourceGroupName": {
       "type" : "string",
       "metadata" :{
         "description": "The name of the resource group where the VNET is provisioned."
@@ -309,11 +331,12 @@
     "sharePath": "[concat(variables('prefix'),'-fsw')]",
     "clusterName": "[concat(variables('prefix'),'-fc')]",
     "sqlwNicName": "[concat(variables('vmSettings').sqlwVMName,'-nic')]",
-    "VnetID": "[resourceId(parameters('CoreInfrastructureResourceGroupName'),'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]", 
+    "VnetID": "[resourceId(parameters('ActiveDirectoryVnetSubscriptionID'),parameters('ActiveDirectoryVnetResourceGroupName'),'Microsoft.Network/virtualNetworks', parameters('activeDirectoryVirtualNetworkName'))]", 
     "staticSubnetRef": "[concat(variables('VnetID'),'/subnets/',variables('subnetNames').staticSubnetName)]",
-    "sqlSubnetRef": "[concat(variables('VnetID'),'/subnets/',variables('subnetNames').sqlSubnetName)]",
-    "spWebSubnetRef": "[concat(variables('VnetID'),'/subnets/',variables('subnetNames').spWebSubnetName)]",
-    "spAppSubnetRef": "[concat(variables('VnetID'),'/subnets/',variables('subnetNames').spAppSubnetName)]",
+    "SharePointVnetID": "[resourceId(parameters('SharePointVnetResourceGroupName'),'Microsoft.Network/virtualNetworks', parameters('sharepointVirtualNetworkName'))]", 
+    "sqlSubnetRef": "[concat(variables('SharePointVnetID'),'/subnets/',variables('subnetNames').sqlSubnetName)]",
+    "spWebSubnetRef": "[concat(variables('SharePointVnetID'),'/subnets/',variables('subnetNames').spWebSubnetName)]",
+    "spAppSubnetRef": "[concat(variables('SharePointVnetID'),'/subnets/',variables('subnetNames').spAppSubnetName)]",
     "spWebResourceIdexisting": "[resourceId(parameters('spWebIPRGName'),concat('Microsoft.Network','/','publicIPAddresses'),parameters('spWebIPAddressName'))]",
     "spWebResourceIdnew": "[resourceId(concat('Microsoft.Network','/','publicIPAddresses'),parameters('spWebIPAddressName'))]",
     "sharepointCAfqdn": "[concat(variables('spCADNSPrefix'),'.',toLower(trim(replace(parameters('location'),' ' ,''))),'.cloudapp.azure.com')]",
@@ -550,7 +573,7 @@
             "value": "[parameters('sqlLBIPAddress')]"
           },
           "staticSubnetRef": {
-            "value": "[variables('staticSubnetRef')]"
+            "value": "[variables('spAppSubnetRef')]"
           },
           "sqlLBBE": {
             "value": "[variables('lbSettings').sqlLBBE]"

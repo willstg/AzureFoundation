@@ -28,6 +28,11 @@
       "defaultValue": "10.128.16.0/20",
       "metadata": { "description": "AzureFoundation VNET Address Prefix, the range of addresses for a specific data center." }
     },
+    "dnsServers": {
+      "type": "array",
+      "defaultValue": [ "10.128.59.36" ],
+      "metadata": { "description": "AzureFoundation Domain Controller DNS server" }
+    },
 
 
     "subnet210Prefix": {
@@ -195,36 +200,7 @@
       "defaultValue": "261_NSG_User_Tier1",
       "metadata": { "description": "NSG: Tier 1 administrator - manage enterprise servers, services, and applications" }
     },
-    "subnet270Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.28.0/23",
-      "metadata": { "description": "Future Consideration" }
-    },
-    "subnet270Name": {
-      "type": "string",
-      "defaultValue": "270_Future_HBI_SLGa_W1",
-      "metadata": { "description": "Future Consideration" }
-    },
-    "subnet270NSG": {
-      "type": "string",
-      "defaultValue": "270_NSG_Future",
-      "metadata": { "description": "NSG: Future Consideration" }
-    },
-    "subnet270Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.30.0/24",
-      "metadata": { "description": "Future Consideration" }
-    },
-    "subnet270Name": {
-      "type": "string",
-      "defaultValue": "270_Future_HBI_SLGa_W1",
-      "metadata": { "description": "Future Consideration" }
-    },
-    "subnet270NSG": {
-      "type": "string",
-      "defaultValue": "270_NSG_Future",
-      "metadata": { "description": "NSG: Future Consideration" }
-    },
+
     "subnet299Prefix": {
       "type": "string",
       "defaultValue": "10.128.31.240/28",
@@ -430,6 +406,16 @@
       "type": "string",
       "defaultValue": "rg_vnet_hbi_w2",
       "metadata": { "description": "The resource group for the remote subscriptions VNET gateway." }
+    },
+    "rmtConnectionNamecnct110": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": { "description": "The name of the remote connection." }
+    },
+    "rmtConnectionNamecnct111": {
+      "type": "string",
+      "defaultValue": "Vnet2Vnet_SLGa_HBI_To_HBI_W1",
+      "metadata": { "description": "The name of the remote connection." }
     }
 
 
@@ -854,7 +840,9 @@
             }
           }
 
-        ]
+        ],
+        "dhcpOptions": { "dnsServers": [ "10.128.59.36" ] }
+
       }
     },
 
@@ -903,20 +891,6 @@
           "peeringLocation": "[parameters('erPeeringLocation')]",
           "bandwidthInMbps": "[parameters('erBandwidth')]"
         }
-      }
-    },
-    {
-      "apiVersion": "[variables('apiversion')]",
-      "name": "[parameters('ConnectionNamecnct111')]",
-      "type": "Microsoft.Network/connections",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [ "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('gatewayName'))]" ],
-      "properties": {
-        "virtualNetworkGateway1": { "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('gatewayName'))]" },
-        "virtualNetworkGateway2": { "id": "[concat('/subscriptions/',parameters('rmtSubIDcnct111'),'/resourceGroups/',parameters('rmtRGNamecnct111'),'/providers/Microsoft.Network/VirtualNetworkGateways/', parameters('remoteGWNamecnct111'))]" },
-        "sharedKey": "[parameters('sharedKeycnct111')]",
-        "connectionType": "[parameters('connectionType1cnct111')]",
-        "routingWeight": "[parameters('routingWeightcnct111')]"
       }
     }
 

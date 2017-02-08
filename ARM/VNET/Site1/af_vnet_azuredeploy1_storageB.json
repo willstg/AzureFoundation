@@ -30,6 +30,11 @@
       "defaultValue": "10.128.48.0/21",
       "metadata": { "description": "AzureFoundation VNET Address Prefix, the range of addresses for a specific data center." }
     },
+    "dnsServers": {
+      "type": "array",
+      "defaultValue": [ "10.128.59.36" ],
+      "metadata": { "description": "AzureFoundation Domain Controller DNS server" }
+    },
 
 
     "subnet500Prefix": {
@@ -530,7 +535,9 @@
           }
 
 
-        ]
+        ],
+        "dhcpOptions": { "dnsServers": [ "10.128.59.36" ] }
+
       }
     },
 
@@ -582,23 +589,8 @@
           "bandwidthInMbps": "[parameters('erBandwidth')]"
         }
       }
-    },
-    {
-      "apiVersion": "[variables('apiversion')]",
-      "name": "[parameters('ConnectionNamecnct131')]",
-      "type": "Microsoft.Network/connections",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [ "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('gatewayName'))]" ],
-      "properties": {
-        "virtualNetworkGateway1": { "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('gatewayName'))]" },
-        "virtualNetworkGateway2": { "id": "[concat('/subscriptions/',parameters('rmtSubIDcnct131'),'/resourceGroups/',parameters('rmtRGNamecnct131'),'/providers/Microsoft.Network/VirtualNetworkGateways/', parameters('remoteGWNamecnct131'))]" },
-        "sharedKey": "[parameters('sharedKeycnct131')]",
-        "connectionType": "[parameters('connectionType1cnct131')]",
-        "routingWeight": "[parameters('routingWeightcnct131')]"
-      }
     }
-
-
+ 
 
   ],
 

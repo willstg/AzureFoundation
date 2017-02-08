@@ -1,0 +1,89 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "westcentralus"
+    },
+    "virtualMachineName": {
+      "value": "w1padds1a"
+    },
+    "virtualMachineSize": {
+      "value": "Standard_D2_v2"
+    },
+    "domainUsername": {
+      "value": "adm.willst"
+    },
+    "storageAccountName": {
+      "value": "w1slgaservicesossa"
+    },
+    "virtualNetworkName": {
+      "value": "vnet_services_w1"
+    },
+    "networkInterfaceName": {
+      "value": "w1padds1a784"
+    },
+    "dnsLabelPrefix": {
+      "type": "string",
+      "value": "w1padds1a",
+      "metadata": {
+        "description": "Unique public DNS prefix for the deployment. The fqdn will look something like '<dnsname>.westus.cloudapp.azure.com'. Up to 62 chars, digits or dashes, lowercase, should start with a letter: must conform to '^[a-z][a-z0-9-]{1,61}[a-z0-9]$'."
+      }
+    },
+    "domainPassword": {
+      "value": "Catapult123!"
+    },
+    "domainToJoin": {
+      "type": "string",
+      "value": "AzureFoundation.contoso.com",
+      "metadata": {
+        "description": "The FQDN of the AD domain"
+      }
+    },
+    "domainJoinOptions": {
+      "type": "int",
+      "Value": 3,
+      "metadata": {
+        "description": "Set of bit flags that define the join options. Default value of 3 is a combination of NETSETUP_JOIN_DOMAIN (0x00000001) & NETSETUP_ACCT_CREATE (0x00000002) i.e. will join the domain and create the account on the domain. For more information see https://msdn.microsoft.com/en-us/library/aa392154(v=vs.85).aspx"
+      }
+    },
+    "ouPath": {
+      "type": "string",
+      "Value": "OU=Workloads,DC=AzureFoundation,DC=contoso,DC=com",
+      "metadata": {
+        "description": "Specifies an organizational unit (OU) for the domain account. Enter the full distinguished name of the OU in quotation marks. Example: 'OU=Servers,DC=domainname,DC=com"
+      }
+    },
+    "availabilitySetName": {
+      "value": "w1padds_as"
+    },
+    "availabilitySetPlatformFaultDomainCount": {
+      "value": "3"
+    },
+    "availabilitySetPlatformUpdateDomainCount": {
+      "value": "5"
+    },
+    "storageAccountType": {
+      "value": "Standard_LRS"
+    },
+    "diagnosticsStorageAccountName": {
+      "value": "stor132"
+    },
+    "diagnosticsStorageAccountType": {
+      "value": "Standard_LRS"
+    },
+    "diagnosticsStorageAccountId": {
+      "value": "Microsoft.Storage/storageAccounts/stor132"
+    },
+    "subnetName": {
+      "value": "/subscriptions/730f26b5-ebf5-4518-999f-0b4eb0cdc8f9/resourceGroups/vnet_services_w1/providers/Microsoft.Network/virtualNetworks/vnet_services_w1/subnets/600_Services_Srvcs_SLGa_W1",
+      "type": "String"
+    },
+    "publicIpAddressName": {
+      "value": "w1padds1a-pub-ip"
+    },
+    "publicIpAddressType": {
+      "value": "Dynamic"
+    }
+  }
+}

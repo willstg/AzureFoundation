@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "baseUrl": {
-      "defaultValue": "https://github.com/willstg/AzureFoundation/tree/master/arm/vnet/site1",
+      "defaultValue": "https://github.com/willstg/AzureFoundation/tree/master/arm/vnet/",
       "type": "string",
       "metadata": {
         "artifactsBaseUrl": "",
@@ -11,7 +11,17 @@
       }
     },
 
+    "templateLink": {
+      "type": "string",
+      "defaultValue": "site1/af_vnet_azuredeploy1_servicesB..json",
+      "metadata": { "description": "The parameter file for the second site's GW." }
+    },
 
+    "parametersLink": {
+      "type": "string",
+      "defaultValue": "site2/af_vnet_azuredeploy1_servicesB.parameters.json",
+      "metadata": { "description": "The parameter file for the second site's GW." }
+    },
     "locationName": {
       "type": "string",
       "defaultValue": "westcentralus"
@@ -30,6 +40,13 @@
       "defaultValue": "10.128.56.0/21",
       "metadata": { "description": "AzureFoundation VNET Address Prefix, the range of addresses for a specific data center." }
     },
+    "dnsServers": {
+      "type": "array",
+      "defaultValue": [ "10.128.59.36" ],
+      "metadata": { "description": "AzureFoundation Domain Controller DNS server" }
+    },
+
+
 
 
     "subnet600Prefix": {
@@ -891,6 +908,31 @@
       "type": "string",
       "defaultValue": "rg_vnet_storage_w1",
       "metadata": { "description": "The resource group for the remote subscription VNET." }
+    },
+    "rmtConnectionNamecnct141": {
+      "type": "string",
+      "defaultValue": "Vnet2Vnet_SLGa_Services_To_Services_W1",
+      "metadata": { "description": "The name of the remote connection." }
+    },
+    "rmtConnectionNamecnct142": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": { "description": "The name of the remote connection." }
+    },
+    "rmtConnectionNamecnct143": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": { "description": "The name of the remote connection." }
+    },
+    "rmtConnectionNamecnct144": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": { "description": "The name of the remote connection." }
+    },
+    "rmtConnectionNamecnct145": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": { "description": "The name of the remote connection." }
     }
 
 
@@ -903,7 +945,9 @@
     "subnet700Ref": "[concat(variables('vnetID'),'/subnets/', parameters('Subnet700Name'))]",
     "subnet701Ref": "[concat(variables('vnetID'),'/subnets/', parameters('Subnet701Name'))]",
     "subnet702Ref": "[concat(variables('vnetID'),'/subnets/', parameters('Subnet702Name'))]",
-    "subnet703Ref": "[concat(variables('vnetID'),'/subnets/', parameters('Subnet703Name'))]"
+    "subnet703Ref": "[concat(variables('vnetID'),'/subnets/', parameters('Subnet703Name'))]",
+    "gatewayID": "[concat('subscriptions/',parameters('subID'),'/resourceGroups/', parameters('resourceGroupName'),'/providers/Microsoft.Network/virtualNetworkGateways/',parameters('gatewayName'))]"
+
   },
   "resources": [
 
@@ -1750,7 +1794,7 @@
       "type": "Microsoft.Network/virtualNetworks",
       "name": "[parameters('vnetName')]",
       "location": "[resourceGroup().location]",
-   
+
       "tags": { "displayName": "AzureFoundation VNet Definition" },
       "properties": {
         "addressSpace": { "addressPrefixes": [ "[parameters('vnetAddressPrefix')]" ] },
@@ -1939,6 +1983,7 @@
             "properties": { "addressPrefix": "[parameters('subnet799prefix')]" }
           }
         ],
+
         "resources": [
           {
             "apiVersion": "2016-06-01",
@@ -2001,6 +2046,10 @@
             }
           }
         ],
+
+        "dhcpOptions": { "dnsServers": [ "10.128.59.36" ] },
+
+
         "dependsOn": [
           "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet600NSG'))]",
           "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet625NSG'))]",
@@ -2042,8 +2091,10 @@
       "type": "Microsoft.Network/virtualNetworkGateways",
       "name": "[parameters('GatewayName')]",
       "location": "[resourceGroup().location]",
-      "dependsOn": [ "[concat('Microsoft.Network/publicIPAddresses/', parameters('PublicIPName'))]", 
-                     "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]" ],
+      "dependsOn": [
+        "[concat('Microsoft.Network/publicIPAddresses/', parameters('PublicIPName'))]",
+        "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]"
+      ],
       "properties": {
         "ipConfigurations": [
           {
@@ -2093,8 +2144,9 @@
       "name": "[parameters('ConnectionNamecnct140')]",
       "type": "Microsoft.Network/connections",
       "location": "[resourceGroup().location]",
-      "dependsOn": [ "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('gatewayName'))]", 
-                     "[concat('Microsoft.Network/localNetworkGateways/', parameters('LocalNamecnct140'))]" ],
+      "dependsOn": [
+        "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('gatewayName'))]"
+      ],
       "properties": {
         "virtualNetworkGateway1": { "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('gatewayName'))]" },
         "localNetworkGateway2": { "id": "[resourceId('Microsoft.Network/localNetworkGateways', parameters('LocalNamecnct140'))]" },
@@ -2103,27 +2155,11 @@
         "routingWeight": "[parameters('routingWeightcnct140')]"
       }
     },
-    {
-      "apiVersion": "[variables('apiversion')]",
-      "name": "[parameters('ConnectionNamecnct141')]",
-      "type": "Microsoft.Network/connections",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('gatewayName'))]",
-        "[resourceId(parameters('SubID'),parameters('rmtRGNamecnct141'),'Microsoft.Network/virtualNetworks', parameters('remoteGWNamecnct141'))]"
-      ],
-      "properties": {
-        "virtualNetworkGateway1": { "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('gatewayName'))]" },
-        "virtualNetworkGateway2": { "id": "[concat('/subscriptions/',parameters('rmtSubIDcnct141'),'/resourceGroups/',parameters('rmtRGNamecnct141'),'/providers/Microsoft.Network/VirtualNetworkGateways/', parameters('remoteGWNamecnct141'))]" },
-        "sharedKey": "[parameters('sharedKeycnct141')]",
-        "connectionType": "[parameters('connectionType1cnct141')]",
-        "routingWeight": "[parameters('routingWeightcnct141')]"
+
+
+  ],
+
+      "outputs": {
       }
+
     }
-
-      ],
-
-  "outputs": {
-  }
-
-}

@@ -10,6 +10,11 @@
         "description": "URL to acquire other templates"
       }
     },
+    "dnsServers": {
+      "type": "array",
+      "defaultValue": [ "10.128.59.36" ],
+      "metadata": { "description": "AzureFoundation Domain Controller DNS server" }
+    },
 
 
     "locationName": {
@@ -402,6 +407,21 @@
       "type": "string",
       "defaultValue": "rg_vnet_prod_w2",
       "metadata": { "description": "The resource group for the remote subscriptions VNET gateway." }
+    },
+    "rmtConnectionNamecnct101": {
+      "type": "string",
+      "defaultValue": "Vnet2Vnet_SLGa_Prod_To_Prod_W1",
+      "metadata": { "description": "The name of the remote connection." }
+    },
+    "rmtLocationcnct100": {
+      "type": "string",
+      "defaultValue": "westus2",
+      "metadata": { "description": "The name of the remote location." }
+    },
+    "rmtLocationcnct101": {
+      "type": "string",
+      "defaultValue": "westcentralus",
+      "metadata": { "description": "The name of the remote location." }
     }
 
 
@@ -886,7 +906,9 @@
               "remoteVirtualNetwork": { "id": "[concat('/subscriptions/', parameters('rmtSubIDcnct100'), '/resourceGroups/', parameters('rmtRGNamecnct100'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct100'))]" }
             }
           }
-        ]
+        ],
+        "dhcpOptions": { "dnsServers": [ "10.128.59.36" ] }
+
       }
 
     },
@@ -937,27 +959,13 @@
           "bandwidthInMbps": "[parameters('erBandwidth')]"
         }
       }
-    },
-
-    {
-      "apiVersion": "[variables('apiversion')]",
-      "name": "[parameters('ConnectionNamecnct101')]",
-      "type": "Microsoft.Network/connections",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [ "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('gatewayName'))]" ],
-      "properties": {
-        "virtualNetworkGateway1": { "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('gatewayName'))]" },
-        "virtualNetworkGateway2": { "id": "[concat('/subscriptions/',parameters('rmtSubIDcnct101'),'/resourceGroups/',parameters('rmtRGNamecnct101'),'/providers/Microsoft.Network/VirtualNetworkGateways/', parameters('remoteGWNamecnct101'))]" },
-        "sharedKey": "[parameters('sharedKeycnct101')]",
-        "connectionType": "[parameters('connectionType1cnct101')]",
-        "routingWeight": "[parameters('routingWeightcnct101')]"
-      }
     }
 
+ 
   ],
 
-  "outputs": {
-  }
+          "outputs": {
+          }
 
 
-}
+        }

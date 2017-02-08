@@ -9,6 +9,7 @@
     "ResourceGroupName": { "value": "rg_vnet_preprod_w2" },
     "vnetName": { "value": "vnet_preprod_w2" },
     "vnetAddressPrefix": { "value": "10.128.96.0/20" },
+    "dnsServers": { "value": [ "10.128.59.36" ] },
 
     "subnet310Prefix": { "value": "10.128.96.0/25" },
     "subnet310Name": { "value": "310_Web_Test_SLGa_W2" },

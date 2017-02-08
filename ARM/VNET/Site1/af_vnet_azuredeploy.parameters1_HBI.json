@@ -6,9 +6,12 @@
     "baseURL": { "value": "https://github.com/willstg/AzureFoundation/tree/master/arm/vnet/site1" },
 
     "locationName": { "value": "westcentralus" },
-    "ResourceGroupName": { "value": "rg_vnet_services_w1" },
-    "vnetName": { "value": "vnet_services_w1" },
-    "vnetAddressPrefix": { "value": "10.128.56.0/21" },
+    "ResourceGroupName": { "value": "rg_vnet_hbi_w1" },
+    "vnetName": { "value": "vnet_hbi_w1" },
+    "vnetAddressPrefix": { "value": "10.128.16.0/20" },
+    "dnsServers": { "value": [ "10.128.59.36" ] },
+
+
     "subnet210Prefix": { "value": "10.128.16.0/24" },
     "subnet210Name": { "value": "210_Web_HBI_SLGa_W1" },
     "subnet210NSG": { "value": "210_NSG_Web" },
@@ -42,8 +45,15 @@
     "subnet261Prefix": { "value": "10.128.26.128/25" },
     "subnet261Name": { "value": "261_User_Tier1_HBI_SLGa_W1" },
     "subnet261NSG": { "value": "261_NSG_User_Tier1" },
+    "subnet270Prefix": { "value": "10.128.28.0/23" },
+    "subnet270Name": { "value": "270_Future_HBI_SLGa_W1" },
+    "subnet270NSG": { "value": "270_NSG_Future" },
+    "subnet270Prefix": { "value": "10.128.30.0/24" },
+    "subnet270Name": { "value": "270_Future_HBI_SLGa_W1" },
+    "subnet270NSG": { "value": "270_NSG_Future" },
     "subnet299Prefix": { "value": "10.128.31.240/28" },
     "subnet299Name": { "value": "GatewaySubnet" },
+
 
     "GatewayName": { "value": "gw_HBI_W1" },
     "SubID": { "value": "ce38c0ef-22f5-458d-b1f7-e3890e2471f2" },
@@ -64,10 +74,10 @@
     "connectionType1cnct110": { "value": "Peering" },
     "sharedKeycnct110": { "value": "mysharedkey" },
     "routingWeightcnct110": { "value": 10 },
-    "allowVNETAccesscnct110": { "value": },
-    "allowFwdAccesscnct110": { "value": },
-    "allowGWAccesscnct110": { "value": },
-    "useRemoteGatewaycnct110": { "value": },
+    "allowVNETAccesscnct110": { "value": true },
+    "allowFwdAccesscnct110": { "value": true },
+    "allowGWAccesscnct110": { "value": true },
+    "useRemoteGatewaycnct110": { "value": false },
     "peerVNETNamecnct110": { "value": "vnet_services_w1" },
     "rmtSubIDcnct110": { "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9" },
     "ConnectionNamecnct111": { "value": "Vnet2Vnet_SLGa_HBI_To_HBI_W2" },
@@ -76,7 +86,8 @@
     "connectionType1cnct111": { "value": "Vnet2Vnet" },
     "sharedKeycnct111": { "value": "mysharedkey" },
     "routingWeightcnct111": { "value": 10 },
-    "rmtSubIDcnct111": { "value": "ce38c0ef-22f5-458d-b1f7-e3890e2471f2" }
+    "rmtSubIDcnct111": { "value": "ce38c0ef-22f5-458d-b1f7-e3890e2471f2" },
+    "rmtConnectionNamecnct111": { "value": "Vnet2Vnet_SLGa_HBI_To_HBI_W1" }
 
 
   }

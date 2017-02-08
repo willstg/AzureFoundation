@@ -9,6 +9,7 @@
     "ResourceGroupName": { "value": "rg_vnet_hbi_w2" },
     "vnetName": { "value": "vnet_hbi_w2" },
     "vnetAddressPrefix": { "value": "10.128.80.0/20" },
+    "dnsServers": { "value": [ "10.128.59.36" ] },
 
 
     "subnet210Prefix": { "value": "10.128.80.0/24" },
@@ -62,19 +63,19 @@
     "erPeeringLocation": { "value": "Dallas" },
     "BGP": { "value": false },
 
-   
+
     "ConnectionNamecnct110": { "value": "Peering_SLGa_HBI_To_Services_W2" },
     "vnetNamecnct110": { "value": "vnet_hbi_w2" },
     "connectionType1cnct110": { "value": "Peering" },
     "sharedKeycnct110": { "value": "mysharedkey" },
     "routingWeightcnct110": { "value": 10 },
-    "allowVNETAccesscnct110": { "value": },
-    "allowFwdAccesscnct110": { "value": },
-    "allowGWAccesscnct110": { "value": },
-    "useRemoteGatewaycnct110": { "value": },
+    "allowVNETAccesscnct110": { "value": true },
+    "allowFwdAccesscnct110": { "value": true },
+    "allowGWAccesscnct110": { "value": true },
+    "useRemoteGatewaycnct110": { "value": false },
     "peerVNETNamecnct110": { "value": "vnet_services_w2" },
     "rmtSubIDcnct110": { "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9" },
-    
+
     "ConnectionNamecnct111": { "value": "Vnet2Vnet_SLGa_HBI_To_HBI_W1" },
     "vnetNamecnct111": { "value": "vnet_hbi_w2" },
     "remoteGWNamecnct111": { "value": "gw_HBI_W1" },

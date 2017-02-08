@@ -9,6 +9,8 @@
     "ResourceGroupName": { "value": "rg_vnet_storage_w1" },
     "vnetName": { "value": "vnet_storage_w1" },
     "vnetAddressPrefix": { "value": "10.128.48.0/21" },
+    "dnsServers": { "value": [ "10.128.59.36" ] },
+
 
     "subnet500Prefix": { "value": "10.128.48.0/24" },
     "subnet500Name": { "value": "500_Storage_Storage_SLGa_W1" },

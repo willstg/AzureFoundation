@@ -13,15 +13,15 @@ $Environment = 'AzureCloud'
 $UserName='willst@slg044.onmicrosoft.com'
 $subID_CJIS=
 $SubName_CJIS=
-$subID_HBI='ff485773-85a0-4471-8caf-62431bc8096f'
+$subID_HBI='ce38c0ef-22f5-458d-b1f7-e3890e2471f2'
 $SubName_HBI= 'MAC_Dept_Managed_HBI'
 $subID_PreProd='36d14b3b-1138-4062-a82f-67fb1ea8f109'
-$subName_PreProd='MAC_Organization_Managed_PreProd'
-$SubID_Prod='4b404fbc-017c-4085-81b4-6249adc0fc30'
+$subName_PreProd='a7d928df-fc97-4f02-adae-3d7cdeb7c8cb'
+$SubID_Prod='ec1cea2e-92aa-45a7-89b0-d9fc40df2beb'
 $SubName_Prod='MAC_Organization_Managed_Prod'
-$SubID_Services='b8ac0f8b-3c6d-4d8f-976e-f4b613e68ef4'
+$SubID_Services='730f26b5-ebf5-4518-999f-0b4eb0cdc8f9'
 $SubName_Services='MAC_SLG_Managed_Services'
-$SubID_Storage='3cb57323-0c04-449a-b86f-add680595a81'
+$SubID_Storage='6e5d19d2-a324-470a-b24f-57ac0d3221a1'
 $SubName_Storage='MAC_Organization_Managed_Storage'
 
 #sometimes it seems you can't switch back to MAC from MAG without getting rid of MAG accounts

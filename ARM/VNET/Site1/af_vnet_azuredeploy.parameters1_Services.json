@@ -4,11 +4,14 @@
   "parameters": {
 
     "baseURL": { "value": "https://github.com/willstg/AzureFoundation/tree/master/arm/vnet/site1" },
+    "templateLink": { "value": "site1/af_vnet_azuredeploy1_servicesB.parameters.json" },
+    "parametersLink": { "value": "site2/af_vnet_azuredeploy2_servicesB.parameters.json" },
 
     "locationName": { "value": "westcentralus" },
     "ResourceGroupName": { "value": "rg_vnet_services_w1" },
     "vnetName": { "value": "vnet_services_w1" },
     "vnetAddressPrefix": { "value": "10.128.56.0/21" },
+    "dnsServers": { "value": [ "10.128.59.36" ] },
 
     "subnet600Prefix": { "value": "10.128.56.0/24" },
     "subnet600Name": { "value": "600_Services_Srvcs_SLGa_W1" },
@@ -113,7 +116,7 @@
     "connectionType1cnct140": { "value": "IPSec" },
     "sharedKeycnct140": { "value": "mysharedkey" },
     "routingWeightcnct140": { "value": 10 },
-    "ConnectionNamecnct141": { "value": "Vnet2Vnet_SLGa_Services_To_Services_W2" },
+    "ConnectionNamecnct141": { "value": "gw_Services_W2_to_gw_Services_To_W1" },
     "vnetNamecnct141": { "value": "vnet_services_w1" },
     "remoteGWNamecnct141": { "value": "gw_Services_W2" },
     "connectionType1cnct141": { "value": "Vnet2Vnet" },
@@ -163,10 +166,12 @@
     "allowGWAccesscnct145": { "value": true },
     "useRemoteGatewaycnct145": { "value": false },
     "peerVNETNamecnct145": { "value": "vnet_storage_w1" },
-    "rmtSubIDcnct145": { "value": "6e5d19d2-a324-470a-b24f-57ac0d3221a1" }
+    "rmtSubIDcnct145": { "value": "6e5d19d2-a324-470a-b24f-57ac0d3221a1" },
+    "rmtConnectionNamecnct141": { "value": "gw_Services_W2_to_gw_Services_To_W1" }
+
 
 
 
 
   }
-}
+  }

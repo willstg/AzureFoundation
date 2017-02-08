@@ -8,6 +8,7 @@
     "ResourceGroupName": { "value": "rg_vnet_prod_w2" },
     "vnetName": { "value": "vnet_prod_w2" },
     "vnetAddressPrefix": { "value": "10.128.64.0/20" },
+    "dnsServers": { "value": [ "10.128.59.36" ] },
 
     "subnet110Prefix": { "value": "10.128.66.0/24" },
     "subnet110Name": { "value": "110_Web_prod_SLGa_W2" },
@@ -76,7 +77,12 @@
     "connectionType1cnct101": { "value": "Vnet2Vnet" },
     "sharedKeycnct101": { "value": "mysharedkey" },
     "routingWeightcnct101": { "value": 10 },
-    "rmtSubIDcnct101": { "value": "ec1cea2e-92aa-45a7-89b0-d9fc40df2beb" }
+    "rmtSubIDcnct101": { "value": "ec1cea2e-92aa-45a7-89b0-d9fc40df2beb" },
+    "rmtConnectionNamecnct101": { "value": "Vnet2Vnet_SLGa_Prod_To_Prod_W2" },
+
+    "rmtLocationcnct100": { "value": "westus2" },
+    "rmtLocationcnct101": { "value": "westcentralus" }
+
 
   }
 }

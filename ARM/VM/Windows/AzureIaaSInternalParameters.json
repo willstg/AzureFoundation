@@ -17,15 +17,13 @@
     "adminUsername": {
       "value": "vdcAdmin"
     },
-    "linixAdminPassword": {
+    "adminPassword": {
       "reference": {
         "keyVault": {
-          "id": "/subscriptions/43220cc5-8010-4fef-b038-e005ded0bb8e/resourceGroups/vdca_keyvault/providers/Microsoft.KeyVault/vaults/vdca_keyvault"
-        },
+          "id": "/subscriptions/43220cc5-8010-4fef-b038-e005ded0bb8e/resourceGroups/vdca_keyvault/providers/Microsoft.KeyVault/vaults/vdca_keyvault",
+          "secretName": "InternalLinuxPWD"
 
-        "secretName": "InternalLinuxPWD"
-
-      }
+        }
     },
     "windowsOSDiskVhdUri": {
       "value": "https://customubrgdisks112.blob.core.windows.net/vhds/customub20161011133129.vhd"
