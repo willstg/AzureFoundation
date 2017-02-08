@@ -16,13 +16,13 @@
       },
       "defaultValue": "spfarm"
     },
-    "adminUsername": {
+    "adJoinName": {
       "type": "string",
       "metadata": {
         "description": "The name of the Administrator of the new VMs and Domain"
       }
     },
-    "adminPassword": {
+    "adJoinPassword": {
       "type": "securestring",
       "metadata": {
         "description": "The password for the Administrator account of the new VMs and Domain"
@@ -242,7 +242,7 @@
       "staticSubnetName": {
            "type":"string",
            "metadata": {
-             "description" : "The subnet of the primary domain controller."
+             "description" : "A subnet where the front end load balancer for sql will live. Subnet must be configured to allow statically assigned IP addresses."
            },
          "defaultvalue":"adSubnet"
       },
@@ -675,10 +675,10 @@
             "value": "[parameters('sqlVMSize')]"
           },
           "adminUsername": {
-            "value": "[parameters('adminUsername')]"
+            "value": "[parameters('adJoinName')]"
           },
           "adminPassword": {
-            "value": "[parameters('adminPassword')]"
+            "value": "[parameters('adJoinPassword')]"
           },
           "windowsImagePublisher": {
             "value": "[variables('vmSettings').windowsImagePublisher]"
@@ -764,10 +764,10 @@
             "value": "[parameters('location')]"
           },
           "adminUsername": {
-            "value": "[parameters('adminUsername')]"
+            "value": "[parameters('adJoinName')]"
           },
           "adminPassword": {
-            "value": "[parameters('adminPassword')]"
+            "value": "[parameters('adJoinPassword')]"
           },
           "domainName": {
             "value": "[parameters('domainName')]"
@@ -867,10 +867,10 @@
             "value": "[variables('ids').spAppAvailabilitySetName]"
           },
           "adminUsername": {
-            "value": "[parameters('adminUsername')]"
+            "value": "[parameters('adJoinName')]"
           },
           "adminPassword": {
-            "value": "[parameters('adminPassword')]"
+            "value": "[parameters('adJoinPassword')]"
           },
           "spImagePublisher": {
             "value": "[variables('vmSettings').spImagePublisher]"
