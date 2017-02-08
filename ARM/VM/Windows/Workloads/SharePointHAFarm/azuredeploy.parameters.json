@@ -3,16 +3,26 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
-      "value": "USGov Iowa"
+      "value": "West Central US"
     },
     "sharepointFarmName": {
       "value": "spfarm"
     },
-    "adminUsername": {
-      "value": "adm.sstout"
+    "adJoinName": {
+     "reference": {
+        "keyVault": {
+          "id": "/subscriptions/730f26b5-ebf5-4518-999f-0b4eb0cdc8f9/resourceGroups/rg_SLGaKeyVault/providers/Microsoft.KeyVault/vaults/MACSLGKeyVault"
+        },
+        "secretName": "adJoinName"
+      }
     },
-    "adminPassword": {
-      "value": "Catapult123!"
+    "adJoinPassword": {
+     "reference": {
+        "keyVault": {
+          "id": "/subscriptions/730f26b5-ebf5-4518-999f-0b4eb0cdc8f9/resourceGroups/rg_SLGaKeyVault/providers/Microsoft.KeyVault/vaults/MACSLGKeyVault"
+        },
+        "secretName": "adJoinPassword"
+      }
     },
     "sqlVMSize": {
       "value": "Standard_D1_v2"
@@ -24,28 +34,63 @@
       "value": "Standard_D1_v2"
     },
     "domainName": {
-      "value": "AzureFoundation.com"
+      "value": "slg044.us"
     },
     "sqlServerServiceAccountUserName": {
-      "value": "sqlservice"
+     "reference": {
+        "keyVault": {
+          "id": "/subscriptions/730f26b5-ebf5-4518-999f-0b4eb0cdc8f9/resourceGroups/rg_SLGaKeyVault/providers/Microsoft.KeyVault/vaults/MACSLGKeyVault"
+        },
+        "secretName": "sqlServerServiceAccountUserName"
+      }
     },
     "sqlServerServiceAccountPassword": {
-      "value":"Crewn43()Tewn"
+     "reference": {
+        "keyVault": {
+          "id": "/subscriptions/730f26b5-ebf5-4518-999f-0b4eb0cdc8f9/resourceGroups/rg_SLGaKeyVault/providers/Microsoft.KeyVault/vaults/MACSLGKeyVault"
+        },
+        "secretName": "sqlServerServiceAccountPassword"
+      }
     },
     "sharePointSetupUserAccountUserName": {
-      "value": "sp_setup"
+     "reference": {
+        "keyVault": {
+          "id": "/subscriptions/730f26b5-ebf5-4518-999f-0b4eb0cdc8f9/resourceGroups/rg_SLGaKeyVault/providers/Microsoft.KeyVault/vaults/MACSLGKeyVault"
+        },
+        "secretName": "sharePointSetupUserAccountUserName"
+      }
     },
-    "sharePointSetupUserAccountPassword": {
-      "value": "Crewn43()Tewn"
+     "sharePointSetupUserAccountPassword": {
+     "reference": {
+        "keyVault": {
+          "id": "/subscriptions/730f26b5-ebf5-4518-999f-0b4eb0cdc8f9/resourceGroups/rg_SLGaKeyVault/providers/Microsoft.KeyVault/vaults/MACSLGKeyVault"
+        },
+        "secretName": "sharePointSetupUserAccountPassword"
+      }
     },
-    "sharePointFarmAccountUserName": {
-      "value": "sp_farm"
+     "sharePointFarmAccountUserName": {
+     "reference": {
+        "keyVault": {
+          "id": "/subscriptions/730f26b5-ebf5-4518-999f-0b4eb0cdc8f9/resourceGroups/rg_SLGaKeyVault/providers/Microsoft.KeyVault/vaults/MACSLGKeyVault"
+        },
+        "secretName": "sharePointFarmAccountUserName"
+      }
     },
-    "sharePointFarmAccountPassword": {
-      "value": "Crewn43()Tewn"
+     "sharePointFarmAccountPassword": {
+     "reference": {
+        "keyVault": {
+          "id": "/subscriptions/730f26b5-ebf5-4518-999f-0b4eb0cdc8f9/resourceGroups/rg_SLGaKeyVault/providers/Microsoft.KeyVault/vaults/MACSLGKeyVault"
+        },
+        "secretName": "sharePointSetupUserAccountPassword"
+      }
     },
-    "sharePointFarmPassphrasePassword": {
-      "value": "Crewn43()Tewn"
+     "sharePointFarmPassphrasePassword": {
+     "reference": {
+        "keyVault": {
+          "id": "/subscriptions/730f26b5-ebf5-4518-999f-0b4eb0cdc8f9/resourceGroups/rg_SLGaKeyVault/providers/Microsoft.KeyVault/vaults/MACSLGKeyVault"
+        },
+        "secretName": "sharePointSetupUserAccountPassword"
+      }
     },
     "spSiteTemplateName": {
       "value": "STS#0"
@@ -54,10 +99,10 @@
       "value": "Standard_LRS"
     },
     "dnsServerIPAddress": {
-      "value": "10.0.0.4"
+      "value": "10.128.59.36"
     },
     "sqlLBIPAddress": {
-      "value": "10.0.0.66"
+      "value": "10.128.5.250"
     },
     "spWebIPNewOrExisting": {
       "value": "new"
@@ -66,31 +111,43 @@
       "value" : "spWebIP"
     },
     "dnsPrefix": {
-      "value": "sharepointhax"
+      "value": "sharepointha"
     },
-    "virtualNetworkName": {
-        "value": "adVNET"
+    "sharepointVirtualNetworkName": {
+        "value": "vnet_prod_w1"
+    },
+     "activeDirectoryVirtualNetworkName": {
+        "value": "vnet_services_w1"
     },
     "baseUrl": {
       "value": "https://gallery.azure.com/artifact/20151001/sharepoint2013.sharepoint2013farmsharepoint2013-ha.1.0.14/Artifacts"
     },
     "ouPath": {
-      "value" :"OU=Workloads,DC=AzureFoundation,DC=COM"
+      "value" :"OU=Workloads,DC=slg044,DC=us"
     },
     "assetLocation": {
       "value": "https://stage9a3c609411534deaa72.blob.core.usgovcloudapi.net/sharepointhaz-stageartifacts/DSC"
     },
+    "ActiveDirectoryVnetResourceGroupName": {
+      "value": "rg_vnet_services_w1"
+    },
+     "ActiveDirectoryVnetSubscriptionID": {
+      "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9"
+    },
+    "SharePointVnetResourceGroupName": {
+      "value": "rg_vnet_prod_w1"
+    },
     "staticSubnetName": {
-         "value":"adSubnet"
+         "value":"600_Services_Srvcs_SLGa_W1"
       },
     "sqlSubnetName": {
-         "value":"adSubnet"
+         "value":"130_DB_prod_SLGa_W1"
       },
     "spWebSubnetName": {
-         "value":"adSubnet"
+         "value":"115_LB_Web_prod_SLGa_W1"
       },
     "spAppSubnetName": {
-         "value":"adSubnet"
+         "value":"125_LB_App_prod_SLGa_W1"
       }
   }
 }
