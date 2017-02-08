@@ -10,7 +10,7 @@ Any number of tools can be used to work with the Azure Government Cloud. Popular
 * Visual Studio Code
 * Visual Studio 2015 Community/Professional/Enterprise editions
 
-Connecting to Azure Government cloud from Visual Studio Communty/Professional/Enterprise requires that a registry key be set. Visual Studio will not be able to connect to the public cloud until this registry key is removed. The files that will set/remove the required registry key are included in the /DeveloperSetup folder.
+Connecting to Azure Government cloud from Visual Studio Community/Professional/Enterprise requires that a registry key be set. Visual Studio will not be able to connect to the public cloud until this registry key is removed. The files that will set/remove the required registry key are included in the /DeveloperSetup folder.
 
 ### Connecting
 To connect to the Azure Government cloud, run the following PowerShell command:
@@ -18,6 +18,27 @@ To connect to the Azure Government cloud, run the following PowerShell command:
 ```Powershell
 Add-AzureRmAccount -EnvironmentName AzureUSGovernment
 ```
+To connect to the Azure commercial cloud run the following PowerShell command:
+
+```Powershell
+Login-AzureRmAccount
+```
+
+###Setting the Subscription
+Depending on the workload to be deployed you will need to deploy to a specific subscription. This must be done before deploying. 
+
+To list all of the subscriptions run the following:
+
+```Powershell
+Get-AzureRmSubscription
+```
+To set the context to a specific subscription:
+
+```Powershell
+Set-AzureRmContext -SubscriptionName SomeSubscriptionName
+```
+## Creating an Account for Domain Joins
+Most of the workloads join the VMs to the domain. This requires that an account be provided that has permissions to do this. It is best to not use a domain administrator account for this purpose. Details on how to do there can be found (here)[https://prajwaldesai.com/allow-domain-user-to-add-computer-to-domain/]
 
 ## Deploying a Workload
 
@@ -27,7 +48,7 @@ Add-AzureRmAccount -EnvironmentName AzureUSGovernment
 2. In the root of the workloads folder is a PowerShell script to deploy each workload. Each of these scripts calls Deploy-AzureResourceGroup.ps1.
 This script calls creates appropriate resource group and deploys the template into that group using the parameters supplied in the .parameters.json file.
 
-# Parameters in Deployment
+## Parameters in Deployment
 One concern with the current deployment method is that when the files are pushed to blob storage using the -UploadArtifacts parameter (the default in the workload PowerShell scripts) the parameters file and primary template are also pushed to blob storage. These file will likely contain passwords that should not be shared. The script needs to be modified not to deploy these files, for example to retrieve the credentials from an Azure Key Vault, and pass to the ARM deployment as a secure object.
 
 ## Redeploying a Workload
