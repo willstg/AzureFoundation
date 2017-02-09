@@ -126,7 +126,7 @@
       "value" :"OU=Workloads,DC=slg044,DC=us"
     },
     "assetLocation": {
-      "value": "https://stage9a3c609411534deaa72.blob.core.usgovcloudapi.net/sharepointhaz-stageartifacts/DSC"
+      "value": "https://github.com/willstg/AzureFoundation/tree/master/ARM/VM/Windows/Workloads/SharePointHAFarm/DSC"
     },
     "ActiveDirectoryVnetResourceGroupName": {
       "value": "rg_vnet_services_w1"

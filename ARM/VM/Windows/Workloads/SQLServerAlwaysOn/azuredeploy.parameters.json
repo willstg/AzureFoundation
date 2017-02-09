@@ -57,7 +57,7 @@
       "value" :"OU=Workloads,DC=AzureFoundation,DC=COM"
     },
     "assetLocation": {
-      "value": "https://stage9a3c609411534deaa72.blob.core.usgovcloudapi.net/sqlha-stageartifacts/DSC"
+      "value": "https://raw.githubusercontent.com/willstg/AzureFoundation/master/ARM/VM/Windows/Workloads/SQLServerAlwaysOn/nestedtemplates/DSC"
     },
     "staticSubnetName": {
          "value":"adSubnet"
