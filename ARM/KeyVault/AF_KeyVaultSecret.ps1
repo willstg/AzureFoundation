@@ -1,4 +1,12 @@
-﻿
+﻿Function RegisterRP {
+    Param(
+        [string]$ResourceProviderNamespace
+    )
+
+    Write-Host "Registering resource provider '$ResourceProviderNamespace'";
+    Register-AzureRmResourceProvider -ProviderNamespace $ResourceProviderNamespace;
+}
+
 Select-AzureRmSubscription -SubscriptionID $SubID_Services;
 $KeyVault=Get-AzureRmKeyVault
 $location="westcentralus"
