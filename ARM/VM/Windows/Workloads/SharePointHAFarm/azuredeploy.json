@@ -195,7 +195,7 @@
         "description": "Base URL for Marketplace",
         "artifactsBaseUrl": ""
       },
-      "defaultValue": "https://azurefoundation.blob.core.windows.net/assets"
+      "defaultValue": "https://github.com/willstg/AzureFoundation/tree/master/ARM/VM/Windows/Workloads/SharePointHAFarm/nestedtemplates"
     },
     "ActiveDirectoryVnetResourceGroupName": {
       "type" : "string",
@@ -223,7 +223,7 @@
       "metadata": {
         "description": "The location of resources such as templates and DSC modules that the script is dependent"
       },
-      "defaultValue": "https://stage9a3c609411534deaa72.blob.core.usgovcloudapi.net/sharepointhaz-stageartifacts/DSC"
+      "defaultValue": "https://github.com/willstg/AzureFoundation/tree/master/ARM/VM/Windows/Workloads/SharePointHAFarm/DSC"
     },
       "ouPath": {
         "type":"string",

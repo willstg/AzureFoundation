@@ -129,7 +129,7 @@
         "description": "Base URL for Marketplace",
         "artifactsBaseUrl": ""
       },
-      "defaultValue": "https://azurefoundation.blob.core.windows.net/assets"
+      "defaultValue": "https://raw.githubusercontent.com/willstg/AzureFoundation/master/ARM/VM/Windows/Workloads/SQLServerAlwaysOn/nestedtemplates"
     },
     "CoreInfrastructureResourceGroupName": {
       "type" : "string",
@@ -143,7 +143,7 @@
       "metadata": {
         "description": "The location of resources such as templates and DSC modules that the script is dependent"
       },
-      "defaultValue": "https://stage9a3c609411534deaa72.blob.core.usgovcloudapi.net/sqlha-stageartifacts/DSC"
+      "defaultValue": "https://raw.githubusercontent.com/willstg/AzureFoundation/master/ARM/VM/Windows/Workloads/SQLServerAlwaysOn/DSC"
     },
       "ouPath": {
         "type":"string",
