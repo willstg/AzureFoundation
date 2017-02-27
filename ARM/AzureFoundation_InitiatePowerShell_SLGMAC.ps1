@@ -36,7 +36,7 @@ Remove-AzureAccount -name $acct -Force
 #Log Into MAG
 Login-AzureRmAccount –EnvironmentName $environment
 
-Get-AzureRmSubscription -TenantId '7e3f43ea-693f-4bae-ac7b-8e13a33709ec'
+Get-AzureRmSubscription -TenantId '73f43ea-693f-4bae-ac7b-8e13a33709ec'
 #I like to make the default $subname = to the Services subscription
 $subName=$SubName_Services
 

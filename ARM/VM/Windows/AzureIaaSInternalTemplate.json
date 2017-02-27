@@ -2,6 +2,129 @@
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+
+
+    "nicName1": {
+      "type": "string",
+      "metadata": { "description": "The name used to define the NIC" }
+    },
+    "nicName2": {
+      "type": "string",
+      "metadata": { "description": "The name used to define the NIC" }
+    },
+    "nicName3": {
+      "type": "string",
+      "metadata": { "description": "The name used to define the NIC" }
+    },
+    "nicName4": {
+      "type": "string",
+      "metadata": { "description": "The name used to define the NIC" }
+    },
+    "vnetRGN": {
+      "type": "string",
+      "metadata": { "description": "The Resource Group Name of the VNET" }
+    },
+
+    "vnetName1": {
+      "type": "string",
+      "metadata": { "description": "The VNET name of the subnet." }
+    },
+    "vnetName2": {
+      "type": "string",
+      "metadata": { "description": "The VNET name of the subnet." }
+    },
+    "vnetName3": {
+      "type": "string",
+      "metadata": { "description": "The VNET name of the subnet." }
+    },
+    "vnetName4": {
+      "type": "string",
+      "metadata": { "description": "The VNET name of the subnet." }
+    },
+
+    "ipConfigInternalAllocation1": {
+      "type": "string",
+      "metadata": { "description": "Will the IP address be dynamic or static for the network interface?" }
+    },
+    "ipConfigInternalAllocation2": {
+      "type": "string",
+      "metadata": { "description": "Will the IP address be dynamic or static for the network interface?" }
+    },
+    "ipConfigInternalAllocation3": {
+      "type": "string",
+      "metadata": { "description": "Will the IP address be dynamic or static for the network interface?" }
+    },
+    "ipConfigInternalAllocation4": {
+      "type": "string",
+      "metadata": { "description": "Will the IP address be dynamic or static for the network interface?" }
+    },
+
+
+    "PIPName": {
+      "type": "string",
+      "metadata": { "description": "The name of the PublicIP Address." }
+    },
+    "PIPType": {
+      "type": "string",
+      "metadata": { "description": "The type of  PublicIP Address." }
+    },
+    "dnsName": {
+      "type": "string",
+      "metadata": { "description": "The DNS label of  PublicIP Address." }
+    },
+
+
+
+    "resourceGroupName": {
+      "type": "string",
+      "metadata": { "description": "ResourceGroup to put the VM in" }
+    },
+    "vmName": {
+      "type": "string",
+      "metadata": { "description": "The name of the Virutal Machine" }
+    },
+    "Description": {
+      "type": "string",
+      "metadata": { "description": "The description of the Virutal Machine" }
+    },
+    "osStorageAccountRGN": {
+      "type": "string",
+      "defaultValue": "rg_Storage_Services_W1",
+      "metadata": { "description": "The storage account's Resource Group Name." }
+    },
+    "osStorageAccountType": {
+      "type": "string",
+      "allowedValue" [ "Standard_LRS", "Standard_GRS" ],
+      "metadata": { "description": "The type of storage account used to host the Virutal Machine" }
+    },
+    "RoleSize": {
+      "type": "string",
+      "metadata": { "description": "The role size of the VM." }
+    },
+    "DomainName": {
+      "type": "string",
+      "metadata": { "description": "The Admin account used to host the VM" }
+    },
+    "osImageURI": {
+      "type": "string",
+      "metadata": { "description": "The storage account used to host the Virutal Machine" }
+    },
+
+
+    "osStorageAcccountName": {
+      "type": "string",
+      "metadata": { "description": "The storage account used to host the Virutal Machine" }
+    },
+
+    "Function": {
+      "type": "string",
+      "metadata": { "description": "The storage account used to host the Virutal Machine" }
+    },
+
+
+
+
+
     "storageAccountResourceGroupName": {
       "type": "string",
       "metadata": {
@@ -104,44 +227,21 @@
     }
   },
   "variables": {
-    "publicIPAddressName": "[concat(parameters('vmName'),'IP')]",
-    "vmName": "[parameters('vmName')]",
-    "nicName": "[concat(parameters('vmName'),'Nic')]",
-    "publicIPAddressType": "Dynamic",
-   "apiVersion": "2015-06-15",
-    "templatelink": "[concat('https://raw.githubusercontent.com/singhkay/azure-quickstart-templates/master/101-vm-from-user-image/',parameters('newOrExistingVnet'),'vnet.json')]"
+    "nicSubnet1": "resourceId(parameters('vnetRGN'), 'Microsoft.VirtualNetworks', parameters('vnetName1')), parameters('subnetName1')]",
+    "nicSubnet2": "resourceId(parameters('vnetRGN'), 'Microsoft.VirtualNetworks', parameters('vnetName2')), parameters('subnetName2')]",
+    "nicSubnet3": "resourceId(parameters('vnetRGN'), 'Microsoft.VirtualNetworks', parameters('vnetName3')), parameters('subnetName3')]",
+    "nicSubnet4": "resourceId(parameters('vnetRGN'), 'Microsoft.VirtualNetworks', parameters('vnetName4')), parameters('subnetName4')]",
+    "apiVersion": "2015-06-15"
   },
   "resources": [
-        {
-      "apiVersion": "2015-01-01",
-            "name": "vnet-template",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "incremental",
-        "templateLink": {
-          "uri": "[variables('templatelink')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "virtualNetworkName": {
-            "value": "[parameters('newOrExistingVnetName')]"
-          },
-          "subnetName": {
-            "value": "[parameters('newOrExistingSubnetName')]"
-          },
-          "existingVnetResourceGroupName": {
-            "value": "[parameters('existingVnetResourceGroupName')]"
-          }
-        }
-      }
-    },
+
     {
       "apiVersion": "[variables('apiVersion')]",
       "type": "Microsoft.Network/publicIPAddresses",
-      "name": "[variables('publicIPAddressName')]",
+      "name": "[parameters('PIPName')]",
       "location": "[resourceGroup().location]",
       "properties": {
-        "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
+        "publicIPAllocationMethod": "[parameters('PIPType')]",
         "dnsSettings": {
           "domainNameLabel": "[parameters('dnsLabelPrefix')]"
         }
@@ -150,49 +250,112 @@
     {
       "apiVersion": "2016-03-30",
       "type": "Microsoft.Network/networkInterfaces",
-      "name": "[variables('nicName')]",
+      "name": "[parameters('nicName1')]",
       "location": "[resourceGroup().location]",
       "dependsOn": [
-        "[concat('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
+        "[concat('Microsoft.Network/publicIPAddresses/', parameters('PIPName'))]",
         "Microsoft.Resources/deployments/vnet-template"
       ],
       "properties": {
         "ipConfigurations": [
-                    {
+          {
             "name": "ipconfig1",
             "properties": {
-              "privateIPAllocationMethod": "Dynamic",
+              "privateIPAllocationMethod": "[parameters('ipConfigInternalAllocation1')]",
               "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]"
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('PIPName'))]"
               },
               "subnet": {
-                "id": "[reference('vnet-template').outputs.subnet1Ref.value]"
+                "id": "[variables('nicSubnet1')]"
               }
             }
           }
         ]
-              }
-          },
-        {
-      "apiVersion": "[variables('apiVersion')]",
-      "type": "Microsoft.Compute/virtualMachines",
-      "name": "[variables('vmName')]",
+      }
+    },
+    {
+      "apiVersion": "2016-03-30",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('nicName2')]",
       "location": "[resourceGroup().location]",
       "dependsOn": [
-        "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+      ],
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAllocationMethod": "[parameters('ipConfigInternalAllocation2')]",
+              "subnet": {
+                "id": "[variables('nicSubnet2')]"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2016-03-30",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('nicName3')]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+      ],
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAllocationMethod": "[parameters('ipConfigInternalAllocation3')]",
+              "subnet": {
+                "id": "[variables('nicSubnet3')]"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2016-03-30",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('nicName4')]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+      ],
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAllocationMethod": "[parameters('ipConfigInternalAllocation4')]",
+              "subnet": {
+                "id": "[variables('nicSubnet4')]"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "[variables('apiVersion')]",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('vmName')]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[concat('Microsoft.Network/networkInterfaces/', parameters('nicName1'))]"
       ],
       "properties": {
         "hardwareProfile": {
           "vmSize": "[parameters('vmSize')]"
         },
         "osProfile": {
-          "computerName": "[variables('vmName')]",
+          "computerName": "[parameters('vmName')]",
           "adminUsername": "[parameters('adminUsername')]",
           "adminPassword": "[parameters('adminPassword')]"
         },
         "storageProfile": {
           "osDisk": {
-            "name": "[concat(variables('vmName'),'-osDisk')]",
+            "name": "[concat(parameters('vmName'),'-osDisk')]",
             "osType": "[parameters('osType')]",
             "caching": "ReadWrite",
             "createOption": "FromImage",
@@ -200,14 +363,35 @@
               "uri": "[parameters('osDiskVhdUri')]"
             },
             "vhd": {
-              "uri": "[concat(reference(resourceId(parameters('storageAccountResourceGroupName'), 'Microsoft.Storage/storageAccounts/', parameters('osStorageAccountName')), variables('apiVersion')).primaryEndpoints.blob, 'vhds/',variables('vmName'), uniquestring(resourceGroup().id), 'osDisk.vhd')]"
+              "uri": "[concat(reference(resourceId(parameters('storageAccountResourceGroupName'), 'Microsoft.Storage/storageAccounts/', parameters('osStorageAccountName')), variables('apiVersion')).primaryEndpoints.blob, 'vhds/',parameters('vmName'), uniquestring(resourceGroup().id), 'osDisk.vhd')]"
             }
           }
         },
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicName'))]"
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('nicName1'))]",
+              "properties": {
+                "primary": true
+              }
+            },
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('nicName2'))]",
+              "properties": {
+                "primary": false
+              }
+            },
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('nicName3'))]",
+              "properties": {
+                "primary": false
+              }
+            },
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('nicName4'))]",
+              "properties": {
+                "primary": false
+              }
             }
           ]
         },
