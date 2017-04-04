@@ -11,7 +11,6 @@
     "vnetName": { "value": "vnet_services_w2" },
     "vnetAddressPrefix": { "value": "10.128.120.0/21" },
     "dnsServers": { "value": [ "10.128.59.36" ] },
-
     "subnet600Prefix": { "value": "10.128.120.0/24" },
     "subnet600Name": { "value": "600_Services_Srvcs_SLGa_W2" },
     "subnet600NSG": { "value": "600_NSG_Services" },
