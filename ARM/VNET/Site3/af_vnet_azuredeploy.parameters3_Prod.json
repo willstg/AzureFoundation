@@ -3,8 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "commentLocation": { "value": "copy the values for the location tab's Parameters' columns for Site 3" },
-    "location": { "value": "usgovvirginia" },
-    "baseURL": { "value": "https://github.com/willstg/AzureFoundation/tree/master/arm/vnet/site1" },
+     "baseURL": { "value": "https://github.com/willstg/AzureFoundation/tree/master/arm/vnet/site1" },
 
     "commentVNET": { "value": "copy the values for the VNET tab's Parameters' columns of Site 3" },
     "locationName": { "value": "usgovvirginia" },
@@ -47,10 +46,10 @@
     "subnet162Prefix": { "value": "10.128.139.0/25" },
     "subnet162Name": { "value": "162_User_Tier2_prod_slgmag_VA" },
     "subnet162NSG": { "value": "162_NSG_User_Tier2" },
-    "subnet199Prefix": { "value": "10.128.143.240/28" },
+    "subnet199Prefix": { "value": "10.128.143.224/27" },
     "subnet199Name": { "value": "GatewaySubnet" },
 
-    "commentVNET": { "value": "copy the values for the Gateway tab's Parameters' columns of Site 3 (filter to vent300)" },
+    "commentGateway": { "value": "copy the values for the Gateway tab's Parameters' columns of Site 3 (filter to vent300)" },
     "GatewayName": { "value": "gw_Prod_VA" },
     "SubID": { "value": "4a0d1d83-f557-4065-8423-be499038298a" },
     "VPNType": { "value": "RouteBased" },
@@ -67,29 +66,27 @@
 
 
 
-    "ConnectionNamecnct100": { "value": "Peering_SLGa_Prod_To_Services_W2" },
-    "vnetNamecnct100": { "value": "vnet_prod_w2" },
-    "connectionType1cnct100": { "value": "Peering" },
-    "sharedKeycnct100": { "value": "mysharedkey" },
-    "routingWeightcnct100": { "value": 10 },
-    "allowVNETAccesscnct100": { "value": true },
-    "allowFwdAccesscnct100": { "value": true },
-    "allowGWAccesscnct100": { "value": true },
-    "useRemoteGatewaycnct100": { "value": false },
-    "peerVNETNamecnct100": { "value": "vnet_services_w2" },
-    "rmtSubIDcnct100": { "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9" },
-    "ConnectionNamecnct101": { "value": "Vnet2Vnet_SLGa_Prod_To_Prod_W1" },
-    "vnetNamecnct101": { "value": "vnet_prod_w2" },
-    "remoteGWNamecnct101": { "value": "gw_SLGa_Prod_W1" },
-    "connectionType1cnct101": { "value": "Vnet2Vnet" },
-    "sharedKeycnct101": { "value": "mysharedkey" },
-    "routingWeightcnct101": { "value": 10 },
-    "rmtSubIDcnct101": { "value": "ec1cea2e-92aa-45a7-89b0-d9fc40df2beb" },
-    "rmtConnectionNamecnct101": { "value": "Vnet2Vnet_SLGa_Prod_To_Prod_W2" },
-
-    "rmtLocationcnct100": { "value": "westus2" },
-    "rmtLocationcnct101": { "value": "westcentralus" }
-
-
+    "commentConnections": { "value": "copy the values for the Connection tab's Parameters' columns of Site 3 (filter to vent300)" },
+    "ConnectionNamecnct300": { "value": "Peering_slgmag_Prod_To_Services_" },
+    "vnetNamecnct300": { "value": "vnet_prod_va" },
+    "connectionType1cnct300": { "value": "Peering" },
+    "sharedKeycnct300": { "value": "mysharedkey" },
+    "routingWeightcnct300": { "value": 10 },
+    "allowVNETAccesscnct300": { "value": true },
+    "allowFwdAccesscnct300": { "value": true },
+    "allowGWAccesscnct300": { "value": true },
+    "useRemoteGatewaycnct300": { "value": false },
+    "peerVNETNamecnct300": { "value": "vnet_services_va" },
+    "rmtSubIDcnct300": { "value": "30457dd5-e56b-416b-9228-d48b37fe7caa" },
+    "rmtLocationcnct300": { "value": "usgovvirginia" },
+    "ConnectionNamecnct301": { "value": "Vnet2Vnet_slgmag_Prod_To_Prod_" },
+    "vnetNamecnct301": { "value": "vnet_prod_va" },
+    "remoteGWNamecnct301": { "value": "gw_Prod_IA" },
+    "connectionType1cnct301": { "value": "Vnet2Vnet" },
+    "sharedKeycnct301": { "value": "mysharedkey" },
+    "routingWeightcnct301": { "value": 10 },
+    "rmtSubIDcnct301": { "value": "4a0d1d83-f557-4065-8423-be499038298a" },
+    "rmtConnectionNamecnct301": { "value": "Vnet2Vnet_slgmag_Prod_To_Prod_VA" },
+    "rmtLocationcnct301": { "value": "usgoviowa" }
   }
 }

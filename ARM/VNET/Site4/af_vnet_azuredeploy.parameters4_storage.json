@@ -1,0 +1,74 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "commentLocation": { "value": "copy the values for the location tab's Template for Site 3" },
+    "baseURL": { "value": "https://github.com/willstg/AzureFoundation/tree/master/arm/vnet/site1" },
+
+    "locationName": { "value": "usgoviowa" },
+    "ResourceGroupName": { "value": "rg_vnet_storage_ia" },
+    "vnetName": { "value": "vnet_storage_ia" },
+    "vnetAddressPrefix": { "value": "10.128.240.0/21" },
+    "dnsServers": { "value": [] },
+
+
+
+    "commentSubnet": { "value": "copy the values for the Subnet tab's Parameters' columns of Site 3 (filter to vent303)" },
+    "subnet500Prefix": { "value": "10.128.240.0/24" },
+    "subnet500Name": { "value": "500_Storage_Storage_slgmag_IA" },
+    "subnet500NSG": { "value": "500_NSG_Storage" },
+    "subnet505Prefix": { "value": "10.128.241.0/24" },
+    "subnet505Name": { "value": "505_LB_Storage_Storage_slgmag_IA" },
+    "subnet505NSG": { "value": "505_NSG_LB_Storage" },
+    "subnet560Prefix": { "value": "10.128.242.0/25" },
+    "subnet560Name": { "value": "560_User_Tier0_Storage_slgmag_IA" },
+    "subnet560NSG": { "value": "560_NSG_User_Tier0" },
+    "subnet561Prefix": { "value": "10.128.242.128/25" },
+    "subnet561Name": { "value": "561_User_Tier1_Storage_slgmag_IA" },
+    "subnet561NSG": { "value": "561_NSG_User_Tier1" },
+    "subnet599Prefix": { "value": "10.128.247.224/27" },
+    "subnet599Name": { "value": "GatewaySubnet" },
+
+
+
+    "commentGateway": { "value": "copy the values for the Gateway tab's Parameters' columns of Site 3 (filter to vent303)" },
+    "GatewayName": { "value": "gw_Storage_IA" },
+    "SubID": { "value": "0223b7af-344f-42cd-bed2-5ebbc7d06d5d" },
+    "VPNType": { "value": "RouteBased" },
+    "PublicIPName": { "value": "gwpip_Storage_IA" },
+    "gatewaySKU": { "value": "Standard" },
+    "GatewayType": { "value": "Vpn" },
+    "erCircuitName": { "value": "slgmag_Storage_ER" },
+    "erSKUTier": { "value": "Standard" },
+    "erSKUFamily": { "value": "MeteredData" },
+    "erBandwidth": { "value": 50 },
+    "erSPName": { "value": "Equinix" },
+    "erPeeringLocation": { "value": "Dallas" },
+    "BGP": { "value": false },
+
+
+    "commentConnections": { "value": "copy the values for the Connection tab's Parameters' columns of Site 3 (filter to vent303)" },
+    "ConnectionNamecnct440": { "value": "Peering_slgmag_Storage_To_Services_" },
+    "vnetNamecnct440": { "value": "vnet_storage_ia" },
+    "connectionType1cnct440": { "value": "Peering" },
+    "sharedKeycnct440": { "value": "mysharedkey" },
+    "routingWeightcnct440": { "value": 10 },
+    "allowVNETAccesscnct440": { "value": true },
+    "allowFwdAccesscnct440": { "value": true },
+    "allowGWAccesscnct440": { "value": true },
+    "useRemoteGatewaycnct440": { "value": false },
+    "peerVNETNamecnct440": { "value": "vnet_services_ia" },
+    "rmtSubIDcnct440": { "value": "30457dd5-e56b-416b-9228-d48b37fe7caa" },
+    "rmtLocationcnct440": { "value": "usgoviowa" },
+    "ConnectionNamecnct431": { "value": "Vnet2Vnet_slgmag_Storage_To_Storage_" },
+    "vnetNamecnct431": { "value": "vnet_storage_ia" },
+    "remoteGWNamecnct431": { "value": "gw_Storage_VA" },
+    "connectionType1cnct431": { "value": "Vnet2Vnet" },
+    "sharedKeycnct431": { "value": "mysharedkey" },
+    "routingWeightcnct431": { "value": 10 },
+    "rmtSubIDcnct431": { "value": "0223b7af-344f-42cd-bed2-5ebbc7d06d5d" },
+    "rmtConnectionNamecnct431": { "value": "Vnet2Vnet_slgmag_Storage_To_Storage_IA" },
+    "rmtLocationcnct431": { "value": "usgovvirginia" }
+
+  }
+}

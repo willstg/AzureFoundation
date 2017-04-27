@@ -4,7 +4,6 @@
   "parameters": {
 
     "commentLocation": { "value": "copy the values for the location tab's Parameters' columns for Site 3" },
-    "location": { "value": "usgovvirginia" },
     "baseURL": { "value": "https://github.com/willstg/AzureFoundation/tree/master/arm/vnet/site1" },
 
     "commentVNET": { "value": "copy the values for the VNET tab's Parameters' columns of Site 3" },
@@ -42,22 +41,20 @@
     "subnet260Prefix": { "value": "10.128.154.0/25" },
     "subnet260Name": { "value": "260_User_Tier0_HBI_slgmag_VA" },
     "subnet260NSG": { "value": "260_NSG_User_Tier0" },
-    "subnet270Prefix": { "value": "10.128.154.0/23" },
-   
     "subnet261Prefix": { "value": "10.128.154.128/25" },
     "subnet261Name": { "value": "261_User_Tier1_HBI_slgmag_VA" },
     "subnet261NSG": { "value": "261_NSG_User_Tier1" },
-       "subnet299Prefix": { "value": "10.128.159.248/29" },
+    "subnet299Prefix": { "value": "10.128.159.224/27" },
     "subnet299Name": { "value": "GatewaySubnet" },
 
-
-    "GatewayName": { "value": "gw_HBI_W2" },
-    "SubID": { "value": "ce38c0ef-22f5-458d-b1f7-e3890e2471f2" },
+    "commentGateway": { "value": "copy the values for the Gateway tab's Parameters' columns of Site 3 (filter to vent301)" },
+    "GatewayName": { "value": "gw_HBI_VA" },
+    "SubID": { "value": "97eba262-9086-4a3e-9770-dcfef6c3df30" },
     "VPNType": { "value": "RouteBased" },
-    "PublicIPName": { "value": "gwpip_HBI_W2" },
+    "PublicIPName": { "value": "gwpip_HBI_VA" },
     "gatewaySKU": { "value": "Standard" },
     "GatewayType": { "value": "Vpn" },
-    "erCircuitName": { "value": "SLGa_HBI_ER" },
+    "erCircuitName": { "value": "slgmag_HBI_ER" },
     "erSKUTier": { "value": "Standard" },
     "erSKUFamily": { "value": "MeteredData" },
     "erBandwidth": { "value": 50 },
@@ -66,25 +63,30 @@
     "BGP": { "value": false },
 
 
-    "ConnectionNamecnct110": { "value": "Peering_SLGa_HBI_To_Services_W2" },
-    "vnetNamecnct110": { "value": "vnet_hbi_w2" },
-    "connectionType1cnct110": { "value": "Peering" },
-    "sharedKeycnct110": { "value": "mysharedkey" },
-    "routingWeightcnct110": { "value": 10 },
-    "allowVNETAccesscnct110": { "value": true },
-    "allowFwdAccesscnct110": { "value": true },
-    "allowGWAccesscnct110": { "value": true },
-    "useRemoteGatewaycnct110": { "value": false },
-    "peerVNETNamecnct110": { "value": "vnet_services_w2" },
-    "rmtSubIDcnct110": { "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9" },
+    "commentConnections": { "value": "copy the values for the Connection tab's Parameters' columns of Site 3 (filter to vent301)" },
+    "ConnectionNamecnct310": { "value": "Peering_slgmag_HBI_To_Services_" },
+    "vnetNamecnct310": { "value": "vnet_hbi_va" },
+    "connectionType1cnct310": { "value": "Peering" },
+    "sharedKeycnct310": { "value": "mysharedkey" },
+    "routingWeightcnct310": { "value": 10 },
+    "allowVNETAccesscnct310": { "value": true },
+    "allowFwdAccesscnct310": { "value": true },
+    "allowGWAccesscnct310": { "value": true },
+    "useRemoteGatewaycnct310": { "value": false },
+    "peerVNETNamecnct310": { "value": "vnet_services_va" },
+    "rmtSubIDcnct310": { "value": "30457dd5-e56b-416b-9228-d48b37fe7caa" },
+    "rmtLocationcnct310": { "value": "usgovvirginia" },
+    "ConnectionNamecnct311": { "value": "Vnet2Vnet_slgmag_HBI_To_HBI_" },
+    "vnetNamecnct311": { "value": "vnet_hbi_va" },
+    "remoteGWNamecnct311": { "value": "gw_HBI_IA" },
+    "connectionType1cnct311": { "value": "Vnet2Vnet" },
+    "sharedKeycnct311": { "value": "mysharedkey" },
+    "routingWeightcnct311": { "value": 10 },
+    "rmtSubIDcnct311": { "value": "97eba262-9086-4a3e-9770-dcfef6c3df30" },
+    "rmtConnectionNamecnct311": { "value": "Vnet2Vnet_slgmag_HBI_To_HBI_VA" },
+    "rmtLocationcnct311": { "value": "usgoviowa" }
 
-    "ConnectionNamecnct111": { "value": "Vnet2Vnet_SLGa_HBI_To_HBI_W1" },
-    "vnetNamecnct111": { "value": "vnet_hbi_w2" },
-    "remoteGWNamecnct111": { "value": "gw_HBI_W1" },
-    "connectionType1cnct111": { "value": "Vnet2Vnet" },
-    "sharedKeycnct111": { "value": "mysharedkey" },
-    "routingWeightcnct111": { "value": 10 },
-    "rmtSubIDcnct111": { "value": "ce38c0ef-22f5-458d-b1f7-e3890e2471f2" }
+
 
 
   }
