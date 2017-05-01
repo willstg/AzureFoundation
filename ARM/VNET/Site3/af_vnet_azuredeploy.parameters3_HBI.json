@@ -6,7 +6,7 @@
     "commentLocation": { "value": "copy the values for the location tab's Parameters' columns for Site 3" },
     "baseURL": { "value": "https://github.com/willstg/AzureFoundation/tree/master/arm/vnet/site1" },
 
-    "commentVNET": { "value": "copy the values for the VNET tab's Parameters' columns of Site 3" },
+    "commentVNET": { "value": "copy the values for the VNET tab's Parameters' columns of Site 3 (filter to VNET301)" },
     "locationName": { "value": "usgovvirginia" },
     "ResourceGroupName": { "value": "rg_vnet_hbi_va" },
     "vnetName": { "value": "vnet_hbi_va" },
