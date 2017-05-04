@@ -208,7 +208,6 @@ $prodTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Sit
 
 Test-AzureRmResourceGroupDeployment -ResourceGroupName $prodResourcegroupname1 -TemplateFile $prodTemplateFilePath1 -TemplateParameterFile $prodParametersFilePath1;
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName $prodResourceGroupName1 -Templatefile $prodTemplateFilePath1 -TemplateParameterfile $prodParametersFilePath1;
 
 $prodParametersFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site4\af_vnet_azuredeploy.parameters4_prod.json"
 $prodTemplateFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site4\af_vnet_azuredeploy4_prodB.json"
@@ -217,6 +216,7 @@ $prodTemplateFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Sit
 Test-AzureRmResourceGroupDeployment -ResourceGroupName $prodResourcegroupname2 -TemplateFile $prodTemplateFilePath2 -TemplateParameterFile $prodParametersFilePath2;
 
 New-AzureRmResourceGroupDeployment -ResourceGroupName $prodResourceGroupName2 -Templatefile $prodTemplateFilePath2 -TemplateParameterfile $prodParametersFilePath2;
+New-AzureRmResourceGroupDeployment -ResourceGroupName $prodResourceGroupName1 -Templatefile $prodTemplateFilePath1 -TemplateParameterfile $prodParametersFilePath1;
 
 <#
 **************************PrepreProduction Subscription***************

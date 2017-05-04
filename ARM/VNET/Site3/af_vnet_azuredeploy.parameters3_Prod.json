@@ -56,14 +56,15 @@
     "VPNType": { "value": "RouteBased" },
     "PublicIPName": { "value": "gwpip_Prod_TX" },
     "gatewaySKU": { "value": "Standard" },
-    "GatewayType": { "value": "Vpn" },
+    "GatewayType": { "value": "ExpressRoute" },
     "erCircuitName": { "value": "slgmag_Prod_ER" },
     "erSKUTier": { "value": "Standard" },
     "erSKUFamily": { "value": "MeteredData" },
     "erBandwidth": { "value": 50 },
     "erSPName": { "value": "Equinix" },
     "erPeeringLocation": { "value": "Dallas" },
-    "BGP": { "value": false },
+    "BGP": { "value": true },
+
 
 
     "commentConnections": { "value": "copy the values for the Connection tab's Parameters' columns of Site 3 (filter to vent300)" },

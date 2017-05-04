@@ -57,14 +57,14 @@
     "VPNType": { "value": "RouteBased" },
     "PublicIPName": { "value": "gwpip_Services_AZ" },
     "gatewaySKU": { "value": "Standard" },
-    "GatewayType": { "value": "Vpn" },
+    "GatewayType": { "value": "ExpressRoute" },
     "erCircuitName": { "value": "slgmag_Services_ER" },
     "erSKUTier": { "value": "Standard" },
     "erSKUFamily": { "value": "MeteredData" },
     "erBandwidth": { "value": 50 },
     "erSPName": { "value": "Equinix" },
     "erPeeringLocation": { "value": "Dallas" },
-    "BGP": { "value": false },
+    "BGP": { "value": true },
 
 
 

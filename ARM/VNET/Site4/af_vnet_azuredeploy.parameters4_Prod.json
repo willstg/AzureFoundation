@@ -48,26 +48,24 @@
     "subnet162NSG": { "value": "162_NSG_User_Tier2" },
     "subnet199Prefix": { "value": "10.128.207.224/27" },
     "subnet199Name": { "value": "GatewaySubnet" },
-    "subnet199NSG": { "value": "199_NSG_" },
 
-
-
-    "commentGateway": { "value": "copy the values for the Gateway tab's Parameters' columns of Site 3 (filter to vent300)" },
+    "commentGateway": { "value": "copy the values for the Gateway tab's Parameters' columns of Site 4 (filter to vent400)" },
     "GatewayName": { "value": "gw_Prod_AZ" },
     "SubID": { "value": "4a0d1d83-f557-4065-8423-be499038298a" },
     "VPNType": { "value": "RouteBased" },
     "PublicIPName": { "value": "gwpip_Prod_AZ" },
     "gatewaySKU": { "value": "Standard" },
-    "GatewayType": { "value": "Vpn" },
+    "GatewayType": { "value": "ExpressRoute" },
     "erCircuitName": { "value": "slgmag_Prod_ER" },
     "erSKUTier": { "value": "Standard" },
     "erSKUFamily": { "value": "MeteredData" },
     "erBandwidth": { "value": 50 },
     "erSPName": { "value": "Equinix" },
     "erPeeringLocation": { "value": "Dallas" },
-    "BGP": { "value": false },
+    "BGP": { "value": true },
 
-    "commentConnection": { "value": "copy the values for the Gateway tab's Parameters' columns of Site 3 (filter to vent300)" },
+
+    "commentConnections": { "value": "copy the values for the Gateway tab's Parameters' columns of Site 4 (filter to vent400)" },
     "ConnectionNamecnct400": { "value": "Peering_slgmag_Prod_To_Services_AZ" },
     "vnetNamecnct400": { "value": "vnet_prod_az" },
     "connectionType1cnct400": { "value": "Peering" },
@@ -89,8 +87,6 @@
     "rmtSubIDcnct401": { "value": "4a0d1d83-f557-4065-8423-be499038298a" },
     "rmtConnectionNamecnct401": { "value": "Vnet2Vnet_slgmag_Prod_To_Prod_AZ" },
     "rmtLocationcnct401": { "value": "usgovtexas" }
-
-
 
   }
 }
