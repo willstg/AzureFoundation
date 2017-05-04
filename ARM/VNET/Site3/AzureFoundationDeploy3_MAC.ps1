@@ -1,9 +1,10 @@
 ﻿<#
  .SYNOPSIS
-    Deploys the AzureFoundation templates for Site 3 and 4 of a four datacenter pattern.
+    Deploys the AzureFoundation templates for Site 3 and 4 of a four datacenter pattern.  Depending on the environment 
+    you're deploying site 3, 
 
  .DESCRIPTION
-    Deploys an Azure Resource Manager template associated to the first site in the AzureFoundation
+    Deploys an Azure Resource Manager template assocazted to the first site in the AzureFoundation
 
  .PARAMETERs 
     subscriptionId_prod
@@ -22,7 +23,7 @@
     Optional, path to the template file. Defaults to template.json.
 
  .PARAMETER parametersFilePath
-    Optional, path to the parameters file. Defaults to parameters.json. If file is not found, will prompt for parameter values based on template.
+    Optional, path to the parameters file. Defaults to parameters.json. If file is not found, will prompt for parameter txlues based on template.
 #>
 
 param(
@@ -82,21 +83,21 @@ $SubID_Services='30457dd5-e56b-416b-9228-d48b37fe7caa'
 $SubName_Services='slgmag_managed_Services'
 $SubID_Storage='0223b7af-344f-42cd-bed2-5ebbc7d06d5d'
 $SubName_Storage='slgmag_managed_Storage'
-$resourceGroupLocation1 = 'usgovvirginia'
-$location1='usgovvirginia'
-$servicesResourceGroupName1="rg_vnet_services_va"
-$prodResourceGroupName1="rg_vnet_prod_va"
-$preProdResourceGroupName1 ="rg_vnet_preprod_va"
-$hbiResourceGroupName1 ="rg_vnet_hbi_va"
-$storageResourceGroupName1 ="rg_vnet_storage_va"
+$resourceGroupLocation1 = 'usgovtexas'
+$location1='usgovtexas'
+$servicesResourceGroupName1="rg_vnet_services_tx"
+$prodResourceGroupName1="rg_vnet_prod_tx"
+$preProdResourceGroupName1 ="rg_vnet_preprod_tx"
+$hbiResourceGroupName1 ="rg_vnet_hbi_tx"
+$storageResourceGroupName1 ="rg_vnet_storage_tx"
 #Second Site
-$resourceGroupLocation2 = 'usgoviowa'
-$location2='usgoviowa'
-$servicesResourceGroupName2="rg_vnet_services_ia"
-$prodResourceGroupName2="rg_vnet_prod_ia"
-$preProdResourceGroupName2 ="rg_vnet_preprod_ia"
-$hbiResourceGroupName2 ="rg_vnet_hbi_ia"
-$storageResourceGroupName2 ="rg_vnet_storage_ia"
+$resourceGroupLocation2 = 'usgovarizona'
+$location2='usgovarizona'
+$servicesResourceGroupName2="rg_vnet_services_az"
+$prodResourceGroupName2="rg_vnet_prod_az"
+$preProdResourceGroupName2 ="rg_vnet_preprod_az"
+$hbiResourceGroupName2 ="rg_vnet_hbi_az"
+$storageResourceGroupName2 ="rg_vnet_storage_az"
 
 # select subscription
 #Write-Host "Selecting subscription '$subscriptionId'";
