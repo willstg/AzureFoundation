@@ -937,27 +937,9 @@
             "name": "[parameters('GatewayName')]"
           }
         ],
-        "gatewayType": "Vpn",
+        "gatewayType": "ExpressRoute",
         "vpnType": "[parameters('VPNType')]",
         "enableBGP": "[parameters('BGP')]"
-      }
-    },
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/expressRouteCircuits",
-      "name": "[parameters('erCircuitName')]",
-      "location": "[resourceGroup().location]",
-      "sku": {
-        "name": "[concat(parameters('erSKUTier'),'_', parameters('erSKUFamily'))]",
-        "tier": "[parameters('erSKUTier')]",
-        "family": "[parameters('erSKUFamily')]"
-      },
-      "properties": {
-        "serviceProviderProperties": {
-          "serviceProviderName": "[parameters('erSPName')]",
-          "peeringLocation": "[parameters('erPeeringLocation')]",
-          "bandwidthInMbps": "[parameters('erBandwidth')]"
-        }
       }
     }
 

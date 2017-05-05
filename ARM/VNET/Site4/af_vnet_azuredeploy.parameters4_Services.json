@@ -5,14 +5,14 @@
     "commentLocation": { "value": "copy the values for the location tab's Template for Site 4" },
     "baseURL": { "value": "https://github.com/willstg/AzureFoundation/tree/master/arm/vnet/site4" },
 
-    "commentVNET": { "value": "copy the values for the VNET tab's Parameters' columns of Site 3" },
+    "commentVNET": { "value": "copy the values for the VNET tab's Parameters' columns of Site 4" },
     "locationName": { "value": "usgovarizona" },
     "ResourceGroupName": { "value": "rg_vnet_services_az" },
     "vnetName": { "value": "vnet_services_az" },
     "vnetAddressPrefix": { "value": "10.128.248.0/21" },
     "dnsServers": { "value": [] },
 
-    "commentSubnet": { "value": "copy the values for the Subnet tab's Parameters' columns of Site 3 (filter to vent304)" },
+    "commentSubnet": { "value": "copy the values for the Subnet tab's Parameters' columns of Site 4 (filter to vent404)" },
     "subnet600Prefix": { "value": "10.128.248.0/24" },
     "subnet600Name": { "value": "600_Services_Srvcs_slgmag_AZ" },
     "subnet600NSG": { "value": "600_NSG_Services" },
@@ -51,33 +51,33 @@
 
 
 
-    "commentGateway": { "value": "copy the values for the Gateway tab's Parameters' columns of Site 3 (filter to vent304)" },
+    "commentGateway": { "value": "copy the values for the Gateway tab's Parameters' columns of Site 4 (filter to vent404)" },
     "GatewayName": { "value": "gw_Services_AZ" },
     "SubID": { "value": "30457dd5-e56b-416b-9228-d48b37fe7caa" },
     "VPNType": { "value": "RouteBased" },
     "PublicIPName": { "value": "gwpip_Services_AZ" },
     "gatewaySKU": { "value": "Standard" },
-    "GatewayType": { "value": "Vpn" },
+    "GatewayType": { "value": "ExpressRoute" },
     "erCircuitName": { "value": "slgmag_Services_ER" },
     "erSKUTier": { "value": "Standard" },
     "erSKUFamily": { "value": "MeteredData" },
     "erBandwidth": { "value": 50 },
     "erSPName": { "value": "Equinix" },
     "erPeeringLocation": { "value": "Dallas" },
-    "BGP": { "value": false },
+    "BGP": { "value": true },
 
 
 
-    "commentConnections": { "value": "copy the values for the Connection tab's Parameters' columns of Site 3 (filter to vent304)" },
-    "ConnectionNamecnct440": { "value": "IPSec_slgmag_Services_To_Net1_" },
+    "commentConnections": { "value": "copy the values for the Connection tab's Parameters' columns of Site 4 (filter to vent404)" },
+    "ConnectionNamecnct440": { "value": "IPSec_slgmag_Services_To_Net1_DC1" },
     "vnetNamecnct440": { "value": "vnet_services_az" },
-    "LocalNamecnct440": { "value": "Net1_" },
+    "LocalNamecnct440": { "value": "Net1_DC1" },
     "localGWIPcnct440": { "value": "1.1.1.1" },
-    "LocalIPPrefixcnct440": { "value": [ "10.0.0.0/9" ] },
+    "LocalIPPrefixcnct440": { "value": [ "..." ] },
     "connectionType1cnct440": { "value": "IPSec" },
     "sharedKeycnct440": { "value": "mysharedkey" },
     "routingWeightcnct440": { "value": 10 },
-    "ConnectionNamecnct441": { "value": "Vnet2Vnet_slgmag_Services_To_Services_" },
+    "ConnectionNamecnct441": { "value": "Vnet2Vnet_slgmag_Services_To_Services_TX" },
     "vnetNamecnct441": { "value": "vnet_services_az" },
     "remoteGWNamecnct441": { "value": "gw_Services_TX" },
     "connectionType1cnct441": { "value": "Vnet2Vnet" },
@@ -86,7 +86,7 @@
     "rmtSubIDcnct441": { "value": "30457dd5-e56b-416b-9228-d48b37fe7caa" },
     "rmtConnectionNamecnct441": { "value": "Vnet2Vnet_slgmag_Services_To_Services_AZ" },
     "rmtLocationcnct441": { "value": "usgovtexas" },
-    "ConnectionNamecnct442": { "value": "Peering_slgmag_Services_To_Prod_" },
+    "ConnectionNamecnct442": { "value": "Peering_slgmag_Services_To_Prod_AZ" },
     "vnetNamecnct442": { "value": "vnet_services_az" },
     "connectionType1cnct442": { "value": "Peering" },
     "sharedKeycnct442": { "value": "mysharedkey" },
@@ -98,7 +98,7 @@
     "peerVNETNamecnct442": { "value": "vnet_prod_az" },
     "rmtSubIDcnct442": { "value": "4a0d1d83-f557-4065-8423-be499038298a" },
     "rmtLocationcnct442": { "value": "usgovarizona" },
-    "ConnectionNamecnct443": { "value": "Peering_slgmag_Services_To_HBI_" },
+    "ConnectionNamecnct443": { "value": "Peering_slgmag_Services_To_HBI_AZ" },
     "vnetNamecnct443": { "value": "vnet_services_az" },
     "connectionType1cnct443": { "value": "Peering" },
     "sharedKeycnct443": { "value": "mysharedkey" },
@@ -110,7 +110,7 @@
     "peerVNETNamecnct443": { "value": "vnet_hbi_az" },
     "rmtSubIDcnct443": { "value": "97eba262-9086-4a3e-9770-dcfef6c3df30" },
     "rmtLocationcnct443": { "value": "usgovarizona" },
-    "ConnectionNamecnct444": { "value": "Peering_slgmag_Services_To_PreProd_" },
+    "ConnectionNamecnct444": { "value": "Peering_slgmag_Services_To_PreProd_AZ" },
     "vnetNamecnct444": { "value": "vnet_services_az" },
     "connectionType1cnct444": { "value": "Peering" },
     "sharedKeycnct444": { "value": "mysharedkey" },
@@ -122,7 +122,7 @@
     "peerVNETNamecnct444": { "value": "vnet_preprod_az" },
     "rmtSubIDcnct444": { "value": "a4b962d2-6b17-4c38-af02-010a6e774379" },
     "rmtLocationcnct444": { "value": "usgovarizona" },
-    "ConnectionNamecnct445": { "value": "Peering_slgmag_Services_To_Storage_" },
+    "ConnectionNamecnct445": { "value": "Peering_slgmag_Services_To_Storage_AZ" },
     "vnetNamecnct445": { "value": "vnet_services_az" },
     "connectionType1cnct445": { "value": "Peering" },
     "sharedKeycnct445": { "value": "mysharedkey" },
@@ -134,6 +134,7 @@
     "peerVNETNamecnct445": { "value": "vnet_storage_az" },
     "rmtSubIDcnct445": { "value": "0223b7af-344f-42cd-bed2-5ebbc7d06d5d" },
     "rmtLocationcnct445": { "value": "usgovarizona" }
+
 
 
   }

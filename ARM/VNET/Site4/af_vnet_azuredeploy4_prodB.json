@@ -5,24 +5,26 @@
 
     "commentLocation": {
       "type": "string",
-      "defaultValue": "using the metadata template to populate the parameters for the deployment template filter on VNET300"
+      "defaultValue": "using the metadata template to populate the parameters for the deployment template filter on VNET400"
     },
     "commentVNET": {
       "type": "string",
-      "defaultValue": "using the metadata template to populate the parameters from VNET tab, filter on VNET300"
+      "defaultValue": "using the metadata template to populate the parameters from VNET tab, filter on VNET400"
     },
     "commentSubnet": {
       "type": "string",
-      "defaultValue": "using the metadata template to populate the parameters from subnet tab, filter on VNET300"
+      "defaultValue": "using the metadata template to populate the parameters from subnet tab, filter on VNET400"
+    },
+
+    "commentGateway": {
+      "type": "string",
+      "defaultValue": "using the metadata template to populate the parameters from Gateway tab, filter on VNET400"
     },
     "commentConnections": {
       "type": "string",
-      "defaultValue": "using the metadata template to populate the parameters from Connection tab, filter on VNET300"
+      "defaultValue": "using the metadata template to populate the parameters from Connection tab, filter on VNET400"
     },
-    "commentGateway": {
-      "type": "string",
-      "defaultValue": "using the metadata template to populate the parameters from Gateway tab, filter on VNET300"
-    },
+
     "baseUrl": {
       "defaultValue": "https://github.com/willstg/AzureFoundation/tree/master/arm/vnet/site1",
       "type": "string",

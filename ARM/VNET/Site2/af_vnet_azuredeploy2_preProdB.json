@@ -2,6 +2,27 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "commentLocation": {
+      "type": "string",
+      "defaultValue": "using the metadata template to populate the parameters for the deployment template filter on VNET302"
+    },
+    "commentVNET": {
+      "type": "string",
+      "defaultValue": "using the metadata template to populate the parameters from VNET tab, filter on VNET302"
+    },
+    "commentSubnet": {
+      "type": "string",
+      "defaultValue": "using the metadata template to populate the parameters from subnet tab, filter on VNET302"
+    },
+    "commentConnections": {
+      "type": "string",
+      "defaultValue": "using the metadata template to populate the parameters from Connection tab, filter on VNET302"
+    },
+    "commentGateway": {
+      "type": "string",
+      "defaultValue": "using the metadata template to populate the parameters from Gateway tab, filter on VNET302"
+    },
+
     "baseUrl": {
       "defaultValue": "https://github.com/willstg/AzureFoundation/tree/master/arm/vnet/site1",
       "type": "string",
@@ -29,6 +50,12 @@
       "defaultValue": "10.128.32.0/20",
       "metadata": { "description": "AzureFoundation VNET Address Prefix, the range of addresses for a specific data center." }
     },
+    "dnsServers": {
+      "type": "array",
+      "defaultValue": [ "10.128.59.36" ],
+      "metadata": { "description": "AzureFoundation Domain Controller DNS server" }
+    },
+
 
     "subnet310Prefix": {
       "type": "string",
@@ -465,6 +492,158 @@
     "BGP": {
       "type": "bool",
       "metadata": { "description": "Will the gateway use BGP routing?" }
+    },
+
+
+    "ConnectionNamecnct420": {
+      "type": "string",
+      "defaultValue": "Peering_slgmag_PreProd_To_Services_",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "vnetNamecnct420": {
+      "type": "string",
+      "defaultValue": "vnet_preprod_ia",
+      "metadata": { "description": "Azure VNET of the current location" }
+    },
+    "LocalNamecnct420": {
+      "type": "string",
+      "defaultValue": "Services_",
+      "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
+    },
+    "localGWIPcnct420": {
+      "type": "string",
+      "defaultValue": "1.1.1.1",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalIPPrefixcnct420": {
+      "type": "array",
+      "defaultValue": [ "10.128.248.0/21" ],
+      "metadata": { "description": "An array of Local IP address prefixes that this gateway will route traffic to." }
+    },
+    "connectionType1cnct420": {
+      "type": "string",
+      "defaultValue": "Peering",
+      "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
+    },
+    "sharedKeycnct420": {
+      "type": "string",
+      "defaultValue": "mysharedkey",
+      "metadata": { "description": "The shared key to negotiate the VPN connection.  KeyVault will hold this secret." }
+    },
+    "routingWeightcnct420": {
+      "type": "int",
+      "defaultValue": 10,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowVNETAccesscnct420": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowFwdAccesscnct420": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowGWAccesscnct420": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "useRemoteGatewaycnct420": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "peerVNETNamecnct420": {
+      "type": "string",
+      "defaultValue": "vnet_services_ia",
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "rmtSubIDcnct420": {
+      "type": "string",
+      "defaultValue": "30457dd5-e56b-416b-9228-d48b37fe7caa",
+      "metadata": { "description": "The subscription ID of the peer VNET." }
+    },
+    "rmtRGNamecnct420": {
+      "type": "string",
+      "defaultValue": "rg_vnet_services_ia",
+      "metadata": { "description": "The resource group for the remote subscription VNET." }
+    },
+    "rmtConnectionNamecnct420": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": { "description": "The name of the remote connection." }
+    },
+    "rmtLocationcnct420": {
+      "type": "string",
+      "defaultValue": "usgoviowa",
+      "metadata": { "description": "The name of the remote location." }
+    },
+    "ConnectionNamecnct421": {
+      "type": "string",
+      "defaultValue": "Vnet2Vnet_slgmag_PreProd_To_PreProd_",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "vnetNamecnct421": {
+      "type": "string",
+      "defaultValue": "vnet_preprod_ia",
+      "metadata": { "description": "Azure VNET of the current location" }
+    },
+    "LocalNamecnct421": {
+      "type": "string",
+      "defaultValue": "PreProd_",
+      "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
+    },
+    "remoteGWNamecnct421": {
+      "type": "string",
+      "defaultValue": "gw_PreProd_VA",
+      "metadata": { "description": "Name for the remote VNET for a VNET to VNET connection" }
+    },
+    "localGWIPcnct421": {
+      "type": "string",
+      "defaultValue": "1.1.1.1",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalIPPrefixcnct421": {
+      "type": "array",
+      "defaultValue": [ "10.128.160.0/20" ],
+      "metadata": { "description": "An array of Local IP address prefixes that this gateway will route traffic to." }
+    },
+    "connectionType1cnct421": {
+      "type": "string",
+      "defaultValue": "Vnet2Vnet",
+      "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
+    },
+    "sharedKeycnct421": {
+      "type": "string",
+      "defaultValue": "mysharedkey",
+      "metadata": { "description": "The shared key to negotiate the VPN connection.  KeyVault will hold this secret." }
+    },
+    "routingWeightcnct421": {
+      "type": "int",
+      "defaultValue": 10,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "rmtSubIDcnct421": {
+      "type": "string",
+      "defaultValue": "a4b962d2-6b17-4c38-af02-010a6e774379",
+      "metadata": { "description": "The subscription ID of the peer VNET." }
+    },
+    "rmtRGNamecnct421": {
+      "type": "string",
+      "defaultValue": "rg_vnet_preprod_va",
+      "metadata": { "description": "The resource group for the remote subscriptions VNET gateway." }
+    },
+    "rmtConnectionNamecnct421": {
+      "type": "string",
+      "defaultValue": "Vnet2Vnet_slgmag_PreProd_To_PreProd_IA",
+      "metadata": { "description": "The name of the remote connection." }
+    },
+    "rmtLocationcnct421": {
+      "type": "string",
+      "defaultValue": "usgovvirginia",
+      "metadata": { "description": "The name of the remote location." }
     }
 
 
@@ -1281,7 +1460,27 @@
             "name": "[parameters('subnet499name')]",
             "properties": { "addressPrefix": "[parameters('subnet499prefix')]" }
           }
-        ]
+        ],
+        "resources": [
+          {
+            "apiVersion": "2016-06-01",
+            "type": "virtualNetworkPeerings",
+            "name": "[parameters('ConnectionNamecnct420')]",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [ "[concat('/subscriptions/', parameters('rmtSubIDcnct420'), '/resourceGroups/', parameters('rmtRGNamecnct420'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct420'))]", "[concat('Microsoft.Networks/virtualNetworks/',parameters('vnetNamecnct420'))]" ],
+            "comments": "Make sure you put these resources within the Resources of a VNET, like a subnet",
+            "properties": {
+              "allowVirtualNetworkAccess": "[parameters('allowVNETAccesscnct420')]",
+              "allowForwardedTraffic": "[parameters('allowFwdAccesscnct420')]",
+              "allowGatewayTransit": "[parameters('allowGWAccesscnct420')]",
+              "useRemoteGateways": "[parameters('allowVNETAccesscnct420')]",
+              "remoteVirtualNetwork": { "id": "[concat('/subscriptions/', parameters('rmtSubIDcnct420'), '/resourceGroups/', parameters('rmtRGNamecnct420'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct420'))]" }
+            }
+          }
+
+        ],
+        "dhcpOptions": { "dnsServers": [ "10.128.59.36" ] }
+
       }
     },
 
@@ -1331,6 +1530,34 @@
           "bandwidthInMbps": "[parameters('erBandwidth')]"
         }
       }
+    },
+    {
+      "apiVersion": "[variables('apiversion')]",
+      "name": "[parameters('ConnectionNamecnct421')]",
+      "type": "Microsoft.Network/connections",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [ "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('gatewayName'))]" ],
+      "properties": {
+        "virtualNetworkGateway1": { "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('gatewayName'))]" },
+        "virtualNetworkGateway2": { "id": "[concat('/subscriptions/',parameters('rmtSubIDcnct421'),'/resourceGroups/',parameters('rmtRGNamecnct421'),'/providers/Microsoft.Network/VirtualNetworkGateways/', parameters('remoteGWNamecnct421'))]" },
+        "sharedKey": "[parameters('sharedKeycnct421')]",
+        "connectionType": "[parameters('connectionType1cnct421')]",
+        "routingWeight": "[parameters('routingWeightcnct421')]"
+      }
+    },
+    {
+      "apiVersion": "[variables('apiversion')]",
+      "name": "[parameters('rmtConnectionNamecnct421')]",
+      "type": "Microsoft.Network/connections",
+      "location": "[parameters('rmtLocationcnct421')]",
+      "dependsOn": [ "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('gatewayName'))]" ],
+      "properties": {
+        "virtualNetworkGateway1": { "id": "[concat('/subscriptions/',parameters('rmtSubIDcnct421'),'/resourceGroups/',parameters('rmtRGNamecnct421'),'/providers/Microsoft.Network/VirtualNetworkGateways/', parameters('remoteGWNamecnct421'))]" },
+        "virtualNetworkGateway2": { "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('gatewayName'))]" },
+        "sharedKey": "[parameters('sharedKeycnct421')]",
+        "connectionType": "[parameters('connectionType1cnct421')]",
+        "routingWeight": "[parameters('routingWeightcnct421')]"
+      }
     }
 
 
@@ -1341,7 +1568,7 @@
 
 
 
-        "outputs": {
-        }
+  "outputs": {
+  }
 
-      }
+}
