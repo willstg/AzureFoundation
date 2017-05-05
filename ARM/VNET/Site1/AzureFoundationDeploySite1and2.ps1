@@ -1,9 +1,10 @@
 ﻿<#
  .SYNOPSIS
-    Deploys the AzureFoundation templates for Site 3 and 4 of a four datacenter pattern.
+    Deploys the AzureFoundation templates for Site 3 and 4 of a four datacenter pattern.  Depending on the environment 
+    you're deploying site 3, 
 
  .DESCRIPTION
-    Deploys an Azure Resource Manager template associated to the first site in the AzureFoundation
+    Deploys an Azure Resource Manager template assocazted to the first site in the AzureFoundation
 
  .PARAMETERs 
     subscriptionId_prod
@@ -22,7 +23,7 @@
     Optional, path to the template file. Defaults to template.json.
 
  .PARAMETER parametersFilePath
-    Optional, path to the parameters file. Defaults to parameters.json. If file is not found, will prompt for parameter values based on template.
+    Optional, path to the parameters file. Defaults to parameters.json. If file is not found, will prompt for parameter txlues based on template.
 #>
 
 param(
@@ -42,7 +43,7 @@ param(
  $deploymentName,
 
  [string]
- $templateFilePath = "C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site3\af_vnet_azuredeploy.parameters3.json",
+ $templateFilePath = "C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site1\af_vnet_azuredeploy.parameters1.json",
 
  [string]
  $parametersFilePath = "azuredeployparameters.json"
@@ -72,31 +73,38 @@ Write-Host "Logging in...";
 $Environment = "AzureUSGovernment"
 #$Environment = 'AzureCloud'
 Login-AzureRmAccount -EnvironmentName $Environment;
-$subID_HBI='97eba262-9086-4a3e-9770-dcfef6c3df30'
-$SubName_HBI= 'slgmag_managed_HBI'
-$subID_PreProd='a7d928df-fc97-4f02-adae-3d7cdeb7c8cb'
-$subName_PreProd='slgmag_managed_PreProd'
-$SubID_Prod='a4b962d2-6b17-4c38-af02-010a6e774379'
-$SubName_Prod='slgmag_managed_Production'
-$SubID_Services='30457dd5-e56b-416b-9228-d48b37fe7caa'
-$SubName_Services='slgmag_managed_Services'
-$SubID_Storage='0223b7af-344f-42cd-bed2-5ebbc7d06d5d'
-$SubName_Storage='slgmag_managed_Storage'
-$resourceGroupLocation1 = 'usgovvirginia'
-$location1='usgovvirginia'
-$servicesResourceGroupName1="rg_vnet_services_va"
-$prodResourceGroupName1="rg_vnet_prod_va"
-$preProdResourceGroupName1 ="rg_vnet_preprod_va"
-$hbiResourceGroupName1 ="rg_vnet_hbi_va"
-$storageResourceGroupName1 ="rg_vnet_storage_va"
+$Environment = 'AzureCloud'
+
+$UserName='willst@slg044o365.onmicrosoft.com'
+$subID_CJIS=""
+$SubName_CJIS='mac_slg_Managed_CJIS'
+$subID_HBI="ce38c0ef-22f5-458d-b1f7-e3890e2471f2"
+$SubName_HBI= 'MAC_SLG_Managed_HBI'
+$subID_PreProd="a7d928df-fc97-4f02-adae-3d7cdeb7c8cb"
+$subName_PreProd='MAC_SLG_Managed_PreProd'
+$SubID_Prod="ec1cea2e-92aa-45a7-89b0-d9fc40df2beb"
+$SubName_Prod='MAC_SLG_Managed_Prod'
+$SubID_Services="730f26b5-ebf5-4518-999f-0b4eb0cdc8f9"
+$SubName_Services="MAC_SLG_Managed_Services"
+$SubID_Storage="6e5d19d2-a324-470a-b24f-57ac0d3221a1"
+$SubName_Storage="MAC_SLG_Managed_Storage"
+
+$resourceGroupLocation = 'West Central US'
+$location="westcentralus"
+
+$servicesResourceGroupName1="rg_vnet_services_w1"
+$prodResourceGroupName1="rg_vnet_prod_w1"
+$preProdResourceGroupName1 ="rg_vnet_preprod_w1"
+$hbiResourceGroupName1 ="rg_vnet_hbi_w1"
+$storageResourceGroupName1 ="rg_vnet_storage_w1"
 #Second Site
-$resourceGroupLocation2 = 'usgoviowa'
-$location2='usgoviowa'
-$servicesResourceGroupName2="rg_vnet_services_ia"
-$prodResourceGroupName2="rg_vnet_prod_ia"
-$preProdResourceGroupName2 ="rg_vnet_preprod_ia"
-$hbiResourceGroupName2 ="rg_vnet_hbi_ia"
-$storageResourceGroupName2 ="rg_vnet_storage_ia"
+$resourceGroupLocation2 = 'West US 2'
+$location2='westus2'
+$servicesResourceGroupName2="rg_vnet_services_w2"
+$prodResourceGroupName2="rg_vnet_prod_w2"
+$preProdResourceGroupName2 ="rg_vnet_preprod_w2"
+$hbiResourceGroupName2 ="rg_vnet_hbi_w2"
+$storageResourceGroupName2 ="rg_vnet_storage_w2"
 
 # select subscription
 #Write-Host "Selecting subscription '$subscriptionId'";
@@ -147,8 +155,8 @@ else{
 This section is where we build the NSG for the VNET
 #>
 
-$servicesParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site3\af_vnet_azuredeploy.parameters3_Services.json"
-$servicesTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site3\af_vnet_azuredeploy3_servicesB.json"
+$servicesParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site1\af_vnet_azuredeploy.parameters1_Services.json"
+$servicesTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site1\af_vnet_azuredeploy1_servicesB.json"
 
 # Start the deployment
 
@@ -156,8 +164,8 @@ Test-AzureRmResourceGroupDeployment -ResourceGroupName $servicesResourcegroupnam
 
 New-AzureRmResourceGroupDeployment -ResourceGroupName $servicesResourceGroupName1 -Templatefile $servicesTemplateFilePath1 -TemplateParameterfile $servicesParametersFilePath1;
 
-$servicesParametersFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site4\af_vnet_azuredeploy.parameters4_Services.json"
-$servicesTemplateFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site4\af_vnet_azuredeploy4_servicesB.json"
+$servicesParametersFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site2\af_vnet_azuredeploy.parameters2_Services.json"
+$servicesTemplateFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site2\af_vnet_azuredeploy2_servicesB.json"
 
 # Start the deployment
 
@@ -200,22 +208,22 @@ else{
 This section is where we build the NSG for the VNET
 #>
 
-$prodParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site3\af_vnet_azuredeploy.parameters3_prod.json"
-$prodTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site3\af_vnet_azuredeploy3_prodB.json"
+$prodParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site1\af_vnet_azuredeploy.parameters1_prod.json"
+$prodTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site1\af_vnet_azuredeploy1_prodB.json"
 
 # Start the deployment
 
 Test-AzureRmResourceGroupDeployment -ResourceGroupName $prodResourcegroupname1 -TemplateFile $prodTemplateFilePath1 -TemplateParameterFile $prodParametersFilePath1;
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName $prodResourceGroupName1 -Templatefile $prodTemplateFilePath1 -TemplateParameterfile $prodParametersFilePath1;
 
-$prodParametersFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site4\af_vnet_azuredeploy.parameters4_prod.json"
-$prodTemplateFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site4\af_vnet_azuredeploy4_prodB.json"
+$prodParametersFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site2\af_vnet_azuredeploy.parameters2_prod.json"
+$prodTemplateFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site2\af_vnet_azuredeploy2_prodB.json"
 
 # Start the deployment
 Test-AzureRmResourceGroupDeployment -ResourceGroupName $prodResourcegroupname2 -TemplateFile $prodTemplateFilePath2 -TemplateParameterFile $prodParametersFilePath2;
 
 New-AzureRmResourceGroupDeployment -ResourceGroupName $prodResourceGroupName2 -Templatefile $prodTemplateFilePath2 -TemplateParameterfile $prodParametersFilePath2;
+New-AzureRmResourceGroupDeployment -ResourceGroupName $prodResourceGroupName1 -Templatefile $prodTemplateFilePath1 -TemplateParameterfile $prodParametersFilePath1;
 
 <#
 **************************PrepreProduction Subscription***************
@@ -252,16 +260,16 @@ else{
 This section is where we build the NSG for the VNET
 #>
 
-$preProdParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site3\af_vnet_azuredeploy.parameters3_preProd.json"
-$preProdTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site3\af_vnet_azuredeploy1_preProd.json"
+$preProdParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site1\af_vnet_azuredeploy.parameters1_preProd.json"
+$preProdTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site1\af_vnet_azuredeploy1_preProd.json"
 
 # Start the deployment
 Test-AzureRmResourceGroupDeployment -ResourceGroupName $preProdResourcegroupname1 -TemplateFile $preProdTemplateFilePath1 -TemplateParameterFile $preProdParametersFilePath1;
 
 New-AzureRmResourceGroupDeployment -ResourceGroupName $preProdResourceGroupName1 -Templatefile $preProdTemplateFilePath1 -TemplateParameterfile $preProdParametersFilePath1;
 
-$preProdParametersFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site4\af_vnet_azuredeploy.parameters4_preProd.json"
-$preProdTemplateFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site4\af_vnet_azuredeploy4_preProdB.json"
+$preProdParametersFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site2\af_vnet_azuredeploy.parameters2_preProd.json"
+$preProdTemplateFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site2\af_vnet_azuredeploy2_preProdB.json"
 
 # Start the deployment
 Test-AzureRmResourceGroupDeployment -ResourceGroupName $preProdResourcegroupname2 -TemplateFile $preProdTemplateFilePath2 -TemplateParameterFile $preProdParametersFilePath2;
@@ -275,6 +283,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $preProdResourceGroupName2
 Select-AzureRmSubscription -SubscriptionID $SubID_HBI
 
 $hbiResourceGroup1 = Get-AzureRmResourceGroup -Name $hbiResourceGroupName1 -ErrorAction SilentlyContinue
+$hbiResourceGroup2 = Get-AzureRmResourceGroup -Name $hbiResourceGroupName2 -ErrorAction SilentlyContinue
 
 if(!$hbiResourceGroup1)
 {
@@ -304,21 +313,20 @@ else{
 This section is where we build the NSG for the VNET
 #>
 
-$hbiParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site3\af_vnet_azuredeploy.parameters3_hbi.json"
-$hbiTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site3\af_vnet_azuredeploy3_hbiB.json"
+$hbiParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site1\af_vnet_azuredeploy.parameters1_hbi.json"
+$hbiTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site1\af_vnet_azuredeploy1_hbiB.json"
 
 # Start the deployment
 Test-AzureRmResourceGroupDeployment -ResourceGroupName $hbiResourcegroupname1 -TemplateFile $hbiTemplateFilePath1 -TemplateParameterFile $hbiParametersFilePath1;
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName $hbiResourceGroupName1 -Templatefile $hbiTemplateFilePath1 -TemplateParameterfile $hbiParametersFilePath1;
-
-$hbiParametersFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site4\af_vnet_azuredeploy.parameters4_hbi.json"
-$hbiTemplateFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site4\af_vnet_azuredeploy4_hbiB.json"
+$hbiParametersFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site2\af_vnet_azuredeploy.parameters2_hbi.json"
+$hbiTemplateFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site2\af_vnet_azuredeploy2_hbiB.json"
 
 # Start the deployment
 Test-AzureRmResourceGroupDeployment -ResourceGroupName $hbiResourcegroupname2 -TemplateFile $hbiTemplateFilePath2 -TemplateParameterFile $hbiParametersFilePath2;
 
 New-AzureRmResourceGroupDeployment -ResourceGroupName $hbiResourceGroupName2 -Templatefile $hbiTemplateFilePath2 -TemplateParameterfile $hbiParametersFilePath2;
+New-AzureRmResourceGroupDeployment -ResourceGroupName $hbiResourceGroupName1 -Templatefile $hbiTemplateFilePath1 -TemplateParameterfile $hbiParametersFilePath1;
 
 <#
 **************************Storage Subscription***************
@@ -326,6 +334,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $hbiResourceGroupName2 -Te
 
 Select-AzureRmSubscription -SubscriptionID $SubID_Storage;
 $storageResourceGroup1 = Get-AzureRmResourceGroup -Name $storageResourceGroupName1 -ErrorAction SilentlyContinue
+$storageResourceGroup2 = Get-AzureRmResourceGroup -Name $storageResourceGroupName2 -ErrorAction SilentlyContinue
 
 if(!$storageResourceGroup1)
 {
@@ -351,20 +360,18 @@ if(!$storageResourceGroup2)
 else{
     Write-Host "Using existing resource group '$storageResourceGroupName2'";
 }
-$StorageParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site3\af_vnet_azuredeploy.parameters3_Storage.json"
-$StorageTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site1\af_vnet_azuredeploy1_Storage.json"
+$StorageParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site1\af_vnet_azuredeploy.parameters1_Storage.json"
+$StorageTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site1\af_vnet_azuredeploy1_StorageB.json"
 
 # Start the deployment
 Test-AzureRmResourceGroupDeployment -ResourceGroupName $StorageResourcegroupname1 -TemplateFile $StorageTemplateFilePath1 -TemplateParameterFile $StorageParametersFilePath1;
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName $StorageResourceGroupName1 -Templatefile $StorageTemplateFilePath1 -TemplateParameterfile $StorageParametersFilePath1;
-
-
-$storageParametersFilePath2 ="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site4\af_vnet_azuredeploy.parameters4_storage.json"
-$storageTemplateFilePath2 ="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\Site4\af_vnet_azuredeploy4_storageB.json"
+$storageParametersFilePath2 ="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site2\af_vnet_azuredeploy.parameters2_storage.json"
+$storageTemplateFilePath2 ="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site2\af_vnet_azuredeploy2_storageB.json"
 
 # Start the deployment
 Test-AzureRmResourceGroupDeployment -ResourceGroupName $storageResourcegroupname2 -TemplateFile $storageTemplateFilePath2 -TemplateParameterFile $storageParametersFilePath2;
+New-AzureRmResourceGroupDeployment -ResourceGroupName $StorageResourceGroupName1 -Templatefile $StorageTemplateFilePath1 -TemplateParameterfile $StorageParametersFilePath1;
 
 New-AzureRmResourceGroupDeployment -ResourceGroupName $storageResourceGroupName2 -Templatefile $storageTemplateFilePath2 -TemplateParameterfile $storageParametersFilePath2;
 
