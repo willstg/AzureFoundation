@@ -3,15 +3,25 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
 
+    /*Go to the metadata spreadsheet for the Subscription and copy the data for the Subscriptions
+    parameters files */
     "baseURL": { "value": "https://github.com/willstg/AzureFoundation/tree/master/arm/vnet/site1" },
-    "templateLink": { "value": "site1/af_vnet_azuredeploy1_servicesB.parameters.json" },
-    "parametersLink": { "value": "site2/af_vnet_azuredeploy2_servicesB.parameters.json" },
 
+    /*the VNET tab of the metadata spreadsheet and filter the data with VNET104
+    copy the data from the columns that have the word prerameters in them.  the columns 
+    are colored to show the grouping.
+    */
     "locationName": { "value": "westcentralus" },
     "ResourceGroupName": { "value": "rg_vnet_services_w1" },
     "vnetName": { "value": "vnet_services_w1" },
     "vnetAddressPrefix": { "value": "10.128.56.0/21" },
     "dnsServers": { "value": [ "10.128.59.36" ] },
+
+
+    /*the subnet tab of the metadata spreadsheet and filter the data with VNET104
+        copy the data from the columns that have the word prerameters in them.  the columns 
+    are colored to show the grouping.
+    */
 
     "subnet600Prefix": { "value": "10.128.56.0/24" },
     "subnet600Name": { "value": "600_Services_Srvcs_SLGa_W1" },
@@ -88,90 +98,99 @@
     "subnet755Prefix": { "value": "10.128.63.208/28" },
     "subnet755Name": { "value": "755_ExtLB_Srvcs_SLGa_W1" },
     "subnet755NSG": { "value": "755_NSG_ExtLB" },
-    "subnet798Prefix": { "value": "10.128.63.224/28" },
-    "subnet798Name": { "value": "798_ER_Srvcs_SLGa_W1" },
-    "subnet798NSG": { "value": "798_NSG_ER" },
-    "subnet799Prefix": { "value": "10.128.63.240/28" },
+    "subnet799Prefix": { "value": "10.128.63.224/27" },
     "subnet799Name": { "value": "GatewaySubnet" },
 
-    "GatewayName": { "value": "gw_Services_W1" },
-    "SubID": { "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9" },
-    "VPNType": { "value": "RouteBased" },
-    "PublicIPName": { "value": "gwpip_Services_W1" },
-    "gatewaySKU": { "value": "Standard" },
-    "GatewayType": { "value": "Vpn" },
-    "erCircuitName": { "value": "SLGa_Services_ER" },
+    /*the gateway tab of the metadata spreadsheet and filter the data with VNET104
+        copy the data from the columns that have the word prerameters in them.  the columns 
+    are colored to show the grouping.
+    */
+    "GatewayNamegw104": { "value": "gw_Services_W1_ExpressRoute" },
+    "SubIDgw104": { "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9" },
+    "VPNTypegw104": { "value": "RouteBased" },
+    "PublicIPNamegw104": { "value": "gwpip_Services_W1ExpressRoute" },
+    "gatewaySKUgw104": { "value": "Standard" },
+    "GatewayTypegw104": { "value": "ExpressRoute" },
+    "erCircuitName": { "value": "mac_slg_Services_ER" },
     "erSKUTier": { "value": "Standard" },
     "erSKUFamily": { "value": "MeteredData" },
     "erBandwidth": { "value": 50 },
     "erSPName": { "value": "Equinix" },
     "erPeeringLocation": { "value": "Dallas" },
-    "BGP": { "value": false },
+    "BGPgw104": { "value": true },
+    "GatewayNamegw1042": { "value": "gw_Services_W1_Vpn" },
+    "SubIDgw1042": { "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9" },
+    "VPNTypegw1042": { "value": "RouteBased" },
+    "PublicIPNamegw1042": { "value": "gwpip_Services_W1Vpn" },
+    "gatewaySKUgw1042": { "value": "Standard" },
+    "GatewayTypegw1042": { "value": "Vpn" },
+    "BGPgw1042": { "value": true },
 
-    "ConnectionNamecnct140": { "value": "IPSec_SLGa_Services_To_Net1_DC1" },
+
+    /*the connection tab of the metadata spreadsheet and filter the data with VNET104
+        copy the data from the columns that have the word prerameters in them.  the columns 
+    are colored to show the grouping.
+    */
+    "ConnectionNamecnct140": { "value": "IPSec_mac_slg_Services_To_Net1_DC1" },
     "vnetNamecnct140": { "value": "vnet_services_w1" },
     "LocalNamecnct140": { "value": "Net1_DC1" },
-    "localGWIPcnct140": { "value": "1.1.1.1" },
-    "LocalIPPrefixcnct140": { "value": [ "10.0.0.0/9" ] },
+    "localGWIPcnct140": { "value": "1.1.1.10" },
+    "LocalIPPrefixcnct140": { "value": [ "10.0.0.0/10" ] },
     "connectionType1cnct140": { "value": "IPSec" },
     "sharedKeycnct140": { "value": "mysharedkey" },
     "routingWeightcnct140": { "value": 10 },
-    "ConnectionNamecnct141": { "value": "gw_Services_W2_to_gw_Services_To_W1" },
+    "GWNamecnct140": { "value": "gw_Services_W1_Vpn" },
+    "ConnectionNamecnct141": { "value": "Vnet2Vnet_mac_slg_Services_To_Services_W2" },
     "vnetNamecnct141": { "value": "vnet_services_w1" },
-    "remoteGWNamecnct141": { "value": "gw_Services_W2" },
+    "remoteGWNamecnct141": { "value": "gw_Services_W2_Vpn" },
     "connectionType1cnct141": { "value": "Vnet2Vnet" },
     "sharedKeycnct141": { "value": "mysharedkey" },
     "routingWeightcnct141": { "value": 10 },
     "rmtSubIDcnct141": { "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9" },
-    "ConnectionNamecnct142": { "value": "Peering_SLGa_Services_To_Prod_W1" },
-    "vnetNamecnct142": { "value": "vnet_services_w1" },
-    "connectionType1cnct142": { "value": "Peering" },
-    "sharedKeycnct142": { "value": "mysharedkey" },
-    "routingWeightcnct142": { "value": 10 },
-    "allowVNETAccesscnct142": { "value": true },
-    "allowFwdAccesscnct142": { "value": true },
-    "allowGWAccesscnct142": { "value": true },
-    "useRemoteGatewaycnct142": { "value": false },
-    "peerVNETNamecnct142": { "value": "vnet_prod_w1" },
-    "rmtSubIDcnct142": { "value": "ec1cea2e-92aa-45a7-89b0-d9fc40df2beb" },
-    "ConnectionNamecnct143": { "value": "Peering_SLGa_Services_To_HBI_W1" },
-    "vnetNamecnct143": { "value": "vnet_services_w1" },
-    "connectionType1cnct143": { "value": "Peering" },
-    "sharedKeycnct143": { "value": "mysharedkey" },
-    "routingWeightcnct143": { "value": 50 },
-    "allowVNETAccesscnct143": { "value": true },
-    "allowFwdAccesscnct143": { "value": true },
-    "allowGWAccesscnct143": { "value": true },
-    "useRemoteGatewaycnct143": { "value": false },
-    "peerVNETNamecnct143": { "value": "vnet_hbi_w1" },
-    "rmtSubIDcnct143": { "value": "ce38c0ef-22f5-458d-b1f7-e3890e2471f2" },
-    "ConnectionNamecnct144": { "value": "Peering_SLGa_Services_To_PreProd_W1" },
-    "vnetNamecnct144": { "value": "vnet_services_w1" },
-    "connectionType1cnct144": { "value": "Peering" },
-    "sharedKeycnct144": { "value": "mysharedkey" },
-    "routingWeightcnct144": { "value": 10 },
-    "allowVNETAccesscnct144": { "value": true },
-    "allowFwdAccesscnct144": { "value": true },
-    "allowGWAccesscnct144": { "value": true },
-    "useRemoteGatewaycnct144": { "value": false },
-    "peerVNETNamecnct144": { "value": "vnet_preprod_w1" },
-    "rmtSubIDcnct144": { "value": "a7d928df-fc97-4f02-adae-3d7cdeb7c8cb" },
-    "ConnectionNamecnct145": { "value": "Peering_SLGa_Services_To_Storage_W1" },
-    "vnetNamecnct145": { "value": "vnet_services_w1" },
-    "connectionType1cnct145": { "value": "Peering" },
-    "sharedKeycnct145": { "value": "mysharedkey" },
-    "routingWeightcnct145": { "value": 10 },
-    "allowVNETAccesscnct145": { "value": true },
-    "allowFwdAccesscnct145": { "value": true },
-    "allowGWAccesscnct145": { "value": true },
-    "useRemoteGatewaycnct145": { "value": false },
-    "peerVNETNamecnct145": { "value": "vnet_storage_w1" },
-    "rmtSubIDcnct145": { "value": "6e5d19d2-a324-470a-b24f-57ac0d3221a1" },
-    "rmtConnectionNamecnct141": { "value": "gw_Services_W2_to_gw_Services_To_W1" }
-
-
-
+    "rmtConnectionNamecnct141": { "value": "Vnet2Vnet_mac_slg_Services_To_Services_W1" },
+    "rmtLocationcnct141": { "value": "westus2" },
+    "GWNamecnct141": { "value": "gw_Services_W1_Vpn" },
+    "ConnectionNamecnct146": { "value": "Peering_mac_slg_Services_To_Prod_W1" },
+    "vnetNamecnct146": { "value": "vnet_services_w1" },
+    "connectionType1cnct146": { "value": "Peering" },
+    "allowVNETAccesscnct146": { "value": true },
+    "allowFwdAccesscnct146": { "value": true },
+    "allowGWAccesscnct146": { "value": true },
+    "useRemoteGatewaycnct146": { "value": false },
+    "peerVNETNamecnct146": { "value": "vnet_prod_w1" },
+    "rmtSubIDcnct146": { "value": "ec1cea2e-92aa-45a7-89b0-d9fc40df2beb" },
+    "rmtLocationcnct146": { "value": "westcentralus" },
+    "ConnectionNamecnct147": { "value": "Peering_mac_slg_Services_To_HBI_W1" },
+    "vnetNamecnct147": { "value": "vnet_services_w1" },
+    "connectionType1cnct147": { "value": "Peering" },
+    "allowVNETAccesscnct147": { "value": true },
+    "allowFwdAccesscnct147": { "value": true },
+    "allowGWAccesscnct147": { "value": true },
+    "useRemoteGatewaycnct147": { "value": false },
+    "peerVNETNamecnct147": { "value": "vnet_hbi_w1" },
+    "rmtSubIDcnct147": { "value": "ce38c0ef-22f5-458d-b1f7-e3890e2471f2" },
+    "rmtLocationcnct147": { "value": "westcentralus" },
+    "ConnectionNamecnct148": { "value": "Peering_mac_slg_Services_To_PreProd_W1" },
+    "vnetNamecnct148": { "value": "vnet_services_w1" },
+    "connectionType1cnct148": { "value": "Peering" },
+    "allowVNETAccesscnct148": { "value": true },
+    "allowFwdAccesscnct148": { "value": true },
+    "allowGWAccesscnct148": { "value": true },
+    "useRemoteGatewaycnct148": { "value": false },
+    "peerVNETNamecnct148": { "value": "vnet_preprod_w1" },
+    "rmtSubIDcnct148": { "value": "a7d928df-fc97-4f02-adae-3d7cdeb7c8cb" },
+    "rmtLocationcnct148": { "value": "westcentralus" },
+    "ConnectionNamecnct149": { "value": "Peering_mac_slg_Services_To_Storage_W1" },
+    "vnetNamecnct149": { "value": "vnet_services_w1" },
+    "connectionType1cnct149": { "value": "Peering" },
+    "allowVNETAccesscnct149": { "value": true },
+    "allowFwdAccesscnct149": { "value": true },
+    "allowGWAccesscnct149": { "value": true },
+    "useRemoteGatewaycnct149": { "value": false },
+    "peerVNETNamecnct149": { "value": "vnet_storage_w1" },
+    "rmtSubIDcnct149": { "value": "6e5d19d2-a324-470a-b24f-57ac0d3221a1" },
+    "rmtLocationcnct149": { "value": "westcentralus" }
 
 
   }
-  }
+}

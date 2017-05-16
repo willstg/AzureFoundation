@@ -48,8 +48,7 @@
     "subnet662Prefix": { "value": "10.128.190.128/26" },
     "subnet662Name": { "value": "662_User_Tier2_Srvcs_slgmag_TX" },
     "subnet662NSG": { "value": "662_NSG_User_Tier2" },
-    "subnet700Prefix": { "value": "10.128.191.0/28" },
-    "subnet799Prefix": { "value": "10.128.191.224/27" },
+       "subnet799Prefix": { "value": "10.128.191.224/27" },
     "subnet799Name": { "value": "GatewaySubnet" },
 
 

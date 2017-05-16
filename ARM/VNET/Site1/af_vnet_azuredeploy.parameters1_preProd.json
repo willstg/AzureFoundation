@@ -2,15 +2,22 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-
+    /*Go to the metadata spreadsheet for the Subscription and copy the data for the Subscriptions
+    parameters files */
     "baseURL": { "value": "https://github.com/willstg/AzureFoundation/tree/master/arm/vnet/site1" },
-
+    /*the VNET tab of the metadata spreadsheet and filter the data with VNET102
+    copy the data from the columns that have the word prerameters in them.  the columns 
+    are colored to show the grouping.
+    */
     "locationName": { "value": "westcentralus" },
     "ResourceGroupName": { "value": "rg_vnet_preprod_w1" },
     "vnetName": { "value": "vnet_preprod_w1" },
     "vnetAddressPrefix": { "value": "10.128.32.0/20" },
     "dnsServers": { "value": [ "10.128.59.36" ] },
-
+    /*the subnet tab of the metadata spreadsheet and filter the data with VNET102
+        copy the data from the columns that have the word prerameters in them.  the columns 
+    are colored to show the grouping.
+    */
 
     "subnet310Prefix": { "value": "10.128.32.0/25" },
     "subnet310Name": { "value": "310_Web_Test_SLGa_W1" },
@@ -72,50 +79,32 @@
     "subnet460Prefix": { "value": "10.128.44.0/25" },
     "subnet460Name": { "value": "460_User_Tier0_Dev_SLGa_W1" },
     "subnet460NSG": { "value": "460_NSG_User_Tier0" },
-
     "subnet461Prefix": { "value": "10.128.44.128/25" },
     "subnet461Name": { "value": "461_User_Tier1_Dev_SLGa_W1" },
     "subnet461NSG": { "value": "461_NSG_User_Tier1" },
     "subnet462Prefix": { "value": "10.128.45.0/25" },
     "subnet462Name": { "value": "462_User_Tier2_Dev_SLGa_W1" },
     "subnet462NSG": { "value": "462_NSG_User_Tier2" },
-
+    /*Only the Services Subscription's VNET needs a gateway with the default design
     "subnet499Prefix": { "value": "10.128.47.240/28" },
     "subnet499Name": { "value": "GatewaySubnet" },
+      */
+    /*the gateway for this subscription should only use the Services Gateway through a peered 
+    connection
+    The Connection tab of the spreadsheet filtered on VNET102 will have the peering connection details
+    copy the columns for the parameters colored.
 
-
-    "GatewayName": { "value": "gw_PreProd_W1" },
-    "SubID": { "value": "a7d928df-fc97-4f02-adae-3d7cdeb7c8cb" },
-    "VPNType": { "value": "RouteBased" },
-    "PublicIPName": { "value": "gwpip_PreProd_W1" },
-    "gatewaySKU": { "value": "Standard" },
-    "GatewayType": { "value": "Vpn" },
-    "erCircuitName": { "value": "SLGa_PreProd_ER" },
-    "erSKUTier": { "value": "Standard" },
-    "erSKUFamily": { "value": "MeteredData" },
-    "erBandwidth": { "value": 50 },
-    "erSPName": { "value": "Equinix" },
-    "erPeeringLocation": { "value": "Dallas" },
-    "BGP": { "value": false },
-
-    "ConnectionNamecnct120": { "value": "Peering_SLGa_PreProd_To_Services_W1" },
+    */
+    "ConnectionNamecnct120": { "value": "Peering_mac_slg_PreProd_To_Services_W1" },
     "vnetNamecnct120": { "value": "vnet_preprod_w1" },
     "connectionType1cnct120": { "value": "Peering" },
-    "sharedKeycnct120": { "value": "mysharedkey" },
-    "routingWeightcnct120": { "value": 10 },
     "allowVNETAccesscnct120": { "value": true },
     "allowFwdAccesscnct120": { "value": true },
     "allowGWAccesscnct120": { "value": true },
     "useRemoteGatewaycnct120": { "value": false },
     "peerVNETNamecnct120": { "value": "vnet_services_w1" },
     "rmtSubIDcnct120": { "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9" },
-    "ConnectionNamecnct121": { "value": "Vnet2Vnet_SLGa_PreProd_To_PreProd_W2" },
-    "vnetNamecnct121": { "value": "vnet_preprod_w1" },
-    "remoteGWNamecnct121": { "value": "gw_PreProd_W2" },
-    "connectionType1cnct121": { "value": "Vnet2Vnet" },
-    "sharedKeycnct121": { "value": "mysharedkey" },
-    "routingWeightcnct121": { "value": 10 },
-    "rmtSubIDcnct121": { "value": "a7d928df-fc97-4f02-adae-3d7cdeb7c8cb" }
+    "rmtLocationcnct120": { "value": "westcentralus" }
 
 
   }

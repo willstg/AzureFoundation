@@ -2,16 +2,22 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    /*Go to the metadata spreadsheet for the Subscription and copy the data for the Subscriptions
+    parameters files */
     "baseURL": { "value": "https://github.com/willstg/AzureFoundation/tree/master/arm/vnet/site1" },
-
+    /*the VNET tab of the metadata spreadsheet and filter the data with VNET100
+    copy the data from the columns that have the word prerameters in them.  the columns 
+    are colored to show the grouping.
+    */
     "locationName": { "value": "westcentralus" },
     "ResourceGroupName": { "value": "rg_vnet_prod_w1" },
     "vnetName": { "value": "vnet_prod_w1" },
     "vnetAddressPrefix": { "value": "10.128.0.0/20" },
     "dnsServers": { "value": [ "10.128.59.36" ] },
-
-
-
+    /*the subnet tab of the metadata spreadsheet and filter the data with VNET100
+        copy the data from the columns that have the word prerameters in them.  the columns 
+    are colored to show the grouping.
+    */
     "subnet110Prefix": { "value": "10.128.2.0/24" },
     "subnet110Name": { "value": "110_Web_prod_SLGa_W1" },
     "subnet110NSG": { "value": "110_NSG_Web" },
@@ -45,45 +51,25 @@
     "subnet162Prefix": { "value": "10.128.11.0/25" },
     "subnet162Name": { "value": "162_User_Tier2_prod_SLGa_W1" },
     "subnet162NSG": { "value": "162_NSG_User_Tier2" },
+    /*Only the Services Subscription's VNET needs a gateway with the default design
     "subnet199Prefix": { "value": "10.128.15.240/28" },
     "subnet199Name": { "value": "GatewaySubnet" },
-
-    "GatewayName": { "value": "gw_HBI_W1" },
-    "SubID": { "value": "ce38c0ef-22f5-458d-b1f7-e3890e2471f2" },
-    "VPNType": { "value": "RouteBased" },
-    "PublicIPName": { "value": "gwpip_HBI_W1" },
-    "gatewaySKU": { "value": "Standard" },
-    "GatewayType": { "value": "Vpn" },
-    "erCircuitName": { "value": "SLGa_HBI_ER" },
-    "erSKUTier": { "value": "Standard" },
-    "erSKUFamily": { "value": "MeteredData" },
-    "erBandwidth": { "value": 50 },
-    "erSPName": { "value": "Equinix" },
-    "erPeeringLocation": { "value": "Dallas" },
-    "BGP": { "value": false },
-
-    "ConnectionNamecnct100": { "value": "Peering_SLGa_Prod_To_Services_W1" },
+      */
+    /*the gateway for this subscription should only use the Services Gateway through a peered 
+    connection
+    The Connection tab of the spreadsheet filtered on VNET100 will have the peering connection details
+    copy the columns for the parameters colored.
+    */
+    "ConnectionNamecnct100": { "value": "Peering_mac_slg_Prod_To_Services_W1" },
     "vnetNamecnct100": { "value": "vnet_prod_w1" },
     "connectionType1cnct100": { "value": "Peering" },
-    "sharedKeycnct100": { "value": "mysharedkey" },
-    "routingWeightcnct100": { "value": 10 },
     "allowVNETAccesscnct100": { "value": true },
     "allowFwdAccesscnct100": { "value": true },
     "allowGWAccesscnct100": { "value": true },
     "useRemoteGatewaycnct100": { "value": false },
     "peerVNETNamecnct100": { "value": "vnet_services_w1" },
     "rmtSubIDcnct100": { "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9" },
-    "ConnectionNamecnct101": { "value": "Vnet2Vnet_SLGa_Prod_To_Prod_W2" },
-    "vnetNamecnct101": { "value": "vnet_prod_w1" },
-    "remoteGWNamecnct101": { "value": "gw_Prod_W2" },
-    "connectionType1cnct101": { "value": "Vnet2Vnet" },
-    "sharedKeycnct101": { "value": "mysharedkey" },
-    "routingWeightcnct101": { "value": 10 },
-    "rmtSubIDcnct101": { "value": "ec1cea2e-92aa-45a7-89b0-d9fc40df2beb" },
-    "rmtConnectionNamecnct101": { "value": "Vnet2Vnet_SLGa_Prod_To_Prod_W1" },
-    "rmtLocationcnct100": { "value": "westcentralus" },
-    "rmtLocationcnct101": { "value": "westus2" }
-
+    "rmtLocationcnct100": { "value": "westcentralus" }
 
   }
 }

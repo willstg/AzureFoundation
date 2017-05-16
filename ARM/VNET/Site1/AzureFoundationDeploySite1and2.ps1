@@ -1,7 +1,19 @@
 ﻿<#
  .SYNOPSIS
-    Deploys the AzureFoundation templates for Site 3 and 4 of a four datacenter pattern.  Depending on the environment 
-    you're deploying site 3, 
+    Deploys the AzureFoundation templates for Site 1 and 2 of a four datacenter pattern.  The metadata template that 
+    created this template refers to these VNETs as VNET100 through VNET 204.
+
+    VNET100:  Production Site 1
+    VNET101:  HBI Site 1
+    VNET102:  PreProd Site 1
+    VNET103:  Storage Site 1
+    VNET104:  Services Site 1
+
+    VNET200:  Production Site 1
+    VNET201:  HBI Site 1
+    VNET202:  PreProd Site 1
+    VNET203:  Storage Site 1
+    VNET204:  Services Site 1
 
  .DESCRIPTION
     Deploys an Azure Resource Manager template assocazted to the first site in the AzureFoundation
@@ -70,11 +82,13 @@ $ErrorActionPreference = "Stop"
 
 # sign in
 Write-Host "Logging in...";
-$Environment = "AzureUSGovernment"
-#$Environment = 'AzureCloud'
+#$Environment = "AzureUSGovernment"
+$Environment = 'AzureCloud'
 Login-AzureRmAccount -EnvironmentName $Environment;
 $Environment = 'AzureCloud'
 
+#In these variables, use the Get-AzureRMSubscription command to list the subscriptions 
+#Cut and Paste the values in the variables for the five standard subscriptions.
 $UserName='willst@slg044o365.onmicrosoft.com'
 $subID_CJIS=""
 $SubName_CJIS='mac_slg_Managed_CJIS'
@@ -89,6 +103,8 @@ $SubName_Services="MAC_SLG_Managed_Services"
 $SubID_Storage="6e5d19d2-a324-470a-b24f-57ac0d3221a1"
 $SubName_Storage="MAC_SLG_Managed_Storage"
 
+#Update these fields for the datacenter pair to target the deployment at
+#https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions
 $resourceGroupLocation = 'West Central US'
 $location="westcentralus"
 
@@ -125,6 +141,7 @@ if($resourceProviders.length) {
 
 Select-AzureRmSubscription -SubscriptionID $SubID_Services;
 $servicesResourceGroup1 = Get-AzureRmResourceGroup -Name $servicesResourceGroupName1 -ErrorAction SilentlyContinue
+$servicesResourceGroup2 = Get-AzureRmResourceGroup -Name $servicesResourceGroupName2 -ErrorAction SilentlyContinue
 
 #Create or check for existing resource group
 if(!$servicesResourceGroup1)
@@ -154,15 +171,25 @@ else{
 <#
 This section is where we build the NSG for the VNET
 #>
-
+$deploymentName = "AzureFoundationSite1"
 $servicesParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site1\af_vnet_azuredeploy.parameters1_Services.json"
 $servicesTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site1\af_vnet_azuredeploy1_servicesB.json"
 
 # Start the deployment
 
-Test-AzureRmResourceGroupDeployment -ResourceGroupName $servicesResourcegroupname1 -TemplateFile $servicesTemplateFilePath1 -TemplateParameterFile $servicesParametersFilePath1;
+Test-AzureRmResourceGroupDeployment  -ResourceGroupName $servicesResourcegroupname1 -TemplateFile $servicesTemplateFilePath1 -TemplateParameterFile $servicesParametersFilePath1;
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName $servicesResourceGroupName1 -Templatefile $servicesTemplateFilePath1 -TemplateParameterfile $servicesParametersFilePath1;
+New-AzureRmResourceGroupDeployment -name $deploymentName -ResourceGroupName $servicesResourceGroupName1 -Templatefile $servicesTemplateFilePath1 -TemplateParameterfile $servicesParametersFilePath1;
+#Debug
+#New-AzureRmResourceGroupDeployment -name $deploymentName -ResourceGroupName $servicesResourceGroupName1 -Templatefile $servicesTemplateFilePath1 -TemplateParameterfile $servicesParametersFilePath1 -DeploymentDebugLogLevel All;
+
+$Operations = Get-AzureRmResourceGroupDeploymentOperation -DeploymentName $deploymentName -ResourceGroupName $servicesResourceGroupName1
+foreach($Operation in $Operations){
+Write-Host $operation.id
+$Operation.properties.request | ConvertTo-Json -Depth 10
+    Write-Host "Request:"
+$Operation.properties.response | ConvertTo-Json -Depth 10
+ Write-Host "Response:"}
 
 $servicesParametersFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site2\af_vnet_azuredeploy.parameters2_Services.json"
 $servicesTemplateFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site2\af_vnet_azuredeploy2_servicesB.json"
@@ -179,6 +206,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $servicesResourceGroupName
 
 Select-AzureRmSubscription -SubscriptionID $SubID_Prod;
 $prodResourceGroup1 = Get-AzureRmResourceGroup -Name $prodResourceGroupName1 -ErrorAction SilentlyContinue
+$prodResourceGroup2 = Get-AzureRmResourceGroup -Name $prodResourceGroupName2 -ErrorAction SilentlyContinue
 
 if(!$prodResourceGroup1)
 {
@@ -231,6 +259,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $prodResourceGroupName1 -T
 
 Select-AzureRmSubscription -SubscriptionID $SubID_preProd
 $preProdResourceGroup1 = Get-AzureRmResourceGroup -Name $preProdResourceGroupName1 -ErrorAction SilentlyContinue
+$preProdResourceGroup2 = Get-AzureRmResourceGroup -Name $preProdResourceGroupName2 -ErrorAction SilentlyContinue
 
 if(!$preProdResourceGroup1)
 {

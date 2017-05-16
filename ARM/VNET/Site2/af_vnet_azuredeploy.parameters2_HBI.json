@@ -5,7 +5,8 @@
     "commentLocation": { "value": "copy the values for the location tab's Parameters' columns for Site 3" },
     "baseURL": { "value": "https://github.com/willstg/AzureFoundation/tree/master/arm/vnet/site1" },
 
-    "commentVNET": { "value": "copy the values for the VNET tab's Parameters' columns of Site 3 (filter to VNET301)" },
+    /*in the metadata spreadsheet, select the VNET tab and filter on VNET201
+    and select the columns with Parameter in the name grouped by color.*/
     "locationName": { "value": "westus2" },
     "ResourceGroupName": { "value": "rg_vnet_hbi_w2" },
     "vnetName": { "value": "vnet_hbi_w2" },
@@ -13,63 +14,45 @@
     "dnsServers": { "value": [ "10.128.59.36" ] },
 
 
-    "commentSubnet": { "value": "copy the values for the Subnet tab's Parameters' columns of Site 3 (filter to vent301)" },
+
+    /*in the metadata spreadsheet, select the Subnet tab and filter on VNET201
+    and select the columns with Parameter in the name grouped by color.*/
     "subnet210Prefix": { "value": "10.128.80.0/24" },
     "subnet210Name": { "value": "210_Web_HBI_mac_slg_W2" },
-    "subnet210NSG": { "value": "210_NSG_Web" },
+    "subnet210NSG": { "value": "210_NSG_Web_W2" },
     "subnet215Prefix": { "value": "10.128.81.0/24" },
     "subnet215Name": { "value": "215_LB_Web_HBI_mac_slg_W2" },
-    "subnet215NSG": { "value": "215_NSG_LB_Web" },
+    "subnet215NSG": { "value": "215_NSG_LB_Web_W2" },
     "subnet220Prefix": { "value": "10.128.82.0/24" },
     "subnet220Name": { "value": "220_App_HBI_mac_slg_W2" },
-    "subnet220NSG": { "value": "220_NSG_App" },
+    "subnet220NSG": { "value": "220_NSG_App_W2" },
     "subnet225Prefix": { "value": "10.128.83.0/24" },
     "subnet225Name": { "value": "225_LB_App_HBI_mac_slg_W2" },
-    "subnet225NSG": { "value": "225_NSG_LB_App" },
+    "subnet225NSG": { "value": "225_NSG_LB_App_W2" },
     "subnet230Prefix": { "value": "10.128.84.0/24" },
     "subnet230Name": { "value": "230_DB_HBI_mac_slg_W2" },
-    "subnet230NSG": { "value": "230_NSG_DB" },
+    "subnet230NSG": { "value": "230_NSG_DB_W2" },
     "subnet235Prefix": { "value": "10.128.85.0/24" },
     "subnet235Name": { "value": "235_LB_DB_HBI_mac_slg_W2" },
-    "subnet235NSG": { "value": "235_NSG_LB_DB" },
+    "subnet235NSG": { "value": "235_NSG_LB_DB_W2" },
     "subnet250Prefix": { "value": "10.128.86.0/24" },
     "subnet250Name": { "value": "250_DMZ_HBI_mac_slg_W2" },
-    "subnet250NSG": { "value": "250_NSG_DMZ" },
+    "subnet250NSG": { "value": "250_NSG_DMZ_W2" },
     "subnet255Prefix": { "value": "10.128.87.0/24" },
     "subnet255Name": { "value": "255_LB_DMZ_HBI_mac_slg_W2" },
-    "subnet255NSG": { "value": "255_NSG_LB_DMZ" },
+    "subnet255NSG": { "value": "255_NSG_LB_DMZ_W2" },
     "subnet260Prefix": { "value": "10.128.90.0/25" },
     "subnet260Name": { "value": "260_User_Tier0_HBI_mac_slg_W2" },
-    "subnet260NSG": { "value": "260_NSG_User_Tier0" },
+    "subnet260NSG": { "value": "260_NSG_User_Tier0_W2" },
     "subnet261Prefix": { "value": "10.128.90.128/25" },
     "subnet261Name": { "value": "261_User_Tier1_HBI_mac_slg_W2" },
-    "subnet261NSG": { "value": "261_NSG_User_Tier1" },
-    "subnet299Prefix": { "value": "10.128.95.224/27" },
-    "subnet299Name": { "value": "GatewaySubnet" },
+    "subnet261NSG": { "value": "261_NSG_User_Tier1_W2" },
 
-
-    "commentGateway": { "value": "copy the values for the Gateway tab's Parameters' columns of Site 2 (filter to vent201)" },
-    "GatewayName": { "value": "gw_HBI_W2" },
-    "SubID": { "value": "ce38c0ef-22f5-458d-b1f7-e3890e2471f2" },
-    "VPNType": { "value": "RouteBased" },
-    "PublicIPName": { "value": "gwpip_HBI_W2" },
-    "gatewaySKU": { "value": "Standard" },
-    "GatewayType": { "value": "Vpn" },
-    "erCircuitName": { "value": "mac_slg_HBI_ER" },
-    "erSKUTier": { "value": "Standard" },
-    "erSKUFamily": { "value": "MeteredData" },
-    "erBandwidth": { "value": 50 },
-    "erSPName": { "value": "Equinix" },
-    "erPeeringLocation": { "value": "Dallas" },
-    "BGP": { "value": false },
-
-
-    "commentConnections": { "value": "copy the values for the Connection tab's Parameters' columns of Site 2 (filter to vent201)" },
+    /*in the metadata spreadsheet, select the Connections tab and filter on VNET201
+    and select the columns with Parameter in the name grouped by color.*/
     "ConnectionNamecnct110": { "value": "Peering_mac_slg_HBI_To_Services_W2" },
     "vnetNamecnct110": { "value": "vnet_hbi_w2" },
     "connectionType1cnct110": { "value": "Peering" },
-    "sharedKeycnct110": { "value": "mysharedkey" },
-    "routingWeightcnct110": { "value": 10 },
     "allowVNETAccesscnct110": { "value": true },
     "allowFwdAccesscnct110": { "value": true },
     "allowGWAccesscnct110": { "value": true },
@@ -86,8 +69,6 @@
     "rmtSubIDcnct111": { "value": "ce38c0ef-22f5-458d-b1f7-e3890e2471f2" },
     "rmtConnectionNamecnct111": { "value": "Vnet2Vnet_mac_slg_HBI_To_HBI_W2" },
     "rmtLocationcnct111": { "value": "westcentralus" }
-
-
 
   }
 }

@@ -2,15 +2,22 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-
+    /*Go to the metadata spreadsheet for the Subscription and copy the data for the Subscriptions
+    parameters files */
     "baseURL": { "value": "https://github.com/willstg/AzureFoundation/tree/master/arm/vnet/site1" },
-
+    /*the VNET tab of the metadata spreadsheet and filter the data with VNET103
+    copy the data from the columns that have the word prerameters in them.  the columns 
+    are colored to show the grouping.
+    */
     "locationName": { "value": "westcentralus" },
     "ResourceGroupName": { "value": "rg_vnet_storage_w1" },
     "vnetName": { "value": "vnet_storage_w1" },
     "vnetAddressPrefix": { "value": "10.128.48.0/21" },
     "dnsServers": { "value": [ "10.128.59.36" ] },
-
+    /*the subnet tab of the metadata spreadsheet and filter the data with VNET103
+        copy the data from the columns that have the word prerameters in them.  the columns 
+    are colored to show the grouping.
+    */
 
     "subnet500Prefix": { "value": "10.128.48.0/24" },
     "subnet500Name": { "value": "500_Storage_Storage_SLGa_W1" },
@@ -24,43 +31,25 @@
     "subnet561Prefix": { "value": "10.128.50.128/25" },
     "subnet561Name": { "value": "561_User_Tier1_Storage_SLGa_W1" },
     "subnet561NSG": { "value": "561_NSG_User_Tier1" },
+    /*Only the Services Subscription's VNET needs a gateway with the default design
     "subnet599Prefix": { "value": "10.128.55.248/29" },
     "subnet599Name": { "value": "GatewaySubnet" },
-
-
-    "GatewayName": { "value": "gw_Storage_W1" },
-    "SubID": { "value": "6e5d19d2-a324-470a-b24f-57ac0d3221a1" },
-    "VPNType": { "value": "RouteBased" },
-    "PublicIPName": { "value": "gwpip_Storage_W1" },
-    "gatewaySKU": { "value": "Standard" },
-    "GatewayType": { "value": "Vpn" },
-    "erCircuitName": { "value": "SLGa_Storage_ER" },
-    "erSKUTier": { "value": "Standard" },
-    "erSKUFamily": { "value": "MeteredData" },
-    "erBandwidth": { "value": 50 },
-    "erSPName": { "value": "Equinix" },
-    "erPeeringLocation": { "value": "Dallas" },
-    "BGP": { "value": false },
-
-    "ConnectionNamecnct130": { "value": "Peering_SLGa_Storage_To_Services_W1" },
+      */
+    /*the gateway for this subscription should only use the Services Gateway through a peered 
+    connection
+    The Connection tab of the spreadsheet filtered on VNET104 will have the peering connection details
+    copy the columns for the parameters colored.
+    */
+    "ConnectionNamecnct130": { "value": "Peering_mac_slg_Storage_To_Services_W1" },
     "vnetNamecnct130": { "value": "vnet_storage_w1" },
     "connectionType1cnct130": { "value": "Peering" },
-    "sharedKeycnct130": { "value": "mysharedkey" },
-    "routingWeightcnct130": { "value": 10 },
     "allowVNETAccesscnct130": { "value": true },
     "allowFwdAccesscnct130": { "value": true },
     "allowGWAccesscnct130": { "value": true },
     "useRemoteGatewaycnct130": { "value": false },
     "peerVNETNamecnct130": { "value": "vnet_services_w1" },
     "rmtSubIDcnct130": { "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9" },
-    "ConnectionNamecnct131": { "value": "Vnet2Vnet_SLGa_Storage_To_Storage_W2" },
-    "vnetNamecnct131": { "value": "vnet_storage_w1" },
-    "remoteGWNamecnct131": { "value": "gw_Storage_W2" },
-    "connectionType1cnct131": { "value": "Vnet2Vnet" },
-    "sharedKeycnct131": { "value": "mysharedkey" },
-    "routingWeightcnct131": { "value": 10 },
-    "rmtSubIDcnct131": { "value": "6e5d19d2-a324-470a-b24f-57ac0d3221a1" }
-
+    "rmtLocationcnct130": { "value": "westcentralus" }
 
   }
 }

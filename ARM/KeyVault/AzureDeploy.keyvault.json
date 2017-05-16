@@ -1,4 +1,5 @@
 {
+  /*https://docs.microsoft.com/en-us/azure/templates/microsoft.keyvault/vaults*/
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
@@ -56,12 +57,14 @@
         "description": "Specifies if the vault is enabled for volume encryption"
       }
     },
+
     "secrets": {
       "type": "array",
-      "defaultValue": "{}",
+      "defaultValue": "",
       "metadata": { "description": "all secrets {\"secretName\":\"\",\"secretValue\":\"\"}" }
     }
-  },
+
+},
 
   "resources": [
     {
@@ -81,7 +84,8 @@
           "family": "A"
         }
       }
-    },
+    }
+    /*
     {
       "type": "Microsoft.KeyVault/vaults/secrets",
       "name": "[concat(parameters('keyVaultName'), '/', parameters('secrets')[copyIndex()].secretName)]",
@@ -94,5 +98,6 @@
         "count": "[length(parameters('secrets'))]"
       }
     }
+    */
   ]
 } 

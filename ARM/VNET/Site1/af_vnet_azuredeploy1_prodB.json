@@ -2,6 +2,29 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+
+    "commentLocation": {
+      "type": "string",
+      "defaultValue": "using the metadata template to populate the parameters for the deployment template filter on VNET102"
+    },
+    "commentVNET": {
+      "type": "string",
+      "defaultValue": "using the metadata template to populate the parameters from VNET tab, filter on VNET102"
+    },
+    "commentSubnet": {
+      "type": "string",
+      "defaultValue": "using the metadata template to populate the parameters from subnet tab, filter on VNET102"
+    },
+    "commentConnections": {
+      "type": "string",
+      "defaultValue": "using the metadata template to populate the parameters from Connection tab, filter on VNET102"
+    },
+    "commentGateway": {
+      "type": "string",
+      "defaultValue": "using the metadata template to populate the parameters from Gateway tab, filter on VNET102"
+    },
+
+
     "baseUrl": {
       "defaultValue": "https://github.com/willstg/AzureFoundation/tree/master/arm/vnet/site1",
       "type": "string",
@@ -10,13 +33,11 @@
         "description": "URL to acquire other templates"
       }
     },
-    "dnsServers": {
-      "type": "array",
-      "defaultValue": [ "10.128.59.36" ],
-      "metadata": { "description": "AzureFoundation Domain Controller DNS server" }
-    },
 
-
+    /*
+    Using the metadata spreadsheet, the VNET tab, filter results on VNET100
+    Select the columnns that contain the word template and are color coded accordingly.
+    */
     "locationName": {
       "type": "string",
       "defaultValue": "westcentralus"
@@ -35,8 +56,17 @@
       "defaultValue": "10.128.0.0/20",
       "metadata": { "description": "AzureFoundation VNET Address Prefix, the range of addresses for a specific data center." }
     },
+    "dnsServers": {
+      "type": "array",
+      "defaultValue": [ "10.128.59.36" ],
+      "metadata": { "description": "AzureFoundation Domain Controller DNS server" }
+    },
 
 
+    /*
+    Using the metadata spreadsheet, the connection tab, filter results on VNET100, 
+    Select the columnns that contain the word template and are color coded accordingly.
+    */
     "subnet110Prefix": {
       "type": "string",
       "defaultValue": "10.128.2.0/24",
@@ -44,7 +74,7 @@
     },
     "subnet110Name": {
       "type": "string",
-      "defaultValue": "110_Web_prod_SLGa_W1",
+      "defaultValue": "110_Web_prod_mac_slg_W1",
       "metadata": { "description": "HTTP and HTTPS services" }
     },
     "subnet110NSG": {
@@ -59,7 +89,7 @@
     },
     "subnet115Name": {
       "type": "string",
-      "defaultValue": "115_LB_Web_prod_SLGa_W1",
+      "defaultValue": "115_LB_Web_prod_mac_slg_W1",
       "metadata": { "description": "Loadbalanced HTTP and HTTPS Services" }
     },
     "subnet115NSG": {
@@ -74,7 +104,7 @@
     },
     "subnet120Name": {
       "type": "string",
-      "defaultValue": "120_App_prod_SLGa_W1",
+      "defaultValue": "120_App_prod_mac_slg_W1",
       "metadata": { "description": "Web Services, OEM applications" }
     },
     "subnet120NSG": {
@@ -89,7 +119,7 @@
     },
     "subnet125Name": {
       "type": "string",
-      "defaultValue": "125_LB_App_prod_SLGa_W1",
+      "defaultValue": "125_LB_App_prod_mac_slg_W1",
       "metadata": { "description": "Loadbalaned Web Services, OEM applications" }
     },
     "subnet125NSG": {
@@ -104,7 +134,7 @@
     },
     "subnet130Name": {
       "type": "string",
-      "defaultValue": "130_DB_prod_SLGa_W1",
+      "defaultValue": "130_DB_prod_mac_slg_W1",
       "metadata": { "description": "Data for Applications" }
     },
     "subnet130NSG": {
@@ -119,7 +149,7 @@
     },
     "subnet135Name": {
       "type": "string",
-      "defaultValue": "135_LB_DB_prod_SLGa_W1",
+      "defaultValue": "135_LB_DB_prod_mac_slg_W1",
       "metadata": { "description": "Loadbalanced Databases" }
     },
     "subnet135NSG": {
@@ -134,7 +164,7 @@
     },
     "subnet150Name": {
       "type": "string",
-      "defaultValue": "150_DMZ_prod_SLGa_W1",
+      "defaultValue": "150_DMZ_prod_mac_slg_W1",
       "metadata": { "description": "Internet EndPoint Machines" }
     },
     "subnet150NSG": {
@@ -149,7 +179,7 @@
     },
     "subnet155Name": {
       "type": "string",
-      "defaultValue": "155_LB_DMZ_prod_SLGa_W1",
+      "defaultValue": "155_LB_DMZ_prod_mac_slg_W1",
       "metadata": { "description": "Loadbalaned Internet Endpoint systems" }
     },
     "subnet155NSG": {
@@ -164,7 +194,7 @@
     },
     "subnet160Name": {
       "type": "string",
-      "defaultValue": "160_User_Tier0_prod_SLGa_W1",
+      "defaultValue": "160_User_Tier0_prod_mac_slg_W1",
       "metadata": { "description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
     },
     "subnet160NSG": {
@@ -179,7 +209,7 @@
     },
     "subnet161Name": {
       "type": "string",
-      "defaultValue": "161_User_Tier1_prod_SLGa_W1",
+      "defaultValue": "161_User_Tier1_prod_mac_slg_W1",
       "metadata": { "description": "Tier 1 administrator - manage enterprise servers, services, and applications" }
     },
     "subnet161NSG": {
@@ -194,7 +224,7 @@
     },
     "subnet162Name": {
       "type": "string",
-      "defaultValue": "162_User_Tier2_prod_SLGa_W1",
+      "defaultValue": "162_User_Tier2_prod_mac_slg_W1",
       "metadata": { "description": "Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices" }
     },
     "subnet162NSG": {
@@ -202,85 +232,15 @@
       "defaultValue": "162_NSG_User_Tier2",
       "metadata": { "description": "NSG: Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices" }
     },
-    "subnet199Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.15.240/28",
-      "metadata": { "description": "Gateway Services to Local Networks" }
-    },
-    "subnet199Name": {
-      "type": "string",
-      "defaultValue": "GatewaySubnet",
-      "metadata": { "description": "Gateway Services to Local Networks" }
-    },
 
-    "GatewayName": {
-      "type": "string",
-      "defaultValue": "gw_HBI_W1",
-      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
-    },
 
-    "VPNType": {
-      "type": "string",
-      "defaultValue": "RouteBased",
-      "allowedValues": [ "RouteBased", "PolicyBased" ],
-      "metadata": { "description": "The type of VPN connection Route or Policy based." }
-    },
-    "PublicIPName": {
-      "type": "string",
-      "defaultValue": "gwpip_HBI_W1",
-      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
-    },
-    "gatewaySKU": {
-      "type": "string",
-      "defaultValue": "Standard",
-      "allowedValues": [ "Basic", "Standard", "HighPerformance" ],
-      "metadata": { "description": "Gateway SKU, the type of gateway Basic, Standard, High Performance" }
-    },
-    "GatewayType": {
-      "type": "string",
-      "defaultValue": "Vpn",
-      "metadata": { "description": "The type of gateway that is being created.  This can be either StaticRouting or DynamicRouting." }
-    },
-    "erCircuitName": {
-      "type": "String",
-      "defaultValue": "SLGa_HBI_ER",
-      "metadata": { "description": "The name of the ER Circuit" }
-    },
-    "erSKUTier": {
-      "type": "string",
-      "defaultValue": "Standard",
-      "allowedValues": [ "Standard", "Premium" ],
-      "metadata": { "description": "Chosen SKU Tier of ExpressRoute circuit. Choose from Premium or Standard SKU tiers." }
-    },
-    "erSKUFamily": {
-      "type": "string",
-      "defaultValue": "MeteredData",
-      "allowedValues": [ "MeteredData", "UnlimitedData" ],
-      "metadata": { "description": "Chosen SKU family of ExpressRoute circuit. Choose from MeteredData or UnlimitedData SKU families." }
-    },
-    "erBandwidth": {
-      "type": "int",
-      "metadata": { "description": "This is the bandwidth in Mbps of the circuit being created. It must exactly match one of the available bandwidth offers List ExpressRoute Service Providers API call." }
-    },
-    "erSPName": {
-      "type": "string",
-      "metadata": { "description": "ExpressRoute Service Provider Name" }
-    },
-    "erPeeringLocation": {
-      "type": "string",
-      "metadata": { "description": "The ExpressRoute Peering Location." }
-    },
-    "SubID": {
-      "type": "string",
-      "metadata": { "description": "The Subscrition ID" }
-    },
-    "BGP": {
-      "type": "bool",
-      "metadata": { "description": "Will the gateway use BGP routing?" }
-    },
+    /*
+    Using the metadata spreadsheet, the connection tab, filter results on VNET100, 
+    Select the columnns that contain the word template and are color coded accordingly.
+    */
     "ConnectionNamecnct100": {
       "type": "string",
-      "defaultValue": "Peering_SLGa_Prod_To_Services_W1",
+      "defaultValue": "Peering_mac_slg_Prod_To_Services_W1",
       "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
     },
     "vnetNamecnct100": {
@@ -288,35 +248,10 @@
       "defaultValue": "vnet_prod_w1",
       "metadata": { "description": "Azure VNET of the current location" }
     },
-    "LocalNamecnct100": {
-      "type": "string",
-      "defaultValue": "Services_W1",
-      "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
-    },
-    "localGWIPcnct100": {
-      "type": "string",
-      "defaultValue": "1.1.1.1",
-      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
-    },
-    "LocalIPPrefixcnct100": {
-      "type": "array",
-      "defaultValue": [ "10.128.56.0/21" ],
-      "metadata": { "description": "An array of Local IP address prefixes that this gateway will route traffic to." }
-    },
     "connectionType1cnct100": {
       "type": "string",
       "defaultValue": "Peering",
       "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
-    },
-    "sharedKeycnct100": {
-      "type": "string",
-      "defaultValue": "mysharedkey",
-      "metadata": { "description": "The shared key to negotiate the VPN connection.  KeyVault will hold this secret." }
-    },
-    "routingWeightcnct100": {
-      "type": "int",
-      "defaultValue": 10,
-      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
     "allowVNETAccesscnct100": {
       "type": "bool",
@@ -353,88 +288,27 @@
       "defaultValue": "rg_vnet_services_w1",
       "metadata": { "description": "The resource group for the remote subscription VNET." }
     },
-    "ConnectionNamecnct101": {
+    "rmtConnectionNamecnct100": {
       "type": "string",
-      "defaultValue": "Vnet2Vnet_SLGa_Prod_To_Prod_W2",
-      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
-    },
-    "vnetNamecnct101": {
-      "type": "string",
-      "defaultValue": "vnet_prod_w1",
-      "metadata": { "description": "Azure VNET of the current location" }
-    },
-    "LocalNamecnct101": {
-      "type": "string",
-      "defaultValue": "Prod_W2",
-      "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
-    },
-    "remoteGWNamecnct101": {
-      "type": "string",
-      "defaultValue": "gw_Prod_W2",
-      "metadata": { "description": "Name for the remote VNET for a VNET to VNET connection" }
-    },
-    "localGWIPcnct101": {
-      "type": "string",
-      "defaultValue": "52.183.30.208",
-      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
-    },
-    "LocalIPPrefixcnct101": {
-      "type": "array",
-      "defaultValue": [ "10.128.64.0/20" ],
-      "metadata": { "description": "An array of Local IP address prefixes that this gateway will route traffic to." }
-    },
-    "connectionType1cnct101": {
-      "type": "string",
-      "defaultValue": "Vnet2Vnet",
-      "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
-    },
-    "sharedKeycnct101": {
-      "type": "string",
-      "defaultValue": "mysharedkey",
-      "metadata": { "description": "The shared key to negotiate the VPN connection.  KeyVault will hold this secret." }
-    },
-    "routingWeightcnct101": {
-      "type": "int",
-      "defaultValue": 10,
-      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
-    },
-    "rmtSubIDcnct101": {
-      "type": "string",
-      "defaultValue": "ec1cea2e-92aa-45a7-89b0-d9fc40df2beb",
-      "metadata": { "description": "The subscription ID of the peer VNET." }
-    },
-    "rmtRGNamecnct101": {
-      "type": "string",
-      "defaultValue": "rg_vnet_prod_w2",
-      "metadata": { "description": "The resource group for the remote subscriptions VNET gateway." }
-    },
-    "rmtConnectionNamecnct101": {
-      "type": "string",
-      "defaultValue": "Vnet2Vnet_SLGa_Prod_To_Prod_W1",
+      "defaultValue": "",
       "metadata": { "description": "The name of the remote connection." }
     },
     "rmtLocationcnct100": {
-      "type": "string",
-      "defaultValue": "westus2",
-      "metadata": { "description": "The name of the remote location." }
-    },
-    "rmtLocationcnct101": {
       "type": "string",
       "defaultValue": "westcentralus",
       "metadata": { "description": "The name of the remote location." }
     }
 
-
-
-
   },
   "variables": {
     "apiVersion": "2015-06-15",
-    "vnetID": "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]",
-    "subnet799Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet199Name'))]"
+    "vnetID": "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]"
   },
 
   "resources": [
+    /*useing the Metadata spreadsheet goto the NSGRules tab and filter on VNET100
+    and take the columns grouped for Templates */
+
     {
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkSecurityGroups",
@@ -529,6 +403,174 @@
               "destinationAddressPrefix": "*",
               "access": "Deny",
               "priority": 150,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "http.Inbound.Allow",
+            "properties": {
+              "description": "http.Inbound.Allow",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "80",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 2001,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "https.Inbound.Allow",
+            "properties": {
+              "description": "https.Inbound.Allow",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "443",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 2002,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "TCP8080.Inbound.Allow",
+            "properties": {
+              "description": "TCP8080.Inbound.Allow",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "8080",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 2003,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "TCP19080.Inbound.Allow",
+            "properties": {
+              "description": "TCP19080.Inbound.Allow",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "19080",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 3900,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "SFCluster.Inbound.Allow",
+            "properties": {
+              "description": "SFCluster.Inbound.Allow",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "19000",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 3910,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "SFClusterRange.Inbound.Allow",
+            "properties": {
+              "description": "SFClusterRange.Inbound.Allow",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "1025-1027",
+              "sourceAddressPrefix": "VirtualNetwork",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 3920,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "SFEpehemalRange.Inbound.Allow",
+            "properties": {
+              "description": "SFEpehemalRange.Inbound.Allow",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "49125-65534",
+              "sourceAddressPrefix": "VirtualNetwork",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 3930,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "SFApplication.Inbound.Allow",
+            "properties": {
+              "description": "SFApplication.Inbound.Allow",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "20000-30000",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 3940,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "SFSMB.Inbound.Allow",
+            "properties": {
+              "description": "SFSMB.Inbound.Allow",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "445",
+              "sourceAddressPrefix": "VirtualNetwork",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 3950,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "SFRDP.Inbound.Allow",
+            "properties": {
+              "description": "SFRDP.Inbound.Allow",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "3389-4500",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 3960,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "All_Internet.Inbound.Deny",
+            "properties": {
+              "description": "All_Internet.Inbound.Deny",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "*",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Deny",
+              "priority": 4090,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "BlockAll.Inbound.Deny",
+            "properties": {
+              "description": "BlockAll.Inbound.Deny",
+              "protocol": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "*",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Deny",
+              "priority": 4095,
               "direction": "Inbound"
             }
           }
@@ -798,6 +840,10 @@
 
 
 
+    /*
+    Use the metadata spreadsheet and the Subnet tab to filer on the VNET104, 
+    Copy the Resources below that are grouped in a different color.
+    */
     {
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/virtualNetworks",
@@ -884,13 +930,11 @@
               "addressPrefix": "[parameters('subnet162prefix')]",
               "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet162NSG'))]" }
             }
-          },
-          {
-            "name": "[parameters('subnet199name')]",
-            "properties": { "addressPrefix": "[parameters('subnet199prefix')]" }
           }
         ],
         "resources": [
+          /*Go to the Connection tab of the Metadata spreadsheet and filter on VNET 100
+          select the Resources for Peering and past them below*/
           {
             "apiVersion": "2016-06-01",
             "type": "virtualNetworkPeerings",
@@ -906,48 +950,13 @@
               "remoteVirtualNetwork": { "id": "[concat('/subscriptions/', parameters('rmtSubIDcnct100'), '/resourceGroups/', parameters('rmtRGNamecnct100'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct100'))]" }
             }
           }
+
         ],
         "dhcpOptions": { "dnsServers": [ "10.128.59.36" ] }
 
       }
-
-    },
-
-    {
-      "apiVersion": "[variables('apiversion')]",
-      "type": "Microsoft.Network/publicIPAddresses",
-      "name": "[parameters('PublicIPName')]",
-      "location": "[resourceGroup().location]",
-      "properties": { "publicIPAllocationMethod": "Dynamic" }
-    },
-    {
-      "apiVersion": "[variables('apiversion')]",
-      "type": "Microsoft.Network/virtualNetworkGateways",
-      "name": "[parameters('GatewayName')]",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [ "[concat('Microsoft.Network/publicIPAddresses/', parameters('PublicIPName'))]", "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]" ],
-      "properties": {
-        "ipConfigurations": [
-          {
-            "properties": {
-              "privateIPAllocationMethod": "Dynamic",
-              "subnet": { "id": "[variables('subnet799Ref')]" },
-              "publicIPAddress": { "id": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('PublicIPName'))]" }
-            },
-            "name": "[parameters('GatewayName')]"
-          }
-        ],
-        "gatewayType": "ExpressRoute",
-        "vpnType": "[parameters('VPNType')]",
-        "enableBGP": "[parameters('BGP')]"
-      }
     }
-
- 
   ],
-
-          "outputs": {
-          }
-
-
-        }
+  "outputs": {
+  }
+}
