@@ -2115,7 +2115,13 @@
       "type": "Microsoft.Network/virtualNetworkGateways",
       "name": "[parameters('GatewayNamegw1042')]",
       "location": "[resourceGroup().location]",
-      "dependsOn": [ "[concat('Microsoft.Network/publicIPAddresses/', parameters('PublicIPNamegw1042'))]", "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]" ],
+      "dependsOn": [
+        "[concat('Microsoft.Network/publicIPAddresses/', parameters('PublicIPNamegw1042'))]",
+        "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]",
+        /*I can't figure out a way to add this dependency programatically*/
+        "[Concat('Microsoft.Network/virtualnetworkgateways/', parameters('GatewayNamegw104'))]"
+
+      ],
       "properties": {
         "ipConfigurations": [
           {
