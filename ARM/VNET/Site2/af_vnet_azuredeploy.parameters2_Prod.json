@@ -52,18 +52,16 @@
 
     /*in the metadata spreadsheet, select the Subnet tab and filter on VNET200
     and select the columns with Parameter in the name grouped by color.*/
-    "ConnectionNamecnct100": { "value": "Peering_mac_slg_Prod_To_Services_W2" },
-    "vnetNamecnct100": { "value": "vnet_prod_w2" },
-    "connectionType1cnct100": { "value": "Peering" },
-    "allowVNETAccesscnct100": { "value": true },
-    "allowFwdAccesscnct100": { "value": true },
-    "allowGWAccesscnct100": { "value": true },
-    "useRemoteGatewaycnct100": { "value": false },
-    "peerVNETNamecnct100": { "value": "vnet_services_w2" },
-    "rmtSubIDcnct100": { "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9" },
-    "rmtLocationcnct100": { "value": "westus2" }
-
-
+    "ConnectionNamecnct200": { "value": "Peering_mac_slg_Prod_To_Services_W2" },
+    "vnetNamecnct200": { "value": "vnet_prod_w2" },
+    "connectionType1cnct200": { "value": "Peering" },
+    "allowVNETAccesscnct200": { "value": true },
+    "allowFwdAccesscnct200": { "value": true },
+    "allowGWAccesscnct200": { "value": false },
+    "useRemoteGatewaycnct200": { "value": true },
+    "peerVNETNamecnct200": { "value": "vnet_services_w2" },
+    "rmtSubIDcnct200": { "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9" },
+    "rmtLocationcnct200": { "value": "westus2" }
 
   }
 }

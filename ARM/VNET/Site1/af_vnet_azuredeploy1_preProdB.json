@@ -37,6 +37,7 @@
       "metadata": { "description": "AzureFoundation Domain Controller DNS server" }
     },
 
+
     /*within the metadata spreadsheet got the subnet tab and filter on VNET102
     select the columns with Template in the name and grouped by color codes*/
     "subnet310Prefix": {
@@ -370,6 +371,7 @@
       "metadata": { "description": "NSG: Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices" }
     },
 
+
     /*
     Using the metadata spreadsheet, the connection tab, filter results on VNET102, 
     Select the columnns that contain the word template and are color coded accordingly.
@@ -401,12 +403,12 @@
     },
     "allowGWAccesscnct120": {
       "type": "bool",
-      "defaultValue": true,
+      "defaultValue": false,
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
     "useRemoteGatewaycnct120": {
       "type": "bool",
-      "defaultValue": false,
+      "defaultValue": true,
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
     "peerVNETNamecnct120": {
@@ -434,8 +436,8 @@
       "defaultValue": "westcentralus",
       "metadata": { "description": "The name of the remote location." }
     }
+    /*stop*/
   },
-
   "variables": {
     "apiVersion": "2015-06-15",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]"
@@ -449,7 +451,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet310NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "310_NSG_Web" },
+      "tags": { "displayName": "310_NSG_Web_W1" },
       "properties": {
         "securityRules": [
           {
@@ -474,7 +476,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet315NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "315_NSG_LB_Web" },
+      "tags": { "displayName": "315_NSG_LB_Web_W1" },
       "properties": {
         "securityRules": [
           {
@@ -499,7 +501,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet320NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "320_NSG_App" },
+      "tags": { "displayName": "320_NSG_App_W1" },
       "properties": {
         "securityRules": [
           {
@@ -524,7 +526,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet325NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "325_NSG_LB_App" },
+      "tags": { "displayName": "325_NSG_LB_App_W1" },
       "properties": {
         "securityRules": [
           {
@@ -682,20 +684,6 @@
             }
           },
           {
-            "name": "All_Internet.Inbound.Deny",
-            "properties": {
-              "description": "All_Internet.Inbound.Deny",
-              "protocol": "TCP",
-              "sourcePortRange": "*",
-              "destinationPortRange": "*",
-              "sourceAddressPrefix": "Internet",
-              "destinationAddressPrefix": "*",
-              "access": "Deny",
-              "priority": 4090,
-              "direction": "Inbound"
-            }
-          },
-          {
             "name": "BlockAll.Inbound.Deny",
             "properties": {
               "description": "BlockAll.Inbound.Deny",
@@ -717,7 +705,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet330NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "330_NSG_DB" },
+      "tags": { "displayName": "330_NSG_DB_W1" },
       "properties": {
         "securityRules": [
           {
@@ -742,7 +730,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet335NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "335_NSG_LB_DB" },
+      "tags": { "displayName": "335_NSG_LB_DB_W1" },
       "properties": {
         "securityRules": [
           {
@@ -767,7 +755,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet350NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "350_NSG_DMZ" },
+      "tags": { "displayName": "350_NSG_DMZ_W1" },
       "properties": {
         "securityRules": [
           {
@@ -792,7 +780,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet355NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "355_NSG_LB_DMZ" },
+      "tags": { "displayName": "355_NSG_LB_DMZ_W1" },
       "properties": {
         "securityRules": [
           {
@@ -817,7 +805,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet360NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "360_NSG_User_Tier0" },
+      "tags": { "displayName": "360_NSG_User_Tier0_W1" },
       "properties": {
         "securityRules": [
           {
@@ -870,7 +858,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet361NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "361_NSG_User_Tier1" },
+      "tags": { "displayName": "361_NSG_User_Tier1_W1" },
       "properties": {
         "securityRules": [
           {
@@ -923,7 +911,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet362NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "362_NSG_User_Tier2" },
+      "tags": { "displayName": "362_NSG_User_Tier2_W1" },
       "properties": {
         "securityRules": [
           {
@@ -976,7 +964,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet410NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "410_NSG_Web" },
+      "tags": { "displayName": "410_NSG_Web_W1" },
       "properties": {
         "securityRules": [
           {
@@ -1001,7 +989,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet415NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "415_NSG_LB_Web" },
+      "tags": { "displayName": "415_NSG_LB_Web_W1" },
       "properties": {
         "securityRules": [
           {
@@ -1026,7 +1014,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet420NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "420_NSG_App" },
+      "tags": { "displayName": "420_NSG_App_W1" },
       "properties": {
         "securityRules": [
           {
@@ -1051,7 +1039,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet425NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "425_NSG_LB_App" },
+      "tags": { "displayName": "425_NSG_LB_App_W1" },
       "properties": {
         "securityRules": [
           {
@@ -1068,7 +1056,6 @@
               "direction": "Inbound"
             }
           },
-
           {
             "name": "http.Inbound.Allow",
             "properties": {
@@ -1210,20 +1197,6 @@
             }
           },
           {
-            "name": "All_Internet.Inbound.Deny",
-            "properties": {
-              "description": "All_Internet.Inbound.Deny",
-              "protocol": "TCP",
-              "sourcePortRange": "*",
-              "destinationPortRange": "*",
-              "sourceAddressPrefix": "Internet",
-              "destinationAddressPrefix": "*",
-              "access": "Deny",
-              "priority": 4090,
-              "direction": "Inbound"
-            }
-          },
-          {
             "name": "BlockAll.Inbound.Deny",
             "properties": {
               "description": "BlockAll.Inbound.Deny",
@@ -1245,7 +1218,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet430NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "430_NSG_DB" },
+      "tags": { "displayName": "430_NSG_DB_W1" },
       "properties": {
         "securityRules": [
           {
@@ -1270,7 +1243,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet435NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "435_NSG_LB_DB" },
+      "tags": { "displayName": "435_NSG_LB_DB_W1" },
       "properties": {
         "securityRules": [
           {
@@ -1295,7 +1268,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet450NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "450_NSG_DMZ" },
+      "tags": { "displayName": "450_NSG_DMZ_W1" },
       "properties": {
         "securityRules": [
           {
@@ -1320,7 +1293,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet455NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "455_NSG_LB_DMZ" },
+      "tags": { "displayName": "455_NSG_LB_DMZ_W1" },
       "properties": {
         "securityRules": [
           {
@@ -1345,7 +1318,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet460NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "460_NSG_User_Tier0" },
+      "tags": { "displayName": "460_NSG_User_Tier0_W1" },
       "properties": {
         "securityRules": [
           {
@@ -1398,7 +1371,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet461NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "461_NSG_User_Tier1" },
+      "tags": { "displayName": "461_NSG_User_Tier1_W1" },
       "properties": {
         "securityRules": [
           {
@@ -1451,7 +1424,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet462NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "462_NSG_User_Tier2" },
+      "tags": { "displayName": "462_NSG_User_Tier2_W1" },
       "properties": {
         "securityRules": [
           {
@@ -1499,15 +1472,14 @@
         ]
       }
     },
+
     /*within the metadata spreadsheet in the Subnet tab, filter the columns on VNET102 and 
     select the columns with the text Resources and grouped by color */
-
     {
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/virtualNetworks",
       "name": "[parameters('vnetName')]",
       "location": "[resourceGroup().location]",
-      "dependsOn": [],
       "tags": { "displayName": "AzureFoundation VNet Definition" },
       "properties": {
         "addressSpace": { "addressPrefixes": [ "[parameters('vnetAddressPrefix')]" ] },
@@ -1667,6 +1639,7 @@
             }
           }
         ],
+
         /*STOP importing rom SUBNET Tab Here*/
 
         "resources": [
@@ -1687,10 +1660,39 @@
               "remoteVirtualNetwork": { "id": "[concat('/subscriptions/', parameters('rmtSubIDcnct120'), '/resourceGroups/', parameters('rmtRGNamecnct120'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct120'))]" }
             }
           }
-/*stop import from Connections tab */
-
         ],
-        "dhcpOptions": { "dnsServers": [ "10.128.59.36" ] }
+
+        /*stop import from Connections tab */
+
+
+        "dhcpOptions": { "dnsServers": [ "10.128.59.36" ] },
+        "dependsOn": [
+          /*Using the metadata template on the Subnet Tab, filter to VNET104 and select
+          the columns with DependsOn and grouped by color*/
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet310NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet315NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet320NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet325NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet330NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet335NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet350NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet355NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet360NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet361NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet362NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet410NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet415NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet420NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet425NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet430NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet435NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet450NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet455NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet460NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet461NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet462NSG'))]"
+
+        ]
       }
     }
   ],

@@ -265,12 +265,12 @@
     },
     "allowGWAccesscnct100": {
       "type": "bool",
-      "defaultValue": true,
+      "defaultValue": false,
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
     "useRemoteGatewaycnct100": {
       "type": "bool",
-      "defaultValue": false,
+      "defaultValue": true,
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
     "peerVNETNamecnct100": {
@@ -297,9 +297,9 @@
       "type": "string",
       "defaultValue": "westcentralus",
       "metadata": { "description": "The name of the remote location." }
-    }
-
+    },
   },
+
   "variables": {
     "apiVersion": "2015-06-15",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]"
@@ -314,7 +314,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet110NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "110_NSG_Web" },
+      "tags": { "displayName": "110_NSG_Web_W1" },
       "properties": {
         "securityRules": [
           {
@@ -339,7 +339,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet115NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "115_NSG_LB_Web" },
+      "tags": { "displayName": "115_NSG_LB_Web_W1" },
       "properties": {
         "securityRules": [
           {
@@ -364,7 +364,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet120NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "120_NSG_App" },
+      "tags": { "displayName": "120_NSG_App_W1" },
       "properties": {
         "securityRules": [
           {
@@ -389,7 +389,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet125NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "125_NSG_LB_App" },
+      "tags": { "displayName": "125_NSG_LB_App_W1" },
       "properties": {
         "securityRules": [
           {
@@ -547,20 +547,6 @@
             }
           },
           {
-            "name": "All_Internet.Inbound.Deny",
-            "properties": {
-              "description": "All_Internet.Inbound.Deny",
-              "protocol": "TCP",
-              "sourcePortRange": "*",
-              "destinationPortRange": "*",
-              "sourceAddressPrefix": "Internet",
-              "destinationAddressPrefix": "*",
-              "access": "Deny",
-              "priority": 4090,
-              "direction": "Inbound"
-            }
-          },
-          {
             "name": "BlockAll.Inbound.Deny",
             "properties": {
               "description": "BlockAll.Inbound.Deny",
@@ -582,7 +568,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet130NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "130_NSG_DB" },
+      "tags": { "displayName": "130_NSG_DB_W1" },
       "properties": {
         "securityRules": [
           {
@@ -607,7 +593,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet135NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "135_NSG_LB_DB" },
+      "tags": { "displayName": "135_NSG_LB_DB_W1" },
       "properties": {
         "securityRules": [
           {
@@ -632,7 +618,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet150NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "150_NSG_DMZ" },
+      "tags": { "displayName": "150_NSG_DMZ_W1" },
       "properties": {
         "securityRules": [
           {
@@ -657,7 +643,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet155NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "155_NSG_LB_DMZ" },
+      "tags": { "displayName": "155_NSG_LB_DMZ_W1" },
       "properties": {
         "securityRules": [
           {
@@ -682,7 +668,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet160NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "160_NSG_User_Tier0" },
+      "tags": { "displayName": "160_NSG_User_Tier0_W1" },
       "properties": {
         "securityRules": [
           {
@@ -735,7 +721,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet161NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "161_NSG_User_Tier1" },
+      "tags": { "displayName": "161_NSG_User_Tier1_W1" },
       "properties": {
         "securityRules": [
           {
@@ -788,7 +774,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet162NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "162_NSG_User_Tier2" },
+      "tags": { "displayName": "162_NSG_User_Tier2_W1" },
       "properties": {
         "securityRules": [
           {
@@ -849,7 +835,6 @@
       "type": "Microsoft.Network/virtualNetworks",
       "name": "[parameters('vnetName')]",
       "location": "[resourceGroup().location]",
-      "dependsOn": [],
       "tags": { "displayName": "AzureFoundation VNet Definition" },
       "properties": {
         "addressSpace": { "addressPrefixes": [ "[parameters('vnetAddressPrefix')]" ] },
@@ -932,6 +917,7 @@
             }
           }
         ],
+
         "resources": [
           /*Go to the Connection tab of the Metadata spreadsheet and filter on VNET 100
           select the Resources for Peering and past them below*/
@@ -949,10 +935,27 @@
               "useRemoteGateways": "[parameters('allowVNETAccesscnct100')]",
               "remoteVirtualNetwork": { "id": "[concat('/subscriptions/', parameters('rmtSubIDcnct100'), '/resourceGroups/', parameters('rmtRGNamecnct100'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct100'))]" }
             }
-          }
+          },
+
 
         ],
-        "dhcpOptions": { "dnsServers": [ "10.128.59.36" ] }
+        "dhcpOptions": { "dnsServers": [ "10.128.59.36" ] },
+        "dependsOn": [
+          /*Using the metadata template on the Subnet Tab, filter to VNET104 and select
+          the columns with DependsOn and grouped by color*/
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet110NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet115NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet120NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet125NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet130NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet135NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet150NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet155NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet160NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet161NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet162NSG'))]"
+
+        ]
 
       }
     }

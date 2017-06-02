@@ -216,6 +216,8 @@
       "defaultValue": "261_NSG_User_Tier1",
       "metadata": { "description": "NSG: Tier 1 administrator - manage enterprise servers, services, and applications" }
     },
+    /*using the metadata spreadsheet, tab Connections, filter on VNET101
+    select the Template columns grouped by color */
     "ConnectionNamecnct110": {
       "type": "string",
       "defaultValue": "Peering_mac_slg_HBI_To_Services_W1",
@@ -243,12 +245,12 @@
     },
     "allowGWAccesscnct110": {
       "type": "bool",
-      "defaultValue": true,
+      "defaultValue": false,
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
     "useRemoteGatewaycnct110": {
       "type": "bool",
-      "defaultValue": false,
+      "defaultValue": true,
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
     "peerVNETNamecnct110": {
@@ -386,7 +388,6 @@
               "direction": "Inbound"
             }
           },
-
           {
             "name": "http.Inbound.Allow",
             "properties": {
@@ -524,20 +525,6 @@
               "destinationAddressPrefix": "*",
               "access": "Allow",
               "priority": 3960,
-              "direction": "Inbound"
-            }
-          },
-          {
-            "name": "All_Internet.Inbound.Deny",
-            "properties": {
-              "description": "All_Internet.Inbound.Deny",
-              "protocol": "TCP",
-              "sourcePortRange": "*",
-              "destinationPortRange": "*",
-              "sourceAddressPrefix": "Internet",
-              "destinationAddressPrefix": "*",
-              "access": "Deny",
-              "priority": 4090,
               "direction": "Inbound"
             }
           },
@@ -764,6 +751,7 @@
         ]
       }
     },
+
     /*using the metadata spreadsheet, navigate  to the Subnet Tab and filter on VENT101
     select the columns wiht the word resource in the title, grouped by color.*/
     {
@@ -847,6 +835,7 @@
             }
           }
         ],
+
         /*STOP WITH SUBNET TAB, goto the Connections TAB*/
 
         "resources": [
@@ -869,7 +858,22 @@
           }
 
         ],
-        "dhcpOptions": { "dnsServers": [ "10.128.59.36" ] }
+        "dhcpOptions": { "dnsServers": [ "10.128.59.36" ] },
+        "dependsOn": [
+          /*Using the metadata template on the Subnet Tab, filter to VNET104 and select
+          the columns with DependsOn and grouped by color*/
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet210NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet215NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet220NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet225NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet230NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet235NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet250NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet255NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet260NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet261NSG'))]"
+
+        ]
       }
     }
   ],

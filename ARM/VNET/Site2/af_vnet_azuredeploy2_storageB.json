@@ -130,66 +130,67 @@
     In the metadata spreadsheet, on the Connection tab, filter on VNET203
       select the columns with Template in the name and grouped by color.
     */
-    "ConnectionNamecnct130": {
+    "ConnectionNamecnct203": {
       "type": "string",
       "defaultValue": "Peering_mac_slg_Storage_To_Services_W2",
       "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
     },
-    "vnetNamecnct130": {
+    "vnetNamecnct203": {
       "type": "string",
       "defaultValue": "vnet_storage_w2",
       "metadata": { "description": "Azure VNET of the current location" }
     },
-    "connectionType1cnct130": {
+    "connectionType1cnct203": {
       "type": "string",
       "defaultValue": "Peering",
       "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
     },
-    "allowVNETAccesscnct130": {
+    "allowVNETAccesscnct203": {
       "type": "bool",
       "defaultValue": true,
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
-    "allowFwdAccesscnct130": {
+    "allowFwdAccesscnct203": {
       "type": "bool",
       "defaultValue": true,
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
-    "allowGWAccesscnct130": {
-      "type": "bool",
-      "defaultValue": true,
-      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
-    },
-    "useRemoteGatewaycnct130": {
+    "allowGWAccesscnct203": {
       "type": "bool",
       "defaultValue": false,
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
-    "peerVNETNamecnct130": {
+    "useRemoteGatewaycnct203": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "peerVNETNamecnct203": {
       "type": "string",
       "defaultValue": "vnet_services_w2",
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
-    "rmtSubIDcnct130": {
+    "rmtSubIDcnct203": {
       "type": "string",
       "defaultValue": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9",
       "metadata": { "description": "The subscription ID of the peer VNET." }
     },
-    "rmtRGNamecnct130": {
+    "rmtRGNamecnct203": {
       "type": "string",
       "defaultValue": "rg_vnet_services_w2",
       "metadata": { "description": "The resource group for the remote subscription VNET." }
     },
-    "rmtConnectionNamecnct130": {
+    "rmtConnectionNamecnct203": {
       "type": "string",
       "defaultValue": "",
       "metadata": { "description": "The name of the remote connection." }
     },
-    "rmtLocationcnct130": {
+    "rmtLocationcnct203": {
       "type": "string",
       "defaultValue": "westus2",
       "metadata": { "description": "The name of the remote location." }
-    }
+    },
+
   },
   "variables": {
     "apiVersion": "2015-06-15",
@@ -206,7 +207,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet500NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "500_NSG_Storage" },
+      "tags": { "displayName": "500_NSG_Storage_W2" },
       "properties": {
         "securityRules": [
           {
@@ -231,7 +232,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet505NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "505_NSG_LB_Storage" },
+      "tags": { "displayName": "505_NSG_LB_Storage_W2" },
       "properties": {
         "securityRules": [
           {
@@ -256,7 +257,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet560NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "560_NSG_User_Tier0" },
+      "tags": { "displayName": "560_NSG_User_Tier0_W2" },
       "properties": {
         "securityRules": [
           {
@@ -309,7 +310,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet561NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "561_NSG_User_Tier1" },
+      "tags": { "displayName": "561_NSG_User_Tier1_W2" },
       "properties": {
         "securityRules": [
           {
@@ -358,6 +359,7 @@
       }
     },
 
+
     /*
     In the metadata spreadsheet, on the Subnets tab, filter on VNET203
       select the columns with Resource in the name and grouped by color.
@@ -402,6 +404,7 @@
           }
         ],
 
+
         "resoures": [
           /*
     In the metadata spreadsheet, on the Connections tab, filter on VNET203
@@ -410,56 +413,36 @@
           {
             "apiVersion": "2016-06-01",
             "type": "virtualNetworkPeerings",
-            "name": "[parameters('ConnectionNamecnct130')]",
+            "name": "[parameters('ConnectionNamecnct203')]",
             "location": "[resourceGroup().location]",
-            "dependsOn": [ "[concat('/subscriptions/', parameters('rmtSubIDcnct130'), '/resourceGroups/', parameters('rmtRGNamecnct130'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct130'))]", "[concat('Microsoft.Networks/virtualNetworks/',parameters('vnetNamecnct130'))]" ],
+            "dependsOn": [ "[concat('/subscriptions/', parameters('rmtSubIDcnct203'), '/resourceGroups/', parameters('rmtRGNamecnct203'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct203'))]", "[concat('Microsoft.Networks/virtualNetworks/',parameters('vnetNamecnct203'))]" ],
             "comments": "Make sure you put these resources within the Resources of a VNET, like a subnet",
             "properties": {
-              "allowVirtualNetworkAccess": "[parameters('allowVNETAccesscnct130')]",
-              "allowForwardedTraffic": "[parameters('allowFwdAccesscnct130')]",
-              "allowGatewayTransit": "[parameters('allowGWAccesscnct130')]",
-              "useRemoteGateways": "[parameters('allowVNETAccesscnct130')]",
-              "remoteVirtualNetwork": { "id": "[concat('/subscriptions/', parameters('rmtSubIDcnct130'), '/resourceGroups/', parameters('rmtRGNamecnct130'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct130'))]" }
+              "allowVirtualNetworkAccess": "[parameters('allowVNETAccesscnct203')]",
+              "allowForwardedTraffic": "[parameters('allowFwdAccesscnct203')]",
+              "allowGatewayTransit": "[parameters('allowGWAccesscnct203')]",
+              "useRemoteGateways": "[parameters('allowVNETAccesscnct203')]",
+              "remoteVirtualNetwork": { "id": "[concat('/subscriptions/', parameters('rmtSubIDcnct203'), '/resourceGroups/', parameters('rmtRGNamecnct203'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct203'))]" }
             }
           }
 
         ],
-        "dhcpOptions": { "dnsServers": [ "10.128.59.36" ] }
+        "dhcpOptions": { "dnsServers": [ "10.128.59.36" ] },
+        "dependsOn": [
+          /*Using the metadata template on the Subnet Tab, filter to VNET103 and select
+          the columns with DependsOn and grouped by color*/
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet500NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet505NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet560NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet561NSG'))]"
 
-      }
-    },
+        ]
 
-    {
-      "apiVersion": "2016-06-01",
-      "type": "virtualNetworkPeerings",
-      "name": "[parameters('ConnectionNamecnct130')]",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [ "[concat('/subscriptions/', parameters('rmtSubIDcnct130'), '/resourceGroups/', parameters('rmtRGNamecnct130'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct130'))]", "[concat('Microsoft.Networks/virtualNetworks/',parameters('vnetNamecnct130'))]" ],
-      "comments": "Make sure you put these resources within the Resources of a VNET, like a subnet",
-      "properties": {
-        "allowVirtualNetworkAccess": "[parameters('allowVNETAccesscnct130')]",
-        "allowForwardedTraffic": "[parameters('allowFwdAccesscnct130')]",
-        "allowGatewayTransit": "[parameters('allowGWAccesscnct130')]",
-        "useRemoteGateways": "[parameters('allowVNETAccesscnct130')]",
-        "remoteVirtualNetwork": { "id": "[concat('/subscriptions/', parameters('rmtSubIDcnct130'), '/resourceGroups/', parameters('rmtRGNamecnct130'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct130'))]" }
-      }
-    },
-    {
-      "apiVersion": "2016-06-01",
-      "type": "virtualNetworkPeerings",
-      "name": "[parameters('ConnectionNamecnct130')]",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [ "[concat('/subscriptions/', parameters('rmtSubIDcnct130'), '/resourceGroups/', parameters('rmtRGNamecnct130'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct130'))]", "[concat('Microsoft.Networks/virtualNetworks/',parameters('vnetNamecnct130'))]" ],
-      "comments": "Make sure you put these resources within the Resources of a VNET, like a subnet",
-      "properties": {
-        "allowVirtualNetworkAccess": "[parameters('allowVNETAccesscnct130')]",
-        "allowForwardedTraffic": "[parameters('allowFwdAccesscnct130')]",
-        "allowGatewayTransit": "[parameters('allowGWAccesscnct130')]",
-        "useRemoteGateways": "[parameters('allowVNETAccesscnct130')]",
-        "remoteVirtualNetwork": { "id": "[concat('/subscriptions/', parameters('rmtSubIDcnct130'), '/resourceGroups/', parameters('rmtRGNamecnct130'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct130'))]" }
       }
     }
+
   ],
+
 
 
   "outputs": {

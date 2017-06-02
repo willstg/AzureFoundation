@@ -1477,7 +1477,35 @@
           }
 
         ],
-        "dhcpOptions": { "dnsServers": [ "10.128.59.36" ] }
+        "dhcpOptions": { "dnsServers": [ "10.128.59.36" ] },
+        "dependsOn": [
+          /*Using the metadata template on the Subnet Tab, filter to VNET302 and select
+          the columns with DependsOn and grouped by color*/
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet310NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet315NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet320NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet325NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet330NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet335NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet350NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet355NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet360NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet361NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet362NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet410NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet415NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet420NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet425NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet430NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet435NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet450NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet455NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet460NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet461NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet462NSG'))]"
+
+
+        ]
 
       }
     },

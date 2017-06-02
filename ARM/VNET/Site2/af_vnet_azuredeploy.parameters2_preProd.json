@@ -12,7 +12,6 @@
     "vnetAddressPrefix": { "value": "10.128.96.0/20" },
     "dnsServers": { "value": [ "10.128.59.36" ] },
 
-
     /*in the metadata spreadsheet, select the Subnet tab and filter on VNET202
     and select the columns with Parameter in the name grouped by color.*/
     "subnet310Prefix": { "value": "10.128.96.0/25" },
@@ -85,17 +84,16 @@
 
     /*in the metadata spreadsheet, select the Subnet tab and filter on VNET202
     and select the columns with Parameter in the name grouped by color.*/
-    "ConnectionNamecnct120": { "value": "Peering_mac_slg_PreProd_To_Services_W2" },
-    "vnetNamecnct120": { "value": "vnet_preprod_w2" },
-    "connectionType1cnct120": { "value": "Peering" },
-    "allowVNETAccesscnct120": { "value": true },
-    "allowFwdAccesscnct120": { "value": true },
-    "allowGWAccesscnct120": { "value": true },
-    "useRemoteGatewaycnct120": { "value": false },
-    "peerVNETNamecnct120": { "value": "vnet_services_w2" },
-    "rmtSubIDcnct120": { "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9" },
-    "rmtLocationcnct120": { "value": "westus2" }
-
+    "ConnectionNamecnct202": { "value": "Peering_mac_slg_PreProd_To_Services_W2" },
+    "vnetNamecnct202": { "value": "vnet_preprod_w2" },
+    "connectionType1cnct202": { "value": "Peering" },
+    "allowVNETAccesscnct202": { "value": true },
+    "allowFwdAccesscnct202": { "value": true },
+    "allowGWAccesscnct202": { "value": false },
+    "useRemoteGatewaycnct202": { "value": true },
+    "peerVNETNamecnct202": { "value": "vnet_services_w2" },
+    "rmtSubIDcnct202": { "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9" },
+    "rmtLocationcnct202": { "value": "westus2" }
 
   }
 }

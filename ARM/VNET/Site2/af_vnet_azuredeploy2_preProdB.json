@@ -60,6 +60,7 @@
     },
 
 
+
     /*in the metadata spreadsheet, select the Subnet tab and filter on VNET202
     and select the columns with Template in the name grouped by color.*/
     "subnet310Prefix": {
@@ -393,64 +394,65 @@
       "metadata": { "description": "NSG: Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices" }
     },
 
+
     /*in the metadata spreadsheet, select the Connections tab and filter on VNET202
     and select the columns with Template in the name grouped by color.*/
-    "ConnectionNamecnct120": {
+    "ConnectionNamecnct202": {
       "type": "string",
       "defaultValue": "Peering_mac_slg_PreProd_To_Services_W2",
       "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
     },
-    "vnetNamecnct120": {
+    "vnetNamecnct202": {
       "type": "string",
       "defaultValue": "vnet_preprod_w2",
       "metadata": { "description": "Azure VNET of the current location" }
     },
-    "connectionType1cnct120": {
+    "connectionType1cnct202": {
       "type": "string",
       "defaultValue": "Peering",
       "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
     },
-    "allowVNETAccesscnct120": {
+    "allowVNETAccesscnct202": {
       "type": "bool",
       "defaultValue": true,
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
-    "allowFwdAccesscnct120": {
+    "allowFwdAccesscnct202": {
       "type": "bool",
       "defaultValue": true,
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
-    "allowGWAccesscnct120": {
-      "type": "bool",
-      "defaultValue": true,
-      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
-    },
-    "useRemoteGatewaycnct120": {
+    "allowGWAccesscnct202": {
       "type": "bool",
       "defaultValue": false,
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
-    "peerVNETNamecnct120": {
+    "useRemoteGatewaycnct202": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "peerVNETNamecnct202": {
       "type": "string",
       "defaultValue": "vnet_services_w2",
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
-    "rmtSubIDcnct120": {
+    "rmtSubIDcnct202": {
       "type": "string",
       "defaultValue": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9",
       "metadata": { "description": "The subscription ID of the peer VNET." }
     },
-    "rmtRGNamecnct120": {
+    "rmtRGNamecnct202": {
       "type": "string",
       "defaultValue": "rg_vnet_services_w2",
       "metadata": { "description": "The resource group for the remote subscription VNET." }
     },
-    "rmtConnectionNamecnct120": {
+    "rmtConnectionNamecnct202": {
       "type": "string",
       "defaultValue": "",
       "metadata": { "description": "The name of the remote connection." }
     },
-    "rmtLocationcnct120": {
+    "rmtLocationcnct202": {
       "type": "string",
       "defaultValue": "westus2",
       "metadata": { "description": "The name of the remote location." }
@@ -472,7 +474,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet310NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "310_NSG_Web" },
+      "tags": { "displayName": "310_NSG_Web_W2" },
       "properties": {
         "securityRules": [
           {
@@ -497,7 +499,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet315NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "315_NSG_LB_Web" },
+      "tags": { "displayName": "315_NSG_LB_Web_W2" },
       "properties": {
         "securityRules": [
           {
@@ -522,7 +524,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet320NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "320_NSG_App" },
+      "tags": { "displayName": "320_NSG_App_W2" },
       "properties": {
         "securityRules": [
           {
@@ -547,7 +549,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet325NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "325_NSG_LB_App" },
+      "tags": { "displayName": "325_NSG_LB_App_W2" },
       "properties": {
         "securityRules": [
           {
@@ -572,7 +574,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet330NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "330_NSG_DB" },
+      "tags": { "displayName": "330_NSG_DB_W2" },
       "properties": {
         "securityRules": [
           {
@@ -597,7 +599,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet335NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "335_NSG_LB_DB" },
+      "tags": { "displayName": "335_NSG_LB_DB_W2" },
       "properties": {
         "securityRules": [
           {
@@ -622,7 +624,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet350NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "350_NSG_DMZ" },
+      "tags": { "displayName": "350_NSG_DMZ_W2" },
       "properties": {
         "securityRules": [
           {
@@ -647,7 +649,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet355NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "355_NSG_LB_DMZ" },
+      "tags": { "displayName": "355_NSG_LB_DMZ_W2" },
       "properties": {
         "securityRules": [
           {
@@ -672,7 +674,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet360NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "360_NSG_User_Tier0" },
+      "tags": { "displayName": "360_NSG_User_Tier0_W2" },
       "properties": {
         "securityRules": [
           {
@@ -725,7 +727,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet361NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "361_NSG_User_Tier1" },
+      "tags": { "displayName": "361_NSG_User_Tier1_W2" },
       "properties": {
         "securityRules": [
           {
@@ -778,7 +780,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet362NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "362_NSG_User_Tier2" },
+      "tags": { "displayName": "362_NSG_User_Tier2_W2" },
       "properties": {
         "securityRules": [
           {
@@ -831,7 +833,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet410NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "410_NSG_Web" },
+      "tags": { "displayName": "410_NSG_Web_W2" },
       "properties": {
         "securityRules": [
           {
@@ -856,7 +858,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet415NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "415_NSG_LB_Web" },
+      "tags": { "displayName": "415_NSG_LB_Web_W2" },
       "properties": {
         "securityRules": [
           {
@@ -881,7 +883,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet420NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "420_NSG_App" },
+      "tags": { "displayName": "420_NSG_App_W2" },
       "properties": {
         "securityRules": [
           {
@@ -906,7 +908,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet425NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "425_NSG_LB_App" },
+      "tags": { "displayName": "425_NSG_LB_App_W2" },
       "properties": {
         "securityRules": [
           {
@@ -931,7 +933,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet430NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "430_NSG_DB" },
+      "tags": { "displayName": "430_NSG_DB_W2" },
       "properties": {
         "securityRules": [
           {
@@ -956,7 +958,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet435NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "435_NSG_LB_DB" },
+      "tags": { "displayName": "435_NSG_LB_DB_W2" },
       "properties": {
         "securityRules": [
           {
@@ -981,7 +983,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet450NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "450_NSG_DMZ" },
+      "tags": { "displayName": "450_NSG_DMZ_W2" },
       "properties": {
         "securityRules": [
           {
@@ -1006,7 +1008,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet455NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "455_NSG_LB_DMZ" },
+      "tags": { "displayName": "455_NSG_LB_DMZ_W2" },
       "properties": {
         "securityRules": [
           {
@@ -1031,7 +1033,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet460NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "460_NSG_User_Tier0" },
+      "tags": { "displayName": "460_NSG_User_Tier0_W2" },
       "properties": {
         "securityRules": [
           {
@@ -1084,7 +1086,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet461NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "461_NSG_User_Tier1" },
+      "tags": { "displayName": "461_NSG_User_Tier1_W2" },
       "properties": {
         "securityRules": [
           {
@@ -1137,7 +1139,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet462NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "462_NSG_User_Tier2" },
+      "tags": { "displayName": "462_NSG_User_Tier2_W2" },
       "properties": {
         "securityRules": [
           {
@@ -1185,6 +1187,7 @@
         ]
       }
     },
+
     /*in the metadata spreadsheet, select the Subnet tab and filter on VNET202
     and select the columns with Resources in the name grouped by color.*/
     {
@@ -1192,7 +1195,6 @@
       "type": "Microsoft.Network/virtualNetworks",
       "name": "[parameters('vnetName')]",
       "location": "[resourceGroup().location]",
-      "dependsOn": [],
       "tags": { "displayName": "AzureFoundation VNet Definition" },
       "properties": {
         "addressSpace": { "addressPrefixes": [ "[parameters('vnetAddressPrefix')]" ] },
@@ -1352,27 +1354,56 @@
             }
           }
         ],
+
         /*in the metadata spreadsheet, select the Connection tab and filter on VNET202
     and select the columns with Resources in the name grouped by color.*/
         "resources": [
           {
             "apiVersion": "2016-06-01",
             "type": "virtualNetworkPeerings",
-            "name": "[parameters('ConnectionNamecnct120')]",
+            "name": "[parameters('ConnectionNamecnct202')]",
             "location": "[resourceGroup().location]",
-            "dependsOn": [ "[concat('/subscriptions/', parameters('rmtSubIDcnct120'), '/resourceGroups/', parameters('rmtRGNamecnct120'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct120'))]", "[concat('Microsoft.Networks/virtualNetworks/',parameters('vnetNamecnct120'))]" ],
+            "dependsOn": [ "[concat('/subscriptions/', parameters('rmtSubIDcnct202'), '/resourceGroups/', parameters('rmtRGNamecnct202'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct202'))]", "[concat('Microsoft.Networks/virtualNetworks/',parameters('vnetNamecnct202'))]" ],
             "comments": "Make sure you put these resources within the Resources of a VNET, like a subnet",
             "properties": {
-              "allowVirtualNetworkAccess": "[parameters('allowVNETAccesscnct120')]",
-              "allowForwardedTraffic": "[parameters('allowFwdAccesscnct120')]",
-              "allowGatewayTransit": "[parameters('allowGWAccesscnct120')]",
-              "useRemoteGateways": "[parameters('allowVNETAccesscnct120')]",
-              "remoteVirtualNetwork": { "id": "[concat('/subscriptions/', parameters('rmtSubIDcnct120'), '/resourceGroups/', parameters('rmtRGNamecnct120'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct120'))]" }
+              "allowVirtualNetworkAccess": "[parameters('allowVNETAccesscnct202')]",
+              "allowForwardedTraffic": "[parameters('allowFwdAccesscnct202')]",
+              "allowGatewayTransit": "[parameters('allowGWAccesscnct202')]",
+              "useRemoteGateways": "[parameters('allowVNETAccesscnct202')]",
+              "remoteVirtualNetwork": { "id": "[concat('/subscriptions/', parameters('rmtSubIDcnct202'), '/resourceGroups/', parameters('rmtRGNamecnct202'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct202'))]" }
             }
           },
 
+
         ],
-        "dhcpOptions": { "dnsServers": [ "10.128.59.36" ] }
+        "dhcpOptions": { "dnsServers": [ "10.128.59.36" ] },
+        "dependsOn": [
+          /*Using the metadata template on the Subnet Tab, filter to VNET104 and select
+          the columns with DependsOn and grouped by color*/
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet310NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet315NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet320NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet325NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet330NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet335NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet350NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet355NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet360NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet361NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet362NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet410NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet415NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet420NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet425NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet430NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet435NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet450NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet455NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet460NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet461NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet462NSG'))]"
+
+        ]
 
       }
     }

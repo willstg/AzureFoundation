@@ -37,262 +37,25 @@
 
     /*in the metadata spreadsheet, select the VNET tab and filter on VNET200
     and select the columns with Template in the name grouped by color.*/
-    "locationName": {
-      "type": "string",
-      "defaultValue": "westus2"
-    },
-    "resourceGroupName": {
-      "type": "string",
-      "defaultValue": "rg_vnet_prod_w2"
-    },
-    "vnetName": {
-      "type": "string",
-      "defaultValue": "vnet_prod_w2",
-      "metadata": { "description": "AzureFoundation VNET Name for virtual data center subscription in a specific data center." }
-    },
-    "vnetAddressPrefix": {
-      "type": "string",
-      "defaultValue": "10.128.64.0/20",
-      "metadata": { "description": "AzureFoundation VNET Address Prefix, the range of addresses for a specific data center." }
-    },
-    "dnsServers": {
-      "type": "array",
-      "defaultValue": [ "10.128.59.36" ],
-      "metadata": { "description": "AzureFoundation Domain Controller DNS server" }
-    },
+  "locationName":{"type":"string","defaultValue":"westus2"},	"resourceGroupName":{"type":"string","defaultValue":"rg_vnet_prod_w2"},	"vnetName":{"type":"string","defaultValue":"vnet_prod_w2", "metadata":{"description":"AzureFoundation VNET Name for virtual data center subscription in a specific data center."}},	"vnetAddressPrefix":{"type":"string","defaultValue":"10.128.64.0/20", "metadata":{"description":"AzureFoundation VNET Address Prefix, the range of addresses for a specific data center."}},	"dnsServers":{"type":"array","defaultValue":["10.128.59.36"], "metadata":{"description":"AzureFoundation Domain Controller DNS server"}},
 
     /*in the metadata spreadsheet, select the Subnet tab and filter on VNET200
     and select the columns with Template in the name grouped by color.*/
-    "subnet110Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.66.0/24",
-      "metadata": { "description": "HTTP and HTTPS services" }
-    },
-    "subnet110Name": {
-      "type": "string",
-      "defaultValue": "110_Web_prod_mac_slg_W2",
-      "metadata": { "description": "HTTP and HTTPS services" }
-    },
-    "subnet110NSG": {
-      "type": "string",
-      "defaultValue": "110_NSG_Web",
-      "metadata": { "description": "NSG: HTTP and HTTPS services" }
-    },
-    "subnet115Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.67.0/24",
-      "metadata": { "description": "Loadbalanced HTTP and HTTPS Services" }
-    },
-    "subnet115Name": {
-      "type": "string",
-      "defaultValue": "115_LB_Web_prod_mac_slg_W2",
-      "metadata": { "description": "Loadbalanced HTTP and HTTPS Services" }
-    },
-    "subnet115NSG": {
-      "type": "string",
-      "defaultValue": "115_NSG_LB_Web",
-      "metadata": { "description": "NSG: Loadbalanced HTTP and HTTPS Services" }
-    },
-    "subnet120Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.68.0/24",
-      "metadata": { "description": "Web Services, OEM applications" }
-    },
-    "subnet120Name": {
-      "type": "string",
-      "defaultValue": "120_App_prod_mac_slg_W2",
-      "metadata": { "description": "Web Services, OEM applications" }
-    },
-    "subnet120NSG": {
-      "type": "string",
-      "defaultValue": "120_NSG_App",
-      "metadata": { "description": "NSG: Web Services, OEM applications" }
-    },
-    "subnet125Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.69.0/24",
-      "metadata": { "description": "Loadbalaned Web Services, OEM applications" }
-    },
-    "subnet125Name": {
-      "type": "string",
-      "defaultValue": "125_LB_App_prod_mac_slg_W2",
-      "metadata": { "description": "Loadbalaned Web Services, OEM applications" }
-    },
-    "subnet125NSG": {
-      "type": "string",
-      "defaultValue": "125_NSG_LB_App",
-      "metadata": { "description": "NSG: Loadbalaned Web Services, OEM applications" }
-    },
-    "subnet130Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.70.0/24",
-      "metadata": { "description": "Data for Applications" }
-    },
-    "subnet130Name": {
-      "type": "string",
-      "defaultValue": "130_DB_prod_mac_slg_W2",
-      "metadata": { "description": "Data for Applications" }
-    },
-    "subnet130NSG": {
-      "type": "string",
-      "defaultValue": "130_NSG_DB",
-      "metadata": { "description": "NSG: Data for Applications" }
-    },
-    "subnet135Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.71.0/24",
-      "metadata": { "description": "Loadbalanced Databases" }
-    },
-    "subnet135Name": {
-      "type": "string",
-      "defaultValue": "135_LB_DB_prod_mac_slg_W2",
-      "metadata": { "description": "Loadbalanced Databases" }
-    },
-    "subnet135NSG": {
-      "type": "string",
-      "defaultValue": "135_NSG_LB_DB",
-      "metadata": { "description": "NSG: Loadbalanced Databases" }
-    },
-    "subnet150Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.72.0/24",
-      "metadata": { "description": "Internet EndPoint Machines" }
-    },
-    "subnet150Name": {
-      "type": "string",
-      "defaultValue": "150_DMZ_prod_mac_slg_W2",
-      "metadata": { "description": "Internet EndPoint Machines" }
-    },
-    "subnet150NSG": {
-      "type": "string",
-      "defaultValue": "150_NSG_DMZ",
-      "metadata": { "description": "NSG: Internet EndPoint Machines" }
-    },
-    "subnet155Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.73.0/24",
-      "metadata": { "description": "Loadbalaned Internet Endpoint systems" }
-    },
-    "subnet155Name": {
-      "type": "string",
-      "defaultValue": "155_LB_DMZ_prod_mac_slg_W2",
-      "metadata": { "description": "Loadbalaned Internet Endpoint systems" }
-    },
-    "subnet155NSG": {
-      "type": "string",
-      "defaultValue": "155_NSG_LB_DMZ",
-      "metadata": { "description": "NSG: Loadbalaned Internet Endpoint systems" }
-    },
-    "subnet160Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.74.0/25",
-      "metadata": { "description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
-    },
-    "subnet160Name": {
-      "type": "string",
-      "defaultValue": "160_User_Tier0_prod_mac_slg_W2",
-      "metadata": { "description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
-    },
-    "subnet160NSG": {
-      "type": "string",
-      "defaultValue": "160_NSG_User_Tier0",
-      "metadata": { "description": "NSG: Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
-    },
-    "subnet161Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.74.128/25",
-      "metadata": { "description": "Tier 1 administrator - manage enterprise servers, services, and applications" }
-    },
-    "subnet161Name": {
-      "type": "string",
-      "defaultValue": "161_User_Tier1_prod_mac_slg_W2",
-      "metadata": { "description": "Tier 1 administrator - manage enterprise servers, services, and applications" }
-    },
-    "subnet161NSG": {
-      "type": "string",
-      "defaultValue": "161_NSG_User_Tier1",
-      "metadata": { "description": "NSG: Tier 1 administrator - manage enterprise servers, services, and applications" }
-    },
-    "subnet162Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.75.0/25",
-      "metadata": { "description": "Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices" }
-    },
-    "subnet162Name": {
-      "type": "string",
-      "defaultValue": "162_User_Tier2_prod_mac_slg_W2",
-      "metadata": { "description": "Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices" }
-    },
-    "subnet162NSG": {
-      "type": "string",
-      "defaultValue": "162_NSG_User_Tier2",
-      "metadata": { "description": "NSG: Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices" }
-    },
-
+  "subnet110Prefix": { "type":  "string", "defaultValue":  "10.128.66.0/24", "metadata":  {"description": "HTTP and HTTPS services"}},	"subnet110Name": { "type":  "string", "defaultValue":  "110_Web_prod_mac_slg_W2", "metadata":  {"description": "HTTP and HTTPS services"}},		"subnet110NSG": { "type": "string", "defaultValue": "110_NSG_Web", "metadata": {"description": "NSG: HTTP and HTTPS services"}},	
+"subnet115Prefix": { "type":  "string", "defaultValue":  "10.128.67.0/24", "metadata":  {"description": "Loadbalanced HTTP and HTTPS Services"}},	"subnet115Name": { "type":  "string", "defaultValue":  "115_LB_Web_prod_mac_slg_W2", "metadata":  {"description": "Loadbalanced HTTP and HTTPS Services"}},		"subnet115NSG": { "type": "string", "defaultValue": "115_NSG_LB_Web", "metadata": {"description": "NSG: Loadbalanced HTTP and HTTPS Services"}},	
+"subnet120Prefix": { "type":  "string", "defaultValue":  "10.128.68.0/24", "metadata":  {"description": "Web Services, OEM applications"}},	"subnet120Name": { "type":  "string", "defaultValue":  "120_App_prod_mac_slg_W2", "metadata":  {"description": "Web Services, OEM applications"}},		"subnet120NSG": { "type": "string", "defaultValue": "120_NSG_App", "metadata": {"description": "NSG: Web Services, OEM applications"}},	
+"subnet125Prefix": { "type":  "string", "defaultValue":  "10.128.69.0/24", "metadata":  {"description": "Loadbalaned Web Services, OEM applications"}},	"subnet125Name": { "type":  "string", "defaultValue":  "125_LB_App_prod_mac_slg_W2", "metadata":  {"description": "Loadbalaned Web Services, OEM applications"}},		"subnet125NSG": { "type": "string", "defaultValue": "125_NSG_LB_App", "metadata": {"description": "NSG: Loadbalaned Web Services, OEM applications"}},	
+"subnet130Prefix": { "type":  "string", "defaultValue":  "10.128.70.0/24", "metadata":  {"description": "Data for Applications"}},	"subnet130Name": { "type":  "string", "defaultValue":  "130_DB_prod_mac_slg_W2", "metadata":  {"description": "Data for Applications"}},		"subnet130NSG": { "type": "string", "defaultValue": "130_NSG_DB", "metadata": {"description": "NSG: Data for Applications"}},	
+"subnet135Prefix": { "type":  "string", "defaultValue":  "10.128.71.0/24", "metadata":  {"description": "Loadbalanced Databases"}},	"subnet135Name": { "type":  "string", "defaultValue":  "135_LB_DB_prod_mac_slg_W2", "metadata":  {"description": "Loadbalanced Databases"}},		"subnet135NSG": { "type": "string", "defaultValue": "135_NSG_LB_DB", "metadata": {"description": "NSG: Loadbalanced Databases"}},	
+"subnet150Prefix": { "type":  "string", "defaultValue":  "10.128.72.0/24", "metadata":  {"description": "Internet EndPoint Machines"}},	"subnet150Name": { "type":  "string", "defaultValue":  "150_DMZ_prod_mac_slg_W2", "metadata":  {"description": "Internet EndPoint Machines"}},		"subnet150NSG": { "type": "string", "defaultValue": "150_NSG_DMZ", "metadata": {"description": "NSG: Internet EndPoint Machines"}},	
+"subnet155Prefix": { "type":  "string", "defaultValue":  "10.128.73.0/24", "metadata":  {"description": "Loadbalaned Internet Endpoint systems"}},	"subnet155Name": { "type":  "string", "defaultValue":  "155_LB_DMZ_prod_mac_slg_W2", "metadata":  {"description": "Loadbalaned Internet Endpoint systems"}},		"subnet155NSG": { "type": "string", "defaultValue": "155_NSG_LB_DMZ", "metadata": {"description": "NSG: Loadbalaned Internet Endpoint systems"}},	
+"subnet160Prefix": { "type":  "string", "defaultValue":  "10.128.74.0/25", "metadata":  {"description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other"}},	"subnet160Name": { "type":  "string", "defaultValue":  "160_User_Tier0_prod_mac_slg_W2", "metadata":  {"description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other"}},		"subnet160NSG": { "type": "string", "defaultValue": "160_NSG_User_Tier0", "metadata": {"description": "NSG: Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other"}},	
+"subnet161Prefix": { "type":  "string", "defaultValue":  "10.128.74.128/25", "metadata":  {"description": "Tier 1 administrator - manage enterprise servers, services, and applications"}},	"subnet161Name": { "type":  "string", "defaultValue":  "161_User_Tier1_prod_mac_slg_W2", "metadata":  {"description": "Tier 1 administrator - manage enterprise servers, services, and applications"}},		"subnet161NSG": { "type": "string", "defaultValue": "161_NSG_User_Tier1", "metadata": {"description": "NSG: Tier 1 administrator - manage enterprise servers, services, and applications"}},	
+"subnet162Prefix": { "type":  "string", "defaultValue":  "10.128.75.0/25", "metadata":  {"description": "Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices"}},	"subnet162Name": { "type":  "string", "defaultValue":  "162_User_Tier2_prod_mac_slg_W2", "metadata":  {"description": "Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices"}},		"subnet162NSG": { "type": "string", "defaultValue": "162_NSG_User_Tier2", "metadata": {"description": "NSG: Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices"}},	
 
     /*in the metadata spreadsheet, select the Connection tab and filter on VNET200
     and select the columns with Template in the name grouped by color.*/
-    "ConnectionNamecnct100": {
-      "type": "string",
-      "defaultValue": "Peering_mac_slg_Prod_To_Services_W2",
-      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
-    },
-    "vnetNamecnct100": {
-      "type": "string",
-      "defaultValue": "vnet_prod_w2",
-      "metadata": { "description": "Azure VNET of the current location" }
-    },
-    "connectionType1cnct100": {
-      "type": "string",
-      "defaultValue": "Peering",
-      "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
-    },
-    "allowVNETAccesscnct100": {
-      "type": "bool",
-      "defaultValue": true,
-      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
-    },
-    "allowFwdAccesscnct100": {
-      "type": "bool",
-      "defaultValue": true,
-      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
-    },
-    "allowGWAccesscnct100": {
-      "type": "bool",
-      "defaultValue": true,
-      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
-    },
-    "useRemoteGatewaycnct100": {
-      "type": "bool",
-      "defaultValue": false,
-      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
-    },
-    "peerVNETNamecnct100": {
-      "type": "string",
-      "defaultValue": "vnet_services_w2",
-      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
-    },
-    "rmtSubIDcnct100": {
-      "type": "string",
-      "defaultValue": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9",
-      "metadata": { "description": "The subscription ID of the peer VNET." }
-    },
-    "rmtRGNamecnct100": {
-      "type": "string",
-      "defaultValue": "rg_vnet_services_w2",
-      "metadata": { "description": "The resource group for the remote subscription VNET." }
-    },
-    "rmtConnectionNamecnct100": {
-      "type": "string",
-      "defaultValue": "",
-      "metadata": { "description": "The name of the remote connection." }
-    },
-    "rmtLocationcnct100": {
-      "type": "string",
-      "defaultValue": "westus2",
-      "metadata": { "description": "The name of the remote location." }
-    }
-
+ "ConnectionNamecnct200": {"type": "string","defaultValue":"Peering_mac_slg_Prod_To_Services_W2","metadata":{"description":"Arbitrary name for the new connection between an Azure VNet and another network"}},	"vnetNamecnct200": {"type": "string","defaultValue":"vnet_prod_w2","metadata":{"description":"Azure VNET of the current location"}},					"connectionType1cnct200": {"type": "string", "defaultValue": "Peering", "metadata": {"description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet."}},			"allowVNETAccesscnct200": {"type": "bool", "defaultValue": true, "metadata": {"description": "The routing weight tells the protocol how expensive it is to route on this gateway."}},	"allowFwdAccesscnct200": {"type": "bool", "defaultValue": true, "metadata": {"description": "The routing weight tells the protocol how expensive it is to route on this gateway."}},	"allowGWAccesscnct200": {"type": "bool", "defaultValue": false, "metadata": {"description": "The routing weight tells the protocol how expensive it is to route on this gateway."}},	"useRemoteGatewaycnct200": {"type": "bool", "defaultValue": true, "metadata": {"description": "The routing weight tells the protocol how expensive it is to route on this gateway."}},	"peerVNETNamecnct200": {"type": "string", "defaultValue": "vnet_services_w2", "metadata": {"description": "The routing weight tells the protocol how expensive it is to route on this gateway."}},	"rmtSubIDcnct200": {"type": "string", "defaultValue": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9", "metadata": {"description": "The subscription ID of the peer VNET."}},	"rmtRGNamecnct200": {"type": "string", "defaultValue": "rg_vnet_services_w2", "metadata": {"description": "The resource group for the remote subscription VNET."}},	"rmtConnectionNamecnct200": {"type": "string", "defaultValue": "", "metadata": {"description": "The name of the remote connection."}},	"rmtLocationcnct200": {"type": "string", "defaultValue": "westus2", "metadata": {"description": "The name of the remote location."}},	
 
   },
   "variables": {
@@ -308,7 +71,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet110NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "110_NSG_Web" },
+      "tags": { "displayName": "110_NSG_Web_W2" },
       "properties": {
         "securityRules": [
           {
@@ -333,7 +96,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet115NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "115_NSG_LB_Web" },
+      "tags": { "displayName": "115_NSG_LB_Web_W2" },
       "properties": {
         "securityRules": [
           {
@@ -358,7 +121,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet120NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "120_NSG_App" },
+      "tags": { "displayName": "120_NSG_App_W2" },
       "properties": {
         "securityRules": [
           {
@@ -383,7 +146,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet125NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "125_NSG_LB_App" },
+      "tags": { "displayName": "125_NSG_LB_App_W2" },
       "properties": {
         "securityRules": [
           {
@@ -408,7 +171,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet130NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "130_NSG_DB" },
+      "tags": { "displayName": "130_NSG_DB_W2" },
       "properties": {
         "securityRules": [
           {
@@ -433,7 +196,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet135NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "135_NSG_LB_DB" },
+      "tags": { "displayName": "135_NSG_LB_DB_W2" },
       "properties": {
         "securityRules": [
           {
@@ -458,7 +221,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet150NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "150_NSG_DMZ" },
+      "tags": { "displayName": "150_NSG_DMZ_W2" },
       "properties": {
         "securityRules": [
           {
@@ -483,7 +246,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet155NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "155_NSG_LB_DMZ" },
+      "tags": { "displayName": "155_NSG_LB_DMZ_W2" },
       "properties": {
         "securityRules": [
           {
@@ -508,7 +271,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet160NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "160_NSG_User_Tier0" },
+      "tags": { "displayName": "160_NSG_User_Tier0_W2" },
       "properties": {
         "securityRules": [
           {
@@ -561,7 +324,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet161NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "161_NSG_User_Tier1" },
+      "tags": { "displayName": "161_NSG_User_Tier1_W2" },
       "properties": {
         "securityRules": [
           {
@@ -614,7 +377,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet162NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "162_NSG_User_Tier2" },
+      "tags": { "displayName": "162_NSG_User_Tier2_W2" },
       "properties": {
         "securityRules": [
           {
@@ -665,6 +428,7 @@
 
 
 
+
     /*in the metadata spreadsheet, select the Subnet tab and filter on VNET200
     and select the columns with Template in the name grouped by color.*/
 
@@ -673,7 +437,6 @@
       "type": "Microsoft.Network/virtualNetworks",
       "name": "[parameters('vnetName')]",
       "location": "[resourceGroup().location]",
-      "dependsOn": [],
       "tags": { "displayName": "AzureFoundation VNet Definition" },
       "properties": {
         "addressSpace": { "addressPrefixes": [ "[parameters('vnetAddressPrefix')]" ] },
@@ -757,34 +520,48 @@
           }
         ],
 
+
         "resources": [
           /*in the metadata spreadsheet, select the Connections tab and filter on VNET200
     and select the columns with Resources in the name grouped by color.*/
           {
             "apiVersion": "2016-06-01",
             "type": "virtualNetworkPeerings",
-            "name": "[parameters('ConnectionNamecnct100')]",
+            "name": "[parameters('ConnectionNamecnct200')]",
             "location": "[resourceGroup().location]",
-            "dependsOn": [ "[concat('/subscriptions/', parameters('rmtSubIDcnct100'), '/resourceGroups/', parameters('rmtRGNamecnct100'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct100'))]", "[concat('Microsoft.Networks/virtualNetworks/',parameters('vnetNamecnct100'))]" ],
+            "dependsOn": [ "[concat('/subscriptions/', parameters('rmtSubIDcnct200'), '/resourceGroups/', parameters('rmtRGNamecnct200'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct200'))]", "[concat('Microsoft.Networks/virtualNetworks/',parameters('vnetNamecnct200'))]" ],
             "comments": "Make sure you put these resources within the Resources of a VNET, like a subnet",
             "properties": {
-              "allowVirtualNetworkAccess": "[parameters('allowVNETAccesscnct100')]",
-              "allowForwardedTraffic": "[parameters('allowFwdAccesscnct100')]",
-              "allowGatewayTransit": "[parameters('allowGWAccesscnct100')]",
-              "useRemoteGateways": "[parameters('allowVNETAccesscnct100')]",
-              "remoteVirtualNetwork": { "id": "[concat('/subscriptions/', parameters('rmtSubIDcnct100'), '/resourceGroups/', parameters('rmtRGNamecnct100'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct100'))]" }
+              "allowVirtualNetworkAccess": "[parameters('allowVNETAccesscnct200')]",
+              "allowForwardedTraffic": "[parameters('allowFwdAccesscnct200')]",
+              "allowGatewayTransit": "[parameters('allowGWAccesscnct200')]",
+              "useRemoteGateways": "[parameters('allowVNETAccesscnct200')]",
+              "remoteVirtualNetwork": { "id": "[concat('/subscriptions/', parameters('rmtSubIDcnct200'), '/resourceGroups/', parameters('rmtRGNamecnct200'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct200'))]" }
             }
           }
+
 
         ],
 
 
-        "dhcpOptions": { "dnsServers": [ "10.128.59.36" ] }
-
+        "dhcpOptions": { "dnsServers": [ "10.128.59.36" ] },
+        "DependsOn": [
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet110NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet115NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet120NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet125NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet130NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet135NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet150NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet155NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet160NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet161NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet162NSG'))]"
+        ]
       }
 
-    }
-
+    },
+   
   ],
 
   "outputs": {

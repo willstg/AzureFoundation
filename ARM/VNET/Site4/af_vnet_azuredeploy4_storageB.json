@@ -576,7 +576,17 @@
 
 
         ],
-        "dhcpOptions": { "dnsServers": [ "10.128.59.36" ] }
+        "dhcpOptions": { "dnsServers": [ "10.128.59.36" ] },
+        "dependsOn": [
+          /*Using the metadata template on the Subnet Tab, filter to VNET103 and select
+          the columns with DependsOn and grouped by color*/
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet500NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet505NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet560NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet561NSG'))]"
+
+
+        ]
 
       }
     },

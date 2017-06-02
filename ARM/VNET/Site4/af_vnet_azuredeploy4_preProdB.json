@@ -402,22 +402,7 @@
       "defaultValue": "462_NSG_User_Tier2",
       "metadata": { "description": "NSG: Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices" }
     },
-    "subnet470Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.46.0/24",
-      "metadata": { "description": "Future Consideration" }
-    },
-    "subnet470Name": {
-      "type": "string",
-      "defaultValue": "470_Future_PreProd_SLGa_W1",
-      "metadata": { "description": "Future Consideration" }
-    },
-    "subnet470NSG": {
-      "type": "string",
-      "defaultValue": "470_NSG_Future",
-      "metadata": { "description": "NSG: Future Consideration" }
-    },
-    "subnet499Prefix": {
+       "subnet499Prefix": {
       "type": "string",
       "defaultValue": "10.128.47.240/28",
       "metadata": { "description": "Gateway Services to Local Networks" }
@@ -1479,7 +1464,35 @@
           }
 
         ],
-        "dhcpOptions": { "dnsServers": [ "10.128.59.36" ] }
+        "dhcpOptions": { "dnsServers": [ "10.128.59.36" ] },
+        "dependsOn": [
+          /*Using the metadata template on the Subnet Tab, filter to VNET402 and select
+          the columns with DependsOn and grouped by color*/
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet310NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet315NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet320NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet325NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet330NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet335NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet350NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet355NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet360NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet361NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet362NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet410NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet415NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet420NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet425NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet430NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet435NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet450NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet455NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet460NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet461NSG'))]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnet462NSG'))]"
+
+
+        ]
 
       }
     },

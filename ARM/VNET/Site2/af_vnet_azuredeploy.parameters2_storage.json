@@ -26,31 +26,22 @@
     "subnet561Prefix": { "value": "10.128.114.128/25" },
     "subnet561Name": { "value": "561_User_Tier1_Storage_mac_slg_W2" },
     "subnet561NSG": { "value": "561_NSG_User_Tier1_W2" },
-    "subnet570Prefix": { "value": "10.128.115.0/24" },
-    "subnet570Name": { "value": "570_Future_Storage_mac_slg_W2" },
-    "subnet570NSG": { "value": "570_NSG_Future_W2" },
-    "subnet570Prefix": { "value": "10.128.116.0/23" },
-    "subnet570Name": { "value": "570_Future_Storage_mac_slg_W2" },
-    "subnet570NSG": { "value": "570_NSG_Future_W2" },
-    "subnet570Prefix": { "value": "10.128.118.0/24" },
-    "subnet570Name": { "value": "570_Future_Storage_mac_slg_W2" },
-    "subnet570NSG": { "value": "570_NSG_Future_W2" },
-    "subnet599Prefix": { "value": "10.128.119.224/27" },
-    "subnet599Name": { "value": "GatewaySubnet" },
+
 
 
     /*in the metadata spreadsheet, select the Connection tab and filter on VNET203
     and select the columns with Parameter in the name grouped by color.*/
-    "ConnectionNamecnct130": { "value": "Peering_mac_slg_Storage_To_Services_W2" },
-    "vnetNamecnct130": { "value": "vnet_storage_w2" },
-    "connectionType1cnct130": { "value": "Peering" },
-    "allowVNETAccesscnct130": { "value": true },
-    "allowFwdAccesscnct130": { "value": true },
-    "allowGWAccesscnct130": { "value": true },
-    "useRemoteGatewaycnct130": { "value": false },
-    "peerVNETNamecnct130": { "value": "vnet_services_w2" },
-    "rmtSubIDcnct130": { "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9" },
-    "rmtLocationcnct130": { "value": "westus2" }
+    "ConnectionNamecnct203": { "value": "Peering_mac_slg_Storage_To_Services_W2" },
+    "vnetNamecnct203": { "value": "vnet_storage_w2" },
+    "connectionType1cnct203": { "value": "Peering" },
+    "allowVNETAccesscnct203": { "value": true },
+    "allowFwdAccesscnct203": { "value": true },
+    "allowGWAccesscnct203": { "value": false },
+    "useRemoteGatewaycnct203": { "value": true },
+    "peerVNETNamecnct203": { "value": "vnet_services_w2" },
+    "rmtSubIDcnct203": { "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9" },
+    "rmtLocationcnct203": { "value": "westus2" }
+
 
   }
 }

@@ -14,27 +14,24 @@
     "vnetName": { "value": "vnet_storage_w1" },
     "vnetAddressPrefix": { "value": "10.128.48.0/21" },
     "dnsServers": { "value": [ "10.128.59.36" ] },
+
     /*the subnet tab of the metadata spreadsheet and filter the data with VNET103
         copy the data from the columns that have the word prerameters in them.  the columns 
     are colored to show the grouping.
     */
-
     "subnet500Prefix": { "value": "10.128.48.0/24" },
-    "subnet500Name": { "value": "500_Storage_Storage_SLGa_W1" },
-    "subnet500NSG": { "value": "500_NSG_Storage" },
+    "subnet500Name": { "value": "500_Storage_Storage_mac_slg_W1" },
+    "subnet500NSG": { "value": "500_NSG_Storage_W1" },
     "subnet505Prefix": { "value": "10.128.49.0/24" },
-    "subnet505Name": { "value": "505_LB_Storage_Storage_SLGa_W1" },
-    "subnet505NSG": { "value": "505_NSG_LB_Storage" },
+    "subnet505Name": { "value": "505_LB_Storage_Storage_mac_slg_W1" },
+    "subnet505NSG": { "value": "505_NSG_LB_Storage_W1" },
     "subnet560Prefix": { "value": "10.128.50.0/25" },
-    "subnet560Name": { "value": "560_User_Tier0_Storage_SLGa_W1" },
-    "subnet560NSG": { "value": "560_NSG_User_Tier0" },
+    "subnet560Name": { "value": "560_User_Tier0_Storage_mac_slg_W1" },
+    "subnet560NSG": { "value": "560_NSG_User_Tier0_W1" },
     "subnet561Prefix": { "value": "10.128.50.128/25" },
-    "subnet561Name": { "value": "561_User_Tier1_Storage_SLGa_W1" },
-    "subnet561NSG": { "value": "561_NSG_User_Tier1" },
-    /*Only the Services Subscription's VNET needs a gateway with the default design
-    "subnet599Prefix": { "value": "10.128.55.248/29" },
-    "subnet599Name": { "value": "GatewaySubnet" },
-      */
+    "subnet561Name": { "value": "561_User_Tier1_Storage_mac_slg_W1" },
+    "subnet561NSG": { "value": "561_NSG_User_Tier1_W1" },
+
     /*the gateway for this subscription should only use the Services Gateway through a peered 
     connection
     The Connection tab of the spreadsheet filtered on VNET104 will have the peering connection details
@@ -45,8 +42,8 @@
     "connectionType1cnct130": { "value": "Peering" },
     "allowVNETAccesscnct130": { "value": true },
     "allowFwdAccesscnct130": { "value": true },
-    "allowGWAccesscnct130": { "value": true },
-    "useRemoteGatewaycnct130": { "value": false },
+    "allowGWAccesscnct130": { "value": false },
+    "useRemoteGatewaycnct130": { "value": true },
     "peerVNETNamecnct130": { "value": "vnet_services_w1" },
     "rmtSubIDcnct130": { "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9" },
     "rmtLocationcnct130": { "value": "westcentralus" }
