@@ -482,7 +482,10 @@
       "allowedValues": [ "MeteredData", "UnlimitedData" ],
       "metadata": { "description": "Chosen SKU family of ExpressRoute circuit. Choose from MeteredData or UnlimitedData SKU families." }
     },
-    #NAME?
+    "erBandwidth": {
+      "type": "int",
+      "metadata": { "description": "This is the bandwidth in Mbps of the circuit being created. It must exactly match one of the available bandwidth offers List ExpressRoute Service Providers API call." }
+    },
     "erSPName": {
       "type": "string",
       "metadata": { "description": "ExpressRoute Service Provider Name" }
@@ -526,7 +529,6 @@
       "defaultValue": "Vpn",
       "metadata": { "description": "The type of gateway that is being created.  This can be either StaticRouting or DynamicRouting." }
     }
-    #NAME?
     "SubIDgw1042": {
       "type": "string",
       "metadata": { "description": "The Subscrition ID" }
@@ -535,6 +537,7 @@
       "type": "bool",
       "metadata": { "description": "Will the gateway use BGP routing?" }
     },
+
 
 
     /*
