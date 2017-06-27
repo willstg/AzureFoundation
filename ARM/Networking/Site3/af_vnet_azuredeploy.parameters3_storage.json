@@ -4,67 +4,44 @@
   "parameters": {
     "commentLocation": { "value": "copy the values for the location tab's Template for Site 3" },
     "baseURL": { "value": "https://github.com/willstg/AzureFoundation/tree/master/arm/vnet/site1" },
-
-    "commentVNET": { "value": "copy the values for the VNET tab's Parameters' columns of Site 3, filter on VNET303" },
+    /*got the metadata spreadsheet's VNET tab and filter on VNET303
+    select the columns labled Parameters and grouped by color*/
     "locationName": { "value": "usgovtexas" },
     "ResourceGroupName": { "value": "rg_vnet_storage_tx" },
     "vnetName": { "value": "vnet_storage_tx" },
     "vnetAddressPrefix": { "value": "10.128.176.0/21" },
     "dnsServers": { "value": [] },
 
+    /*got the metadata spreadsheet's Subnet tab and filter on VNET303
+    select the columns labled Parameters and grouped by color*/
     "commentSubnet": { "value": "copy the values for the Subnet tab's Parameters' columns of Site 3 (filter to vent303)" },
     "subnet500Prefix": { "value": "10.128.176.0/24" },
     "subnet500Name": { "value": "500_Storage_Storage_slgmag_TX" },
-    "subnet500NSG": { "value": "500_NSG_Storage" },
+    "subnet500NSG": { "value": "500_NSG_Storage_TX" },
     "subnet505Prefix": { "value": "10.128.177.0/24" },
     "subnet505Name": { "value": "505_LB_Storage_Storage_slgmag_TX" },
-    "subnet505NSG": { "value": "505_NSG_LB_Storage" },
+    "subnet505NSG": { "value": "505_NSG_LB_Storage_TX" },
     "subnet560Prefix": { "value": "10.128.178.0/25" },
     "subnet560Name": { "value": "560_User_Tier0_Storage_slgmag_TX" },
-    "subnet560NSG": { "value": "560_NSG_User_Tier0" },
+    "subnet560NSG": { "value": "560_NSG_User_Tier0_TX" },
     "subnet561Prefix": { "value": "10.128.178.128/25" },
     "subnet561Name": { "value": "561_User_Tier1_Storage_slgmag_TX" },
-    "subnet561NSG": { "value": "561_NSG_User_Tier1" },
+    "subnet561NSG": { "value": "561_NSG_User_Tier1_TX" },
     "subnet599Prefix": { "value": "10.128.183.224/27" },
     "subnet599Name": { "value": "GatewaySubnet" },
 
-    "commentGateway": { "value": "copy the values for the Gateway tab's Parameters' columns of Site 3 (filter to vent303)" },
-    "GatewayName": { "value": "gw_Storage_TX" },
-    "SubID": { "value": "0223b7af-344f-42cd-bed2-5ebbc7d06d5d" },
-    "VPNType": { "value": "RouteBased" },
-    "PublicIPName": { "value": "gwpip_Storage_TX" },
-    "gatewaySKU": { "value": "Standard" },
-    "GatewayType": { "value": "ExpressRoute" },
-    "erCircuitName": { "value": "slgmag_Storage_ER" },
-    "erSKUTier": { "value": "Standard" },
-    "erSKUFamily": { "value": "MeteredData" },
-    "erBandwidth": { "value": 50 },
-    "erSPName": { "value": "Equinix" },
-    "erPeeringLocation": { "value": "Dallas" },
-    "BGP": { "value": true },
-
-    "commentConnections": { "value": "copy the values for the Connection tab's Parameters' columns of Site 3 (filter to vent303)" },
-    "ConnectionNamecnct330": { "value": "Peering_slgmag_Storage_To_Services_TX" },
-    "vnetNamecnct330": { "value": "vnet_storage_tx" },
-    "connectionType1cnct330": { "value": "Peering" },
-    "sharedKeycnct330": { "value": "mysharedkey" },
-    "routingWeightcnct330": { "value": 10 },
-    "allowVNETAccesscnct330": { "value": true },
-    "allowFwdAccesscnct330": { "value": true },
-    "allowGWAccesscnct330": { "value": true },
-    "useRemoteGatewaycnct330": { "value": false },
-    "peerVNETNamecnct330": { "value": "vnet_services_tx" },
-    "rmtSubIDcnct330": { "value": "30457dd5-e56b-416b-9228-d48b37fe7caa" },
-    "rmtLocationcnct330": { "value": "usgovtexas" },
-    "ConnectionNamecnct331": { "value": "Vnet2Vnet_slgmag_Storage_To_Storage_AZ" },
-    "vnetNamecnct331": { "value": "vnet_storage_tx" },
-    "remoteGWNamecnct331": { "value": "gw_Storage_AZ" },
-    "connectionType1cnct331": { "value": "Vnet2Vnet" },
-    "sharedKeycnct331": { "value": "mysharedkey" },
-    "routingWeightcnct331": { "value": 10 },
-    "rmtSubIDcnct331": { "value": "0223b7af-344f-42cd-bed2-5ebbc7d06d5d" },
-    "rmtConnectionNamecnct331": { "value": "Vnet2Vnet_slgmag_Storage_To_Storage_TX" },
-    "rmtLocationcnct331": { "value": "usgovarizona" }
+    /*got the metadata spreadsheet's Connection tab and filter on VNET303
+    select the columns labled Parameters and grouped by color*/
+    "ConnectionNamecnct303": { "value": "Peering_slgmag_TX_Storage_To_TX_Services" },
+    "vnetNamecnct303": { "value": "vnet_storage_tx" },
+    "connectionType1cnct303": { "value": "Peering" },
+    "allowVNETAccesscnct303": { "value": true },
+    "allowFwdAccesscnct303": { "value": true },
+    "allowGWAccesscnct303": { "value": false },
+    "useRemoteGatewaycnct303": { "value": true },
+    "peerVNETNamecnct303": { "value": "vnet_services_tx" },
+    "rmtSubIDcnct303": { "value": "30457dd5-e56b-416b-9228-d48b37fe7caa" },
+    "rmtLocationcnct303": { "value": "usgovtexas" }
 
 
   }

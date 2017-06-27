@@ -1,4 +1,7 @@
-﻿$location="usgovvirginia"
+﻿$location="usgovtexas"
+#$location="westcentralus"
+$imageName="magImages"
+#$imageName="macImages"
 $Publishers=Get-AzureRmVMImagePublisher -location $Location
 foreach($publisher in $Publishers.PublisherName){
 
@@ -11,6 +14,6 @@ $SKUs=Get-AzureRmVMImageSku -Location $Location -Offer $offer -PublisherName $pu
 foreach($SKU in $SKUs.skus){
 $Images=Get-AzureRmVMImage -Location $location -offer $offer -PublisherName $publisher -skus $Sku 
 
-$images|Export-Csv -Append -Path c:\temp\azure\magImagesApril2017MAG.csv
+$images|Export-Csv -Append -Path c:\temp\azure\$imageName.csv
 
 }}}

@@ -32,39 +32,42 @@
       }
     },
 
+    /*In the metadata spreadsheet on the VNET tab filter on VNET302
+    selct the columns for Template and grouped by color */
     "locationName": {
       "type": "string",
-      "defaultValue": "westcentralus"
+      "defaultValue": "usgovtexas"
     },
     "resourceGroupName": {
       "type": "string",
-      "defaultValue": "rg_vnet_preprod_w1"
+      "defaultValue": "rg_vnet_preprod_tx"
     },
     "vnetName": {
       "type": "string",
-      "defaultValue": "vnet_preprod_w1",
+      "defaultValue": "vnet_preprod_tx",
       "metadata": { "description": "AzureFoundation VNET Name for virtual data center subscription in a specific data center." }
     },
     "vnetAddressPrefix": {
       "type": "string",
-      "defaultValue": "10.128.32.0/20",
+      "defaultValue": "10.128.160.0/20",
       "metadata": { "description": "AzureFoundation VNET Address Prefix, the range of addresses for a specific data center." }
     },
     "dnsServers": {
       "type": "array",
-      "defaultValue": [ "10.128.59.36" ],
+      "defaultValue": [],
       "metadata": { "description": "AzureFoundation Domain Controller DNS server" }
     },
 
-
+    /*In the metadata spreadsheet on the Subnet tab filter on VNET302
+    selct the columns for Template and grouped by color */
     "subnet310Prefix": {
       "type": "string",
-      "defaultValue": "10.128.32.0/25",
+      "defaultValue": "10.128.160.0/25",
       "metadata": { "description": "HTTP and HTTPS services" }
     },
     "subnet310Name": {
       "type": "string",
-      "defaultValue": "310_Web_Test_SLGa_W1",
+      "defaultValue": "310_Web_Test_slgmag_TX",
       "metadata": { "description": "HTTP and HTTPS services" }
     },
     "subnet310NSG": {
@@ -74,12 +77,12 @@
     },
     "subnet315Prefix": {
       "type": "string",
-      "defaultValue": "10.128.32.128/25",
+      "defaultValue": "10.128.160.128/25",
       "metadata": { "description": "Loadbalanced HTTP and HTTPS Services" }
     },
     "subnet315Name": {
       "type": "string",
-      "defaultValue": "315_LB_Web_Test_SLGa_W1",
+      "defaultValue": "315_LB_Web_Test_slgmag_TX",
       "metadata": { "description": "Loadbalanced HTTP and HTTPS Services" }
     },
     "subnet315NSG": {
@@ -89,12 +92,12 @@
     },
     "subnet320Prefix": {
       "type": "string",
-      "defaultValue": "10.128.33.0/25",
+      "defaultValue": "10.128.161.0/25",
       "metadata": { "description": "Web Services, OEM applications" }
     },
     "subnet320Name": {
       "type": "string",
-      "defaultValue": "320_App_Test_SLGa_W1",
+      "defaultValue": "320_App_Test_slgmag_TX",
       "metadata": { "description": "Web Services, OEM applications" }
     },
     "subnet320NSG": {
@@ -104,12 +107,12 @@
     },
     "subnet325Prefix": {
       "type": "string",
-      "defaultValue": "10.128.33.128/25",
+      "defaultValue": "10.128.161.128/25",
       "metadata": { "description": "Loadbalaned Web Services, OEM applications" }
     },
     "subnet325Name": {
       "type": "string",
-      "defaultValue": "325_LB_App_Test_SLGa_W1",
+      "defaultValue": "325_LB_App_Test_slgmag_TX",
       "metadata": { "description": "Loadbalaned Web Services, OEM applications" }
     },
     "subnet325NSG": {
@@ -119,12 +122,12 @@
     },
     "subnet330Prefix": {
       "type": "string",
-      "defaultValue": "10.128.34.0/25",
+      "defaultValue": "10.128.162.0/25",
       "metadata": { "description": "Data for Applications" }
     },
     "subnet330Name": {
       "type": "string",
-      "defaultValue": "330_DB_Test_SLGa_W1",
+      "defaultValue": "330_DB_Test_slgmag_TX",
       "metadata": { "description": "Data for Applications" }
     },
     "subnet330NSG": {
@@ -134,12 +137,12 @@
     },
     "subnet335Prefix": {
       "type": "string",
-      "defaultValue": "10.128.34.128/25",
+      "defaultValue": "10.128.162.128/25",
       "metadata": { "description": "Loadbalanced Databases" }
     },
     "subnet335Name": {
       "type": "string",
-      "defaultValue": "335_LB_DB_Test_SLGa_W1",
+      "defaultValue": "335_LB_DB_Test_slgmag_TX",
       "metadata": { "description": "Loadbalanced Databases" }
     },
     "subnet335NSG": {
@@ -149,12 +152,12 @@
     },
     "subnet350Prefix": {
       "type": "string",
-      "defaultValue": "10.128.35.0/25",
+      "defaultValue": "10.128.163.0/25",
       "metadata": { "description": "Internet EndPoint Machines" }
     },
     "subnet350Name": {
       "type": "string",
-      "defaultValue": "350_DMZ_Test_SLGa_W1",
+      "defaultValue": "350_DMZ_Test_slgmag_TX",
       "metadata": { "description": "Internet EndPoint Machines" }
     },
     "subnet350NSG": {
@@ -164,12 +167,12 @@
     },
     "subnet355Prefix": {
       "type": "string",
-      "defaultValue": "10.128.35.128/25",
+      "defaultValue": "10.128.163.128/25",
       "metadata": { "description": "Loadbalaned Internet Endpoint systems" }
     },
     "subnet355Name": {
       "type": "string",
-      "defaultValue": "355_LB_DMZ_Test_SLGa_W1",
+      "defaultValue": "355_LB_DMZ_Test_slgmag_TX",
       "metadata": { "description": "Loadbalaned Internet Endpoint systems" }
     },
     "subnet355NSG": {
@@ -179,12 +182,12 @@
     },
     "subnet360Prefix": {
       "type": "string",
-      "defaultValue": "10.128.36.0/25",
+      "defaultValue": "10.128.164.0/25",
       "metadata": { "description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
     },
     "subnet360Name": {
       "type": "string",
-      "defaultValue": "360_User_Tier0_Test_SLGa_W1",
+      "defaultValue": "360_User_Tier0_Test_slgmag_TX",
       "metadata": { "description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
     },
     "subnet360NSG": {
@@ -194,12 +197,12 @@
     },
     "subnet361Prefix": {
       "type": "string",
-      "defaultValue": "10.128.36.128/25",
+      "defaultValue": "10.128.164.128/25",
       "metadata": { "description": "Tier 1 administrator - manage enterprise servers, services, and applications" }
     },
     "subnet361Name": {
       "type": "string",
-      "defaultValue": "361_User_Tier1_Test_SLGa_W1",
+      "defaultValue": "361_User_Tier1_Test_slgmag_TX",
       "metadata": { "description": "Tier 1 administrator - manage enterprise servers, services, and applications" }
     },
     "subnet361NSG": {
@@ -209,12 +212,12 @@
     },
     "subnet362Prefix": {
       "type": "string",
-      "defaultValue": "10.128.37.0/25",
+      "defaultValue": "10.128.165.0/25",
       "metadata": { "description": "Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices" }
     },
     "subnet362Name": {
       "type": "string",
-      "defaultValue": "362_User_Tier2_Test_SLGa_W1",
+      "defaultValue": "362_User_Tier2_Test_slgmag_TX",
       "metadata": { "description": "Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices" }
     },
     "subnet362NSG": {
@@ -224,12 +227,12 @@
     },
     "subnet410Prefix": {
       "type": "string",
-      "defaultValue": "10.128.40.0/25",
+      "defaultValue": "10.128.168.0/25",
       "metadata": { "description": "HTTP and HTTPS services" }
     },
     "subnet410Name": {
       "type": "string",
-      "defaultValue": "410_Web_Dev_SLGa_W1",
+      "defaultValue": "410_Web_Dev_slgmag_TX",
       "metadata": { "description": "HTTP and HTTPS services" }
     },
     "subnet410NSG": {
@@ -239,12 +242,12 @@
     },
     "subnet415Prefix": {
       "type": "string",
-      "defaultValue": "10.128.40.128/25",
+      "defaultValue": "10.128.168.128/25",
       "metadata": { "description": "Loadbalanced HTTP and HTTPS Services" }
     },
     "subnet415Name": {
       "type": "string",
-      "defaultValue": "415_LB_Web_Dev_SLGa_W1",
+      "defaultValue": "415_LB_Web_Dev_slgmag_TX",
       "metadata": { "description": "Loadbalanced HTTP and HTTPS Services" }
     },
     "subnet415NSG": {
@@ -254,12 +257,12 @@
     },
     "subnet420Prefix": {
       "type": "string",
-      "defaultValue": "10.128.41.0/25",
+      "defaultValue": "10.128.169.0/25",
       "metadata": { "description": "Web Services, OEM applications" }
     },
     "subnet420Name": {
       "type": "string",
-      "defaultValue": "420_App_Dev_SLGa_W1",
+      "defaultValue": "420_App_Dev_slgmag_TX",
       "metadata": { "description": "Web Services, OEM applications" }
     },
     "subnet420NSG": {
@@ -269,12 +272,12 @@
     },
     "subnet425Prefix": {
       "type": "string",
-      "defaultValue": "10.128.41.128/25",
+      "defaultValue": "10.128.169.128/25",
       "metadata": { "description": "Loadbalaned Web Services, OEM applications" }
     },
     "subnet425Name": {
       "type": "string",
-      "defaultValue": "425_LB_App_Dev_SLGa_W1",
+      "defaultValue": "425_LB_App_Dev_slgmag_TX",
       "metadata": { "description": "Loadbalaned Web Services, OEM applications" }
     },
     "subnet425NSG": {
@@ -284,12 +287,12 @@
     },
     "subnet430Prefix": {
       "type": "string",
-      "defaultValue": "10.128.42.0/25",
+      "defaultValue": "10.128.170.0/25",
       "metadata": { "description": "Data for Applications" }
     },
     "subnet430Name": {
       "type": "string",
-      "defaultValue": "430_DB_Dev_SLGa_W1",
+      "defaultValue": "430_DB_Dev_slgmag_TX",
       "metadata": { "description": "Data for Applications" }
     },
     "subnet430NSG": {
@@ -299,12 +302,12 @@
     },
     "subnet435Prefix": {
       "type": "string",
-      "defaultValue": "10.128.42.128/25",
+      "defaultValue": "10.128.170.128/25",
       "metadata": { "description": "Loadbalanced Databases" }
     },
     "subnet435Name": {
       "type": "string",
-      "defaultValue": "435_LB_DB_Dev_SLGa_W1",
+      "defaultValue": "435_LB_DB_Dev_slgmag_TX",
       "metadata": { "description": "Loadbalanced Databases" }
     },
     "subnet435NSG": {
@@ -314,12 +317,12 @@
     },
     "subnet450Prefix": {
       "type": "string",
-      "defaultValue": "10.128.43.0/25",
+      "defaultValue": "10.128.171.0/25",
       "metadata": { "description": "Internet EndPoint Machines" }
     },
     "subnet450Name": {
       "type": "string",
-      "defaultValue": "450_DMZ_Dev_SLGa_W1",
+      "defaultValue": "450_DMZ_Dev_slgmag_TX",
       "metadata": { "description": "Internet EndPoint Machines" }
     },
     "subnet450NSG": {
@@ -329,12 +332,12 @@
     },
     "subnet455Prefix": {
       "type": "string",
-      "defaultValue": "10.128.43.128/25",
+      "defaultValue": "10.128.171.128/25",
       "metadata": { "description": "Loadbalaned Internet Endpoint systems" }
     },
     "subnet455Name": {
       "type": "string",
-      "defaultValue": "455_LB_DMZ_Dev_SLGa_W1",
+      "defaultValue": "455_LB_DMZ_Dev_slgmag_TX",
       "metadata": { "description": "Loadbalaned Internet Endpoint systems" }
     },
     "subnet455NSG": {
@@ -344,12 +347,12 @@
     },
     "subnet460Prefix": {
       "type": "string",
-      "defaultValue": "10.128.44.0/25",
+      "defaultValue": "10.128.172.0/25",
       "metadata": { "description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
     },
     "subnet460Name": {
       "type": "string",
-      "defaultValue": "460_User_Tier0_Dev_SLGa_W1",
+      "defaultValue": "460_User_Tier0_Dev_slgmag_TX",
       "metadata": { "description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
     },
     "subnet460NSG": {
@@ -357,29 +360,14 @@
       "defaultValue": "460_NSG_User_Tier0",
       "metadata": { "description": "NSG: Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
     },
-    "subnet470Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.44.0/23",
-      "metadata": { "description": "Future Consideration" }
-    },
-    "subnet470Name": {
-      "type": "string",
-      "defaultValue": "470_Future_PreProd_SLGa_W1",
-      "metadata": { "description": "Future Consideration" }
-    },
-    "subnet470NSG": {
-      "type": "string",
-      "defaultValue": "470_NSG_Future",
-      "metadata": { "description": "NSG: Future Consideration" }
-    },
     "subnet461Prefix": {
       "type": "string",
-      "defaultValue": "10.128.44.128/25",
+      "defaultValue": "10.128.172.128/25",
       "metadata": { "description": "Tier 1 administrator - manage enterprise servers, services, and applications" }
     },
     "subnet461Name": {
       "type": "string",
-      "defaultValue": "461_User_Tier1_Dev_SLGa_W1",
+      "defaultValue": "461_User_Tier1_Dev_slgmag_TX",
       "metadata": { "description": "Tier 1 administrator - manage enterprise servers, services, and applications" }
     },
     "subnet461NSG": {
@@ -389,12 +377,12 @@
     },
     "subnet462Prefix": {
       "type": "string",
-      "defaultValue": "10.128.45.0/25",
+      "defaultValue": "10.128.173.0/25",
       "metadata": { "description": "Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices" }
     },
     "subnet462Name": {
       "type": "string",
-      "defaultValue": "462_User_Tier2_Dev_SLGa_W1",
+      "defaultValue": "462_User_Tier2_Dev_slgmag_TX",
       "metadata": { "description": "Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices" }
     },
     "subnet462NSG": {
@@ -402,24 +390,9 @@
       "defaultValue": "462_NSG_User_Tier2",
       "metadata": { "description": "NSG: Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices" }
     },
-    "subnet470Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.46.0/24",
-      "metadata": { "description": "Future Consideration" }
-    },
-    "subnet470Name": {
-      "type": "string",
-      "defaultValue": "470_Future_PreProd_SLGa_W1",
-      "metadata": { "description": "Future Consideration" }
-    },
-    "subnet470NSG": {
-      "type": "string",
-      "defaultValue": "470_NSG_Future",
-      "metadata": { "description": "NSG: Future Consideration" }
-    },
     "subnet499Prefix": {
       "type": "string",
-      "defaultValue": "10.128.47.240/28",
+      "defaultValue": "10.128.175.224/27",
       "metadata": { "description": "Gateway Services to Local Networks" }
     },
     "subnet499Name": {
@@ -429,224 +402,71 @@
     },
 
 
-    "GatewayName": {
+    /*In the metadata spreadsheet on the Connection tab filter on VNET302
+    selct the columns for Template and grouped by color */
+    "ConnectionNamecnct302": {
       "type": "string",
-      "defaultValue": "gw_PreProd_W1",
+      "defaultValue": "Peering_slgmag_TX_PreProd_To_TX_Services",
       "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
     },
-    "VPNType": {
+    "vnetNamecnct302": {
       "type": "string",
-      "defaultValue": "RouteBased",
-      "allowedValues": [ "RouteBased", "PolicyBased" ],
-      "metadata": { "description": "The type of VPN connection Route or Policy based." }
-    },
-    "PublicIPName": {
-      "type": "string",
-      "defaultValue": "gwpip_PreProd_W1",
-      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
-    },
-    "gatewaySKU": {
-      "type": "string",
-      "defaultValue": "Standard",
-      "allowedValues": [ "Basic", "Standard", "HighPerformance" ],
-      "metadata": { "description": "Gateway SKU, the type of gateway Basic, Standard, High Performance" }
-    },
-    "GatewayType": {
-      "type": "string",
-      "defaultValue": "Vpn",
-      "metadata": { "description": "The type of gateway that is being created.  This can be either StaticRouting or DynamicRouting." }
-    },
-    "erCircuitName": {
-      "type": "String",
-      "defaultValue": "SLGa_PreProd_ER",
-      "metadata": { "description": "The name of the ER Circuit" }
-    },
-    "erSKUTier": {
-      "type": "string",
-      "defaultValue": "Standard",
-      "allowedValues": [ "Standard", "Premium" ],
-      "metadata": { "description": "Chosen SKU Tier of ExpressRoute circuit. Choose from Premium or Standard SKU tiers." }
-    },
-    "erSKUFamily": {
-      "type": "string",
-      "defaultValue": "MeteredData",
-      "allowedValues": [ "MeteredData", "UnlimitedData" ],
-      "metadata": { "description": "Chosen SKU family of ExpressRoute circuit. Choose from MeteredData or UnlimitedData SKU families." }
-    },
-    "erBandwidth": {
-      "type": "int",
-      "metadata": { "description": "This is the bandwidth in Mbps of the circuit being created. It must exactly match one of the available bandwidth offers List ExpressRoute Service Providers API call." }
-    },
-    "erSPName": {
-      "type": "string",
-      "metadata": { "description": "ExpressRoute Service Provider Name" }
-    },
-    "erPeeringLocation": {
-      "type": "string",
-      "metadata": { "description": "The ExpressRoute Peering Location." }
-    },
-    "SubID": {
-      "type": "string",
-      "metadata": { "description": "The Subscrition ID" }
-    },
-    "BGP": {
-      "type": "bool",
-      "metadata": { "description": "Will the gateway use BGP routing?" }
-    },
-    "ConnectionNamecnct320": {
-      "type": "string",
-      "defaultValue": "Peering_slgmag_PreProd_To_Services_",
-      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
-    },
-    "vnetNamecnct320": {
-      "type": "string",
-      "defaultValue": "vnet_preprod_va",
+      "defaultValue": "vnet_preprod_tx",
       "metadata": { "description": "Azure VNET of the current location" }
     },
-    "LocalNamecnct320": {
-      "type": "string",
-      "defaultValue": "Services_",
-      "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
-    },
-    "localGWIPcnct320": {
-      "type": "string",
-      "defaultValue": "1.1.1.1",
-      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
-    },
-    "LocalIPPrefixcnct320": {
-      "type": "array",
-      "defaultValue": [ "10.128.184.0/21" ],
-      "metadata": { "description": "An array of Local IP address prefixes that this gateway will route traffic to." }
-    },
-    "connectionType1cnct320": {
+    "connectionType1cnct302": {
       "type": "string",
       "defaultValue": "Peering",
       "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
     },
-    "sharedKeycnct320": {
-      "type": "string",
-      "defaultValue": "mysharedkey",
-      "metadata": { "description": "The shared key to negotiate the VPN connection.  KeyVault will hold this secret." }
-    },
-    "routingWeightcnct320": {
-      "type": "int",
-      "defaultValue": 10,
-      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
-    },
-    "allowVNETAccesscnct320": {
+    "allowVNETAccesscnct302": {
       "type": "bool",
       "defaultValue": true,
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
-    "allowFwdAccesscnct320": {
+    "allowFwdAccesscnct302": {
       "type": "bool",
       "defaultValue": true,
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
-    "allowGWAccesscnct320": {
-      "type": "bool",
-      "defaultValue": true,
-      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
-    },
-    "useRemoteGatewaycnct320": {
+    "allowGWAccesscnct302": {
       "type": "bool",
       "defaultValue": false,
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
-    "peerVNETNamecnct320": {
-      "type": "string",
-      "defaultValue": "vnet_services_va",
+    "useRemoteGatewaycnct302": {
+      "type": "bool",
+      "defaultValue": true,
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
-    "rmtSubIDcnct320": {
+    "peerVNETNamecnct302": {
+      "type": "string",
+      "defaultValue": "vnet_services_tx",
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "rmtSubIDcnct302": {
       "type": "string",
       "defaultValue": "30457dd5-e56b-416b-9228-d48b37fe7caa",
       "metadata": { "description": "The subscription ID of the peer VNET." }
     },
-    "rmtRGNamecnct320": {
+    "rmtRGNamecnct302": {
       "type": "string",
-      "defaultValue": "rg_vnet_services_va",
+      "defaultValue": "rg_vnet_services_tx",
       "metadata": { "description": "The resource group for the remote subscription VNET." }
     },
-    "rmtConnectionNamecnct320": {
+    "rmtConnectionNamecnct302": {
       "type": "string",
       "defaultValue": "",
       "metadata": { "description": "The name of the remote connection." }
     },
-    "rmtLocationcnct320": {
+    "rmtLocationcnct302": {
       "type": "string",
-      "defaultValue": "usgovvirginia",
+      "defaultValue": "usgovtexas",
       "metadata": { "description": "The name of the remote location." }
-    },
-    "ConnectionNamecnct321": {
-      "type": "string",
-      "defaultValue": "Vnet2Vnet_slgmag_PreProd_To_PreProd_",
-      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
-    },
-    "vnetNamecnct321": {
-      "type": "string",
-      "defaultValue": "vnet_preprod_va",
-      "metadata": { "description": "Azure VNET of the current location" }
-    },
-    "LocalNamecnct321": {
-      "type": "string",
-      "defaultValue": "PreProd_",
-      "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
-    },
-    "remoteGWNamecnct321": {
-      "type": "string",
-      "defaultValue": "gw_PreProd_IA",
-      "metadata": { "description": "Name for the remote VNET for a VNET to VNET connection" }
-    },
-    "localGWIPcnct321": {
-      "type": "string",
-      "defaultValue": "1.1.1.1",
-      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
-    },
-    "LocalIPPrefixcnct321": {
-      "type": "array",
-      "defaultValue": [ "10.128.224.0/20" ],
-      "metadata": { "description": "An array of Local IP address prefixes that this gateway will route traffic to." }
-    },
-    "connectionType1cnct321": {
-      "type": "string",
-      "defaultValue": "Vnet2Vnet",
-      "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
-    },
-    "sharedKeycnct321": {
-      "type": "string",
-      "defaultValue": "mysharedkey",
-      "metadata": { "description": "The shared key to negotiate the VPN connection.  KeyVault will hold this secret." }
-    },
-    "routingWeightcnct321": {
-      "type": "int",
-      "defaultValue": 10,
-      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
-    },
-    "rmtSubIDcnct321": {
-      "type": "string",
-      "defaultValue": "a4b962d2-6b17-4c38-af02-010a6e774379",
-      "metadata": { "description": "The subscription ID of the peer VNET." }
-    },
-    "rmtRGNamecnct321": {
-      "type": "string",
-      "defaultValue": "rg_vnet_preprod_ia",
-      "metadata": { "description": "The resource group for the remote subscriptions VNET gateway." }
-    },
-    "rmtConnectionNamecnct321": {
-      "type": "string",
-      "defaultValue": "Vnet2Vnet_slgmag_PreProd_To_PreProd_VA",
-      "metadata": { "description": "The name of the remote connection." }
-    },
-    "rmtLocationcnct321": {
-      "type": "string",
-      "defaultValue": "usgoviowa",
-      "metadata": { "description": "The name of the remote location." }
-    },
-
-
-
+    }
   },
+
+
   "variables": {
     "apiVersion": "2015-06-15",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]",
@@ -654,12 +474,14 @@
   },
 
   "resources": [
+    /*In the metadata spreadsheet on the NSGRules tab filter on VNET302
+    selct the columns for Resource and grouped by color */
     {
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet310NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "310_NSG_Web" },
+      "tags": { "displayName": "310_NSG_Web_TX" },
       "properties": {
         "securityRules": [
           {
@@ -684,7 +506,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet315NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "315_NSG_LB_Web" },
+      "tags": { "displayName": "315_NSG_LB_Web_TX" },
       "properties": {
         "securityRules": [
           {
@@ -709,7 +531,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet320NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "320_NSG_App" },
+      "tags": { "displayName": "320_NSG_App_TX" },
       "properties": {
         "securityRules": [
           {
@@ -734,7 +556,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet325NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "325_NSG_LB_App" },
+      "tags": { "displayName": "325_NSG_LB_App_TX" },
       "properties": {
         "securityRules": [
           {
@@ -759,7 +581,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet330NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "330_NSG_DB" },
+      "tags": { "displayName": "330_NSG_DB_TX" },
       "properties": {
         "securityRules": [
           {
@@ -784,7 +606,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet335NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "335_NSG_LB_DB" },
+      "tags": { "displayName": "335_NSG_LB_DB_TX" },
       "properties": {
         "securityRules": [
           {
@@ -809,7 +631,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet350NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "350_NSG_DMZ" },
+      "tags": { "displayName": "350_NSG_DMZ_TX" },
       "properties": {
         "securityRules": [
           {
@@ -834,7 +656,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet355NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "355_NSG_LB_DMZ" },
+      "tags": { "displayName": "355_NSG_LB_DMZ_TX" },
       "properties": {
         "securityRules": [
           {
@@ -859,7 +681,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet360NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "360_NSG_User_Tier0" },
+      "tags": { "displayName": "360_NSG_User_Tier0_TX" },
       "properties": {
         "securityRules": [
           {
@@ -912,7 +734,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet361NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "361_NSG_User_Tier1" },
+      "tags": { "displayName": "361_NSG_User_Tier1_TX" },
       "properties": {
         "securityRules": [
           {
@@ -965,7 +787,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet362NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "362_NSG_User_Tier2" },
+      "tags": { "displayName": "362_NSG_User_Tier2_TX" },
       "properties": {
         "securityRules": [
           {
@@ -1018,7 +840,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet410NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "410_NSG_Web" },
+      "tags": { "displayName": "410_NSG_Web_TX" },
       "properties": {
         "securityRules": [
           {
@@ -1043,7 +865,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet415NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "415_NSG_LB_Web" },
+      "tags": { "displayName": "415_NSG_LB_Web_TX" },
       "properties": {
         "securityRules": [
           {
@@ -1068,7 +890,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet420NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "420_NSG_App" },
+      "tags": { "displayName": "420_NSG_App_TX" },
       "properties": {
         "securityRules": [
           {
@@ -1093,7 +915,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet425NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "425_NSG_LB_App" },
+      "tags": { "displayName": "425_NSG_LB_App_TX" },
       "properties": {
         "securityRules": [
           {
@@ -1118,7 +940,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet430NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "430_NSG_DB" },
+      "tags": { "displayName": "430_NSG_DB_TX" },
       "properties": {
         "securityRules": [
           {
@@ -1143,7 +965,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet435NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "435_NSG_LB_DB" },
+      "tags": { "displayName": "435_NSG_LB_DB_TX" },
       "properties": {
         "securityRules": [
           {
@@ -1168,7 +990,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet450NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "450_NSG_DMZ" },
+      "tags": { "displayName": "450_NSG_DMZ_TX" },
       "properties": {
         "securityRules": [
           {
@@ -1193,7 +1015,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet455NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "455_NSG_LB_DMZ" },
+      "tags": { "displayName": "455_NSG_LB_DMZ_TX" },
       "properties": {
         "securityRules": [
           {
@@ -1218,7 +1040,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet460NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "460_NSG_User_Tier0" },
+      "tags": { "displayName": "460_NSG_User_Tier0_TX" },
       "properties": {
         "securityRules": [
           {
@@ -1232,6 +1054,34 @@
               "destinationAddressPrefix": "*",
               "access": "Deny",
               "priority": 150,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "SSH.Inbound.Allow",
+            "properties": {
+              "description": "SSH.Inbound.Allow",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "RDP.Inbound.Allow",
+            "properties": {
+              "description": "RDP.Inbound.Allow",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "3389",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 105,
               "direction": "Inbound"
             }
           }
@@ -1243,7 +1093,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet461NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "461_NSG_User_Tier1" },
+      "tags": { "displayName": "461_NSG_User_Tier1_TX" },
       "properties": {
         "securityRules": [
           {
@@ -1257,6 +1107,34 @@
               "destinationAddressPrefix": "*",
               "access": "Deny",
               "priority": 150,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "SSH.Inbound.Allow",
+            "properties": {
+              "description": "SSH.Inbound.Allow",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "RDP.Inbound.Allow",
+            "properties": {
+              "description": "RDP.Inbound.Allow",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "3389",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 105,
               "direction": "Inbound"
             }
           }
@@ -1268,7 +1146,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('subnet462NSG')]",
       "location": "[resourceGroup().location]",
-      "tags": { "displayName": "462_NSG_User_Tier2" },
+      "tags": { "displayName": "462_NSG_User_Tier2_TX" },
       "properties": {
         "securityRules": [
           {
@@ -1284,16 +1162,46 @@
               "priority": 150,
               "direction": "Inbound"
             }
+          },
+          {
+            "name": "SSH.Inbound.Allow",
+            "properties": {
+              "description": "SSH.Inbound.Allow",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "RDP.Inbound.Allow",
+            "properties": {
+              "description": "RDP.Inbound.Allow",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "3389",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 105,
+              "direction": "Inbound"
+            }
           }
         ]
       }
     },
+
+    /*In the metadata spreadsheet on the Subnet tab filter on VNET302
+    selct the columns for Resource and grouped by color */
     {
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/virtualNetworks",
       "name": "[parameters('vnetName')]",
       "location": "[resourceGroup().location]",
-      "dependsOn": [],
       "tags": { "displayName": "AzureFoundation VNet Definition" },
       "properties": {
         "addressSpace": { "addressPrefixes": [ "[parameters('vnetAddressPrefix')]" ] },
@@ -1438,7 +1346,6 @@
               "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet460NSG'))]" }
             }
           },
-
           {
             "name": "[parameters('subnet461name')]",
             "properties": {
@@ -1453,28 +1360,31 @@
               "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('subnet462NSG'))]" }
             }
           },
-
           {
             "name": "[parameters('subnet499name')]",
-            "properties": { "addressPrefix": "[parameters('subnet499prefix')]" }
+            "properties": { "addressPrefix": "[parameters('subnet499prefix')]" },
           }
         ],
+
         "resources": [
+          /*In the metadata spreadsheet on the Connections tab filter on VNET302
+    selct the columns for Resource and grouped by color */
           {
             "apiVersion": "2016-06-01",
             "type": "virtualNetworkPeerings",
-            "name": "[parameters('ConnectionNamecnct320')]",
+            "name": "[parameters('ConnectionNamecnct302')]",
             "location": "[resourceGroup().location]",
-            "dependsOn": [ "[concat('/subscriptions/', parameters('rmtSubIDcnct320'), '/resourceGroups/', parameters('rmtRGNamecnct320'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct320'))]", "[concat('Microsoft.Networks/virtualNetworks/',parameters('vnetNamecnct320'))]" ],
+            "dependsOn": [ "[concat('/subscriptions/', parameters('rmtSubIDcnct302'), '/resourceGroups/', parameters('rmtRGNamecnct302'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct302'))]", "[concat('Microsoft.Networks/virtualNetworks/',parameters('vnetNamecnct302'))]" ],
             "comments": "Make sure you put these resources within the Resources of a VNET, like a subnet",
             "properties": {
-              "allowVirtualNetworkAccess": "[parameters('allowVNETAccesscnct320')]",
-              "allowForwardedTraffic": "[parameters('allowFwdAccesscnct320')]",
-              "allowGatewayTransit": "[parameters('allowGWAccesscnct320')]",
-              "useRemoteGateways": "[parameters('allowVNETAccesscnct320')]",
-              "remoteVirtualNetwork": { "id": "[concat('/subscriptions/', parameters('rmtSubIDcnct320'), '/resourceGroups/', parameters('rmtRGNamecnct320'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct320'))]" }
+              "allowVirtualNetworkAccess": "[parameters('allowVNETAccesscnct302')]",
+              "allowForwardedTraffic": "[parameters('allowFwdAccesscnct302')]",
+              "allowGatewayTransit": "[parameters('allowGWAccesscnct302')]",
+              "useRemoteGateways": "[parameters('allowVNETAccesscnct302')]",
+              "remoteVirtualNetwork": { "id": "[concat('/subscriptions/', parameters('rmtSubIDcnct302'), '/resourceGroups/', parameters('rmtRGNamecnct302'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct302'))]" }
             }
           }
+
 
         ],
         "dhcpOptions": { "dnsServers": [ "10.128.59.36" ] },
@@ -1506,94 +1416,12 @@
 
 
         ]
-
       }
-    },
-
-    {
-      "apiVersion": "[variables('apiversion')]",
-      "type": "Microsoft.Network/publicIPAddresses",
-      "name": "[parameters('PublicIPName')]",
-      "location": "[resourceGroup().location]",
-      "properties": { "publicIPAllocationMethod": "Dynamic" }
-    },
-    {
-      "apiVersion": "[variables('apiversion')]",
-      "type": "Microsoft.Network/virtualNetworkGateways",
-      "name": "[parameters('GatewayName')]",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [ "[concat('Microsoft.Network/publicIPAddresses/', parameters('PublicIPName'))]", "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]" ],
-      "properties": {
-        "ipConfigurations": [
-          {
-            "properties": {
-              "privateIPAllocationMethod": "Dynamic",
-              "subnet": { "id": "[variables('subnet799Ref')]" },
-              "publicIPAddress": { "id": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('PublicIPName'))]" }
-            },
-            "name": "[parameters('GatewayName')]"
-          }
-        ],
-        "gatewayType": "Vpn",
-        "vpnType": "[parameters('VPNType')]",
-        "enableBGP": "[parameters('BGP')]"
       }
-    },
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/expressRouteCircuits",
-      "name": "[parameters('erCircuitName')]",
-      "location": "[resourceGroup().location]",
-      "sku": {
-        "name": "[concat(parameters('erSKUTier'),'_', parameters('erSKUFamily'))]",
-        "tier": "[parameters('erSKUTier')]",
-        "family": "[parameters('erSKUFamily')]"
-      },
-      "properties": {
-        "serviceProviderProperties": {
-          "serviceProviderName": "[parameters('erSPName')]",
-          "peeringLocation": "[parameters('erPeeringLocation')]",
-          "bandwidthInMbps": "[parameters('erBandwidth')]"
-        }
-      }
-    },
-    {
-      "apiVersion": "[variables('apiversion')]",
-      "name": "[parameters('ConnectionNamecnct321')]",
-      "type": "Microsoft.Network/connections",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [ "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('gatewayName'))]" ],
-      "properties": {
-        "virtualNetworkGateway1": { "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('gatewayName'))]" },
-        "virtualNetworkGateway2": { "id": "[concat('/subscriptions/',parameters('rmtSubIDcnct321'),'/resourceGroups/',parameters('rmtRGNamecnct321'),'/providers/Microsoft.Network/VirtualNetworkGateways/', parameters('remoteGWNamecnct321'))]" },
-        "sharedKey": "[parameters('sharedKeycnct321')]",
-        "connectionType": "[parameters('connectionType1cnct321')]",
-        "routingWeight": "[parameters('routingWeightcnct321')]"
-      }
-    },
-    {
-      "apiVersion": "[variables('apiversion')]",
-      "name": "[parameters('rmtConnectionNamecnct321')]",
-      "type": "Microsoft.Network/connections",
-      "location": "[parameters('rmtLocationcnct321')]",
-      "dependsOn": [ "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('gatewayName'))]" ],
-      "properties": {
-        "virtualNetworkGateway1": { "id": "[concat('/subscriptions/',parameters('rmtSubIDcnct321'),'/resourceGroups/',parameters('rmtRGNamecnct321'),'/providers/Microsoft.Network/VirtualNetworkGateways/', parameters('remoteGWNamecnct321'))]" },
-        "virtualNetworkGateway2": { "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('gatewayName'))]" },
-        "sharedKey": "[parameters('sharedKeycnct321')]",
-        "connectionType": "[parameters('connectionType1cnct321')]",
-        "routingWeight": "[parameters('routingWeightcnct321')]"
-      }
-    }
-
-
+   
   ],
+    
+      "outputs": {
+      }
 
-
-
-
-
-  "outputs": {
-  }
-
-}
+    }
