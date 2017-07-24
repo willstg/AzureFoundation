@@ -50,5 +50,6 @@ Add-AzureAccount -Environment $Environment
 Get-AzureSubscription  | Format-Table
 
 #Set-AzureSubscription -SubscriptionName $SubName -SubscriptionId $SubID -Certificate $CertName -Environment 'AzureUSGovernment'
-Select-AzureSubscription -SubscriptionName $SubName -Current
+selec
+
 

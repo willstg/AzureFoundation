@@ -919,6 +919,77 @@
       "type": "string",
       "defaultValue": "usgovtexas",
       "metadata": { "description": "The name of the remote location." }
+    },
+    /*This is a MAG to MAC connection, not normal*/
+    "ConnectionNamecnct310": {
+      "type": "string",
+      "defaultValue": "Vnet2Vnet_slgmag_TX_Services_To_W1_Services",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "vnetNamecnct310": {
+      "type": "string",
+      "defaultValue": "vnet_services_tx",
+      "metadata": { "description": "Azure VNET of the current location" }
+    },
+    "LocalNamecnct310": {
+      "type": "string",
+      "defaultValue": "Services_W1",
+      "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
+    },
+    "remoteGWNamecnct310": {
+      "type": "string",
+      "defaultValue": "gw_Services_W1_Vpn",
+      "metadata": { "description": "Name for the remote VNET for a VNET to VNET connection" }
+    },
+    "localGWIPcnct310": {
+      "type": "string",
+      "defaultValue": "52.161.8.125",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalIPPrefixcnct310": {
+      "type": "array",
+      "defaultValue": [ "10.128.56.0/21" ],
+      "metadata": { "description": "An array of Local IP address prefixes that this gateway will route traffic to." }
+    },
+    "connectionType1cnct310": {
+      "type": "string",
+      "defaultValue": "Vnet2Vnet",
+      "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
+    },
+    "sharedKeycnct310": {
+      "type": "string",
+      "defaultValue": "mysharedkey",
+      "metadata": { "description": "The shared key to negotiate the VPN connection.  KeyVault will hold this secret." }
+    },
+    "routingWeightcnct310": {
+      "type": "int",
+      "defaultValue": 10,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "rmtSubIDcnct310": {
+      "type": "string",
+      "defaultValue": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9",
+      "metadata": { "description": "The subscription ID of the peer VNET." }
+    },
+    "rmtRGNamecnct310": {
+      "type": "string",
+      "defaultValue": "rg_vnet_services_w1",
+      "metadata": { "description": "The resource group for the remote subscriptions VNET gateway." }
+    },
+    "rmtConnectionNamecnct310": {
+      "type": "string",
+      "defaultValue": "Vnet2Vnet_slgmag_W1_Services_To_TX_Services",
+      "metadata": { "description": "The name of the remote connection." }
+    },
+    "rmtLocationcnct310": {
+      "type": "string",
+      "defaultValue": "westcentralus",
+      "metadata": { "description": "The name of the remote location." }
+    },
+    "GWNamecnct310": {
+      "type": "string",
+      "defaultValue": "gw_Services_TX_Vpn",
+      "metadata": { "description": "The gateway name that matches the source VNET." }
     }
 
 
@@ -1894,7 +1965,7 @@
             "type": "virtualNetworkPeerings",
             "name": "[parameters('ConnectionNamecnct306')]",
             "location": "[resourceGroup().location]",
-    /* "dependsOn": [ "[concat('/subscriptions/', parameters('rmtSubIDcnct306'), '/resourceGroups/', parameters('rmtRGNamecnct306'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct306'))]", "[concat('Microsoft.Networks/virtualNetworks/',parameters('vnetNamecnct306'))]" ],*/
+            /* "dependsOn": [ "[concat('/subscriptions/', parameters('rmtSubIDcnct306'), '/resourceGroups/', parameters('rmtRGNamecnct306'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct306'))]", "[concat('Microsoft.Networks/virtualNetworks/',parameters('vnetNamecnct306'))]" ],*/
             "comments": "Make sure you put these resources within the Resources of a VNET, like a subnet",
             "properties": {
               "allowVirtualNetworkAccess": "[parameters('allowVNETAccesscnct306')]",
@@ -2123,6 +2194,35 @@
         "sharedKey": "[parameters('sharedKeycnct305')]",
         "connectionType": "[parameters('connectionType1cnct305')]",
         "routingWeight": "[parameters('routingWeightcnct305')]"
+      }
+    },
+    /*This is a VNET to VNET between the MAG and MAC, not normal */
+    {
+      "apiVersion": "[variables('apiversion')]",
+      "name": "[parameters('ConnectionNamecnct310')]",
+      "type": "Microsoft.Network/connections",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [ "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('GWNamecnct310'))]" ],
+      "properties": {
+        "virtualNetworkGateway1": { "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('GWNamecnct310'))]" },
+        "virtualNetworkGateway2": { "id": "[concat('/subscriptions/',parameters('rmtSubIDcnct310'),'/resourceGroups/',parameters('rmtRGNamecnct310'),'/providers/Microsoft.Network/VirtualNetworkGateways/', parameters('remoteGWNamecnct310'))]" },
+        "sharedKey": "[parameters('sharedKeycnct310')]",
+        "connectionType": "[parameters('connectionType1cnct310')]",
+        "routingWeight": "[parameters('routingWeightcnct310')]"
+      }
+    },
+    {
+      "apiVersion": "[variables('apiversion')]",
+      "name": "[parameters('rmtConnectionNamecnct310')]",
+      "type": "Microsoft.Network/connections",
+      "location": "[parameters('rmtLocationcnct310')]",
+      "dependsOn": [ "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('GWNamecnct310'))]" ],
+      "properties": {
+        "virtualNetworkGateway1": { "id": "[concat('/subscriptions/',parameters('rmtSubIDcnct310'),'/resourceGroups/',parameters('rmtRGNamecnct310'),'/providers/Microsoft.Network/VirtualNetworkGateways/', parameters('remoteGWNamecnct310'))]" },
+        "virtualNetworkGateway2": { "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('GWNamecnct310'))]" },
+        "sharedKey": "[parameters('sharedKeycnct310')]",
+        "connectionType": "[parameters('connectionType1cnct310')]",
+        "routingWeight": "[parameters('routingWeightcnct310')]"
       }
     }
 

@@ -85,7 +85,7 @@ Write-Host "Logging in...";
 #$Environment = "AzureUSGovernment"
 $Environment = 'AzureCloud'
 Login-AzureRmAccount -EnvironmentName $Environment;
-$Environment = 'AzureCloud'
+
 
 #In these variables, use the Get-AzureRMSubscription command to list the subscriptions 
 #Cut and Paste the values in the variables for the five standard subscriptions.

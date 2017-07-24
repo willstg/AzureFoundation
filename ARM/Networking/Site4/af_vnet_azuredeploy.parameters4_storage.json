@@ -33,13 +33,17 @@
     /*got the metadata spreadsheet's Conneection tab and filter on VNET403
     select the columns labled Parameters and grouped by color*/
     "commentGateway": { "value": "copy the values for the Gateway tab's Parameters' columns of Site 4 (filter to vent403)" },
+    "ConnectionNamecnct403": { "value": "Peering_slgmag_AZ_Storage_To_AZ_Services" },
+    "vnetNamecnct403": { "value": "vnet_storage_az" },
+    "connectionType1cnct403": { "value": "Peering" },
     "allowVNETAccesscnct403": { "value": true },
     "allowFwdAccesscnct403": { "value": true },
-    "allowGWAccesscnct403": { "value": true },
-    "useRemoteGatewaycnct403": { "value": false },
+    "allowGWAccesscnct403": { "value": false },
+    "useRemoteGatewaycnct403": { "value": true },
     "peerVNETNamecnct403": { "value": "vnet_services_az" },
     "rmtSubIDcnct403": { "value": "30457dd5-e56b-416b-9228-d48b37fe7caa" },
-    "rmtLocationcnct403": { "value": "usgovarizona" }
+    "rmtLocationcnct403": { "value": "usgovarizona" },
+    "rmtRGNamecnct403": { "value": "rg_vnet_services_az" },
 
   }
 }

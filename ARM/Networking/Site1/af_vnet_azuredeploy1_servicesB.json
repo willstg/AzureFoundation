@@ -464,7 +464,7 @@
       "type": "string",
       "defaultValue": "ExpressRoute",
       "metadata": { "description": "The type of gateway that is being created.  This can be either StaticRouting or DynamicRouting." }
-    }
+    },
     "erCircuitName": {
       "type": "String",
       "defaultValue": "mac_slg_Services_ER",
@@ -528,7 +528,7 @@
       "type": "string",
       "defaultValue": "Vpn",
       "metadata": { "description": "The type of gateway that is being created.  This can be either StaticRouting or DynamicRouting." }
-    }
+    },
     "SubIDgw1042": {
       "type": "string",
       "metadata": { "description": "The Subscrition ID" }
@@ -659,6 +659,52 @@
       "defaultValue": "gw_Services_W1_Vpn",
       "metadata": { "description": "The gateway name that matches the source VNET." }
     },
+    "ConnectionNamecnct142": {
+      "type": "string",
+      "defaultValue": "IPSec_slgmac_W1_Services_To_TX_Services",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "vnetNamecnct142": {
+      "type": "string",
+      "defaultValue": "vnet_services_w1",
+      "metadata": { "description": "Azure VNET of the current location" }
+    },
+    "LocalNamecnct142": {
+      "type": "string",
+      "defaultValue": "Services_TX",
+      "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
+    },
+    "localGWIPcnct142": {
+      "type": "string",
+      "defaultValue": "52.183.93.252",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalIPPrefixcnct142": {
+      "type": "array",
+      "defaultValue": [ "10.128.184.0/21" ],
+      "metadata": { "description": "An array of Local IP address prefixes that this gateway will route traffic to." }
+    },
+    "connectionType1cnct142": {
+      "type": "string",
+      "defaultValue": "IPSec",
+      "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
+    },
+    "sharedKeycnct142": {
+      "type": "string",
+      "defaultValue": "mysharedkey",
+      "metadata": { "description": "The shared key to negotiate the VPN connection.  KeyVault will hold this secret." }
+    },
+    "routingWeightcnct142": {
+      "type": "int",
+      "defaultValue": 10,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "GWNamecnct142": {
+      "type": "string",
+      "defaultValue": "gw_Services_W1_Vpn",
+      "metadata": { "description": "The gateway name that matches the source VNET." }
+    },
+
     "ConnectionNamecnct146": {
       "type": "string",
       "defaultValue": "Peering_mac_slg_Services_To_Prod_W1",
@@ -2008,7 +2054,7 @@
               "useRemoteGateways": "[parameters('allowVNETAccesscnct149')]",
               "remoteVirtualNetwork": { "id": "[concat('/subscriptions/', parameters('rmtSubIDcnct149'), '/resourceGroups/', parameters('rmtRGNamecnct149'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct149'))]" }
             }
-          },
+          }
 
         ],
 
@@ -2051,6 +2097,8 @@
     },
     /*using the metadata spreadsheet goto the gateway tab filter on VNET104
     and copy the gateway information here*/
+
+    /*Don't need ER for the Demo environment
     {
       "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/publicIPAddresses",
@@ -2100,6 +2148,7 @@
         }
       }
     },
+    */
     {
       "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/publicIPAddresses",
@@ -2115,9 +2164,9 @@
       "dependsOn": [
         "[concat('Microsoft.Network/publicIPAddresses/', parameters('PublicIPNamegw1042'))]",
         "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]",
-        /*I can't figure out a way to add this dependency programatically*/
+        /*I can't figure out a way to add this dependency programatically
         "[Concat('Microsoft.Network/virtualnetworkgateways/', parameters('GatewayNamegw104'))]"
-
+*/
       ],
 
       "properties": {
@@ -2156,16 +2205,7 @@
         "gatewayIpAddress": "[parameters('localGWIPcnct140')]"
       }
     },
-    {
-      "apiVersion": "[variables('apiversion')]",
-      "type": "Microsoft.Network/localNetworkGateways",
-      "name": "[parameters('LocalNamecnct140')]",
-      "location": "[resourceGroup().location]",
-      "properties": {
-        "localNetworkAddressSpace": { "addressPrefixes": "[parameters('LocalIPPrefixcnct140')]" },
-        "gatewayIpAddress": "[parameters('localGWIPcnct140')]"
-      }
-    },
+    
     {
       "apiVersion": "[variables('apiversion')]",
       "name": "[parameters('ConnectionNamecnct140')]",
@@ -2206,6 +2246,30 @@
         "sharedKey": "[parameters('sharedKeycnct141')]",
         "connectionType": "[parameters('connectionType1cnct141')]",
         "routingWeight": "[parameters('routingWeightcnct141')]"
+      }
+    },
+    {
+      "apiVersion": "[variables('apiversion')]",
+      "type": "Microsoft.Network/localNetworkGateways",
+      "name": "[parameters('LocalNamecnct142')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "localNetworkAddressSpace": { "addressPrefixes": "[parameters('LocalIPPrefixcnct142')]" },
+        "gatewayIpAddress": "[parameters('localGWIPcnct142')]"
+      }
+    },
+    {
+      "apiVersion": "[variables('apiversion')]",
+      "name": "[parameters('ConnectionNamecnct142')]",
+      "type": "Microsoft.Network/connections",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [ "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('GWNamecnct142'))]", "[concat('Microsoft.Network/localNetworkGateways/', parameters('LocalNamecnct142'))]" ],
+      "properties": {
+        "virtualNetworkGateway1": { "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('GWNamecnct142'))]" },
+        "localNetworkGateway2": { "id": "[resourceId('Microsoft.Network/localNetworkGateways', parameters('LocalNamecnct142'))]" },
+        "sharedKey": "[parameters('sharedKeycnct142')]",
+        "connectionType": "[parameters('connectionType1cnct142')]",
+        "routingWeight": "[parameters('routingWeightcnct142')]"
       }
     }
 

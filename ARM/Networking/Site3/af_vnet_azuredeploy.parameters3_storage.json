@@ -41,8 +41,7 @@
     "useRemoteGatewaycnct303": { "value": true },
     "peerVNETNamecnct303": { "value": "vnet_services_tx" },
     "rmtSubIDcnct303": { "value": "30457dd5-e56b-416b-9228-d48b37fe7caa" },
-    "rmtLocationcnct303": { "value": "usgovtexas" }
-
-
+    "rmtLocationcnct303": { "value": "usgovtexas" },
+    "rmtRGNamecnct303": { "value": "rg_vnet_services_tx" }
   }
 }

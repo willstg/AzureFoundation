@@ -2048,6 +2048,8 @@
     },
     /*in the metadata spreadsheet, select the Gateway tab and filter on VNET204
     and select the columns with Resource in the name grouped by color.*/
+
+    /*The ExpressRoute Gateway isn't needed for the Demo Envionment.
     {
       "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/publicIPAddresses",
@@ -2079,8 +2081,7 @@
         "gatewayType": "[parameters('GatewayTypegw204')]"
       }
     },
-    /*It really only makes sense to have another ER Circuit in the second site if you 
-    have two ER peering points
+
     {
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/expressRouteCircuits",
@@ -2098,7 +2099,8 @@
           "bandwidthInMbps": "[parameters('erBandwidth')]"
         }
       }
-    },*/
+    },
+    */
     {
       "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/publicIPAddresses",
@@ -2138,7 +2140,7 @@
         }
       }
 
-    },
+    }
 
 
 
@@ -2147,6 +2149,7 @@
       select the columns with Resource in the name and grouped by color.
       Omit the peering column (the middle one)
     */
+    /*Don't need to have an onpremise gateway for the demo enviornment in Site 2
     {
       "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/localNetworkGateways",
@@ -2200,6 +2203,7 @@
         "routingWeight": "[parameters('routingWeightcnct205')]"
       }
     }
+    */
   ],
   "outputs": {
   }

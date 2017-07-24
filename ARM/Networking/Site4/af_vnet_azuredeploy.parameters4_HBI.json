@@ -60,8 +60,8 @@
     "connectionType1cnct401": { "value": "Peering" },
     "allowVNETAccesscnct401": { "value": true },
     "allowFwdAccesscnct401": { "value": true },
-    "allowGWAccesscnct401": { "value": true },
-    "useRemoteGatewaycnct401": { "value": false },
+    "allowGWAccesscnct401": { "value": false },
+    "useRemoteGatewaycnct401": { "value": true },
     "peerVNETNamecnct401": { "value": "vnet_services_az" },
     "rmtSubIDcnct401": { "value": "30457dd5-e56b-416b-9228-d48b37fe7caa" },
     "rmtLocationcnct401": { "value": "usgovarizona" }
