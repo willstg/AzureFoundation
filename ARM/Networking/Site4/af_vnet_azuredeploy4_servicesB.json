@@ -445,11 +445,6 @@
 
     /*got the metadata spreadsheet's Gateway tab and filter on VNET404
     select the columns labled Template and grouped by color*/
-    "commentGateway": {
-      "type": "string",
-      "defaultValue": "using the Gateway tab of the metadata spreadsheet filetered on VNET304",
-      "metadata": { "description": "Copy the columns that begin with template" }
-    },
     "GatewayNamegw404": {
       "type": "string",
       "defaultValue": "gw_Services_AZ_ExpressRoute",
@@ -469,7 +464,7 @@
     "gatewaySKUgw404": {
       "type": "string",
       "defaultValue": "Standard",
-      "allowedValues": [ "Basic", "Standard", "HighPerformance" ],
+      "allowedValues": [ "Basic", "Standard", "HighPerformance", "VpnGw1", "VpnGW2", "VpnGw3" ],
       "metadata": { "description": "Gateway SKU, the type of gateway Basic, Standard, High Performance" }
     },
     "GatewayTypegw404": {
@@ -479,7 +474,7 @@
     },
     "erCircuitName": {
       "type": "String",
-      "defaultValue": "slgmag_Services_ER",
+      "defaultValue": "slgmag_Services_ExpressRoute",
       "metadata": { "description": "The name of the ER Circuit" }
     },
     "erSKUTier": {
@@ -514,6 +509,18 @@
       "type": "bool",
       "metadata": { "description": "Will the gateway use BGP routing?" }
     },
+    "bgpASNgw404": {
+      "type": "int",
+      "metadata": { "description": "The BGP speaker's ASN." }
+    },
+    "bgpNeighborgw404": {
+      "type": "string",
+      "metadata": { "description": "The BGP peering address and BGP identifier of this BGP speaker." }
+    },
+    "bgpRoutingWeightgw404": {
+      "type": "int",
+      "metadata": { "description": "The weight added to routes learned from this BGP speaker" }
+    },
     "GatewayNamegw4042": {
       "type": "string",
       "defaultValue": "gw_Services_AZ_Vpn",
@@ -533,7 +540,7 @@
     "gatewaySKUgw4042": {
       "type": "string",
       "defaultValue": "Standard",
-      "allowedValues": [ "Basic", "Standard", "HighPerformance" ],
+      "allowedValues": [ "Basic", "Standard", "HighPerformance", "VpnGw1", "VpnGW2", "VpnGw3" ],
       "metadata": { "description": "Gateway SKU, the type of gateway Basic, Standard, High Performance" }
     },
     "GatewayTypegw4042": {
@@ -549,16 +556,22 @@
       "type": "bool",
       "metadata": { "description": "Will the gateway use BGP routing?" }
     },
-
+    "bgpASNgw4042": {
+      "type": "int",
+      "metadata": { "description": "The BGP speaker's ASN." }
+    },
+    "bgpNeighborgw4042": {
+      "type": "string",
+      "metadata": { "description": "The BGP peering address and BGP identifier of this BGP speaker." }
+    },
+    "bgpRoutingWeightgw4042": {
+      "type": "int",
+      "metadata": { "description": "The weight added to routes learned from this BGP speaker" }
+    },
 
 
     /*got the metadata spreadsheet's Connection tab and filter on VNET404
     select the columns labled Template and grouped by color*/
-    "commentConnections": {
-      "type": "string",
-      "defaultValue": "Metadata spreadsheet connection tab's filtered to VNET304 and copy the template columns below.",
-      "metadata": { "description": "useing the metadata spreadsheet select the columns on the connection tab of the spreadshet filtered on VNET304" }
-    },
     "ConnectionNamecnct404": {
       "type": "string",
       "defaultValue": "IPSec_slgmag_AZ_Services_To_DC1_Net1",
@@ -604,7 +617,21 @@
       "defaultValue": "gw_Services_AZ_Vpn",
       "metadata": { "description": "The gateway name that matches the source VNET." }
     },
-
+    "bgpASNcnct404": {
+      "type": "int",
+      "defaultValue": 65512,
+      "metadata": { "description": "The BGP speaker's ASN." }
+    },
+    "bgpPeeringAddresscnct404": {
+      "type": "string",
+      "defaultValue": "10.0.0.1",
+      "metadata": { "description": "The BGP peering address and BGP identifier of this BGP speaker." }
+    },
+    "bgpPeerWeightcnct404": {
+      "type": "int",
+      "defaultValue": 100,
+      "metadata": { "description": "The weight added to routes learned from this BGP speaker." }
+    },
     "ConnectionNamecnct405": {
       "type": "string",
       "defaultValue": "Vnet2Vnet_slgmag_AZ_Services_To_TX_Services",
@@ -615,11 +642,6 @@
       "defaultValue": "vnet_services_az",
       "metadata": { "description": "Azure VNET of the current location" }
     },
-    "LocalNamecnct405": {
-      "type": "string",
-      "defaultValue": "Services_TX",
-      "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
-    },
     "remoteGWNamecnct405": {
       "type": "string",
       "defaultValue": "gw_Services_TX_Vpn",
@@ -627,7 +649,7 @@
     },
     "localGWIPcnct405": {
       "type": "string",
-      "defaultValue": "52.183.93.252",
+      "defaultValue": "52.238.112.238",
       "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
     },
     "LocalIPPrefixcnct405": {
@@ -675,6 +697,21 @@
       "defaultValue": "gw_Services_AZ_Vpn",
       "metadata": { "description": "The gateway name that matches the source VNET." }
     },
+    "bgpASNcnct405": {
+      "type": "int",
+      "defaultValue": 65523,
+      "metadata": { "description": "The BGP speaker's ASN." }
+    },
+    "bgpPeeringAddresscnct405": {
+      "type": "string",
+      "defaultValue": "10.128.191.254",
+      "metadata": { "description": "The BGP peering address and BGP identifier of this BGP speaker." }
+    },
+    "bgpPeerWeightcnct405": {
+      "type": "int",
+      "defaultValue": 100,
+      "metadata": { "description": "The weight added to routes learned from this BGP speaker." }
+    },
     "ConnectionNamecnct406": {
       "type": "string",
       "defaultValue": "Peering_slgmag_AZ_Services_To_AZ_Prod",
@@ -702,12 +739,12 @@
     },
     "allowGWAccesscnct406": {
       "type": "bool",
-      "defaultValue": false,
+      "defaultValue": true,
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
     "useRemoteGatewaycnct406": {
       "type": "bool",
-      "defaultValue": true,
+      "defaultValue": false,
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
     "peerVNETNamecnct406": {
@@ -734,6 +771,21 @@
       "type": "string",
       "defaultValue": "usgovarizona",
       "metadata": { "description": "The name of the remote location." }
+    },
+    "bgpASNcnct406": {
+      "type": "int",
+      "defaultValue": 0,
+      "metadata": { "description": "The BGP speaker's ASN." }
+    },
+    "bgpPeeringAddresscnct406": {
+      "type": "string",
+      "defaultValue": "0",
+      "metadata": { "description": "The BGP peering address and BGP identifier of this BGP speaker." }
+    },
+    "bgpPeerWeightcnct406": {
+      "type": "int",
+      "defaultValue": 0,
+      "metadata": { "description": "The weight added to routes learned from this BGP speaker." }
     },
     "ConnectionNamecnct407": {
       "type": "string",
@@ -762,12 +814,12 @@
     },
     "allowGWAccesscnct407": {
       "type": "bool",
-      "defaultValue": false,
+      "defaultValue": true,
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
     "useRemoteGatewaycnct407": {
       "type": "bool",
-      "defaultValue": true,
+      "defaultValue": false,
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
     "peerVNETNamecnct407": {
@@ -794,6 +846,21 @@
       "type": "string",
       "defaultValue": "usgovarizona",
       "metadata": { "description": "The name of the remote location." }
+    },
+    "bgpASNcnct407": {
+      "type": "int",
+      "defaultValue": 0,
+      "metadata": { "description": "The BGP speaker's ASN." }
+    },
+    "bgpPeeringAddresscnct407": {
+      "type": "string",
+      "defaultValue": "0",
+      "metadata": { "description": "The BGP peering address and BGP identifier of this BGP speaker." }
+    },
+    "bgpPeerWeightcnct407": {
+      "type": "int",
+      "defaultValue": 0,
+      "metadata": { "description": "The weight added to routes learned from this BGP speaker." }
     },
     "ConnectionNamecnct408": {
       "type": "string",
@@ -822,12 +889,12 @@
     },
     "allowGWAccesscnct408": {
       "type": "bool",
-      "defaultValue": false,
+      "defaultValue": true,
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
     "useRemoteGatewaycnct408": {
       "type": "bool",
-      "defaultValue": true,
+      "defaultValue": false,
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
     "peerVNETNamecnct408": {
@@ -854,6 +921,21 @@
       "type": "string",
       "defaultValue": "usgovarizona",
       "metadata": { "description": "The name of the remote location." }
+    },
+    "bgpASNcnct408": {
+      "type": "int",
+      "defaultValue": 0,
+      "metadata": { "description": "The BGP speaker's ASN." }
+    },
+    "bgpPeeringAddresscnct408": {
+      "type": "string",
+      "defaultValue": "0",
+      "metadata": { "description": "The BGP peering address and BGP identifier of this BGP speaker." }
+    },
+    "bgpPeerWeightcnct408": {
+      "type": "int",
+      "defaultValue": 0,
+      "metadata": { "description": "The weight added to routes learned from this BGP speaker." }
     },
     "ConnectionNamecnct409": {
       "type": "string",
@@ -882,12 +964,12 @@
     },
     "allowGWAccesscnct409": {
       "type": "bool",
-      "defaultValue": false,
+      "defaultValue": true,
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
     "useRemoteGatewaycnct409": {
       "type": "bool",
-      "defaultValue": true,
+      "defaultValue": false,
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
     "peerVNETNamecnct409": {
@@ -915,7 +997,21 @@
       "defaultValue": "usgovarizona",
       "metadata": { "description": "The name of the remote location." }
     },
-
+    "bgpASNcnct409": {
+      "type": "int",
+      "defaultValue": 0,
+      "metadata": { "description": "The BGP speaker's ASN." }
+    },
+    "bgpPeeringAddresscnct409": {
+      "type": "string",
+      "defaultValue": "0",
+      "metadata": { "description": "The BGP peering address and BGP identifier of this BGP speaker." }
+    },
+    "bgpPeerWeightcnct409": {
+      "type": "int",
+      "defaultValue": 0,
+      "metadata": { "description": "The weight added to routes learned from this BGP speaker." }
+    },
 
 
   },
@@ -2118,18 +2214,12 @@
       "location": "[resourceGroup().location]",
       "properties": { "publicIPAllocationMethod": "Dynamic" }
     },
-
     {
       "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/virtualNetworkGateways",
       "name": "[parameters('GatewayNamegw4042')]",
       "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[concat('Microsoft.Network/publicIPAddresses/', parameters('PublicIPNamegw4042'))]",
-        "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]",
-        "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('GatewayNamegw404'))]"
-
-      ],
+      "dependsOn": [ "[concat('Microsoft.Network/publicIPAddresses/', parameters('PublicIPNamegw4042'))]", "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]", "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('GatewayNamegw404'))]" ],
       "properties": {
         "ipConfigurations": [
           {
@@ -2144,12 +2234,16 @@
         "gatewayType": "[parameters('GatewayTypegw4042')]",
         "vpnType": "[parameters('VPNTypegw4042')]",
         "enableBGP": "[parameters('BGPgw4042')]",
+        "asn": "[parameters('bgpASNgw4042')]",
+        "bgpPeeringAddress": "[parameters('bgpNeighborgw4042')]",
+        "peerWeight": "[parameters('bgpRoutingWeightgw4042')]",
         "sku": {
           "name": "[parameters('gatewaySKUgw4042')]",
           "tier": "[parameters('gatewaySKUgw4042')]"
         }
       }
     },
+
 
     /*Goto the metadata spreadsheet's connection tab and filter on VNET404
     select the columns that are equal to the resources and grouped by color.*/
@@ -2160,9 +2254,15 @@
       "location": "[resourceGroup().location]",
       "properties": {
         "localNetworkAddressSpace": { "addressPrefixes": "[parameters('LocalIPPrefixcnct404')]" },
+        "bgpSettings": {
+          "asn": "[parameters('bgpASNcnct404')]",
+          "bgpPeeringAddress": "[parameters('bgpPeeringAddresscnct404')]",
+          "peerWeight": "[parameters('bgpPeerWeightcnct404')]"
+        },
         "gatewayIpAddress": "[parameters('localGWIPcnct404')]"
       }
     },
+
     {
       "apiVersion": "[variables('apiversion')]",
       "name": "[parameters('ConnectionNamecnct404')]",

@@ -1,6 +1,6 @@
 ﻿$location="usgovtexas"
 #$location="westcentralus"
-$imageName="magImages"
+$imageName="magImagesAug2017"
 #$imageName="macImages"
 $Publishers=Get-AzureRmVMImagePublisher -location $Location
 foreach($publisher in $Publishers.PublisherName){

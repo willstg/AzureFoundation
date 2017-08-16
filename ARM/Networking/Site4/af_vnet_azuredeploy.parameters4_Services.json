@@ -103,21 +103,26 @@
     "PublicIPNamegw404": { "value": "gwpip_Services_AZExpressRoute" },
     "gatewaySKUgw404": { "value": "Standard" },
     "GatewayTypegw404": { "value": "ExpressRoute" },
-    "erCircuitName": { "value": "slgmag_Services_ER" },
+    "erCircuitName": { "value": "slgmag_Services_ExpressRoute" },
     "erSKUTier": { "value": "Standard" },
     "erSKUFamily": { "value": "MeteredData" },
     "erBandwidth": { "value": 50 },
     "erSPName": { "value": "Equinix" },
     "erPeeringLocation": { "value": "Dallas" },
     "BGPgw404": { "value": true },
+    "bgpASNgw404": { "value": 65524 },
+    "bgpNeighborgw404": { "value": "10.128.254.254" },
+    "bgpRoutingWeightgw404": { "value": 100 },
     "GatewayNamegw4042": { "value": "gw_Services_AZ_Vpn" },
     "SubIDgw4042": { "value": "30457dd5-e56b-416b-9228-d48b37fe7caa" },
     "VPNTypegw4042": { "value": "RouteBased" },
     "PublicIPNamegw4042": { "value": "gwpip_Services_AZVpn" },
-    "gatewaySKUgw4042": { "value": "VpnGW1" },
+    "gatewaySKUgw4042": { "value": "VpnGw1" },
     "GatewayTypegw4042": { "value": "Vpn" },
     "BGPgw4042": { "value": true },
-
+    "bgpASNgw4042": { "value": 65524 },
+    "bgpNeighborgw4042": { "value": "10.128.254.254" },
+    "bgpRoutingWeightgw4042": { "value": 100 },
 
     /*Goto the metadata spreadsheet, the Connection tab, filter on VNET404 and 
     select the parameter columns and grouped by color */
@@ -130,6 +135,9 @@
     "sharedKeycnct404": { "value": "mysharedkey" },
     "routingWeightcnct404": { "value": 10 },
     "GWNamecnct404": { "value": "gw_Services_AZ_Vpn" },
+    "bgpASNcnct404": { "value": 65512 },
+    "bgpPeeringAddresscnct404": { "value": "10.0.0.1" },
+    "bgpPeerWeightcnct404": { "value": 100 },
     "ConnectionNamecnct405": { "value": "Vnet2Vnet_slgmag_AZ_Services_To_TX_Services" },
     "vnetNamecnct405": { "value": "vnet_services_az" },
     "remoteGWNamecnct405": { "value": "gw_Services_TX_Vpn" },
@@ -185,6 +193,5 @@
     "rmtSubIDcnct409": { "value": "0223b7af-344f-42cd-bed2-5ebbc7d06d5d" },
     "rmtLocationcnct409": { "value": "usgovarizona" },
     "rmtRGNamecnct409": { "value": "rg_vnet_storage_az" }
-
   }
 }

@@ -55,7 +55,7 @@ param(
  $deploymentName,
 
  [string]
- $templateFilePath = "C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site1\af_vnet_azuredeploy.parameters1.json",
+ $templateFilePath = "C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site1\af_vnet_azuredeploy.parameters1.json",
 
  [string]
  $parametersFilePath = "azuredeployparameters.json"
@@ -172,8 +172,8 @@ else{
 This section is where we build the NSG for the VNET afr locatedry where json files eecto ../ and run the powershell from di
 #>
 $deploymentName = "AzureFoundationSite1"
-$servicesParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site1\af_vnet_azuredeploy.parameters1_Services.json"
-$servicesTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site1\af_vnet_azuredeploy1_servicesB.json"
+$servicesParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site1\af_vnet_azuredeploy.parameters1_Services.json"
+$servicesTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site1\af_vnet_azuredeploy1_servicesB.json"
 
 # Start the deployment
 
@@ -191,8 +191,8 @@ $Operation.properties.request | ConvertTo-Json -Depth 10
 $Operation.properties.response | ConvertTo-Json -Depth 10
  Write-Host "Response:"}
 
-$servicesParametersFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site2\af_vnet_azuredeploy.parameters2_Services.json"
-$servicesTemplateFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site2\af_vnet_azuredeploy2_servicesB.json"
+$servicesParametersFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site2\af_vnet_azuredeploy.parameters2_Services.json"
+$servicesTemplateFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site2\af_vnet_azuredeploy2_servicesB.json"
 
 # Start the deployment
 
@@ -236,8 +236,8 @@ else{
 This section is where we build the NSG for the VNET
 #>
 
-$prodParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site1\af_vnet_azuredeploy.parameters1_prod.json"
-$prodTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site1\af_vnet_azuredeploy1_prodB.json"
+$prodParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site1\af_vnet_azuredeploy.parameters1_prod.json"
+$prodTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site1\af_vnet_azuredeploy1_prodB.json"
 
 # Start the deployment
 
@@ -245,8 +245,8 @@ Test-AzureRmResourceGroupDeployment -ResourceGroupName $prodResourcegroupname1 -
 New-AzureRmResourceGroupDeployment -ResourceGroupName $prodResourceGroupName1 -Templatefile $prodTemplateFilePath1 -TemplateParameterfile $prodParametersFilePath1;
 
 
-$prodParametersFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site2\af_vnet_azuredeploy.parameters2_prod.json"
-$prodTemplateFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site2\af_vnet_azuredeploy2_prodB.json"
+$prodParametersFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site2\af_vnet_azuredeploy.parameters2_prod.json"
+$prodTemplateFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site2\af_vnet_azuredeploy2_prodB.json"
 
 # Start the deployment
 Test-AzureRmResourceGroupDeployment -ResourceGroupName $prodResourcegroupname2 -TemplateFile $prodTemplateFilePath2 -TemplateParameterFile $prodParametersFilePath2;
@@ -289,16 +289,16 @@ else{
 This section is where we build the NSG for the VNET
 #>
 
-$preProdParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site1\af_vnet_azuredeploy.parameters1_preProd.json"
-$preProdTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site1\af_vnet_azuredeploy1_preProdB.json"
+$preProdParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site1\af_vnet_azuredeploy.parameters1_preProd.json"
+$preProdTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site1\af_vnet_azuredeploy1_preProdB.json"
 
 # Start the deployment
 Test-AzureRmResourceGroupDeployment -ResourceGroupName $preProdResourcegroupname1 -TemplateFile $preProdTemplateFilePath1 -TemplateParameterFile $preProdParametersFilePath1;
 
 New-AzureRmResourceGroupDeployment -ResourceGroupName $preProdResourceGroupName1 -Templatefile $preProdTemplateFilePath1 -TemplateParameterfile $preProdParametersFilePath1;
 
-$preProdParametersFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site2\af_vnet_azuredeploy.parameters2_preProd.json"
-$preProdTemplateFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site2\af_vnet_azuredeploy2_preProdB.json"
+$preProdParametersFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site2\af_vnet_azuredeploy.parameters2_preProd.json"
+$preProdTemplateFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site2\af_vnet_azuredeploy2_preProdB.json"
 
 # Start the deployment
 Test-AzureRmResourceGroupDeployment -ResourceGroupName $preProdResourcegroupname2 -TemplateFile $preProdTemplateFilePath2 -TemplateParameterFile $preProdParametersFilePath2;
@@ -342,16 +342,16 @@ else{
 This section is where we build the NSG for the VNET
 #>
 
-$hbiParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site1\af_vnet_azuredeploy.parameters1_hbi.json"
-$hbiTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site1\af_vnet_azuredeploy1_hbiB.json"
+$hbiParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site1\af_vnet_azuredeploy.parameters1_hbi.json"
+$hbiTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site1\af_vnet_azuredeploy1_hbiB.json"
 
 # Start the deployment
 Test-AzureRmResourceGroupDeployment -ResourceGroupName $hbiResourcegroupname1 -TemplateFile $hbiTemplateFilePath1 -TemplateParameterFile $hbiParametersFilePath1;
 
 New-AzureRmResourceGroupDeployment -ResourceGroupName $hbiResourceGroupName1 -Templatefile $hbiTemplateFilePath1 -TemplateParameterfile $hbiParametersFilePath1;
 
-$hbiParametersFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site2\af_vnet_azuredeploy.parameters2_hbi.json"
-$hbiTemplateFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site2\af_vnet_azuredeploy2_hbiB.json"
+$hbiParametersFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site2\af_vnet_azuredeploy.parameters2_hbi.json"
+$hbiTemplateFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site2\af_vnet_azuredeploy2_hbiB.json"
 
 # Start the deployment
 Test-AzureRmResourceGroupDeployment -ResourceGroupName $hbiResourcegroupname2 -TemplateFile $hbiTemplateFilePath2 -TemplateParameterFile $hbiParametersFilePath2;
@@ -390,14 +390,14 @@ if(!$storageResourceGroup2)
 else{
     Write-Host "Using existing resource group '$storageResourceGroupName2'";
 }
-$StorageParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site1\af_vnet_azuredeploy.parameters1_Storage.json"
-$StorageTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site1\af_vnet_azuredeploy1_StorageB.json"
+$StorageParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site1\af_vnet_azuredeploy.parameters1_Storage.json"
+$StorageTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site1\af_vnet_azuredeploy1_StorageB.json"
 
 # Start the deployment
 Test-AzureRmResourceGroupDeployment -ResourceGroupName $StorageResourcegroupname1 -TemplateFile $StorageTemplateFilePath1 -TemplateParameterFile $StorageParametersFilePath1;
 
-$storageParametersFilePath2 ="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site2\af_vnet_azuredeploy.parameters2_storage.json"
-$storageTemplateFilePath2 ="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site2\af_vnet_azuredeploy2_storageB.json"
+$storageParametersFilePath2 ="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site2\af_vnet_azuredeploy.parameters2_storage.json"
+$storageTemplateFilePath2 ="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site2\af_vnet_azuredeploy2_storageB.json"
 
 # Start the deployment
 Test-AzureRmResourceGroupDeployment -ResourceGroupName $storageResourcegroupname2 -TemplateFile $storageTemplateFilePath2 -TemplateParameterFile $storageParametersFilePath2;

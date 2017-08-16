@@ -457,7 +457,7 @@
     "gatewaySKUgw104": {
       "type": "string",
       "defaultValue": "Standard",
-      "allowedValues": [ "Basic", "Standard", "HighPerformance" ],
+      "allowedValues": [ "Basic", "Standard", "HighPerformance", "VpnGw1", "VpnGW2", "VpnGw3" ],
       "metadata": { "description": "Gateway SKU, the type of gateway Basic, Standard, High Performance" }
     },
     "GatewayTypegw104": {
@@ -467,7 +467,7 @@
     },
     "erCircuitName": {
       "type": "String",
-      "defaultValue": "mac_slg_Services_ER",
+      "defaultValue": "slgmac_Services_ExpressRoute",
       "metadata": { "description": "The name of the ER Circuit" }
     },
     "erSKUTier": {
@@ -502,6 +502,18 @@
       "type": "bool",
       "metadata": { "description": "Will the gateway use BGP routing?" }
     },
+    "bgpASNgw104": {
+      "type": "int",
+      "metadata": { "description": "The BGP speaker's ASN." }
+    },
+    "bgpNeighborgw104": {
+      "type": "string",
+      "metadata": { "description": "The BGP peering address and BGP identifier of this BGP speaker." }
+    },
+    "bgpRoutingWeightgw104": {
+      "type": "int",
+      "metadata": { "description": "The weight added to routes learned from this BGP speaker" }
+    },
     "GatewayNamegw1042": {
       "type": "string",
       "defaultValue": "gw_Services_W1_Vpn",
@@ -521,7 +533,7 @@
     "gatewaySKUgw1042": {
       "type": "string",
       "defaultValue": "Standard",
-      "allowedValues": [ "Basic", "Standard", "HighPerformance" ],
+      "allowedValues": [ "Basic", "Standard", "HighPerformance", "VpnGw1", "VpnGW2", "VpnGw3" ],
       "metadata": { "description": "Gateway SKU, the type of gateway Basic, Standard, High Performance" }
     },
     "GatewayTypegw1042": {
@@ -537,8 +549,18 @@
       "type": "bool",
       "metadata": { "description": "Will the gateway use BGP routing?" }
     },
-
-
+    "bgpASNgw1042": {
+      "type": "int",
+      "metadata": { "description": "The BGP speaker's ASN." }
+    },
+    "bgpNeighborgw1042": {
+      "type": "string",
+      "metadata": { "description": "The BGP peering address and BGP identifier of this BGP speaker." }
+    },
+    "bgpRoutingWeightgw1042": {
+      "type": "int",
+      "metadata": { "description": "The weight added to routes learned from this BGP speaker" }
+    },
 
     /*
     Using the metadata spreadsheet, the connection tab, filter results on VNET104, 
@@ -546,7 +568,7 @@
     */
     "ConnectionNamecnct140": {
       "type": "string",
-      "defaultValue": "IPSec_mac_slg_Services_To_Net1_DC1",
+      "defaultValue": "IPSec_slgmac_W1_Services_To_DC1_Net1",
       "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
     },
     "vnetNamecnct140": {
@@ -589,20 +611,30 @@
       "defaultValue": "gw_Services_W1_Vpn",
       "metadata": { "description": "The gateway name that matches the source VNET." }
     },
+    "bgpASNcnct140": {
+      "type": "int",
+      "defaultValue": 65512,
+      "metadata": { "description": "The BGP speaker's ASN." }
+    },
+    "bgpPeeringAddresscnct140": {
+      "type": "string",
+      "defaultValue": "10.0.0.1",
+      "metadata": { "description": "The BGP peering address and BGP identifier of this BGP speaker." }
+    },
+    "bgpPeerWeightcnct140": {
+      "type": "int",
+      "defaultValue": 100,
+      "metadata": { "description": "The weight added to routes learned from this BGP speaker." }
+    },
     "ConnectionNamecnct141": {
       "type": "string",
-      "defaultValue": "Vnet2Vnet_mac_slg_Services_To_Services_W2",
+      "defaultValue": "Vnet2Vnet_slgmac_W1_Services_To_W2_Services",
       "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
     },
     "vnetNamecnct141": {
       "type": "string",
       "defaultValue": "vnet_services_w1",
       "metadata": { "description": "Azure VNET of the current location" }
-    },
-    "LocalNamecnct141": {
-      "type": "string",
-      "defaultValue": "Services_W2",
-      "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
     },
     "remoteGWNamecnct141": {
       "type": "string",
@@ -646,7 +678,7 @@
     },
     "rmtConnectionNamecnct141": {
       "type": "string",
-      "defaultValue": "Vnet2Vnet_mac_slg_Services_To_Services_W1",
+      "defaultValue": "Vnet2Vnet_slgmac_W2_Services_To_W1_Services",
       "metadata": { "description": "The name of the remote connection." }
     },
     "rmtLocationcnct141": {
@@ -676,7 +708,7 @@
     },
     "localGWIPcnct142": {
       "type": "string",
-      "defaultValue": "52.183.93.252",
+      "defaultValue": "52.238.112.238",
       "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
     },
     "LocalIPPrefixcnct142": {
@@ -704,10 +736,24 @@
       "defaultValue": "gw_Services_W1_Vpn",
       "metadata": { "description": "The gateway name that matches the source VNET." }
     },
-
+    "bgpASNcnct142": {
+      "type": "int",
+      "defaultValue": 65523,
+      "metadata": { "description": "The BGP speaker's ASN." }
+    },
+    "bgpPeeringAddresscnct142": {
+      "type": "string",
+      "defaultValue": "10.128.191.254",
+      "metadata": { "description": "The BGP peering address and BGP identifier of this BGP speaker." }
+    },
+    "bgpPeerWeightcnct142": {
+      "type": "int",
+      "defaultValue": 100,
+      "metadata": { "description": "The weight added to routes learned from this BGP speaker." }
+    },
     "ConnectionNamecnct146": {
       "type": "string",
-      "defaultValue": "Peering_mac_slg_Services_To_Prod_W1",
+      "defaultValue": "Peering_slgmac_W1_Services_To_W1_Prod",
       "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
     },
     "vnetNamecnct146": {
@@ -767,7 +813,7 @@
     },
     "ConnectionNamecnct147": {
       "type": "string",
-      "defaultValue": "Peering_mac_slg_Services_To_HBI_W1",
+      "defaultValue": "Peering_slgmac_W1_Services_To_W1_HBI",
       "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
     },
     "vnetNamecnct147": {
@@ -827,7 +873,7 @@
     },
     "ConnectionNamecnct148": {
       "type": "string",
-      "defaultValue": "Peering_mac_slg_Services_To_PreProd_W1",
+      "defaultValue": "Peering_slgmac_W1_Services_To_W1_PreProd",
       "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
     },
     "vnetNamecnct148": {
@@ -887,7 +933,7 @@
     },
     "ConnectionNamecnct149": {
       "type": "string",
-      "defaultValue": "Peering_mac_slg_Services_To_Storage_W1",
+      "defaultValue": "Peering_slgmac_W1_Services_To_W1_Storage",
       "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
     },
     "vnetNamecnct149": {
@@ -944,10 +990,7 @@
       "type": "string",
       "defaultValue": "westcentralus",
       "metadata": { "description": "The name of the remote location." }
-    }
-
-
-
+    },
 
   },
   "variables": {
@@ -2054,7 +2097,7 @@
               "useRemoteGateways": "[parameters('allowVNETAccesscnct149')]",
               "remoteVirtualNetwork": { "id": "[concat('/subscriptions/', parameters('rmtSubIDcnct149'), '/resourceGroups/', parameters('rmtRGNamecnct149'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct149'))]" }
             }
-          }
+          },
 
         ],
 
@@ -2098,7 +2141,6 @@
     /*using the metadata spreadsheet goto the gateway tab filter on VNET104
     and copy the gateway information here*/
 
-    /*Don't need ER for the Demo environment
     {
       "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/publicIPAddresses",
@@ -2148,7 +2190,6 @@
         }
       }
     },
-    */
     {
       "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/publicIPAddresses",
@@ -2161,14 +2202,7 @@
       "type": "Microsoft.Network/virtualNetworkGateways",
       "name": "[parameters('GatewayNamegw1042')]",
       "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[concat('Microsoft.Network/publicIPAddresses/', parameters('PublicIPNamegw1042'))]",
-        "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]",
-        /*I can't figure out a way to add this dependency programatically
-        "[Concat('Microsoft.Network/virtualnetworkgateways/', parameters('GatewayNamegw104'))]"
-*/
-      ],
-
+      "dependsOn": [ "[concat('Microsoft.Network/publicIPAddresses/', parameters('PublicIPNamegw1042'))]", "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]", "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('GatewayNamegw104'))]" ],
       "properties": {
         "ipConfigurations": [
           {
@@ -2183,6 +2217,9 @@
         "gatewayType": "[parameters('GatewayTypegw1042')]",
         "vpnType": "[parameters('VPNTypegw1042')]",
         "enableBGP": "[parameters('BGPgw1042')]",
+        "asn": "[parameters('bgpASNgw1042')]",
+        "bgpPeeringAddress": "[parameters('bgpNeighborgw1042')]",
+        "peerWeight": "[parameters('bgpRoutingWeightgw1042')]",
         "sku": {
           "name": "[parameters('gatewaySKUgw1042')]",
           "tier": "[parameters('gatewaySKUgw1042')]"
@@ -2199,13 +2236,15 @@
       "name": "[parameters('LocalNamecnct140')]",
       "location": "[resourceGroup().location]",
       "properties": {
-        "localNetworkAddressSpace": {
-          "addressPrefixes": "[parameters('LocalIPPrefixcnct140')]"
+        "localNetworkAddressSpace": { "addressPrefixes": "[parameters('LocalIPPrefixcnct140')]" },
+        "bgpSettings": {
+          "asn": "[parameters('bgpASNcnct140')]",
+          "bgpPeeringAddress": "[parameters('bgpPeeringAddresscnct140')]",
+          "peerWeight": "[parameters('bgpPeerWeightcnct140')]"
         },
         "gatewayIpAddress": "[parameters('localGWIPcnct140')]"
       }
     },
-    
     {
       "apiVersion": "[variables('apiversion')]",
       "name": "[parameters('ConnectionNamecnct140')]",
@@ -2255,6 +2294,11 @@
       "location": "[resourceGroup().location]",
       "properties": {
         "localNetworkAddressSpace": { "addressPrefixes": "[parameters('LocalIPPrefixcnct142')]" },
+        "bgpSettings": {
+          "asn": "[parameters('bgpASNcnct142')]",
+          "bgpPeeringAddress": "[parameters('bgpPeeringAddresscnct142')]",
+          "peerWeight": "[parameters('bgpPeerWeightcnct142')]"
+        },
         "gatewayIpAddress": "[parameters('localGWIPcnct142')]"
       }
     },
@@ -2271,7 +2315,7 @@
         "connectionType": "[parameters('connectionType1cnct142')]",
         "routingWeight": "[parameters('routingWeightcnct142')]"
       }
-    }
+    },
 
   ],
   "outputs": {
