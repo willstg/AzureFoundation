@@ -474,7 +474,7 @@
     "gatewaySKUgw204": {
       "type": "string",
       "defaultValue": "Standard",
-      "allowedValues": [ "Basic", "Standard", "HighPerformance" ],
+      "allowedValues": [ "Basic", "Standard", "HighPerformance", "VpnGw1", "VpnGW2", "VpnGw3" ],
       "metadata": { "description": "Gateway SKU, the type of gateway Basic, Standard, High Performance" }
     },
     "GatewayTypegw204": {
@@ -484,7 +484,7 @@
     },
     "erCircuitName": {
       "type": "String",
-      "defaultValue": "mac_slg_Services_ER",
+      "defaultValue": "slgmac_Services_ExpressRoute",
       "metadata": { "description": "The name of the ER Circuit" }
     },
     "erSKUTier": {
@@ -519,6 +519,18 @@
       "type": "bool",
       "metadata": { "description": "Will the gateway use BGP routing?" }
     },
+    "bgpASNgw204": {
+      "type": "int",
+      "metadata": { "description": "The BGP speaker's ASN." }
+    },
+    "bgpNeighborgw204": {
+      "type": "string",
+      "metadata": { "description": "The BGP peering address and BGP identifier of this BGP speaker." }
+    },
+    "bgpRoutingWeightgw204": {
+      "type": "int",
+      "metadata": { "description": "The weight added to routes learned from this BGP speaker" }
+    },
     "GatewayNamegw2042": {
       "type": "string",
       "defaultValue": "gw_Services_W2_Vpn",
@@ -538,7 +550,7 @@
     "gatewaySKUgw2042": {
       "type": "string",
       "defaultValue": "Standard",
-      "allowedValues": [ "Basic", "Standard", "HighPerformance" ],
+      "allowedValues": [ "Basic", "Standard", "HighPerformance", "VpnGw1", "VpnGW2", "VpnGw3" ],
       "metadata": { "description": "Gateway SKU, the type of gateway Basic, Standard, High Performance" }
     },
     "GatewayTypegw2042": {
@@ -554,14 +566,24 @@
       "type": "bool",
       "metadata": { "description": "Will the gateway use BGP routing?" }
     },
-
-
+    "bgpASNgw2042": {
+      "type": "int",
+      "metadata": { "description": "The BGP speaker's ASN." }
+    },
+    "bgpNeighborgw2042": {
+      "type": "string",
+      "metadata": { "description": "The BGP peering address and BGP identifier of this BGP speaker." }
+    },
+    "bgpRoutingWeightgw2042": {
+      "type": "int",
+      "metadata": { "description": "The weight added to routes learned from this BGP speaker" }
+    },
 
     /*in the metadata spreadsheet, select the Connection tab and filter on VNET204
     and select the columns with Template in the name grouped by color.*/
     "ConnectionNamecnct204": {
       "type": "string",
-      "defaultValue": "IPSec_mac_slg_Services_To_Net1_DC1",
+      "defaultValue": "IPSec_slgmac_W2_Services_To_DC1_Net1",
       "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
     },
     "vnetNamecnct204": {
@@ -604,21 +626,30 @@
       "defaultValue": "gw_Services_W2_Vpn",
       "metadata": { "description": "The gateway name that matches the source VNET." }
     },
-
+    "bgpASNcnct204": {
+      "type": "int",
+      "defaultValue": 65512,
+      "metadata": { "description": "The BGP speaker's ASN." }
+    },
+    "bgpPeeringAddresscnct204": {
+      "type": "string",
+      "defaultValue": "10.0.0.1",
+      "metadata": { "description": "The BGP peering address and BGP identifier of this BGP speaker." }
+    },
+    "bgpPeerWeightcnct204": {
+      "type": "int",
+      "defaultValue": 100,
+      "metadata": { "description": "The weight added to routes learned from this BGP speaker." }
+    },
     "ConnectionNamecnct205": {
       "type": "string",
-      "defaultValue": "Vnet2Vnet_mac_slg_Services_To_Services_W1",
+      "defaultValue": "Vnet2Vnet_slgmac_W2_Services_To_W1_Services",
       "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
     },
     "vnetNamecnct205": {
       "type": "string",
       "defaultValue": "vnet_services_w2",
       "metadata": { "description": "Azure VNET of the current location" }
-    },
-    "LocalNamecnct205": {
-      "type": "string",
-      "defaultValue": "Services_W1",
-      "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
     },
     "remoteGWNamecnct205": {
       "type": "string",
@@ -627,7 +658,7 @@
     },
     "localGWIPcnct205": {
       "type": "string",
-      "defaultValue": "52.161.8.125",
+      "defaultValue": "52.161.110.58",
       "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
     },
     "LocalIPPrefixcnct205": {
@@ -662,7 +693,7 @@
     },
     "rmtConnectionNamecnct205": {
       "type": "string",
-      "defaultValue": "Vnet2Vnet_mac_slg_Services_To_Services_W2",
+      "defaultValue": "Vnet2Vnet_slgmac_W1_Services_To_W2_Services",
       "metadata": { "description": "The name of the remote connection." }
     },
     "rmtLocationcnct205": {
@@ -677,7 +708,7 @@
     },
     "ConnectionNamecnct206": {
       "type": "string",
-      "defaultValue": "Peering_mac_slg_Services_To_Prod_W2",
+      "defaultValue": "Peering_slgmac_W2_Services_To_W2_Prod",
       "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
     },
     "vnetNamecnct206": {
@@ -737,7 +768,7 @@
     },
     "ConnectionNamecnct207": {
       "type": "string",
-      "defaultValue": "Peering_mac_slg_Services_To_HBI_W2",
+      "defaultValue": "Peering_slgmac_W2_Services_To_W2_HBI",
       "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
     },
     "vnetNamecnct207": {
@@ -797,7 +828,7 @@
     },
     "ConnectionNamecnct208": {
       "type": "string",
-      "defaultValue": "Peering_mac_slg_Services_To_PreProd_W2",
+      "defaultValue": "Peering_slgmac_W2_Services_To_W2_PreProd",
       "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
     },
     "vnetNamecnct208": {
@@ -857,7 +888,7 @@
     },
     "ConnectionNamecnct209": {
       "type": "string",
-      "defaultValue": "Peering_mac_slg_Services_To_Storage_W2",
+      "defaultValue": "Peering_slgmac_W2_Services_To_W2_Storage",
       "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
     },
     "vnetNamecnct209": {
@@ -914,9 +945,7 @@
       "type": "string",
       "defaultValue": "westus2",
       "metadata": { "description": "The name of the remote location." }
-    }
-
-
+    },
 
   },
   "variables": {
@@ -2049,7 +2078,6 @@
     /*in the metadata spreadsheet, select the Gateway tab and filter on VNET204
     and select the columns with Resource in the name grouped by color.*/
 
-    /*The ExpressRoute Gateway isn't needed for the Demo Envionment.
     {
       "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/publicIPAddresses",
@@ -2081,7 +2109,6 @@
         "gatewayType": "[parameters('GatewayTypegw204')]"
       }
     },
-
     {
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/expressRouteCircuits",
@@ -2100,7 +2127,6 @@
         }
       }
     },
-    */
     {
       "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/publicIPAddresses",
@@ -2108,18 +2134,12 @@
       "location": "[resourceGroup().location]",
       "properties": { "publicIPAllocationMethod": "Dynamic" }
     },
-
     {
       "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/virtualNetworkGateways",
       "name": "[parameters('GatewayNamegw2042')]",
       "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[concat('Microsoft.Network/publicIPAddresses/', parameters('PublicIPNamegw2042'))]",
-        "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]",
-        /*I can't figure out a way to add this dependency programatically*/
-        "[Concat('Microsoft.Network/virtualnetworkgateways/', parameters('GatewayNamegw204'))]"
-      ],
+      "dependsOn": [ "[concat('Microsoft.Network/publicIPAddresses/', parameters('PublicIPNamegw2042'))]", "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]", "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('GatewayNamegw204'))]" ],
       "properties": {
         "ipConfigurations": [
           {
@@ -2134,22 +2154,20 @@
         "gatewayType": "[parameters('GatewayTypegw2042')]",
         "vpnType": "[parameters('VPNTypegw2042')]",
         "enableBGP": "[parameters('BGPgw2042')]",
+        "asn": "[parameters('bgpASNgw2042')]",
+        "bgpPeeringAddress": "[parameters('bgpNeighborgw2042')]",
+        "peerWeight": "[parameters('bgpRoutingWeightgw2042')]",
         "sku": {
           "name": "[parameters('gatewaySKUgw2042')]",
           "tier": "[parameters('gatewaySKUgw2042')]"
         }
       }
-
-    }
-
-
-
+    },
 
     /*In the metadata spreadsheet, on the Connections tab, filter on VNET204
       select the columns with Resource in the name and grouped by color.
       Omit the peering column (the middle one)
     */
-    /*Don't need to have an onpremise gateway for the demo enviornment in Site 2
     {
       "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/localNetworkGateways",
@@ -2157,6 +2175,11 @@
       "location": "[resourceGroup().location]",
       "properties": {
         "localNetworkAddressSpace": { "addressPrefixes": "[parameters('LocalIPPrefixcnct204')]" },
+        "bgpSettings": {
+          "asn": "[parameters('bgpASNcnct204')]",
+          "bgpPeeringAddress": "[parameters('bgpPeeringAddresscnct204')]",
+          "peerWeight": "[parameters('bgpPeerWeightcnct204')]"
+        },
         "gatewayIpAddress": "[parameters('localGWIPcnct204')]"
       }
     },
@@ -2173,7 +2196,6 @@
         "connectionType": "[parameters('connectionType1cnct204')]",
         "routingWeight": "[parameters('routingWeightcnct204')]"
       }
-
     },
     {
       "apiVersion": "[variables('apiversion')]",
@@ -2203,7 +2225,7 @@
         "routingWeight": "[parameters('routingWeightcnct205')]"
       }
     }
-    */
+
   ],
   "outputs": {
   }
