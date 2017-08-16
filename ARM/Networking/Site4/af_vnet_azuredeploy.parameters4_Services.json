@@ -114,14 +114,13 @@
     "SubIDgw4042": { "value": "30457dd5-e56b-416b-9228-d48b37fe7caa" },
     "VPNTypegw4042": { "value": "RouteBased" },
     "PublicIPNamegw4042": { "value": "gwpip_Services_AZVpn" },
-    "gatewaySKUgw4042": { "value": "Standard" },
+    "gatewaySKUgw4042": { "value": "VpnGW1" },
     "GatewayTypegw4042": { "value": "Vpn" },
     "BGPgw4042": { "value": true },
 
 
     /*Goto the metadata spreadsheet, the Connection tab, filter on VNET404 and 
     select the parameter columns and grouped by color */
-    "ConnectionNamecnct404": { "value": "IPSec_slgmag_AZ_Services_To_DC1_Net1" },
     "ConnectionNamecnct404": { "value": "IPSec_slgmag_AZ_Services_To_DC1_Net1" },
     "vnetNamecnct404": { "value": "vnet_services_az" },
     "LocalNamecnct404": { "value": "Net1_DC1" },

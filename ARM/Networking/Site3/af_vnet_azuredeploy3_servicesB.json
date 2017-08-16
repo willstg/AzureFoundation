@@ -474,7 +474,7 @@
     "gatewaySKUgw304": {
       "type": "string",
       "defaultValue": "Standard",
-      "allowedValues": [ "Basic", "Standard", "HighPerformance" ],
+      "allowedValues": [ "Basic", "Standard", "HighPerformance", "VpnGw1", "VpnGw2", "VpnGw3" ],
       "metadata": { "description": "Gateway SKU, the type of gateway Basic, Standard, High Performance" }
     },
     "GatewayTypegw304": {
@@ -490,7 +490,7 @@
     "erSKUTier": {
       "type": "string",
       "defaultValue": "Standard",
-      "allowedValues": [ "Standard", "Premium" ],
+      "allowedValues": [ "Basic", "Standard", "Premium", "VpnGw1", "VpnGw2", "VpnGw3" ],
       "metadata": { "description": "Chosen SKU Tier of ExpressRoute circuit. Choose from Premium or Standard SKU tiers." }
     },
     "erSKUFamily": {
@@ -519,6 +519,7 @@
       "type": "bool",
       "metadata": { "description": "Will the gateway use BGP routing?" }
     },
+
     "GatewayNamegw3042": {
       "type": "string",
       "defaultValue": "gw_Services_TX_Vpn",
@@ -538,9 +539,11 @@
     "gatewaySKUgw3042": {
       "type": "string",
       "defaultValue": "Standard",
-      "allowedValues": [ "Basic", "Standard", "HighPerformance" ],
+      "allowedValues": [ "Basic", "Standard", "HighPerformance", "VpnGw1", "VpnGw2", "VpnGW3" ],
       "metadata": { "description": "Gateway SKU, the type of gateway Basic, Standard, High Performance" }
     },
+
+
     "GatewayTypegw3042": {
       "type": "string",
       "defaultValue": "Vpn",
@@ -554,7 +557,70 @@
       "type": "bool",
       "metadata": { "description": "Will the gateway use BGP routing?" }
     },
+    "bgpASNgw3042": {
+      "type": "integer",
+      "metadata": { "description": "The BGP speaker's ASN." }
+    },
+    "bgpNeighborgw3042": {
+      "type": "bool",
+      "metadata": { "description": "The BGP peering address and BGP identifier of this BGP speaker." }
+    },
+    "bgpRoutingWeightgw3042": {
+      "type": "integer",
+      "metadata": { "description": "The weight added to routes learned from this BGP speaker" }
+    },
 
+
+
+
+    /*goto the Connections tab and filter on VNET304, slect the 
+    columns that are color coded for the Tempate */
+
+    "ConnectionNamecnct303": {
+      "type": "string",
+      "defaultValue": "IPSec_slgmag_TX_Services_To_W1_Services",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "vnetNamecnct303": {
+      "type": "string",
+      "defaultValue": "vnet_services_tx",
+      "metadata": { "description": "Azure VNET of the current location" }
+    },
+    "LocalNamecnct303": {
+      "type": "string",
+      "defaultValue": "Services_W1",
+      "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
+    },
+    "localGWIPcnct303": {
+      "type": "string",
+      "defaultValue": "52.161.110.58",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "LocalIPPrefixcnct303": {
+      "type": "array",
+      "defaultValue": [ "10.128.56.0/21" ],
+      "metadata": { "description": "An array of Local IP address prefixes that this gateway will route traffic to." }
+    },
+    "connectionType1cnct303": {
+      "type": "string",
+      "defaultValue": "IPSec",
+      "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
+    },
+    "sharedKeycnct303": {
+      "type": "string",
+      "defaultValue": "mysharedkey",
+      "metadata": { "description": "The shared key to negotiate the VPN connection.  KeyVault will hold this secret." }
+    },
+    "routingWeightcnct303": {
+      "type": "int",
+      "defaultValue": 10,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "GWNamecnct303": {
+      "type": "string",
+      "defaultValue": "gw_Services_TX_Vpn",
+      "metadata": { "description": "The gateway name that matches the source VNET." }
+    },
 
 
     /*got the metadata spreadsheet's Connection tab and filter on VNET304
@@ -921,78 +987,51 @@
       "metadata": { "description": "The name of the remote location." }
     },
     /*This is a MAG to MAC connection, not normal*/
-    "ConnectionNamecnct310": {
+    "ConnectionNamecnct303": {
       "type": "string",
-      "defaultValue": "Vnet2Vnet_slgmag_TX_Services_To_W1_Services",
+      "defaultValue": "IPSec_slgmag_TX_Services_To_W1_Services",
       "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
     },
-    "vnetNamecnct310": {
+    "vnetNamecnct303": {
       "type": "string",
       "defaultValue": "vnet_services_tx",
       "metadata": { "description": "Azure VNET of the current location" }
     },
-    "LocalNamecnct310": {
+    "LocalNamecnct303": {
       "type": "string",
       "defaultValue": "Services_W1",
       "metadata": { "description": "Name for the destination connection between an Azure VNet and another network" }
     },
-    "remoteGWNamecnct310": {
+    "localGWIPcnct303": {
       "type": "string",
-      "defaultValue": "gw_Services_W1_Vpn",
-      "metadata": { "description": "Name for the remote VNET for a VNET to VNET connection" }
-    },
-    "localGWIPcnct310": {
-      "type": "string",
-      "defaultValue": "52.161.8.125",
+      "defaultValue": "52.161.110.58",
       "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
     },
-    "LocalIPPrefixcnct310": {
+    "LocalIPPrefixcnct303": {
       "type": "array",
       "defaultValue": [ "10.128.56.0/21" ],
       "metadata": { "description": "An array of Local IP address prefixes that this gateway will route traffic to." }
     },
-    "connectionType1cnct310": {
+    "connectionType1cnct303": {
       "type": "string",
-      "defaultValue": "Vnet2Vnet",
+      "defaultValue": "IPSec",
       "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
     },
-    "sharedKeycnct310": {
+    "sharedKeycnct303": {
       "type": "string",
       "defaultValue": "mysharedkey",
       "metadata": { "description": "The shared key to negotiate the VPN connection.  KeyVault will hold this secret." }
     },
-    "routingWeightcnct310": {
+    "routingWeightcnct303": {
       "type": "int",
       "defaultValue": 10,
       "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
     },
-    "rmtSubIDcnct310": {
-      "type": "string",
-      "defaultValue": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9",
-      "metadata": { "description": "The subscription ID of the peer VNET." }
-    },
-    "rmtRGNamecnct310": {
-      "type": "string",
-      "defaultValue": "rg_vnet_services_w1",
-      "metadata": { "description": "The resource group for the remote subscriptions VNET gateway." }
-    },
-    "rmtConnectionNamecnct310": {
-      "type": "string",
-      "defaultValue": "Vnet2Vnet_slgmag_W1_Services_To_TX_Services",
-      "metadata": { "description": "The name of the remote connection." }
-    },
-    "rmtLocationcnct310": {
-      "type": "string",
-      "defaultValue": "westcentralus",
-      "metadata": { "description": "The name of the remote location." }
-    },
-    "GWNamecnct310": {
+    "GWNamecnct303": {
       "type": "string",
       "defaultValue": "gw_Services_TX_Vpn",
       "metadata": { "description": "The gateway name that matches the source VNET." }
     }
-
-
 
 
 
@@ -2135,12 +2174,17 @@
         "gatewayType": "[parameters('GatewayTypegw3042')]",
         "vpnType": "[parameters('VPNTypegw3042')]",
         "enableBGP": "[parameters('BGPgw3042')]",
+        "asn": "[parameters('bgpASNgw3042')]",
+        "bgpPeeringAddress": "[parameters('bgpNeighborgw3042')]",
+        "peerWeight": "[parameters('bgpRoutingWeightgw3042')]",
         "sku": {
           "name": "[parameters('gatewaySKUgw3042')]",
           "tier": "[parameters('gatewaySKUgw3042')]"
         }
       }
     },
+
+
 
     /*Goto the metadata spreadsheet's connection tab and filter on VNET304
     select the columns that are equal to the resources and grouped by color.*/
@@ -2196,38 +2240,30 @@
         "routingWeight": "[parameters('routingWeightcnct305')]"
       }
     },
-    /*This is a VNET to VNET between the MAG and MAC, not normal */
     {
       "apiVersion": "[variables('apiversion')]",
-      "name": "[parameters('ConnectionNamecnct310')]",
-      "type": "Microsoft.Network/connections",
+      "type": "Microsoft.Network/localNetworkGateways",
+      "name": "[parameters('LocalNamecnct303')]",
       "location": "[resourceGroup().location]",
-      "dependsOn": [ "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('GWNamecnct310'))]" ],
       "properties": {
-        "virtualNetworkGateway1": { "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('GWNamecnct310'))]" },
-        "virtualNetworkGateway2": { "id": "[concat('/subscriptions/',parameters('rmtSubIDcnct310'),'/resourceGroups/',parameters('rmtRGNamecnct310'),'/providers/Microsoft.Network/VirtualNetworkGateways/', parameters('remoteGWNamecnct310'))]" },
-        "sharedKey": "[parameters('sharedKeycnct310')]",
-        "connectionType": "[parameters('connectionType1cnct310')]",
-        "routingWeight": "[parameters('routingWeightcnct310')]"
+        "localNetworkAddressSpace": { "addressPrefixes": "[parameters('LocalIPPrefixcnct303')]" },
+        "gatewayIpAddress": "[parameters('localGWIPcnct303')]"
       }
     },
     {
       "apiVersion": "[variables('apiversion')]",
-      "name": "[parameters('rmtConnectionNamecnct310')]",
+      "name": "[parameters('ConnectionNamecnct303')]",
       "type": "Microsoft.Network/connections",
-      "location": "[parameters('rmtLocationcnct310')]",
-      "dependsOn": [ "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('GWNamecnct310'))]" ],
+      "location": "[resourceGroup().location]",
+      "dependsOn": [ "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('GWNamecnct303'))]", "[concat('Microsoft.Network/localNetworkGateways/', parameters('LocalNamecnct303'))]" ],
       "properties": {
-        "virtualNetworkGateway1": { "id": "[concat('/subscriptions/',parameters('rmtSubIDcnct310'),'/resourceGroups/',parameters('rmtRGNamecnct310'),'/providers/Microsoft.Network/VirtualNetworkGateways/', parameters('remoteGWNamecnct310'))]" },
-        "virtualNetworkGateway2": { "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('GWNamecnct310'))]" },
-        "sharedKey": "[parameters('sharedKeycnct310')]",
-        "connectionType": "[parameters('connectionType1cnct310')]",
-        "routingWeight": "[parameters('routingWeightcnct310')]"
+        "virtualNetworkGateway1": { "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('GWNamecnct303'))]" },
+        "localNetworkGateway2": { "id": "[resourceId('Microsoft.Network/localNetworkGateways', parameters('LocalNamecnct303'))]" },
+        "sharedKey": "[parameters('sharedKeycnct303')]",
+        "connectionType": "[parameters('connectionType1cnct303')]",
+        "routingWeight": "[parameters('routingWeightcnct303')]"
       }
     }
-
-
-
   ],
   "outputs": {
   }

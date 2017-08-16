@@ -169,7 +169,7 @@ else{
     Write-Host "Using existing resource group '$servicesResourceGroupName2'";
 }
 <#
-This section is where we build the NSG for the VNET
+This section is where we build the NSG for the VNET afr locatedry where json files eecto ../ and run the powershell from di
 #>
 $deploymentName = "AzureFoundationSite1"
 $servicesParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\VNET\site1\af_vnet_azuredeploy.parameters1_Services.json"

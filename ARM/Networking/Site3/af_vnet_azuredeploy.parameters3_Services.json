@@ -102,7 +102,7 @@
     "PublicIPNamegw304": { "value": "gwpip_Services_TXExpressRoute" },
     "gatewaySKUgw304": { "value": "Standard" },
     "GatewayTypegw304": { "value": "ExpressRoute" },
-    "erCircuitName": { "value": "slgmag_Services_ER" },
+    "erCircuitName": { "value": "slgmag_Services_ExpressRoute" },
     "erSKUTier": { "value": "Standard" },
     "erSKUFamily": { "value": "MeteredData" },
     "erBandwidth": { "value": 50 },
@@ -113,9 +113,12 @@
     "SubIDgw3042": { "value": "30457dd5-e56b-416b-9228-d48b37fe7caa" },
     "VPNTypegw3042": { "value": "RouteBased" },
     "PublicIPNamegw3042": { "value": "gwpip_Services_TXVpn" },
-    "gatewaySKUgw3042": { "value": "Standard" },
+    "gatewaySKUgw3042": { "value": "VpnGw1" },
     "GatewayTypegw3042": { "value": "Vpn" },
     "BGPgw3042": { "value": true },
+    "bgpASNgw3042": { "value": 65523 },
+    "bgpNeighborgw3042": { "value": "10.128.191.254" },
+    "bgpRoutingWeightgw3042": { "value": 100 },
 
 
 
@@ -186,17 +189,14 @@
     "rmtLocationcnct309": { "value": "usgovtexas" },
     "rmtRGNamecnct309": { "value": "rg_vnet_storage_tx" },
     /*MAG to MAC Not normal*/
-    "ConnectionNamecnct310": { "value": "Vnet2Vnet_slgmag_TX_Services_To_W1_Services" },
-    "vnetNamecnct310": { "value": "vnet_services_tx" },
-    "remoteGWNamecnct310": { "value": "gw_Services_W1_Vpn" },
-    "connectionType1cnct310": { "value": "Vnet2Vnet" },
-    "sharedKeycnct310": { "value": "mysharedkey" },
-    "routingWeightcnct310": { "value": 10 },
-    "rmtSubIDcnct310": { "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9" },
-    "rmtConnectionNamecnct310": { "value": "Vnet2Vnet_slgmag_W1_Services_To_TX_Services" },
-    "rmtLocationcnct310": { "value": "westcentralus" },
-    "GWNamecnct310": { "value": "gw_Services_TX_Vpn" },
-    "rmtRGNamecnct310": { "value": "rg_vnet_services_w1" }
+    "ConnectionNamecnct303": { "value": "IPSec_slgmag_TX_Services_To_W1_Services" },
+    "vnetNamecnct303": { "value": "vnet_services_tx" },
+    "LocalNamecnct303": { "value": "Services_W1" },
+    "localGWIPcnct303": { "value": "52.161.110.58" },
+    "LocalIPPrefixcnct303": { "value": [ "10.128.56.0/21" ] },
+    "connectionType1cnct303": { "value": "IPSec" },
+    "sharedKeycnct303": { "value": "mysharedkey" },
+    "GWNamecnct303": { "value": "gw_Services_TX_Vpn" }
 
   }
 }
