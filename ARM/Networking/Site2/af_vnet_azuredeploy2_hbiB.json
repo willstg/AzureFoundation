@@ -60,157 +60,42 @@
 
     /*in the metadata spreadsheet, select the Subnet tab and filter on VNET201
     and select the columns with Template in the name grouped by color.*/
-    "subnet210Prefix": {
+  "subnet310Prefix": { "type":  "string", "defaultValue":  "10.128.96.0/25", "metadata":  {"description": "HTTP and HTTPS services"}},	"subnet310Name": { "type":  "string", "defaultValue":  "s310_Web_Test_slgmac_W2", "metadata":  {"description": "HTTP and HTTPS services"}},		"subnet310NSG": { "type": "string", "defaultValue": "310_NSG_Web", "metadata": {"description": "NSG: HTTP and HTTPS services"}},	
+"subnet315Prefix": { "type":  "string", "defaultValue":  "10.128.96.128/25", "metadata":  {"description": "Loadbalanced HTTP and HTTPS Services"}},	"subnet315Name": { "type":  "string", "defaultValue":  "s315_LB_Web_Test_slgmac_W2", "metadata":  {"description": "Loadbalanced HTTP and HTTPS Services"}},		"subnet315NSG": { "type": "string", "defaultValue": "315_NSG_LB_Web", "metadata": {"description": "NSG: Loadbalanced HTTP and HTTPS Services"}},	
+"subnet320Prefix": { "type":  "string", "defaultValue":  "10.128.97.0/25", "metadata":  {"description": "Web Services, OEM applications"}},	"subnet320Name": { "type":  "string", "defaultValue":  "s320_App_Test_slgmac_W2", "metadata":  {"description": "Web Services, OEM applications"}},		"subnet320NSG": { "type": "string", "defaultValue": "320_NSG_App", "metadata": {"description": "NSG: Web Services, OEM applications"}},	
+"subnet325Prefix": { "type":  "string", "defaultValue":  "10.128.97.128/25", "metadata":  {"description": "Loadbalaned Web Services, OEM applications"}},	"subnet325Name": { "type":  "string", "defaultValue":  "s325_LB_App_Test_slgmac_W2", "metadata":  {"description": "Loadbalaned Web Services, OEM applications"}},		"subnet325NSG": { "type": "string", "defaultValue": "325_NSG_LB_App", "metadata": {"description": "NSG: Loadbalaned Web Services, OEM applications"}},	
+"subnet330Prefix": { "type":  "string", "defaultValue":  "10.128.98.0/25", "metadata":  {"description": "Data for Applications"}},	"subnet330Name": { "type":  "string", "defaultValue":  "s330_DB_Test_slgmac_W2", "metadata":  {"description": "Data for Applications"}},		"subnet330NSG": { "type": "string", "defaultValue": "330_NSG_DB", "metadata": {"description": "NSG: Data for Applications"}},	
+"subnet335Prefix": { "type":  "string", "defaultValue":  "10.128.98.128/25", "metadata":  {"description": "Loadbalanced Databases"}},	"subnet335Name": { "type":  "string", "defaultValue":  "s335_LB_DB_Test_slgmac_W2", "metadata":  {"description": "Loadbalanced Databases"}},		"subnet335NSG": { "type": "string", "defaultValue": "335_NSG_LB_DB", "metadata": {"description": "NSG: Loadbalanced Databases"}},	
+"subnet350Prefix": { "type":  "string", "defaultValue":  "10.128.99.0/25", "metadata":  {"description": "Internet EndPoint Machines"}},	"subnet350Name": { "type":  "string", "defaultValue":  "s350_DMZ_Test_slgmac_W2", "metadata":  {"description": "Internet EndPoint Machines"}},		"subnet350NSG": { "type": "string", "defaultValue": "350_NSG_DMZ", "metadata": {"description": "NSG: Internet EndPoint Machines"}},	
+"subnet355Prefix": { "type":  "string", "defaultValue":  "10.128.99.128/25", "metadata":  {"description": "Loadbalaned Internet Endpoint systems"}},	"subnet355Name": { "type":  "string", "defaultValue":  "s355_LB_DMZ_Test_slgmac_W2", "metadata":  {"description": "Loadbalaned Internet Endpoint systems"}},		"subnet355NSG": { "type": "string", "defaultValue": "355_NSG_LB_DMZ", "metadata": {"description": "NSG: Loadbalaned Internet Endpoint systems"}},	
+"subnet360Prefix": { "type":  "string", "defaultValue":  "10.128.100.0/25", "metadata":  {"description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other"}},	"subnet360Name": { "type":  "string", "defaultValue":  "s360_User_Tier0_Test_slgmac_W2", "metadata":  {"description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other"}},		"subnet360NSG": { "type": "string", "defaultValue": "360_NSG_User_Tier0", "metadata": {"description": "NSG: Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other"}},	
+"subnet361Prefix": { "type":  "string", "defaultValue":  "10.128.100.128/25", "metadata":  {"description": "Tier 1 administrator - manage enterprise servers, services, and applications"}},	"subnet361Name": { "type":  "string", "defaultValue":  "s361_User_Tier1_Test_slgmac_W2", "metadata":  {"description": "Tier 1 administrator - manage enterprise servers, services, and applications"}},		"subnet361NSG": { "type": "string", "defaultValue": "361_NSG_User_Tier1", "metadata": {"description": "NSG: Tier 1 administrator - manage enterprise servers, services, and applications"}},
+    "subnet362Prefix": {
       "type": "string",
-      "defaultValue": "10.128.80.0/24",
-      "metadata": { "description": "HTTP and HTTPS services" }
+      "defaultValue": "10.128.101.0/25",
+      "metadata": { "description": "Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices" }
     },
-    "subnet210Name": {
+    "subnet362Name": {
       "type": "string",
-      "defaultValue": "210_Web_HBI_mac_slg_W2",
-      "metadata": { "description": "HTTP and HTTPS services" }
+      "defaultValue": "s362_User_Tier2_Test_slgmac_W2",
+      "metadata": { "description": "Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices" }
     },
-    "subnet210NSG": {
+    "subnet362NSG": {
       "type": "string",
-      "defaultValue": "210_NSG_Web",
-      "metadata": { "description": "NSG: HTTP and HTTPS services" }
-    },
-    "subnet215Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.81.0/24",
-      "metadata": { "description": "Loadbalanced HTTP and HTTPS Services" }
-    },
-    "subnet215Name": {
-      "type": "string",
-      "defaultValue": "215_LB_Web_HBI_mac_slg_W2",
-      "metadata": { "description": "Loadbalanced HTTP and HTTPS Services" }
-    },
-    "subnet215NSG": {
-      "type": "string",
-      "defaultValue": "215_NSG_LB_Web",
-      "metadata": { "description": "NSG: Loadbalanced HTTP and HTTPS Services" }
-    },
-    "subnet220Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.82.0/24",
-      "metadata": { "description": "Web Services, OEM applications" }
-    },
-    "subnet220Name": {
-      "type": "string",
-      "defaultValue": "220_App_HBI_mac_slg_W2",
-      "metadata": { "description": "Web Services, OEM applications" }
-    },
-    "subnet220NSG": {
-      "type": "string",
-      "defaultValue": "220_NSG_App",
-      "metadata": { "description": "NSG: Web Services, OEM applications" }
-    },
-    "subnet225Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.83.0/24",
-      "metadata": { "description": "Loadbalaned Web Services, OEM applications" }
-    },
-    "subnet225Name": {
-      "type": "string",
-      "defaultValue": "225_LB_App_HBI_mac_slg_W2",
-      "metadata": { "description": "Loadbalaned Web Services, OEM applications" }
-    },
-    "subnet225NSG": {
-      "type": "string",
-      "defaultValue": "225_NSG_LB_App",
-      "metadata": { "description": "NSG: Loadbalaned Web Services, OEM applications" }
-    },
-    "subnet230Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.84.0/24",
-      "metadata": { "description": "Data for Applications" }
-    },
-    "subnet230Name": {
-      "type": "string",
-      "defaultValue": "230_DB_HBI_mac_slg_W2",
-      "metadata": { "description": "Data for Applications" }
-    },
-    "subnet230NSG": {
-      "type": "string",
-      "defaultValue": "230_NSG_DB",
-      "metadata": { "description": "NSG: Data for Applications" }
-    },
-    "subnet235Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.85.0/24",
-      "metadata": { "description": "Loadbalanced Databases" }
-    },
-    "subnet235Name": {
-      "type": "string",
-      "defaultValue": "235_LB_DB_HBI_mac_slg_W2",
-      "metadata": { "description": "Loadbalanced Databases" }
-    },
-    "subnet235NSG": {
-      "type": "string",
-      "defaultValue": "235_NSG_LB_DB",
-      "metadata": { "description": "NSG: Loadbalanced Databases" }
-    },
-    "subnet250Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.86.0/24",
-      "metadata": { "description": "Internet EndPoint Machines" }
-    },
-    "subnet250Name": {
-      "type": "string",
-      "defaultValue": "250_DMZ_HBI_mac_slg_W2",
-      "metadata": { "description": "Internet EndPoint Machines" }
-    },
-    "subnet250NSG": {
-      "type": "string",
-      "defaultValue": "250_NSG_DMZ",
-      "metadata": { "description": "NSG: Internet EndPoint Machines" }
-    },
-    "subnet255Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.87.0/24",
-      "metadata": { "description": "Loadbalaned Internet Endpoint systems" }
-    },
-    "subnet255Name": {
-      "type": "string",
-      "defaultValue": "255_LB_DMZ_HBI_mac_slg_W2",
-      "metadata": { "description": "Loadbalaned Internet Endpoint systems" }
-    },
-    "subnet255NSG": {
-      "type": "string",
-      "defaultValue": "255_NSG_LB_DMZ",
-      "metadata": { "description": "NSG: Loadbalaned Internet Endpoint systems" }
-    },
-    "subnet260Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.90.0/25",
-      "metadata": { "description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
-    },
-    "subnet260Name": {
-      "type": "string",
-      "defaultValue": "260_User_Tier0_HBI_mac_slg_W2",
-      "metadata": { "description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
-    },
-    "subnet260NSG": {
-      "type": "string",
-      "defaultValue": "260_NSG_User_Tier0",
-      "metadata": { "description": "NSG: Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
-    },
-    "subnet261Prefix": {
-      "type": "string",
-      "defaultValue": "10.128.90.128/25",
-      "metadata": { "description": "Tier 1 administrator - manage enterprise servers, services, and applications" }
-    },
-    "subnet261Name": {
-      "type": "string",
-      "defaultValue": "261_User_Tier1_HBI_mac_slg_W2",
-      "metadata": { "description": "Tier 1 administrator - manage enterprise servers, services, and applications" }
-    },
-    "subnet261NSG": {
-      "type": "string",
-      "defaultValue": "261_NSG_User_Tier1",
-      "metadata": { "description": "NSG: Tier 1 administrator - manage enterprise servers, services, and applications" }
-    },
-
+      "defaultValue": "362_NSG_User_Tier2",
+      "metadata": { "description": "NSG: Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices" }
+    },	
+"subnet410Prefix": { "type":  "string", "defaultValue":  "10.128.104.0/25", "metadata":  {"description": "HTTP and HTTPS services"}},	"subnet410Name": { "type":  "string", "defaultValue":  "s410_Web_Dev_slgmac_W2", "metadata":  {"description": "HTTP and HTTPS services"}},		"subnet410NSG": { "type": "string", "defaultValue": "410_NSG_Web", "metadata": {"description": "NSG: HTTP and HTTPS services"}},	
+"subnet415Prefix": { "type":  "string", "defaultValue":  "10.128.104.128/25", "metadata":  {"description": "Loadbalanced HTTP and HTTPS Services"}},	"subnet415Name": { "type":  "string", "defaultValue":  "s415_LB_Web_Dev_slgmac_W2", "metadata":  {"description": "Loadbalanced HTTP and HTTPS Services"}},		"subnet415NSG": { "type": "string", "defaultValue": "415_NSG_LB_Web", "metadata": {"description": "NSG: Loadbalanced HTTP and HTTPS Services"}},	
+"subnet420Prefix": { "type":  "string", "defaultValue":  "10.128.105.0/25", "metadata":  {"description": "Web Services, OEM applications"}},	"subnet420Name": { "type":  "string", "defaultValue":  "s420_App_Dev_slgmac_W2", "metadata":  {"description": "Web Services, OEM applications"}},		"subnet420NSG": { "type": "string", "defaultValue": "420_NSG_App", "metadata": {"description": "NSG: Web Services, OEM applications"}},	
+"subnet425Prefix": { "type":  "string", "defaultValue":  "10.128.105.128/25", "metadata":  {"description": "Loadbalaned Web Services, OEM applications"}},	"subnet425Name": { "type":  "string", "defaultValue":  "s425_LB_App_Dev_slgmac_W2", "metadata":  {"description": "Loadbalaned Web Services, OEM applications"}},		"subnet425NSG": { "type": "string", "defaultValue": "425_NSG_LB_App", "metadata": {"description": "NSG: Loadbalaned Web Services, OEM applications"}},	
+"subnet430Prefix": { "type":  "string", "defaultValue":  "10.128.106.0/25", "metadata":  {"description": "Data for Applications"}},	"subnet430Name": { "type":  "string", "defaultValue":  "s430_DB_Dev_slgmac_W2", "metadata":  {"description": "Data for Applications"}},		"subnet430NSG": { "type": "string", "defaultValue": "430_NSG_DB", "metadata": {"description": "NSG: Data for Applications"}},	
+"subnet435Prefix": { "type":  "string", "defaultValue":  "10.128.106.128/25", "metadata":  {"description": "Loadbalanced Databases"}},	"subnet435Name": { "type":  "string", "defaultValue":  "s435_LB_DB_Dev_slgmac_W2", "metadata":  {"description": "Loadbalanced Databases"}},		"subnet435NSG": { "type": "string", "defaultValue": "435_NSG_LB_DB", "metadata": {"description": "NSG: Loadbalanced Databases"}},	
+"subnet450Prefix": { "type":  "string", "defaultValue":  "10.128.107.0/25", "metadata":  {"description": "Internet EndPoint Machines"}},	"subnet450Name": { "type":  "string", "defaultValue":  "s450_DMZ_Dev_slgmac_W2", "metadata":  {"description": "Internet EndPoint Machines"}},		"subnet450NSG": { "type": "string", "defaultValue": "450_NSG_DMZ", "metadata": {"description": "NSG: Internet EndPoint Machines"}},	
+"subnet455Prefix": { "type":  "string", "defaultValue":  "10.128.107.128/25", "metadata":  {"description": "Loadbalaned Internet Endpoint systems"}},	"subnet455Name": { "type":  "string", "defaultValue":  "s455_LB_DMZ_Dev_slgmac_W2", "metadata":  {"description": "Loadbalaned Internet Endpoint systems"}},		"subnet455NSG": { "type": "string", "defaultValue": "455_NSG_LB_DMZ", "metadata": {"description": "NSG: Loadbalaned Internet Endpoint systems"}},	
+"subnet460Prefix": { "type":  "string", "defaultValue":  "10.128.108.0/25", "metadata":  {"description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other"}},	"subnet460Name": { "type":  "string", "defaultValue":  "s460_User_Tier0_Dev_slgmac_W2", "metadata":  {"description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other"}},		"subnet460NSG": { "type": "string", "defaultValue": "460_NSG_User_Tier0", "metadata": {"description": "NSG: Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other"}},	
+"subnet461Prefix": { "type":  "string", "defaultValue":  "10.128.108.128/25", "metadata":  {"description": "Tier 1 administrator - manage enterprise servers, services, and applications"}},	"subnet461Name": { "type":  "string", "defaultValue":  "s461_User_Tier1_Dev_slgmac_W2", "metadata":  {"description": "Tier 1 administrator - manage enterprise servers, services, and applications"}},		"subnet461NSG": { "type": "string", "defaultValue": "461_NSG_User_Tier1", "metadata": {"description": "NSG: Tier 1 administrator - manage enterprise servers, services, and applications"}},	
+"subnet462Prefix": { "type":  "string", "defaultValue":  "10.128.109.0/25", "metadata":  {"description": "Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices"}},	"subnet462Name": { "type":  "string", "defaultValue":  "s462_User_Tier2_Dev_slgmac_W2", "metadata":  {"description": "Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices"}},		"subnet462NSG": { "type": "string", "defaultValue": "462_NSG_User_Tier2", "metadata": {"description": "NSG: Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices"}},	
 
     /*in the metadata spreadsheet, select the Connection tab and filter on VNET201
     and select the columns with Template in the name grouped by color.*/

@@ -71,7 +71,7 @@
     },
     "subnet500Name": {
       "type": "string",
-      "defaultValue": "500_Storage_Storage_mac_slg_W2",
+      "defaultValue": "s500_Storage_Storage_slgmac_W2",
       "metadata": { "description": "Storage appliances" }
     },
     "subnet500NSG": {
@@ -86,7 +86,7 @@
     },
     "subnet505Name": {
       "type": "string",
-      "defaultValue": "505_LB_Storage_Storage_mac_slg_W2",
+      "defaultValue": "s505_LB_Storage_Storage_slgmac_W2",
       "metadata": { "description": "Loadbalanced Storage appliances" }
     },
     "subnet505NSG": {
@@ -101,7 +101,7 @@
     },
     "subnet560Name": {
       "type": "string",
-      "defaultValue": "560_User_Tier0_Storage_mac_slg_W2",
+      "defaultValue": "s560_User_Tier0_Storage_slgmac_W2",
       "metadata": { "description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
     },
     "subnet560NSG": {
@@ -116,7 +116,7 @@
     },
     "subnet561Name": {
       "type": "string",
-      "defaultValue": "561_User_Tier1_Storage_mac_slg_W2",
+      "defaultValue": "s561_User_Tier1_Storage_slgmac_W2",
       "metadata": { "description": "Tier 1 administrator - manage enterprise servers, services, and applications" }
     },
     "subnet561NSG": {
@@ -124,7 +124,6 @@
       "defaultValue": "561_NSG_User_Tier1",
       "metadata": { "description": "NSG: Tier 1 administrator - manage enterprise servers, services, and applications" }
     },
-
 
     /*
     In the metadata spreadsheet, on the Connection tab, filter on VNET203

@@ -14,18 +14,17 @@
 
     /*got the metadata spreadsheet's Subnet tab and filter on VNET403
     select the columns labled Parameters and grouped by color*/
-    "commentSubnet": { "value": "copy the values for the Subnet tab's Parameters' columns of Site 4 (filter to vent403)" },
     "subnet500Prefix": { "value": "10.128.240.0/24" },
-    "subnet500Name": { "value": "500_Storage_Storage_slgmag_AZ" },
+    "subnet500Name": { "value": "s500_Storage_Storage_slgmag_AZ" },
     "subnet500NSG": { "value": "500_NSG_Storage_AZ" },
     "subnet505Prefix": { "value": "10.128.241.0/24" },
-    "subnet505Name": { "value": "505_LB_Storage_Storage_slgmag_AZ" },
+    "subnet505Name": { "value": "s505_LB_Storage_Storage_slgmag_AZ" },
     "subnet505NSG": { "value": "505_NSG_LB_Storage_AZ" },
     "subnet560Prefix": { "value": "10.128.242.0/25" },
-    "subnet560Name": { "value": "560_User_Tier0_Storage_slgmag_AZ" },
+    "subnet560Name": { "value": "s560_User_Tier0_Storage_slgmag_AZ" },
     "subnet560NSG": { "value": "560_NSG_User_Tier0_AZ" },
     "subnet561Prefix": { "value": "10.128.242.128/25" },
-    "subnet561Name": { "value": "561_User_Tier1_Storage_slgmag_AZ" },
+    "subnet561Name": { "value": "s561_User_Tier1_Storage_slgmag_AZ" },
     "subnet561NSG": { "value": "561_NSG_User_Tier1_AZ" },
     "subnet599Prefix": { "value": "10.128.247.224/27" },
     "subnet599Name": { "value": "GatewaySubnet" },
@@ -43,7 +42,7 @@
     "peerVNETNamecnct403": { "value": "vnet_services_az" },
     "rmtSubIDcnct403": { "value": "30457dd5-e56b-416b-9228-d48b37fe7caa" },
     "rmtLocationcnct403": { "value": "usgovarizona" },
-    "rmtRGNamecnct403": { "value": "rg_vnet_services_az" },
+    "rmtRGNamecnct403": { "value": "rg_vnet_services_az" }
 
   }
 }

@@ -74,7 +74,7 @@
     },
     "subnet110Name": {
       "type": "string",
-      "defaultValue": "110_Web_prod_mac_slg_W1",
+      "defaultValue": "s110_Web_prod_slgmac_W1",
       "metadata": { "description": "HTTP and HTTPS services" }
     },
     "subnet110NSG": {
@@ -89,7 +89,7 @@
     },
     "subnet115Name": {
       "type": "string",
-      "defaultValue": "115_LB_Web_prod_mac_slg_W1",
+      "defaultValue": "s115_LB_Web_prod_slgmac_W1",
       "metadata": { "description": "Loadbalanced HTTP and HTTPS Services" }
     },
     "subnet115NSG": {
@@ -104,7 +104,7 @@
     },
     "subnet120Name": {
       "type": "string",
-      "defaultValue": "120_App_prod_mac_slg_W1",
+      "defaultValue": "s120_App_prod_slgmac_W1",
       "metadata": { "description": "Web Services, OEM applications" }
     },
     "subnet120NSG": {
@@ -119,7 +119,7 @@
     },
     "subnet125Name": {
       "type": "string",
-      "defaultValue": "125_LB_App_prod_mac_slg_W1",
+      "defaultValue": "s125_LB_App_prod_slgmac_W1",
       "metadata": { "description": "Loadbalaned Web Services, OEM applications" }
     },
     "subnet125NSG": {
@@ -134,7 +134,7 @@
     },
     "subnet130Name": {
       "type": "string",
-      "defaultValue": "130_DB_prod_mac_slg_W1",
+      "defaultValue": "s130_DB_prod_slgmac_W1",
       "metadata": { "description": "Data for Applications" }
     },
     "subnet130NSG": {
@@ -149,7 +149,7 @@
     },
     "subnet135Name": {
       "type": "string",
-      "defaultValue": "135_LB_DB_prod_mac_slg_W1",
+      "defaultValue": "s135_LB_DB_prod_slgmac_W1",
       "metadata": { "description": "Loadbalanced Databases" }
     },
     "subnet135NSG": {
@@ -164,7 +164,7 @@
     },
     "subnet150Name": {
       "type": "string",
-      "defaultValue": "150_DMZ_prod_mac_slg_W1",
+      "defaultValue": "s150_DMZ_prod_slgmac_W1",
       "metadata": { "description": "Internet EndPoint Machines" }
     },
     "subnet150NSG": {
@@ -179,7 +179,7 @@
     },
     "subnet155Name": {
       "type": "string",
-      "defaultValue": "155_LB_DMZ_prod_mac_slg_W1",
+      "defaultValue": "s155_LB_DMZ_prod_slgmac_W1",
       "metadata": { "description": "Loadbalaned Internet Endpoint systems" }
     },
     "subnet155NSG": {
@@ -194,7 +194,7 @@
     },
     "subnet160Name": {
       "type": "string",
-      "defaultValue": "160_User_Tier0_prod_mac_slg_W1",
+      "defaultValue": "s160_User_Tier0_prod_slgmac_W1",
       "metadata": { "description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
     },
     "subnet160NSG": {
@@ -209,7 +209,7 @@
     },
     "subnet161Name": {
       "type": "string",
-      "defaultValue": "161_User_Tier1_prod_mac_slg_W1",
+      "defaultValue": "s161_User_Tier1_prod_slgmac_W1",
       "metadata": { "description": "Tier 1 administrator - manage enterprise servers, services, and applications" }
     },
     "subnet161NSG": {
@@ -224,7 +224,7 @@
     },
     "subnet162Name": {
       "type": "string",
-      "defaultValue": "162_User_Tier2_prod_mac_slg_W1",
+      "defaultValue": "s162_User_Tier2_prod_slgmac_W1",
       "metadata": { "description": "Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices" }
     },
     "subnet162NSG": {
@@ -232,7 +232,6 @@
       "defaultValue": "162_NSG_User_Tier2",
       "metadata": { "description": "NSG: Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices" }
     },
-
 
     /*
     Using the metadata spreadsheet, the connection tab, filter results on VNET100, 
@@ -297,7 +296,7 @@
       "type": "string",
       "defaultValue": "westcentralus",
       "metadata": { "description": "The name of the remote location." }
-    },
+    }
   },
 
   "variables": {

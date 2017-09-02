@@ -1,5 +1,5 @@
-$Environment = "AzureUSGovernment"
-#$Environment = 'AzureCloud'
+#$Environment = "AzureUSGovernment"
+$Environment = 'AzureCloud'
 $AADEnvironment = "USGovernment"
 #$AADEnvironment = "AzureCloud"
 Login-AzureRmAccount -EnvironmentName $Environment;
@@ -13,6 +13,10 @@ $SubName_Services="MAC_SLG_Managed_Services"
 $SubID_Services='30457dd5-e56b-416b-9228-d48b37fe7caa'
 Select-AzureRmSubscription -SubscriptionID $SubID_Services;
 #Change a guest to a Member
-$user = get-msoluser -UserPrincipalName "tonydevo_microsoft.com#EXT#@Magtaggov.onmicrosoft.com"
-$user.UserType
-$user | Set-MsolUser -UserType Member
+$users = get-msoluser -UserPrincipalName "tonydevo_microsoft.com#EXT#@Magtaggov.onmicrosoft.com"
+foreach($User in $users)
+{
+
+#$user | Set-MsolUser -UserType Member
+}
+

@@ -68,7 +68,7 @@
     },
     "subnet600Name": {
       "type": "string",
-      "defaultValue": "600_Services_Srvcs_slgmag_TX",
+      "defaultValue": "s600_Services_Srvcs_slgmag_TX",
       "metadata": { "description": "Used to host highly sensitive data that is also highly accessed." }
     },
     "subnet600NSG": {
@@ -83,7 +83,7 @@
     },
     "subnet625Name": {
       "type": "string",
-      "defaultValue": "625_LB_Services_Srvcs_slgmag_TX",
+      "defaultValue": "s625_LB_Services_Srvcs_slgmag_TX",
       "metadata": { "description": "Loadbalanced Services (internal) systems" }
     },
     "subnet625NSG": {
@@ -94,62 +94,62 @@
     "subnet680Prefix": {
       "type": "string",
       "defaultValue": "10.128.187.0/28",
-      "metadata": { "description": "Used to Test the routing to the inside interface of the CSR" }
+      "metadata": { "description": "Used to Test the routing to the inside interface of the RTR" }
     },
     "subnet680Name": {
       "type": "string",
-      "defaultValue": "680_CSR_InsideTest_Srvcs_slgmag_TX",
-      "metadata": { "description": "Used to Test the routing to the inside interface of the CSR" }
+      "defaultValue": "s680_RTR_InsideTest_Srvcs_slgmag_TX",
+      "metadata": { "description": "Used to Test the routing to the inside interface of the RTR" }
     },
     "subnet680NSG": {
       "type": "string",
-      "defaultValue": "680_NSG_CSR_InsideTest",
-      "metadata": { "description": "NSG: Used to Test the routing to the inside interface of the CSR" }
+      "defaultValue": "680_NSG_RTR_InsideTest",
+      "metadata": { "description": "NSG: Used to Test the routing to the inside interface of the RTR" }
     },
     "subnet681Prefix": {
       "type": "string",
       "defaultValue": "10.128.187.16/28",
-      "metadata": { "description": "Used to Test the routing to the inside interface of the CSR" }
+      "metadata": { "description": "Used to Test the routing to the inside interface of the RTR" }
     },
     "subnet681Name": {
       "type": "string",
-      "defaultValue": "681_CSR_OutsideTest_Srvcs_slgmag_TX",
-      "metadata": { "description": "Used to Test the routing to the inside interface of the CSR" }
+      "defaultValue": "s681_RTR_OutsideTest_Srvcs_slgmag_TX",
+      "metadata": { "description": "Used to Test the routing to the inside interface of the RTR" }
     },
     "subnet681NSG": {
       "type": "string",
-      "defaultValue": "681_NSG_CSR_OutsideTest",
-      "metadata": { "description": "NSG: Used to Test the routing to the inside interface of the CSR" }
+      "defaultValue": "681_NSG_RTR_OutsideTest",
+      "metadata": { "description": "NSG: Used to Test the routing to the inside interface of the RTR" }
     },
     "subnet682Prefix": {
       "type": "string",
       "defaultValue": "10.128.187.32/28",
-      "metadata": { "description": "Used to Test the routing to the inside interface of the CSR" }
+      "metadata": { "description": "Used to Test the routing to the inside interface of the RTR" }
     },
     "subnet682Name": {
       "type": "string",
-      "defaultValue": "682_FW_IntTest_Srvcs_slgmag_TX",
-      "metadata": { "description": "Used to Test the routing to the inside interface of the CSR" }
+      "defaultValue": "s682_FW_IntTest_Srvcs_slgmag_TX",
+      "metadata": { "description": "Used to Test the routing to the inside interface of the RTR" }
     },
     "subnet682NSG": {
       "type": "string",
       "defaultValue": "682_NSG_FW_IntTest",
-      "metadata": { "description": "NSG: Used to Test the routing to the inside interface of the CSR" }
+      "metadata": { "description": "NSG: Used to Test the routing to the inside interface of the RTR" }
     },
     "subnet683Prefix": {
       "type": "string",
       "defaultValue": "10.128.187.64/28",
-      "metadata": { "description": "Used to Test the routing to the inside interface of the CSR" }
+      "metadata": { "description": "Used to Test the routing to the inside interface of the RTR" }
     },
     "subnet683Name": {
       "type": "string",
-      "defaultValue": "683_FW_ExtTest_Srvcs_slgmag_TX",
-      "metadata": { "description": "Used to Test the routing to the inside interface of the CSR" }
+      "defaultValue": "s683_FW_ExtTest_Srvcs_slgmag_TX",
+      "metadata": { "description": "Used to Test the routing to the inside interface of the RTR" }
     },
     "subnet683NSG": {
       "type": "string",
       "defaultValue": "683_NSG_FW_ExtTest",
-      "metadata": { "description": "NSG: Used to Test the routing to the inside interface of the CSR" }
+      "metadata": { "description": "NSG: Used to Test the routing to the inside interface of the RTR" }
     },
     "subnet650Prefix": {
       "type": "string",
@@ -158,7 +158,7 @@
     },
     "subnet650Name": {
       "type": "string",
-      "defaultValue": "650_DMZ_Srvcs_slgmag_TX",
+      "defaultValue": "s650_DMZ_Srvcs_slgmag_TX",
       "metadata": { "description": "Internet EndPoint Machines" }
     },
     "subnet650NSG": {
@@ -173,7 +173,7 @@
     },
     "subnet655Name": {
       "type": "string",
-      "defaultValue": "655_LB_DMZ_Srvcs_slgmag_TX",
+      "defaultValue": "s655_LB_DMZ_Srvcs_slgmag_TX",
       "metadata": { "description": "Loadbalanced Services DMZ systems" }
     },
     "subnet655NSG": {
@@ -188,7 +188,7 @@
     },
     "subnet660Name": {
       "type": "string",
-      "defaultValue": "660_User_Tier0_Srvcs_slgmag_TX",
+      "defaultValue": "s660_User_Tier0_Srvcs_slgmag_TX",
       "metadata": { "description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
     },
     "subnet660NSG": {
@@ -203,7 +203,7 @@
     },
     "subnet661Name": {
       "type": "string",
-      "defaultValue": "661_User_Tier1_Srvcs_slgmag_TX",
+      "defaultValue": "s661_User_Tier1_Srvcs_slgmag_TX",
       "metadata": { "description": "Tier 1 administrator - manage enterprise servers, services, and applications" }
     },
     "subnet661NSG": {
@@ -218,7 +218,7 @@
     },
     "subnet662Name": {
       "type": "string",
-      "defaultValue": "662_User_Tier2_Srvcs_slgmag_TX",
+      "defaultValue": "s662_User_Tier2_Srvcs_slgmag_TX",
       "metadata": { "description": "Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices" }
     },
     "subnet662NSG": {
@@ -229,47 +229,47 @@
     "subnet700Prefix": {
       "type": "string",
       "defaultValue": "10.128.191.0/28",
-      "metadata": { "description": "Subnet for CSR for Inside interface" }
+      "metadata": { "description": "Subnet for RTR for Inside interface" }
     },
     "subnet700Name": {
       "type": "string",
-      "defaultValue": "700_CSR_Out_Srvcs_slgmag_TX",
-      "metadata": { "description": "Subnet for CSR for Inside interface" }
+      "defaultValue": "s700_RTR_Out_Srvcs_slgmag_TX",
+      "metadata": { "description": "Subnet for RTR for Inside interface" }
     },
     "subnet700NSG": {
       "type": "string",
-      "defaultValue": "700_NSG_CSR_Out",
-      "metadata": { "description": "NSG: Subnet for CSR for Inside interface" }
+      "defaultValue": "700_NSG_RTR_Out",
+      "metadata": { "description": "NSG: Subnet for RTR for Inside interface" }
     },
     "subnet701Prefix": {
       "type": "string",
       "defaultValue": "10.128.191.16/28",
-      "metadata": { "description": "Subnet for CSR for Outside" }
+      "metadata": { "description": "Subnet for RTR for Outside" }
     },
     "subnet701Name": {
       "type": "string",
-      "defaultValue": "701_CSR_In_Srvcs_slgmag_TX",
-      "metadata": { "description": "Subnet for CSR for Outside" }
+      "defaultValue": "s701_RTR_In_Srvcs_slgmag_TX",
+      "metadata": { "description": "Subnet for RTR for Outside" }
     },
     "subnet701NSG": {
       "type": "string",
-      "defaultValue": "701_NSG_CSR_In",
-      "metadata": { "description": "NSG: Subnet for CSR for Outside" }
+      "defaultValue": "701_NSG_RTR_In",
+      "metadata": { "description": "NSG: Subnet for RTR for Outside" }
     },
     "subnet702Prefix": {
       "type": "string",
       "defaultValue": "10.128.191.32/28",
-      "metadata": { "description": "Subnet for the CSR Tunnel" }
+      "metadata": { "description": "Subnet for the RTR Tunnel" }
     },
     "subnet702Name": {
       "type": "string",
-      "defaultValue": "702_CSR_Tunnel_Srvcs_slgmag_TX",
-      "metadata": { "description": "Subnet for the CSR Tunnel" }
+      "defaultValue": "s702_RTR_Tunnel_Srvcs_slgmag_TX",
+      "metadata": { "description": "Subnet for the RTR Tunnel" }
     },
     "subnet702NSG": {
       "type": "string",
-      "defaultValue": "702_NSG_CSR_Tunnel",
-      "metadata": { "description": "NSG: Subnet for the CSR Tunnel" }
+      "defaultValue": "702_NSG_RTR_Tunnel",
+      "metadata": { "description": "NSG: Subnet for the RTR Tunnel" }
     },
     "subnet703Prefix": {
       "type": "string",
@@ -278,73 +278,73 @@
     },
     "subnet703Name": {
       "type": "string",
-      "defaultValue": "703_CSR_HA_Srvcs_slgmag_TX",
+      "defaultValue": "s703_RTR_HA_Srvcs_slgmag_TX",
       "metadata": { "description": "Failover subnet" }
     },
     "subnet703NSG": {
       "type": "string",
-      "defaultValue": "703_NSG_CSR_HA",
+      "defaultValue": "703_NSG_RTR_HA",
       "metadata": { "description": "NSG: Failover subnet" }
     },
     "subnet710Prefix": {
       "type": "string",
       "defaultValue": "10.128.191.64/28",
-      "metadata": { "description": "ASA management interface" }
+      "metadata": { "description": "FWA management interface" }
     },
     "subnet710Name": {
       "type": "string",
-      "defaultValue": "710_IntASA_Mgnt_Srvcs_slgmag_TX",
-      "metadata": { "description": "ASA management interface" }
+      "defaultValue": "s710_IntFWA_Mgnt_Srvcs_slgmag_TX",
+      "metadata": { "description": "FWA management interface" }
     },
     "subnet710NSG": {
       "type": "string",
-      "defaultValue": "710_NSG_IntASA_Mgnt",
-      "metadata": { "description": "NSG: ASA management interface" }
+      "defaultValue": "710_NSG_IntFWA_Mgnt",
+      "metadata": { "description": "NSG: FWA management interface" }
     },
     "subnet711Prefix": {
       "type": "string",
       "defaultValue": "10.128.191.80/28",
-      "metadata": { "description": "ASA Inside Interface" }
+      "metadata": { "description": "FWA Inside Interface" }
     },
     "subnet711Name": {
       "type": "string",
-      "defaultValue": "711_IntASA_In_Srvcs_slgmag_TX",
-      "metadata": { "description": "ASA Inside Interface" }
+      "defaultValue": "s711_IntFWA_In_Srvcs_slgmag_TX",
+      "metadata": { "description": "FWA Inside Interface" }
     },
     "subnet711NSG": {
       "type": "string",
-      "defaultValue": "711_NSG_IntASA_In",
-      "metadata": { "description": "NSG: ASA Inside Interface" }
+      "defaultValue": "711_NSG_IntFWA_In",
+      "metadata": { "description": "NSG: FWA Inside Interface" }
     },
     "subnet712Prefix": {
       "type": "string",
       "defaultValue": "10.128.191.96/28",
-      "metadata": { "description": "ASA Outside Interface" }
+      "metadata": { "description": "FWA Outside Interface" }
     },
     "subnet712Name": {
       "type": "string",
-      "defaultValue": "712_IntASA_Out_Srvcs_slgmag_TX",
-      "metadata": { "description": "ASA Outside Interface" }
+      "defaultValue": "s712_IntFWA_Out_Srvcs_slgmag_TX",
+      "metadata": { "description": "FWA Outside Interface" }
     },
     "subnet712NSG": {
       "type": "string",
-      "defaultValue": "712_NSG_IntASA_Out",
-      "metadata": { "description": "NSG: ASA Outside Interface" }
+      "defaultValue": "712_NSG_IntFWA_Out",
+      "metadata": { "description": "NSG: FWA Outside Interface" }
     },
     "subnet713Prefix": {
       "type": "string",
       "defaultValue": "10.128.191.112/28",
-      "metadata": { "description": "ASA DMZ Interface" }
+      "metadata": { "description": "FWA DMZ Interface" }
     },
     "subnet713Name": {
       "type": "string",
-      "defaultValue": "713_IntASA_DMZ_Srvcs_slgmag_TX",
-      "metadata": { "description": "ASA DMZ Interface" }
+      "defaultValue": "s713_IntFWA_DMZ_Srvcs_slgmag_TX",
+      "metadata": { "description": "FWA DMZ Interface" }
     },
     "subnet713NSG": {
       "type": "string",
-      "defaultValue": "713_NSG_IntASA_DMZ",
-      "metadata": { "description": "NSG: ASA DMZ Interface" }
+      "defaultValue": "713_NSG_IntFWA_DMZ",
+      "metadata": { "description": "NSG: FWA DMZ Interface" }
     },
     "subnet725Prefix": {
       "type": "string",
@@ -353,7 +353,7 @@
     },
     "subnet725Name": {
       "type": "string",
-      "defaultValue": "725_IntLB_Srvcs_slgmag_TX",
+      "defaultValue": "s725_IntLB_Srvcs_slgmag_TX",
       "metadata": { "description": "Internal Loadbalancer virtual appliance" }
     },
     "subnet725NSG": {
@@ -364,62 +364,62 @@
     "subnet750Prefix": {
       "type": "string",
       "defaultValue": "10.128.191.144/28",
-      "metadata": { "description": "ASA Management interface" }
+      "metadata": { "description": "FWA Management interface" }
     },
     "subnet750Name": {
       "type": "string",
-      "defaultValue": "750_ExtASA_Mgnt_Srvcs_slgmag_TX",
-      "metadata": { "description": "ASA Management interface" }
+      "defaultValue": "s750_ExtFWA_Mgnt_Srvcs_slgmag_TX",
+      "metadata": { "description": "FWA Management interface" }
     },
     "subnet750NSG": {
       "type": "string",
-      "defaultValue": "750_NSG_ExtASA_Mgnt",
-      "metadata": { "description": "NSG: ASA Management interface" }
+      "defaultValue": "750_NSG_ExtFWA_Mgnt",
+      "metadata": { "description": "NSG: FWA Management interface" }
     },
     "subnet751Prefix": {
       "type": "string",
       "defaultValue": "10.128.191.160/28",
-      "metadata": { "description": "ASA Inside Interface" }
+      "metadata": { "description": "FWA Inside Interface" }
     },
     "subnet751Name": {
       "type": "string",
-      "defaultValue": "751_ExtASA_In_Srvcs_slgmag_TX",
-      "metadata": { "description": "ASA Inside Interface" }
+      "defaultValue": "s751_ExtFWA_In_Srvcs_slgmag_TX",
+      "metadata": { "description": "FWA Inside Interface" }
     },
     "subnet751NSG": {
       "type": "string",
-      "defaultValue": "751_NSG_ExtASA_In",
-      "metadata": { "description": "NSG: ASA Inside Interface" }
+      "defaultValue": "751_NSG_ExtFWA_In",
+      "metadata": { "description": "NSG: FWA Inside Interface" }
     },
     "subnet752Prefix": {
       "type": "string",
       "defaultValue": "10.128.191.176/28",
-      "metadata": { "description": "ASA Outside Interface" }
+      "metadata": { "description": "FWA Outside Interface" }
     },
     "subnet752Name": {
       "type": "string",
-      "defaultValue": "752_ExtASA_Out_Srvcs_slgmag_TX",
-      "metadata": { "description": "ASA Outside Interface" }
+      "defaultValue": "s752_ExtFWA_Out_Srvcs_slgmag_TX",
+      "metadata": { "description": "FWA Outside Interface" }
     },
     "subnet752NSG": {
       "type": "string",
-      "defaultValue": "752_NSG_ExtASA_Out",
-      "metadata": { "description": "NSG: ASA Outside Interface" }
+      "defaultValue": "752_NSG_ExtFWA_Out",
+      "metadata": { "description": "NSG: FWA Outside Interface" }
     },
     "subnet753Prefix": {
       "type": "string",
       "defaultValue": "10.128.191.192/28",
-      "metadata": { "description": "ASA DMZ Interface" }
+      "metadata": { "description": "FWA DMZ Interface" }
     },
     "subnet753Name": {
       "type": "string",
-      "defaultValue": "753_ExtASA_DMZ_Srvcs_slgmag_TX",
-      "metadata": { "description": "ASA DMZ Interface" }
+      "defaultValue": "s753_ExtFWA_DMZ_Srvcs_slgmag_TX",
+      "metadata": { "description": "FWA DMZ Interface" }
     },
     "subnet753NSG": {
       "type": "string",
-      "defaultValue": "753_NSG_ExtASA_DMZ",
-      "metadata": { "description": "NSG: ASA DMZ Interface" }
+      "defaultValue": "753_NSG_ExtFWA_DMZ",
+      "metadata": { "description": "NSG: FWA DMZ Interface" }
     },
     "subnet775Prefix": {
       "type": "string",
@@ -428,7 +428,7 @@
     },
     "subnet775Name": {
       "type": "string",
-      "defaultValue": "775_ExtLB_Srvcs_slgmag_TX",
+      "defaultValue": "s775_ExtLB_Srvcs_slgmag_TX",
       "metadata": { "description": "External Loadbalancer Virtual Network Appliance " }
     },
     "subnet775NSG": {
@@ -447,14 +447,8 @@
       "metadata": { "description": "The Azure gateway network " }
     },
 
-
     /*got the metadata spreadsheet's Gateway tab and filter on VNET304
     select the columns labled Template and grouped by color*/
-    "commentGateway": {
-      "type": "string",
-      "defaultValue": "using the Gateway tab of the metadata spreadsheet filetered on VNET304",
-      "metadata": { "description": "Copy the columns that begin with template" }
-    },
     "GatewayNamegw304": {
       "type": "string",
       "defaultValue": "gw_Services_TX_ExpressRoute",
@@ -473,8 +467,8 @@
     },
     "gatewaySKUgw304": {
       "type": "string",
-      "defaultValue": "Standard",
-      "allowedValues": [ "Basic", "Standard", "HighPerformance", "VpnGw1", "VpnGw2", "VpnGw3" ],
+      "defaultValue": "",
+      "allowedValues": [ "Basic", "Standard", "HighPerformance", "VpnGw1", "VpnGW2", "VpnGw3" ],
       "metadata": { "description": "Gateway SKU, the type of gateway Basic, Standard, High Performance" }
     },
     "GatewayTypegw304": {
@@ -484,13 +478,13 @@
     },
     "erCircuitName": {
       "type": "String",
-      "defaultValue": "slgmag_Services_ER",
+      "defaultValue": "slgmag_Services_ExpressRoute",
       "metadata": { "description": "The name of the ER Circuit" }
     },
     "erSKUTier": {
       "type": "string",
       "defaultValue": "Standard",
-      "allowedValues": [ "Basic", "Standard", "Premium", "VpnGw1", "VpnGw2", "VpnGw3" ],
+      "allowedValues": [ "Standard", "Premium" ],
       "metadata": { "description": "Chosen SKU Tier of ExpressRoute circuit. Choose from Premium or Standard SKU tiers." }
     },
     "erSKUFamily": {
@@ -519,7 +513,18 @@
       "type": "bool",
       "metadata": { "description": "Will the gateway use BGP routing?" }
     },
-
+    "bgpASNgw304": {
+      "type": "int",
+      "metadata": { "description": "The BGP speaker's ASN." }
+    },
+    "bgpNeighborgw304": {
+      "type": "string",
+      "metadata": { "description": "The BGP peering address and BGP identifier of this BGP speaker." }
+    },
+    "bgpRoutingWeightgw304": {
+      "type": "int",
+      "metadata": { "description": "The weight added to routes learned from this BGP speaker" }
+    },
     "GatewayNamegw3042": {
       "type": "string",
       "defaultValue": "gw_Services_TX_Vpn",
@@ -538,12 +543,10 @@
     },
     "gatewaySKUgw3042": {
       "type": "string",
-      "defaultValue": "Standard",
-      "allowedValues": [ "Basic", "Standard", "HighPerformance", "VpnGw1", "VpnGw2", "VpnGW3" ],
+      "defaultValue": "VpnGW1",
+      "allowedValues": [ "Basic", "Standard", "HighPerformance", "VpnGw1", "VpnGW2", "VpnGw3" ],
       "metadata": { "description": "Gateway SKU, the type of gateway Basic, Standard, High Performance" }
     },
-
-
     "GatewayTypegw3042": {
       "type": "string",
       "defaultValue": "Vpn",
@@ -558,15 +561,15 @@
       "metadata": { "description": "Will the gateway use BGP routing?" }
     },
     "bgpASNgw3042": {
-      "type": "integer",
+      "type": "int",
       "metadata": { "description": "The BGP speaker's ASN." }
     },
     "bgpNeighborgw3042": {
-      "type": "bool",
+      "type": "string",
       "metadata": { "description": "The BGP peering address and BGP identifier of this BGP speaker." }
     },
     "bgpRoutingWeightgw3042": {
-      "type": "integer",
+      "type": "int",
       "metadata": { "description": "The weight added to routes learned from this BGP speaker" }
     },
 

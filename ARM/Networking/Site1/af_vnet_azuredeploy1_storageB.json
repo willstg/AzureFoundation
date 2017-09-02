@@ -13,19 +13,155 @@
     /*from the metadata spreadsheet on the VNET tab, filter on VNET103
     select all of the columns with Template and grouped by color. */
 
- "locationName":{"type":"string","defaultValue":"westcentralus"},	"resourceGroupName":{"type":"string","defaultValue":"rg_vnet_storage_w1"},	"vnetName":{"type":"string","defaultValue":"vnet_storage_w1", "metadata":{"description":"AzureFoundation VNET Name for virtual data center subscription in a specific data center."}},	"vnetAddressPrefix":{"type":"string","defaultValue":"10.128.48.0/21", "metadata":{"description":"AzureFoundation VNET Address Prefix, the range of addresses for a specific data center."}},	"dnsServers":{"type":"array","defaultValue":["10.128.59.36"], "metadata":{"description":"AzureFoundation Domain Controller DNS server"}},
+    "locationName": {
+      "type": "string",
+      "defaultValue": "westcentralus"
+    },
+    "resourceGroupName": {
+      "type": "string",
+      "defaultValue": "rg_vnet_storage_w1"
+    },
+    "vnetName": {
+      "type": "string",
+      "defaultValue": "vnet_storage_w1",
+      "metadata": { "description": "AzureFoundation VNET Name for virtual data center subscription in a specific data center." }
+    },
+    "vnetAddressPrefix": {
+      "type": "string",
+      "defaultValue": "10.128.48.0/21",
+      "metadata": { "description": "AzureFoundation VNET Address Prefix, the range of addresses for a specific data center." }
+    },
+    "dnsServers": {
+      "type": "array",
+      "defaultValue": [ "10.128.59.36" ],
+      "metadata": { "description": "AzureFoundation Domain Controller DNS server" }
+    },
 
     /*in the metadata spreadsheet, on the Subnet tab, filter on VNET103
     select the columns with template and grouped by color */
-   "subnet500Prefix": { "type":  "string", "defaultValue":  "10.128.48.0/24", "metadata":  {"description": "Storage appliances"}},	"subnet500Name": { "type":  "string", "defaultValue":  "500_Storage_Storage_mac_slg_W1", "metadata":  {"description": "Storage appliances"}},		"subnet500NSG": { "type": "string", "defaultValue": "500_NSG_Storage", "metadata": {"description": "NSG: Storage appliances"}},	
-"subnet505Prefix": { "type":  "string", "defaultValue":  "10.128.49.0/24", "metadata":  {"description": "Loadbalanced Storage appliances"}},	"subnet505Name": { "type":  "string", "defaultValue":  "505_LB_Storage_Storage_mac_slg_W1", "metadata":  {"description": "Loadbalanced Storage appliances"}},		"subnet505NSG": { "type": "string", "defaultValue": "505_NSG_LB_Storage", "metadata": {"description": "NSG: Loadbalanced Storage appliances"}},	
-"subnet560Prefix": { "type":  "string", "defaultValue":  "10.128.50.0/25", "metadata":  {"description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other"}},	"subnet560Name": { "type":  "string", "defaultValue":  "560_User_Tier0_Storage_mac_slg_W1", "metadata":  {"description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other"}},		"subnet560NSG": { "type": "string", "defaultValue": "560_NSG_User_Tier0", "metadata": {"description": "NSG: Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other"}},	
-"subnet561Prefix": { "type":  "string", "defaultValue":  "10.128.50.128/25", "metadata":  {"description": "Tier 1 administrator - manage enterprise servers, services, and applications"}},	"subnet561Name": { "type":  "string", "defaultValue":  "561_User_Tier1_Storage_mac_slg_W1", "metadata":  {"description": "Tier 1 administrator - manage enterprise servers, services, and applications"}},		"subnet561NSG": { "type": "string", "defaultValue": "561_NSG_User_Tier1", "metadata": {"description": "NSG: Tier 1 administrator - manage enterprise servers, services, and applications"}},	
-
+    "subnet500Prefix": {
+      "type": "string",
+      "defaultValue": "10.128.48.0/24",
+      "metadata": { "description": "Storage appliances" }
+    },
+    "subnet500Name": {
+      "type": "string",
+      "defaultValue": "s500_Storage_Storage_slgmac_W1",
+      "metadata": { "description": "Storage appliances" }
+    },
+    "subnet500NSG": {
+      "type": "string",
+      "defaultValue": "500_NSG_Storage",
+      "metadata": { "description": "NSG: Storage appliances" }
+    },
+    "subnet505Prefix": {
+      "type": "string",
+      "defaultValue": "10.128.49.0/24",
+      "metadata": { "description": "Loadbalanced Storage appliances" }
+    },
+    "subnet505Name": {
+      "type": "string",
+      "defaultValue": "s505_LB_Storage_Storage_slgmac_W1",
+      "metadata": { "description": "Loadbalanced Storage appliances" }
+    },
+    "subnet505NSG": {
+      "type": "string",
+      "defaultValue": "505_NSG_LB_Storage",
+      "metadata": { "description": "NSG: Loadbalanced Storage appliances" }
+    },
+    "subnet560Prefix": {
+      "type": "string",
+      "defaultValue": "10.128.50.0/25",
+      "metadata": { "description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
+    },
+    "subnet560Name": {
+      "type": "string",
+      "defaultValue": "s560_User_Tier0_Storage_slgmac_W1",
+      "metadata": { "description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
+    },
+    "subnet560NSG": {
+      "type": "string",
+      "defaultValue": "560_NSG_User_Tier0",
+      "metadata": { "description": "NSG: Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
+    },
+    "subnet561Prefix": {
+      "type": "string",
+      "defaultValue": "10.128.50.128/25",
+      "metadata": { "description": "Tier 1 administrator - manage enterprise servers, services, and applications" }
+    },
+    "subnet561Name": {
+      "type": "string",
+      "defaultValue": "s561_User_Tier1_Storage_slgmac_W1",
+      "metadata": { "description": "Tier 1 administrator - manage enterprise servers, services, and applications" }
+    },
+    "subnet561NSG": {
+      "type": "string",
+      "defaultValue": "561_NSG_User_Tier1",
+      "metadata": { "description": "NSG: Tier 1 administrator - manage enterprise servers, services, and applications" }
+    },
 
     /*in the metadata spreadsheet, on the Connection tab filter on VNET 103
     select the columns with Template and grouped by color */
-  "ConnectionNamecnct130": {"type": "string","defaultValue":"Peering_mac_slg_Storage_To_Services_W1","metadata":{"description":"Arbitrary name for the new connection between an Azure VNet and another network"}},	"vnetNamecnct130": {"type": "string","defaultValue":"vnet_storage_w1","metadata":{"description":"Azure VNET of the current location"}},					"connectionType1cnct130": {"type": "string", "defaultValue": "Peering", "metadata": {"description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet."}},			"allowVNETAccesscnct130": {"type": "bool", "defaultValue": true, "metadata": {"description": "The routing weight tells the protocol how expensive it is to route on this gateway."}},	"allowFwdAccesscnct130": {"type": "bool", "defaultValue": true, "metadata": {"description": "The routing weight tells the protocol how expensive it is to route on this gateway."}},	"allowGWAccesscnct130": {"type": "bool", "defaultValue": false, "metadata": {"description": "The routing weight tells the protocol how expensive it is to route on this gateway."}},	"useRemoteGatewaycnct130": {"type": "bool", "defaultValue": true, "metadata": {"description": "The routing weight tells the protocol how expensive it is to route on this gateway."}},	"peerVNETNamecnct130": {"type": "string", "defaultValue": "vnet_services_w1", "metadata": {"description": "The routing weight tells the protocol how expensive it is to route on this gateway."}},	"rmtSubIDcnct130": {"type": "string", "defaultValue": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9", "metadata": {"description": "The subscription ID of the peer VNET."}},	"rmtRGNamecnct130": {"type": "string", "defaultValue": "rg_vnet_services_w1", "metadata": {"description": "The resource group for the remote subscription VNET."}},	"rmtConnectionNamecnct130": {"type": "string", "defaultValue": "", "metadata": {"description": "The name of the remote connection."}},	"rmtLocationcnct130": {"type": "string", "defaultValue": "westcentralus", "metadata": {"description": "The name of the remote location."}},	
+    "ConnectionNamecnct130": {
+      "type": "string",
+      "defaultValue": "Peering_mac_slg_Storage_To_Services_W1",
+      "metadata": { "description": "Arbitrary name for the new connection between an Azure VNet and another network" }
+    },
+    "vnetNamecnct130": {
+      "type": "string",
+      "defaultValue": "vnet_storage_w1",
+      "metadata": { "description": "Azure VNET of the current location" }
+    },
+    "connectionType1cnct130": {
+      "type": "string",
+      "defaultValue": "Peering",
+      "metadata": { "description": "The type of connection. For connecting to ExpressRoute circuits, the connectionType must be of type ExpressRoute. Other types are IPsec and Vnet2Vnet." }
+    },
+    "allowVNETAccesscnct130": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowFwdAccesscnct130": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "allowGWAccesscnct130": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "useRemoteGatewaycnct130": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "peerVNETNamecnct130": {
+      "type": "string",
+      "defaultValue": "vnet_services_w1",
+      "metadata": { "description": "The routing weight tells the protocol how expensive it is to route on this gateway." }
+    },
+    "rmtSubIDcnct130": {
+      "type": "string",
+      "defaultValue": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9",
+      "metadata": { "description": "The subscription ID of the peer VNET." }
+    },
+    "rmtRGNamecnct130": {
+      "type": "string",
+      "defaultValue": "rg_vnet_services_w1",
+      "metadata": { "description": "The resource group for the remote subscription VNET." }
+    },
+    "rmtConnectionNamecnct130": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": { "description": "The name of the remote connection." }
+    },
+    "rmtLocationcnct130": {
+      "type": "string",
+      "defaultValue": "westcentralus",
+      "metadata": { "description": "The name of the remote location." }
+    }
 
 
   },
@@ -37,14 +173,162 @@
   "resources": [
     /*in the metadata spreadsheet, on the NSGRules tab filter on VNET103
     select the columns with Resource in the name grouped by color */
-{"apiVersion": "2015-06-15", "type": "Microsoft.Network/networkSecurityGroups",  "name": "[parameters('subnet500NSG')]", "location": "[resourceGroup().location]", "tags": { "displayName": "500_NSG_Storage_W1"}, "properties": {"securityRules": [	{"name": "All_Internet.Inbound.Deny", "properties": {"description": "All_Internet.Inbound.Deny", "protocol": "TCP", "sourcePortRange": "*", "destinationPortRange": "*", "sourceAddressPrefix": "Internet", "destinationAddressPrefix": "*","access": "Deny", "priority": 150, "direction": "Inbound"}}	]}},
-{"apiVersion": "2015-06-15", "type": "Microsoft.Network/networkSecurityGroups",  "name": "[parameters('subnet505NSG')]", "location": "[resourceGroup().location]", "tags": { "displayName": "505_NSG_LB_Storage_W1"}, "properties": {"securityRules": [	{"name": "All_Internet.Inbound.Deny", "properties": {"description": "All_Internet.Inbound.Deny", "protocol": "TCP", "sourcePortRange": "*", "destinationPortRange": "*", "sourceAddressPrefix": "Internet", "destinationAddressPrefix": "*","access": "Deny", "priority": 150, "direction": "Inbound"}}	]}},
-{"apiVersion": "2015-06-15", "type": "Microsoft.Network/networkSecurityGroups",  "name": "[parameters('subnet560NSG')]", "location": "[resourceGroup().location]", "tags": { "displayName": "560_NSG_User_Tier0_W1"}, "properties": {"securityRules": [	{"name": "SSH.Inbound.Allow", "properties": {"description": "SSH.Inbound.Allow", "protocol": "TCP", "sourcePortRange": "*", "destinationPortRange": "22", "sourceAddressPrefix": "Internet", "destinationAddressPrefix": "*","access": "Allow", "priority": 100, "direction": "Inbound"}}	,
-	{"name": "RDP.Inbound.Allow", "properties": {"description": "RDP.Inbound.Allow", "protocol": "TCP", "sourcePortRange": "*", "destinationPortRange": "3389", "sourceAddressPrefix": "Internet", "destinationAddressPrefix": "*","access": "Allow", "priority": 105, "direction": "Inbound"}}	,
-	{"name": "All_Internet.Inbound.Deny", "properties": {"description": "All_Internet.Inbound.Deny", "protocol": "TCP", "sourcePortRange": "*", "destinationPortRange": "*", "sourceAddressPrefix": "Internet", "destinationAddressPrefix": "*","access": "Deny", "priority": 150, "direction": "Inbound"}}	]}},
-{"apiVersion": "2015-06-15", "type": "Microsoft.Network/networkSecurityGroups",  "name": "[parameters('subnet561NSG')]", "location": "[resourceGroup().location]", "tags": { "displayName": "561_NSG_User_Tier1_W1"}, "properties": {"securityRules": [	{"name": "SSH.Inbound.Allow", "properties": {"description": "SSH.Inbound.Allow", "protocol": "TCP", "sourcePortRange": "*", "destinationPortRange": "22", "sourceAddressPrefix": "Internet", "destinationAddressPrefix": "*","access": "Allow", "priority": 100, "direction": "Inbound"}}	,
-	{"name": "RDP.Inbound.Allow", "properties": {"description": "RDP.Inbound.Allow", "protocol": "TCP", "sourcePortRange": "*", "destinationPortRange": "3389", "sourceAddressPrefix": "Internet", "destinationAddressPrefix": "*","access": "Allow", "priority": 105, "direction": "Inbound"}}	,
-	{"name": "All_Internet.Inbound.Deny", "properties": {"description": "All_Internet.Inbound.Deny", "protocol": "TCP", "sourcePortRange": "*", "destinationPortRange": "*", "sourceAddressPrefix": "Internet", "destinationAddressPrefix": "*","access": "Deny", "priority": 150, "direction": "Inbound"}}	]}},
+    {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('subnet500NSG')]",
+      "location": "[resourceGroup().location]",
+      "tags": { "displayName": "500_NSG_Storage_W1" },
+      "properties": {
+        "securityRules": [
+          {
+            "name": "All_Internet.Inbound.Deny",
+            "properties": {
+              "description": "All_Internet.Inbound.Deny",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "*",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Deny",
+              "priority": 150,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('subnet505NSG')]",
+      "location": "[resourceGroup().location]",
+      "tags": { "displayName": "505_NSG_LB_Storage_W1" },
+      "properties": {
+        "securityRules": [
+          {
+            "name": "All_Internet.Inbound.Deny",
+            "properties": {
+              "description": "All_Internet.Inbound.Deny",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "*",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Deny",
+              "priority": 150,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('subnet560NSG')]",
+      "location": "[resourceGroup().location]",
+      "tags": { "displayName": "560_NSG_User_Tier0_W1" },
+      "properties": {
+        "securityRules": [
+          {
+            "name": "SSH.Inbound.Allow",
+            "properties": {
+              "description": "SSH.Inbound.Allow",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "RDP.Inbound.Allow",
+            "properties": {
+              "description": "RDP.Inbound.Allow",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "3389",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 105,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "All_Internet.Inbound.Deny",
+            "properties": {
+              "description": "All_Internet.Inbound.Deny",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "*",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Deny",
+              "priority": 150,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('subnet561NSG')]",
+      "location": "[resourceGroup().location]",
+      "tags": { "displayName": "561_NSG_User_Tier1_W1" },
+      "properties": {
+        "securityRules": [
+          {
+            "name": "SSH.Inbound.Allow",
+            "properties": {
+              "description": "SSH.Inbound.Allow",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "RDP.Inbound.Allow",
+            "properties": {
+              "description": "RDP.Inbound.Allow",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "3389",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 105,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "All_Internet.Inbound.Deny",
+            "properties": {
+              "description": "All_Internet.Inbound.Deny",
+              "protocol": "TCP",
+              "sourcePortRange": "*",
+              "destinationPortRange": "*",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Deny",
+              "priority": 150,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
 
     /*in metadata spreadsheet, on the Subnet tab, filter on VNET103
     select the columns with Resources and grouped by color.*/

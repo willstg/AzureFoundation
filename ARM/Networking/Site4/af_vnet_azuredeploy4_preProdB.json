@@ -66,7 +66,7 @@
     },
     "subnet310Name": {
       "type": "string",
-      "defaultValue": "310_Web_Test_slgmag_AZ",
+      "defaultValue": "s310_Web_Test_slgmag_AZ",
       "metadata": { "description": "HTTP and HTTPS services" }
     },
     "subnet310NSG": {
@@ -81,7 +81,7 @@
     },
     "subnet315Name": {
       "type": "string",
-      "defaultValue": "315_LB_Web_Test_slgmag_AZ",
+      "defaultValue": "s315_LB_Web_Test_slgmag_AZ",
       "metadata": { "description": "Loadbalanced HTTP and HTTPS Services" }
     },
     "subnet315NSG": {
@@ -96,7 +96,7 @@
     },
     "subnet320Name": {
       "type": "string",
-      "defaultValue": "320_App_Test_slgmag_AZ",
+      "defaultValue": "s320_App_Test_slgmag_AZ",
       "metadata": { "description": "Web Services, OEM applications" }
     },
     "subnet320NSG": {
@@ -111,7 +111,7 @@
     },
     "subnet325Name": {
       "type": "string",
-      "defaultValue": "325_LB_App_Test_slgmag_AZ",
+      "defaultValue": "s325_LB_App_Test_slgmag_AZ",
       "metadata": { "description": "Loadbalaned Web Services, OEM applications" }
     },
     "subnet325NSG": {
@@ -126,7 +126,7 @@
     },
     "subnet330Name": {
       "type": "string",
-      "defaultValue": "330_DB_Test_slgmag_AZ",
+      "defaultValue": "s330_DB_Test_slgmag_AZ",
       "metadata": { "description": "Data for Applications" }
     },
     "subnet330NSG": {
@@ -141,7 +141,7 @@
     },
     "subnet335Name": {
       "type": "string",
-      "defaultValue": "335_LB_DB_Test_slgmag_AZ",
+      "defaultValue": "s335_LB_DB_Test_slgmag_AZ",
       "metadata": { "description": "Loadbalanced Databases" }
     },
     "subnet335NSG": {
@@ -156,7 +156,7 @@
     },
     "subnet350Name": {
       "type": "string",
-      "defaultValue": "350_DMZ_Test_slgmag_AZ",
+      "defaultValue": "s350_DMZ_Test_slgmag_AZ",
       "metadata": { "description": "Internet EndPoint Machines" }
     },
     "subnet350NSG": {
@@ -171,7 +171,7 @@
     },
     "subnet355Name": {
       "type": "string",
-      "defaultValue": "355_LB_DMZ_Test_slgmag_AZ",
+      "defaultValue": "s355_LB_DMZ_Test_slgmag_AZ",
       "metadata": { "description": "Loadbalaned Internet Endpoint systems" }
     },
     "subnet355NSG": {
@@ -186,7 +186,7 @@
     },
     "subnet360Name": {
       "type": "string",
-      "defaultValue": "360_User_Tier0_Test_slgmag_AZ",
+      "defaultValue": "s360_User_Tier0_Test_slgmag_AZ",
       "metadata": { "description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
     },
     "subnet360NSG": {
@@ -201,7 +201,7 @@
     },
     "subnet361Name": {
       "type": "string",
-      "defaultValue": "361_User_Tier1_Test_slgmag_AZ",
+      "defaultValue": "s361_User_Tier1_Test_slgmag_AZ",
       "metadata": { "description": "Tier 1 administrator - manage enterprise servers, services, and applications" }
     },
     "subnet361NSG": {
@@ -216,7 +216,7 @@
     },
     "subnet362Name": {
       "type": "string",
-      "defaultValue": "362_User_Tier2_Test_slgmag_AZ",
+      "defaultValue": "s362_User_Tier2_Test_slgmag_AZ",
       "metadata": { "description": "Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices" }
     },
     "subnet362NSG": {
@@ -231,7 +231,7 @@
     },
     "subnet410Name": {
       "type": "string",
-      "defaultValue": "410_Web_Dev_slgmag_AZ",
+      "defaultValue": "s410_Web_Dev_slgmag_AZ",
       "metadata": { "description": "HTTP and HTTPS services" }
     },
     "subnet410NSG": {
@@ -246,7 +246,7 @@
     },
     "subnet415Name": {
       "type": "string",
-      "defaultValue": "415_LB_Web_Dev_slgmag_AZ",
+      "defaultValue": "s415_LB_Web_Dev_slgmag_AZ",
       "metadata": { "description": "Loadbalanced HTTP and HTTPS Services" }
     },
     "subnet415NSG": {
@@ -261,7 +261,7 @@
     },
     "subnet420Name": {
       "type": "string",
-      "defaultValue": "420_App_Dev_slgmag_AZ",
+      "defaultValue": "s420_App_Dev_slgmag_AZ",
       "metadata": { "description": "Web Services, OEM applications" }
     },
     "subnet420NSG": {
@@ -276,7 +276,7 @@
     },
     "subnet425Name": {
       "type": "string",
-      "defaultValue": "425_LB_App_Dev_slgmag_AZ",
+      "defaultValue": "s425_LB_App_Dev_slgmag_AZ",
       "metadata": { "description": "Loadbalaned Web Services, OEM applications" }
     },
     "subnet425NSG": {
@@ -291,7 +291,7 @@
     },
     "subnet430Name": {
       "type": "string",
-      "defaultValue": "430_DB_Dev_slgmag_AZ",
+      "defaultValue": "s430_DB_Dev_slgmag_AZ",
       "metadata": { "description": "Data for Applications" }
     },
     "subnet430NSG": {
@@ -306,7 +306,7 @@
     },
     "subnet435Name": {
       "type": "string",
-      "defaultValue": "435_LB_DB_Dev_slgmag_AZ",
+      "defaultValue": "s435_LB_DB_Dev_slgmag_AZ",
       "metadata": { "description": "Loadbalanced Databases" }
     },
     "subnet435NSG": {
@@ -321,7 +321,7 @@
     },
     "subnet450Name": {
       "type": "string",
-      "defaultValue": "450_DMZ_Dev_slgmag_AZ",
+      "defaultValue": "s450_DMZ_Dev_slgmag_AZ",
       "metadata": { "description": "Internet EndPoint Machines" }
     },
     "subnet450NSG": {
@@ -336,7 +336,7 @@
     },
     "subnet455Name": {
       "type": "string",
-      "defaultValue": "455_LB_DMZ_Dev_slgmag_AZ",
+      "defaultValue": "s455_LB_DMZ_Dev_slgmag_AZ",
       "metadata": { "description": "Loadbalaned Internet Endpoint systems" }
     },
     "subnet455NSG": {
@@ -351,7 +351,7 @@
     },
     "subnet460Name": {
       "type": "string",
-      "defaultValue": "460_User_Tier0_Dev_slgmag_AZ",
+      "defaultValue": "s460_User_Tier0_Dev_slgmag_AZ",
       "metadata": { "description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
     },
     "subnet460NSG": {
@@ -366,7 +366,7 @@
     },
     "subnet461Name": {
       "type": "string",
-      "defaultValue": "461_User_Tier1_Dev_slgmag_AZ",
+      "defaultValue": "s461_User_Tier1_Dev_slgmag_AZ",
       "metadata": { "description": "Tier 1 administrator - manage enterprise servers, services, and applications" }
     },
     "subnet461NSG": {
@@ -381,7 +381,7 @@
     },
     "subnet462Name": {
       "type": "string",
-      "defaultValue": "462_User_Tier2_Dev_slgmag_AZ",
+      "defaultValue": "s462_User_Tier2_Dev_slgmag_AZ",
       "metadata": { "description": "Tier 2 - Control of user workstations and devices. Tier 2 administrator accounts have administrative control of a significant amount of business value that is hosted on user workstations and devices" }
     },
     "subnet462NSG": {
@@ -399,7 +399,6 @@
       "defaultValue": "GatewaySubnet",
       "metadata": { "description": "Gateway Services to Local Networks" }
     },
-
 
     /*Using the metadata template on the Connection Tab, filter to VNET402 and select
           the columns with Template and grouped by color*/

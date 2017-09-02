@@ -66,7 +66,7 @@
     },
     "subnet210Name": {
       "type": "string",
-      "defaultValue": "210_Web_HBI_slgmag_TX",
+      "defaultValue": "s210_Web_HBI_slgmag_TX",
       "metadata": { "description": "HTTP and HTTPS services" }
     },
     "subnet210NSG": {
@@ -81,7 +81,7 @@
     },
     "subnet215Name": {
       "type": "string",
-      "defaultValue": "215_LB_Web_HBI_slgmag_TX",
+      "defaultValue": "s215_LB_Web_HBI_slgmag_TX",
       "metadata": { "description": "Loadbalanced HTTP and HTTPS Services" }
     },
     "subnet215NSG": {
@@ -96,7 +96,7 @@
     },
     "subnet220Name": {
       "type": "string",
-      "defaultValue": "220_App_HBI_slgmag_TX",
+      "defaultValue": "s220_App_HBI_slgmag_TX",
       "metadata": { "description": "Web Services, OEM applications" }
     },
     "subnet220NSG": {
@@ -111,7 +111,7 @@
     },
     "subnet225Name": {
       "type": "string",
-      "defaultValue": "225_LB_App_HBI_slgmag_TX",
+      "defaultValue": "s225_LB_App_HBI_slgmag_TX",
       "metadata": { "description": "Loadbalaned Web Services, OEM applications" }
     },
     "subnet225NSG": {
@@ -126,7 +126,7 @@
     },
     "subnet230Name": {
       "type": "string",
-      "defaultValue": "230_DB_HBI_slgmag_TX",
+      "defaultValue": "s230_DB_HBI_slgmag_TX",
       "metadata": { "description": "Data for Applications" }
     },
     "subnet230NSG": {
@@ -141,7 +141,7 @@
     },
     "subnet235Name": {
       "type": "string",
-      "defaultValue": "235_LB_DB_HBI_slgmag_TX",
+      "defaultValue": "s235_LB_DB_HBI_slgmag_TX",
       "metadata": { "description": "Loadbalanced Databases" }
     },
     "subnet235NSG": {
@@ -156,7 +156,7 @@
     },
     "subnet250Name": {
       "type": "string",
-      "defaultValue": "250_DMZ_HBI_slgmag_TX",
+      "defaultValue": "s250_DMZ_HBI_slgmag_TX",
       "metadata": { "description": "Internet EndPoint Machines" }
     },
     "subnet250NSG": {
@@ -171,7 +171,7 @@
     },
     "subnet255Name": {
       "type": "string",
-      "defaultValue": "255_LB_DMZ_HBI_slgmag_TX",
+      "defaultValue": "s255_LB_DMZ_HBI_slgmag_TX",
       "metadata": { "description": "Loadbalaned Internet Endpoint systems" }
     },
     "subnet255NSG": {
@@ -186,7 +186,7 @@
     },
     "subnet260Name": {
       "type": "string",
-      "defaultValue": "260_User_Tier0_HBI_slgmag_TX",
+      "defaultValue": "s260_User_Tier0_HBI_slgmag_TX",
       "metadata": { "description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
     },
     "subnet260NSG": {
@@ -201,7 +201,7 @@
     },
     "subnet261Name": {
       "type": "string",
-      "defaultValue": "261_User_Tier1_HBI_slgmag_TX",
+      "defaultValue": "s261_User_Tier1_HBI_slgmag_TX",
       "metadata": { "description": "Tier 1 administrator - manage enterprise servers, services, and applications" }
     },
     "subnet261NSG": {

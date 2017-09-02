@@ -16,19 +16,20 @@
     select the columns labled Parameters and grouped by color*/
     "commentSubnet": { "value": "copy the values for the Subnet tab's Parameters' columns of Site 3 (filter to vent303)" },
     "subnet500Prefix": { "value": "10.128.176.0/24" },
-    "subnet500Name": { "value": "500_Storage_Storage_slgmag_TX" },
+    "subnet500Name": { "value": "s500_Storage_Storage_slgmag_TX" },
     "subnet500NSG": { "value": "500_NSG_Storage_TX" },
     "subnet505Prefix": { "value": "10.128.177.0/24" },
-    "subnet505Name": { "value": "505_LB_Storage_Storage_slgmag_TX" },
+    "subnet505Name": { "value": "s505_LB_Storage_Storage_slgmag_TX" },
     "subnet505NSG": { "value": "505_NSG_LB_Storage_TX" },
     "subnet560Prefix": { "value": "10.128.178.0/25" },
-    "subnet560Name": { "value": "560_User_Tier0_Storage_slgmag_TX" },
+    "subnet560Name": { "value": "s560_User_Tier0_Storage_slgmag_TX" },
     "subnet560NSG": { "value": "560_NSG_User_Tier0_TX" },
     "subnet561Prefix": { "value": "10.128.178.128/25" },
-    "subnet561Name": { "value": "561_User_Tier1_Storage_slgmag_TX" },
+    "subnet561Name": { "value": "s561_User_Tier1_Storage_slgmag_TX" },
     "subnet561NSG": { "value": "561_NSG_User_Tier1_TX" },
     "subnet599Prefix": { "value": "10.128.183.224/27" },
     "subnet599Name": { "value": "GatewaySubnet" },
+
 
     /*got the metadata spreadsheet's Connection tab and filter on VNET303
     select the columns labled Parameters and grouped by color*/

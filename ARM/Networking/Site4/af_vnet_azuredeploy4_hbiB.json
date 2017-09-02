@@ -67,7 +67,7 @@
     },
     "subnet210Name": {
       "type": "string",
-      "defaultValue": "210_Web_HBI_slgmag_AZ",
+      "defaultValue": "s210_Web_HBI_slgmag_AZ",
       "metadata": { "description": "HTTP and HTTPS services" }
     },
     "subnet210NSG": {
@@ -82,7 +82,7 @@
     },
     "subnet215Name": {
       "type": "string",
-      "defaultValue": "215_LB_Web_HBI_slgmag_AZ",
+      "defaultValue": "s215_LB_Web_HBI_slgmag_AZ",
       "metadata": { "description": "Loadbalanced HTTP and HTTPS Services" }
     },
     "subnet215NSG": {
@@ -97,7 +97,7 @@
     },
     "subnet220Name": {
       "type": "string",
-      "defaultValue": "220_App_HBI_slgmag_AZ",
+      "defaultValue": "s220_App_HBI_slgmag_AZ",
       "metadata": { "description": "Web Services, OEM applications" }
     },
     "subnet220NSG": {
@@ -112,7 +112,7 @@
     },
     "subnet225Name": {
       "type": "string",
-      "defaultValue": "225_LB_App_HBI_slgmag_AZ",
+      "defaultValue": "s225_LB_App_HBI_slgmag_AZ",
       "metadata": { "description": "Loadbalaned Web Services, OEM applications" }
     },
     "subnet225NSG": {
@@ -127,7 +127,7 @@
     },
     "subnet230Name": {
       "type": "string",
-      "defaultValue": "230_DB_HBI_slgmag_AZ",
+      "defaultValue": "s230_DB_HBI_slgmag_AZ",
       "metadata": { "description": "Data for Applications" }
     },
     "subnet230NSG": {
@@ -142,7 +142,7 @@
     },
     "subnet235Name": {
       "type": "string",
-      "defaultValue": "235_LB_DB_HBI_slgmag_AZ",
+      "defaultValue": "s235_LB_DB_HBI_slgmag_AZ",
       "metadata": { "description": "Loadbalanced Databases" }
     },
     "subnet235NSG": {
@@ -157,7 +157,7 @@
     },
     "subnet250Name": {
       "type": "string",
-      "defaultValue": "250_DMZ_HBI_slgmag_AZ",
+      "defaultValue": "s250_DMZ_HBI_slgmag_AZ",
       "metadata": { "description": "Internet EndPoint Machines" }
     },
     "subnet250NSG": {
@@ -172,7 +172,7 @@
     },
     "subnet255Name": {
       "type": "string",
-      "defaultValue": "255_LB_DMZ_HBI_slgmag_AZ",
+      "defaultValue": "s255_LB_DMZ_HBI_slgmag_AZ",
       "metadata": { "description": "Loadbalaned Internet Endpoint systems" }
     },
     "subnet255NSG": {
@@ -187,7 +187,7 @@
     },
     "subnet260Name": {
       "type": "string",
-      "defaultValue": "260_User_Tier0_HBI_slgmag_AZ",
+      "defaultValue": "s260_User_Tier0_HBI_slgmag_AZ",
       "metadata": { "description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
     },
     "subnet260NSG": {
@@ -202,7 +202,7 @@
     },
     "subnet261Name": {
       "type": "string",
-      "defaultValue": "261_User_Tier1_HBI_slgmag_AZ",
+      "defaultValue": "s261_User_Tier1_HBI_slgmag_AZ",
       "metadata": { "description": "Tier 1 administrator - manage enterprise servers, services, and applications" }
     },
     "subnet261NSG": {
@@ -691,7 +691,21 @@
         "resources": [
           /*got the metadata spreadsheet's Connection tab and filter on VNET401
     select the columns labled Resources and grouped by color*/
-         {"apiVersion": "2016-06-01","type": "virtualNetworkPeerings","name": "[parameters('ConnectionNamecnct401')]", "location": "[resourceGroup().location]", "dependsOn":["[concat('/subscriptions/', parameters('rmtSubIDcnct401'), '/resourceGroups/', parameters('rmtRGNamecnct401'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct401'))]","[concat('Microsoft.Networks/virtualNetworks/',parameters('vnetNamecnct401'))]"],"comments":"Make sure you put these resources within the Resources of a VNET, like a subnet","properties": {"allowVirtualNetworkAccess": "[parameters('allowVNETAccesscnct401')]", "allowForwardedTraffic":  "[parameters('allowFwdAccesscnct401')]", "allowGatewayTransit":  "[parameters('allowGWAccesscnct401')]", "useRemoteGateways": "[parameters('allowVNETAccesscnct401')]", "remoteVirtualNetwork":{"id": "[concat('/subscriptions/', parameters('rmtSubIDcnct401'), '/resourceGroups/', parameters('rmtRGNamecnct401'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct401'))]"}}},
+          {
+            "apiVersion": "2016-06-01",
+            "type": "virtualNetworkPeerings",
+            "name": "[parameters('ConnectionNamecnct401')]",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [ "[concat('/subscriptions/', parameters('rmtSubIDcnct401'), '/resourceGroups/', parameters('rmtRGNamecnct401'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct401'))]", "[concat('Microsoft.Networks/virtualNetworks/',parameters('vnetNamecnct401'))]" ],
+            "comments": "Make sure you put these resources within the Resources of a VNET, like a subnet",
+            "properties": {
+              "allowVirtualNetworkAccess": "[parameters('allowVNETAccesscnct401')]",
+              "allowForwardedTraffic": "[parameters('allowFwdAccesscnct401')]",
+              "allowGatewayTransit": "[parameters('allowGWAccesscnct401')]",
+              "useRemoteGateways": "[parameters('allowVNETAccesscnct401')]",
+              "remoteVirtualNetwork": { "id": "[concat('/subscriptions/', parameters('rmtSubIDcnct401'), '/resourceGroups/', parameters('rmtRGNamecnct401'),'/providers/Microsoft.Network/virtualNetworks/',parameters('peerVNETNamecnct401'))]" }
+            }
+          },
 
 
 

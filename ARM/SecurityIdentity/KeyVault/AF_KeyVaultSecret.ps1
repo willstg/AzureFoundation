@@ -64,13 +64,13 @@ if($resourceProviders.length) {
 }
 
 
-$keyvaultParametersFilePath="C:\users\WILLS\Source\Repos\AzureFoundation\ARM\KeyVault\AzureDeploy.keyvault.parameters.json"
-$keyvaultTemplateFilePath="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\KeyVault\AzureDeploy.KeyVault.json"
+$keyvaultParametersFilePath="C:\users\WILLS\Source\Repos\AzureFoundation\ARM\SecurityIdentity\KeyVault\AzureDeploy.keyvault.parameters.json"
+$keyvaultTemplateFilePath="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\SecurityIdentity\KeyVault\AzureDeploy.KeyVault.json"
 
 # Start the deployment
 
 Test-AzureRmResourceGroupDeployment -ResourceGroupName $keyvaultResourcegroupName -TemplateFile $keyvaultTemplateFilePath -TemplateParameterFile $keyvaultParametersFilePath;
 New-AzureRmResourceGroupDeployment -ResourceGroupName $keyvaultResourceGroupName -Templatefile $keyvaultTemplateFilePath -TemplateParameterfile $keyvaultParametersFilePath;
 
-get-azurermkeyvault -vaultname "bcit-keyvault-preprod"
+get-azurermkeyvault 
 

@@ -68,12 +68,12 @@
     */
     "subnet210Prefix": {
       "type": "string",
-      "defaultValue": "10.128.16.0/24",
+      "defaultValue": "10.128.80.0/24",
       "metadata": { "description": "HTTP and HTTPS services" }
     },
     "subnet210Name": {
       "type": "string",
-      "defaultValue": "210_Web_HBI_mac_slg_W1",
+      "defaultValue": "s210_Web_HBI_slgmac_W2",
       "metadata": { "description": "HTTP and HTTPS services" }
     },
     "subnet210NSG": {
@@ -83,12 +83,12 @@
     },
     "subnet215Prefix": {
       "type": "string",
-      "defaultValue": "10.128.17.0/24",
+      "defaultValue": "10.128.81.0/24",
       "metadata": { "description": "Loadbalanced HTTP and HTTPS Services" }
     },
     "subnet215Name": {
       "type": "string",
-      "defaultValue": "215_LB_Web_HBI_mac_slg_W1",
+      "defaultValue": "s215_LB_Web_HBI_slgmac_W2",
       "metadata": { "description": "Loadbalanced HTTP and HTTPS Services" }
     },
     "subnet215NSG": {
@@ -98,12 +98,12 @@
     },
     "subnet220Prefix": {
       "type": "string",
-      "defaultValue": "10.128.18.0/24",
+      "defaultValue": "10.128.82.0/24",
       "metadata": { "description": "Web Services, OEM applications" }
     },
     "subnet220Name": {
       "type": "string",
-      "defaultValue": "220_App_HBI_mac_slg_W1",
+      "defaultValue": "s220_App_HBI_slgmac_W2",
       "metadata": { "description": "Web Services, OEM applications" }
     },
     "subnet220NSG": {
@@ -113,12 +113,12 @@
     },
     "subnet225Prefix": {
       "type": "string",
-      "defaultValue": "10.128.19.0/24",
+      "defaultValue": "10.128.83.0/24",
       "metadata": { "description": "Loadbalaned Web Services, OEM applications" }
     },
     "subnet225Name": {
       "type": "string",
-      "defaultValue": "225_LB_App_HBI_mac_slg_W1",
+      "defaultValue": "s225_LB_App_HBI_slgmac_W2",
       "metadata": { "description": "Loadbalaned Web Services, OEM applications" }
     },
     "subnet225NSG": {
@@ -128,12 +128,12 @@
     },
     "subnet230Prefix": {
       "type": "string",
-      "defaultValue": "10.128.20.0/24",
+      "defaultValue": "10.128.84.0/24",
       "metadata": { "description": "Data for Applications" }
     },
     "subnet230Name": {
       "type": "string",
-      "defaultValue": "230_DB_HBI_mac_slg_W1",
+      "defaultValue": "s230_DB_HBI_slgmac_W2",
       "metadata": { "description": "Data for Applications" }
     },
     "subnet230NSG": {
@@ -143,12 +143,12 @@
     },
     "subnet235Prefix": {
       "type": "string",
-      "defaultValue": "10.128.21.0/24",
+      "defaultValue": "10.128.85.0/24",
       "metadata": { "description": "Loadbalanced Databases" }
     },
     "subnet235Name": {
       "type": "string",
-      "defaultValue": "235_LB_DB_HBI_mac_slg_W1",
+      "defaultValue": "s235_LB_DB_HBI_slgmac_W2",
       "metadata": { "description": "Loadbalanced Databases" }
     },
     "subnet235NSG": {
@@ -158,12 +158,12 @@
     },
     "subnet250Prefix": {
       "type": "string",
-      "defaultValue": "10.128.22.0/24",
+      "defaultValue": "10.128.86.0/24",
       "metadata": { "description": "Internet EndPoint Machines" }
     },
     "subnet250Name": {
       "type": "string",
-      "defaultValue": "250_DMZ_HBI_mac_slg_W1",
+      "defaultValue": "s250_DMZ_HBI_slgmac_W2",
       "metadata": { "description": "Internet EndPoint Machines" }
     },
     "subnet250NSG": {
@@ -173,12 +173,12 @@
     },
     "subnet255Prefix": {
       "type": "string",
-      "defaultValue": "10.128.23.0/24",
+      "defaultValue": "10.128.87.0/24",
       "metadata": { "description": "Loadbalaned Internet Endpoint systems" }
     },
     "subnet255Name": {
       "type": "string",
-      "defaultValue": "255_LB_DMZ_HBI_mac_slg_W1",
+      "defaultValue": "s255_LB_DMZ_HBI_slgmac_W2",
       "metadata": { "description": "Loadbalaned Internet Endpoint systems" }
     },
     "subnet255NSG": {
@@ -188,12 +188,12 @@
     },
     "subnet260Prefix": {
       "type": "string",
-      "defaultValue": "10.128.26.0/25",
+      "defaultValue": "10.128.90.0/25",
       "metadata": { "description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
     },
     "subnet260Name": {
       "type": "string",
-      "defaultValue": "260_User_Tier0_HBI_mac_slg_W1",
+      "defaultValue": "s260_User_Tier0_HBI_slgmac_W2",
       "metadata": { "description": "Tier 0 - Direct Control of enterprise identities in the environment. Tier 0 includes accounts, groups, and other assets that have direct or indirect administrative control of the Active Directory forest, domains, or domain controllers, and all the assets in it. The security sensitivity of all Tier 0 assets is equivalent as they are all effectively in control of each other" }
     },
     "subnet260NSG": {
@@ -203,12 +203,12 @@
     },
     "subnet261Prefix": {
       "type": "string",
-      "defaultValue": "10.128.26.128/25",
+      "defaultValue": "10.128.90.128/25",
       "metadata": { "description": "Tier 1 administrator - manage enterprise servers, services, and applications" }
     },
     "subnet261Name": {
       "type": "string",
-      "defaultValue": "261_User_Tier1_HBI_mac_slg_W1",
+      "defaultValue": "s261_User_Tier1_HBI_slgmac_W2",
       "metadata": { "description": "Tier 1 administrator - manage enterprise servers, services, and applications" }
     },
     "subnet261NSG": {
@@ -216,6 +216,7 @@
       "defaultValue": "261_NSG_User_Tier1",
       "metadata": { "description": "NSG: Tier 1 administrator - manage enterprise servers, services, and applications" }
     },
+
     /*using the metadata spreadsheet, tab Connections, filter on VNET101
     select the Template columns grouped by color */
     "ConnectionNamecnct110": {

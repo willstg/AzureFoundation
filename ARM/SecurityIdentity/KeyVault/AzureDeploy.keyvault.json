@@ -18,7 +18,7 @@
     },
     "vaultSKU": {
       "type": "string",
-      "allowedValue": [ "Standard", "Premium" ],
+      "allowedValues" : [ "Standard", "Premium" ],
       "metadata": { "description": "Name of the KeyValut SKU.  " }
     },
 
@@ -86,4 +86,3 @@
   ]
 }
 
-] }
