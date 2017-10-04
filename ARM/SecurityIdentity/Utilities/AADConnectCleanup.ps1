@@ -22,7 +22,7 @@ $AllGroups = Get-MsolGroup
 $AllGroupMemebership =  Get-MsolGroupMember -GroupObjectId $Group.ObjectId
 
 foreach($user in $AllUsers | Where-Object {$_.UserPrincipalName -match $UPNSuffix}){
-$user = get-msoluser -UserPrincipalName "willst@slg044o365.onmicrosoft.com"
+$user = get-msoluser -UserPrincipalName "binhcao@gov.slg044.us"
 if($user.LastDirSyncTime -match "2017" ){
 write-host $User.LastDirSyncTime", "$user.UserPrincipalName
 $user | remove-msoluser
