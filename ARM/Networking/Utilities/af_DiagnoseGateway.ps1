@@ -1,4 +1,4 @@
-﻿$site=1
+﻿$site=4
 
 $VPNGWResourceGroupName1 = "rg_vnet_services_W1"
 $VPNGWName1 = "gw_Services_W1_Vpn"
@@ -26,11 +26,22 @@ if($site -eq 4){
 $VPNGWResourceGroupName=$VPNGWResourceGroupName4
 $VPNGWName=$VPNGWName4
 }
+
+
 #LocalNetworkConnection - The location we are connecting to's details.
 $LocalGW = Get-AzureRmLocalNetworkGateway -ResourceGroupName $VPNGWResourceGroupName
 #The VNET's Gateway, what allows traffic from other locations into the VNET
 $VPNGW = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $VPNGWResourceGroupName
 $VPNConnections = Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $VPNGWResourceGroupName
+$VPNConnections
+$VPNGWResourceGroupName
+
+foreach($Connection in $VPNConnections){
+Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $VPNGWResourceGroupName -name $Connection.name
+$Connection
+$Connection.Name
+
+}
 
 #Is Routing Working?
 $VPNPeerStatus = Get-AzureRmVirtualNetworkGatewayBGPPeerStatus -ResourceGroupName $VPNGWResourceGroupName -VirtualNetworkGatewayName $VPNGWName

@@ -27,4 +27,4 @@ $TimeRange = Get-DateRange
 
 #Get-AzureRmResourceProvider -ListAvailable | Where-Object { $_.ProviderNamespace -eq "Microsoft.Commerce" }
 $UsageDetails = Get-UsageAggregates -ReportedStartTime $TimeRange.Start -ReportedEndTime $TimeRange.End -AggregationGranularity Daily -ShowDetails $true -ContinuationToken $null
-$usageDetails | export-csv -path 'c:\temp\subUsage.csv'
+$usageDetails | export-csv -path 'c:\temp\txdot\subUsage1.csv'

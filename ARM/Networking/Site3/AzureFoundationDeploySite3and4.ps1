@@ -73,6 +73,7 @@ Write-Host "Logging in...";
 $Environment = "AzureUSGovernment"
 #$Environment = 'AzureCloud'
 Login-AzureRmAccount -EnvironmentName $Environment;
+$Environment
 $subID_HBI='97eba262-9086-4a3e-9770-dcfef6c3df30'
 $SubName_HBI= 'slgmag_managed_HBI'
 $subID_PreProd='a4b962d2-6b17-4c38-af02-010a6e774379'
@@ -118,7 +119,10 @@ if($resourceProviders.length) {
 #>
 
 Select-AzureRmSubscription -SubscriptionID $SubID_Services;
+$SubID_Services
+
 $servicesResourceGroup1 = Get-AzureRmResourceGroup -Name $servicesResourceGroupName1 -ErrorAction SilentlyContinue
+$servicesResourceGroup2 = Get-AzureRmResourceGroup -Name $servicesResourceGroupName2 -ErrorAction SilentlyContinue
 
 #Create or check for existing resource group
 if(!$servicesResourceGroup1)

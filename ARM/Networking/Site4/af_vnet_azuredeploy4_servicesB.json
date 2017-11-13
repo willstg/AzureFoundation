@@ -470,7 +470,7 @@
       "type": "string",
       "defaultValue": "ExpressRoute",
       "metadata": { "description": "The type of gateway that is being created.  This can be either StaticRouting or DynamicRouting." }
-    }
+    },
     "erCircuitName": {
       "type": "String",
       "defaultValue": "slgmag_Services_ExpressRoute",
@@ -546,7 +546,7 @@
       "type": "string",
       "defaultValue": "Vpn",
       "metadata": { "description": "The type of gateway that is being created.  This can be either StaticRouting or DynamicRouting." }
-    }
+    },
     "SubIDgw4042": {
       "type": "string",
       "metadata": { "description": "The Subscrition ID" }
@@ -2157,55 +2157,7 @@
     },
     /*goto the Metadata spreadsheet and the Gateway Tab, filter on VENT404
     select the DependsOn columns grouped by color.*/
-    {
-      "apiVersion": "[variables('apiversion')]",
-      "type": "Microsoft.Network/publicIPAddresses",
-      "name": "[parameters('PublicIPNamegw404')]",
-      "location": "[resourceGroup().location]",
-      "properties": { "publicIPAllocationMethod": "Dynamic" }
-    },
-    {
-      "apiVersion": "[variables('apiversion')]",
-      "type": "Microsoft.Network/virtualNetworkGateways",
-      "name": "[parameters('GatewayNamegw404')]",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [ "[concat('Microsoft.Network/publicIPAddresses/', parameters('PublicIPNamegw404'))]", "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]" ],
-      "properties": {
-        "ipConfigurations": [
-          {
-            "properties": {
-              "privateIPAllocationMethod": "Dynamic",
-              "subnet": { "id": "[variables('subnet799Ref')]" },
-              "publicIPAddress": { "id": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('PublicIPNamegw404'))]" }
-            },
-            "name": "default"
-          }
-        ],
-        "sku": {
-          "name": "[parameters('gatewaySKUgw404')]",
-          "tier": "[parameters('gatewaySKUgw404')]"
-        },
-        "gatewayType": "[parameters('GatewayTypegw404')]"
-      }
-    },
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/expressRouteCircuits",
-      "name": "[parameters('erCircuitName')]",
-      "location": "[resourceGroup().location]",
-      "sku": {
-        "name": "[concat(parameters('erSKUTier'),'_', parameters('erSKUFamily'))]",
-        "tier": "[parameters('erSKUTier')]",
-        "family": "[parameters('erSKUFamily')]"
-      },
-      "properties": {
-        "serviceProviderProperties": {
-          "serviceProviderName": "[parameters('erSPName')]",
-          "peeringLocation": "[parameters('erPeeringLocation')]",
-          "bandwidthInMbps": "[parameters('erBandwidth')]"
-        }
-      }
-    },
+
     {
       "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/publicIPAddresses",
@@ -2218,7 +2170,7 @@
       "type": "Microsoft.Network/virtualNetworkGateways",
       "name": "[parameters('GatewayNamegw4042')]",
       "location": "[resourceGroup().location]",
-      "dependsOn": [ "[concat('Microsoft.Network/publicIPAddresses/', parameters('PublicIPNamegw4042'))]", "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]", "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('GatewayNamegw404'))]" ],
+      "dependsOn": [ "[concat('Microsoft.Network/publicIPAddresses/', parameters('PublicIPNamegw4042'))]", "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]" ],
       "properties": {
         "ipConfigurations": [
           {

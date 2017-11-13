@@ -13,10 +13,10 @@ $SubName_Services="MAC_SLG_Managed_Services"
 $SubID_Services='30457dd5-e56b-416b-9228-d48b37fe7caa'
 Select-AzureRmSubscription -SubscriptionID $SubID_Services;
 #Change a guest to a Member
-$users = get-msoluser -UserPrincipalName "tonydevo_microsoft.com#EXT#@Magtaggov.onmicrosoft.com"
+$users = get-msoluser 
 foreach($User in $users)
 {
 
-#$user | Set-MsolUser -UserType Member
+$user | Set-MsolUser -UserType Member
 }
 

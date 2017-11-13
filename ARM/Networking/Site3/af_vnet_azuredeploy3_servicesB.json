@@ -2101,55 +2101,7 @@
     /*goto the Metadata spreadsheet and the Gateway Tab, filter on VENT304
     select the DependsOn columns grouped by color.*/
 
-    {
-      "apiVersion": "[variables('apiversion')]",
-      "type": "Microsoft.Network/publicIPAddresses",
-      "name": "[parameters('PublicIPNamegw304')]",
-      "location": "[resourceGroup().location]",
-      "properties": { "publicIPAllocationMethod": "Dynamic" }
-    },
-    {
-      "apiVersion": "[variables('apiversion')]",
-      "type": "Microsoft.Network/virtualNetworkGateways",
-      "name": "[parameters('GatewayNamegw304')]",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [ "[concat('Microsoft.Network/publicIPAddresses/', parameters('PublicIPNamegw304'))]", "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]" ],
-      "properties": {
-        "ipConfigurations": [
-          {
-            "properties": {
-              "privateIPAllocationMethod": "Dynamic",
-              "subnet": { "id": "[variables('subnet799Ref')]" },
-              "publicIPAddress": { "id": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('PublicIPNamegw304'))]" }
-            },
-            "name": "default"
-          }
-        ],
-        "sku": {
-          "name": "[parameters('gatewaySKUgw304')]",
-          "tier": "[parameters('gatewaySKUgw304')]"
-        },
-        "gatewayType": "[parameters('GatewayTypegw304')]"
-      }
-    },
-    {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/expressRouteCircuits",
-      "name": "[parameters('erCircuitName')]",
-      "location": "[resourceGroup().location]",
-      "sku": {
-        "name": "[concat(parameters('erSKUTier'),'_', parameters('erSKUFamily'))]",
-        "tier": "[parameters('erSKUTier')]",
-        "family": "[parameters('erSKUFamily')]"
-      },
-      "properties": {
-        "serviceProviderProperties": {
-          "serviceProviderName": "[parameters('erSPName')]",
-          "peeringLocation": "[parameters('erPeeringLocation')]",
-          "bandwidthInMbps": "[parameters('erBandwidth')]"
-        }
-      }
-    },
+
     {
       "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/publicIPAddresses",
@@ -2162,7 +2114,10 @@
       "type": "Microsoft.Network/virtualNetworkGateways",
       "name": "[parameters('GatewayNamegw3042')]",
       "location": "[resourceGroup().location]",
-      "dependsOn": [ "[concat('Microsoft.Network/publicIPAddresses/', parameters('PublicIPNamegw3042'))]", "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]", "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('GatewayNamegw304'))]" ],
+      "dependsOn": [
+        "[concat('Microsoft.Network/publicIPAddresses/', parameters('PublicIPNamegw3042'))]",
+        "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]",
+      ],
       "properties": {
         "ipConfigurations": [
           {
