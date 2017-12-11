@@ -1,4 +1,4 @@
-﻿$site=4
+﻿$site=3
 
 $VPNGWResourceGroupName1 = "rg_vnet_services_W1"
 $VPNGWName1 = "gw_Services_W1_Vpn"
