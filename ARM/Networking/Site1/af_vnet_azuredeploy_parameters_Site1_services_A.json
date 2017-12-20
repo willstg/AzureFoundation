@@ -11,11 +11,12 @@
     copy the data from the columns that have the word prerameters in them.  the columns 
     are colored to show the grouping.
     */
-    "vnet104vnetName": { "value": "vnet_services_w1" },
+    "vnet104vnetName": { "value": "vnet1a_services_w1" },
     "vnet104vnetAddressPrefix": { "value": "10.128.56.0/21" },
     "vnet104locationName": { "value": "westcentralus" },
+    "vnet104dnsServers": { "value": [ "10.128.59.36" ] },
     "vnet104SubscriptionID": { "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9" },
-    "vnet104ResourceGroupName": { "value": "rg_vnet_services_w1" },
+    "vnet104ResourceGroupName": { "value": "rg_network_vnet1a_services_w1" }, /*Update this in the PowerShell*/
 
     /*the subnet tab of the metadata spreadsheet and filter the data with VNET104
         copy the data from the columns that have the word prerameters in them.  the columns 
@@ -56,77 +57,46 @@
     "snet185NSGName": { "value": "662NSG" },
     "snet115Name": { "value": "GatewaySubnet" },
     "snet115IP": { "value": "10.128.63.224/27" },
-    "snet115NSGName": { "value": "799NSG" },
-    "snet274Name": { "value": "s600_Services_Services_W2" },
-    "snet274IP": { "value": "10.128.120.0/24" },
-    "snet274NSGName": { "value": "600NSG" },
-    "snet275Name": { "value": "s625_LB_Services_Services_W2" },
-    "snet275IP": { "value": "10.128.122.0/25" },
-    "snet275NSGName": { "value": "625NSG" },
-    "snet280Name": { "value": "s680_RTR_InsideTest_Services_W2" },
-    "snet280IP": { "value": "10.128.123.0/28" },
-    "snet280NSGName": { "value": "680NSG" },
-    "snet282Name": { "value": "s681_RTR_OutsideTest_Services_W2" },
-    "snet282IP": { "value": "10.128.123.16/28" },
-    "snet282NSGName": { "value": "681NSG" },
-    "snet283Name": { "value": "s682_FW_IntTest_Services_W2" },
-    "snet283IP": { "value": "10.128.123.32/28" },
-    "snet283NSGName": { "value": "682NSG" },
-    "snet284Name": { "value": "s683_FW_ExtTest_Services_W2" },
-    "snet284IP": { "value": "10.128.123.64/28" },
-    "snet284NSGName": { "value": "683NSG" },
-    "snet276Name": { "value": "s650_DMZ_Services_W2" },
-    "snet276IP": { "value": "10.128.124.0/24" },
-    "snet276NSGName": { "value": "650NSG" },
-    "snet279Name": { "value": "s655_LB_DMZ_Services_W2" },
-    "snet279IP": { "value": "10.128.125.0/24" },
-    "snet279NSGName": { "value": "655NSG" },
-    "snet277Name": { "value": "s660_User_Tier0_Services_W2" },
-    "snet277IP": { "value": "10.128.126.0/26" },
-    "snet277NSGName": { "value": "660NSG" },
-    "snet278Name": { "value": "s661_User_Tier1_Services_W2" },
-    "snet278IP": { "value": "10.128.126.64/26" },
-    "snet278NSGName": { "value": "661NSG" },
-    "snet285Name": { "value": "s662_User_Tier2_Services_W2" },
-    "snet285IP": { "value": "10.128.126.128/26" },
-    "snet285NSGName": { "value": "662NSG" },
-    "snet215Name": { "value": "GatewaySubnet" },
-    "snet215IP": { "value": "10.128.127.224/27" },
-    "snet215NSGName": { "value": "799NSG" },
+
 
     /*the Peering tab of the metadata spreadsheet and filter the data with VNET104
         copy the data from the columns that have the word prerameters in them.  the columns 
     are colored to show the grouping.
     */
-    "pr104PeeringName": { "value": "vnet_services_w1_vnet_prod_w1" },
-    "pr104destSubscriptionID": { "value": "\"\"vnet100vnetName\": {\"value\": \"vnet_prod_w1\"},\"" },
-    "pr104destResourceGroup": { "value": "\"\"vnet100vnetAddressPrefix\": {\"value\": \"10.128.0.0/20\"},\"" },
-    "pr104DestinationVNET": { "value": "vnet_prod_w1" },
+    "pr104PeeringName": { "value": "vnet1a_services_w1_vnet1a_prod_w1" },
+    "pr104destSubscriptionID": { "value": "ec1cea2e-92aa-45a7-89b0-d9fc40df2beb" },
+    "pr104destResourceGroup": { "value": "rg_network_vnet1a_prod_w1" },
+    "pr104DestinationVNET": { "value": "vnet1a_prod_w1" },
     "pr104allowVNETAccess": { "value": true },
     "pr104allowFwdAccess": { "value": true },
     "pr104allowGWAccess": { "value": true },
     "pr104useRemoteGateway": { "value": false },
-    "pr105PeeringName": { "value": "vnet_services_w1_vnet_hbi_w1" },
-    "pr105destSubscriptionID": { "value": "\"\"vnet101vnetName\": {\"value\": \"vnet_hbi_w1\"},\"" },
-    "pr105destResourceGroup": { "value": "\"\"vnet101vnetAddressPrefix\": {\"value\": \"10.128.16.0/20\"},\"" },
+    "pr105PeeringName": { "value": "vnet1a_services_w1_vnet1a_hbi_w1" },
+    "pr105destSubscriptionID": { "value": "ce38c0ef-22f5-458d-b1f7-e3890e2471f2" },
+    "pr105destResourceGroup": { "value": "rg_network_vnet1a_hbi_w1" },
+    "pr105DestinationVNET": { "value": "vnet1a_hbi_w1" },
     "pr105allowVNETAccess": { "value": true },
     "pr105allowFwdAccess": { "value": true },
     "pr105allowGWAccess": { "value": true },
     "pr105useRemoteGateway": { "value": false },
-    "pr106PeeringName": { "value": "vnet_services_w1_vnet_preprod_w1" },
-    "pr106destSubscriptionID": { "value": "\"\"vnet102vnetName\": {\"value\": \"vnet_preprod_w1\"},\"" },
-    "pr106destResourceGroup": { "value": "\"\"vnet102vnetAddressPrefix\": {\"value\": \"10.128.32.0/20\"},\"" },
+    "pr106PeeringName": { "value": "vnet1a_services_w1_vnet1a_preprod_w1" },
+    "pr106destSubscriptionID": { "value": "a7d928df-fc97-4f02-adae-3d7cdeb7c8cb" },
+    "pr106destResourceGroup": { "value": "rg_network_vnet1a_preprod_w1" },
+    "pr106DestinationVNET": { "value": "vnet1a_preprod_w1" },
     "pr106allowVNETAccess": { "value": true },
     "pr106allowFwdAccess": { "value": true },
     "pr106allowGWAccess": { "value": true },
     "pr106useRemoteGateway": { "value": false },
-    "pr107PeeringName": { "value": "vnet_services_w1_vnet_storage_w1" },
-    "pr107destSubscriptionID": { "value": "\"\"vnet103vnetName\": {\"value\": \"vnet_storage_w1\"},\"" },
-    "pr107destResourceGroup": { "value": "\"\"vnet103vnetAddressPrefix\": {\"value\": \"10.128.48.0/21\"},\"" },
+    "pr107PeeringName": { "value": "vnet1a_services_w1_vnet1a_storage_w1" },
+    "pr107destSubscriptionID": { "value": "6e5d19d2-a324-470a-b24f-57ac0d3221a1" },
+    "pr107destResourceGroup": { "value": "rg_network_vnet1a_storage_w1" },
+    "pr107DestinationVNET": { "value": "vnet1a_storage_w1" },
     "pr107allowVNETAccess": { "value": true },
     "pr107allowFwdAccess": { "value": true },
     "pr107allowGWAccess": { "value": true },
     "pr107useRemoteGateway": { "value": false },
+
+
 
     /*the localnetworkgateway tab of the metadata spreadsheet and filter the data with VNET104
         copy the data from the columns that have the word prerameters in them.  the columns 
@@ -148,62 +118,60 @@
     "lngw02apeerWeight": { "value": 0 },
     "lngw304aname": { "value": "lngw_site3a_tx" },
     "lngw304agatewayIPAddress": { "value": "52.238.119.32" },
-    "lngw304alocalNetworkAddressSpace": { "value": [ "10.128.191.254/27" ] },
+    "lngw304alocalNetworkAddressSpace": { "value": [ "10.128.191.224/27" ] },
     "lngw304aConfigureBGP": { "value": true },
     "lngw304aASNNumber": { "value": 65523 },
     "lngw304aBGPPeerIPAddress": { "value": "10.128.191.250" },
     "lngw304apeerWeight": { "value": 0 },
     "lngw304bname": { "value": "lngw_site3b_tx" },
     "lngw304bgatewayIPAddress": { "value": "52.238.119.32" },
-    "lngw304blocalNetworkAddressSpace": { "value": [ "10.128.191.254/27" ] },
+    "lngw304blocalNetworkAddressSpace": { "value": [ "10.128.191.224/27" ] },
     "lngw304bConfigureBGP": { "value": true },
     "lngw304bASNNumber": { "value": 65523 },
     "lngw304bBGPPeerIPAddress": { "value": "10.128.191.251" },
     "lngw304bpeerWeight": { "value": 0 },
 
+
     /*the gateway tab of the metadata spreadsheet and filter the data with VNET104
         copy the data from the columns that have the word prerameters in them.  the columns 
     are colored to show the grouping.
     */
-    "gw104vGatewayName": { "value": "gw_vnet_services_w1" },
-    "gw104vvnetName": { "value": "vnet_services_w1" },
+    "gw104vGatewayName": { "value": "gw_vnet1a_services_w1" },
+    "gw104vvnetName": { "value": "vnet1a_services_w1" },
     "gw104vGatewayType": { "value": "Vpn" },
     "gw104vVPNType": { "value": "RouteBased" },
-    "gw104vEnableActiveActive": { "value": "TRUE" },
-    "gwSKUNameTiergw104v": { "value": "VpnGw1" },
-    "gw104vPublicIPName1": { "value": "gw_vnet_services_w1_gwpip1" },
-    "gw104vPublicIPName2": { "value": "gw_vnet_services_w1_gwpip2" },
+    "gw104vEnableActiveActive": { "value": true },
+    "gw104vgwSKUNameTier": { "value": "VpnGw1" },
+    "gw104vPublicIPName1": { "value": "gw_vnet1a_services_w1_gwpip1" },
+    "gw104vPublicIPName2": { "value": "gw_vnet1a_services_w1_gwpip2" },
     "gw104venableBGP": { "value": true },
     "gw104vbgpASN": { "value": 65521 },
     "gw104vbgpRoutingWeight": { "value": 100 },
+
 
     /*the connection tab of the metadata spreadsheet and filter the data with VNET104
         copy the data from the columns that have the word prerameters in them.  the columns 
     are colored to show the grouping.
     */
-    "cnct100ConnectionName": { "value": "cnct_IPSec_gw_vnet_services_w1_To_lngw_boulder_dc1" },
-    "cnct100gwName": { "value": "gw_vnet_services_w1" },
+    "cnct100ConnectionName": { "value": "cnct_IPSec_gw_vnet1a_services_w1_To_lngw_boulder_dc1" },
+    "cnct100gwName": { "value": "gw_vnet1a_services_w1" },
     "cnct100connectionType": { "value": "IPSec" },
     "cnct100sharedKey": { "value": "mysharedkey" },
     "cnct100routingWeight": { "value": 0 },
-    "cnct101ConnectionName": { "value": "cnct_Vnet2Vnet_gw_vnet_services_w1_To_gw_vnet_services_w2" },
-    "cnct101gwName": { "value": "gw_vnet_services_w1" },
-    "cnct101connectionType": { "value": "Vnet2Vnet" },
-    "cnct101remoteSubscriptionID": { "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9" },
-    "cnct101remoteResourceGroupName": { "value": "rg_vnet_services_w2" },
-    "cnct101remoteGWName": { "value": "gw_vnet_services_w2" },
-    "cnct101sharedKey": { "value": "mysharedkey" },
-    "cnct101routingWeight": { "value": 0 },
-    "cnct102ConnectionName": { "value": "cnct_IPSec_gw_vnet_services_w1_To_lngw_site3a_tx" },
-    "cnct102gwName": { "value": "gw_vnet_services_w1" },
+    "cnct100enableBGP": { "value": true },
+    "cnct102ConnectionName": { "value": "cnct_IPSec_gw_vnet1a_services_w1_To_lngw_site3a_tx" },
+    "cnct102gwName": { "value": "gw_vnet1a_services_w1" },
     "cnct102connectionType": { "value": "IPSec" },
     "cnct102sharedKey": { "value": "mysharedkey" },
     "cnct102routingWeight": { "value": 0 },
-    "cnct103ConnectionName": { "value": "cnct_IPSec_gw_vnet_services_w1_To_lngw_site3b_tx" },
-    "cnct103gwName": { "value": "gw_vnet_services_w1" },
+    "cnct102enableBGP": { "value": true },
+    "cnct103ConnectionName": { "value": "cnct_IPSec_gw_vnet1a_services_w1_To_lngw_site3b_tx" },
+    "cnct103gwName": { "value": "gw_vnet1a_services_w1" },
     "cnct103connectionType": { "value": "IPSec" },
     "cnct103sharedKey": { "value": "mysharedkey" },
-    "cnct103routingWeight": { "value": 0 }
+    "cnct103routingWeight": { "value": 0 },
+    "cnct103enableBGP": { "value": true }
+
 
   }
 }
