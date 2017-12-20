@@ -177,9 +177,6 @@ This section is where we build the NSG for the VNET afr locatedry where json fil
 Test-AzureRmResourceGroupDeployment  -ResourceGroupName $ResourceGroupName_vnet104 -TemplateFile $TemplatePathVNET104 -TemplateParameterFile $ParametersPathVNET104;
 
 New-AzureRmResourceGroupDeployment -name $deploymentName -ResourceGroupName $ResourceGroupName_vnet104 -Templatefile $TemplatePathVNET104 -TemplateParameterfile $ParametersPathVNET104;
-#Debug
-#$deploymentName = "AzureFoundationSite1A_Debug1b"
-#New-AzureRmResourceGroupDeployment -name $deploymentName -ResourceGroupName $ResourceGroupName_vnet104 -Templatefile $TemplatePathVNET104 -TemplateParameterfile $ParametersPathVNET104 -DeploymentDebugLogLevel All;
 
 
 # Start the deployment
@@ -187,7 +184,10 @@ New-AzureRmResourceGroupDeployment -name $deploymentName -ResourceGroupName $Res
 Test-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName_vnet204 -TemplateFile $TemplatePathVNET204 -TemplateParameterFile $ParametersPathVNET204;
 
 New-AzureRmResourceGroupDeployment -name $deploymentName -ResourceGroupName $ResourceGroupName_vnet204 -Templatefile $TemplatePathVNET204 -TemplateParameterfile $ParametersPathVNET204;
-#Troubleshooting
+<#roubleshooting
+#Debug
+$deploymentName = "AzureFoundationSite1A_Debug1b"
+New-AzureRmResourceGroupDeployment -name $deploymentName -ResourceGroupName $ResourceGroupName_vnet104 -Templatefile $TemplatePathVNET104 -TemplateParameterfile $ParametersPathVNET104 -DeploymentDebugLogLevel All;
 $Operations = Get-AzureRmResourceGroupDeploymentOperation -DeploymentName $deploymentName -ResourceGroupName $ResourceGroupName_vnet204
 foreach($Operation in $Operations){
 Write-Host $operation.id
@@ -195,6 +195,7 @@ $Operation.properties.request | ConvertTo-Json -Depth 10
     Write-Host "Request:"
 $Operation.properties.response | ConvertTo-Json -Depth 10
  Write-Host "Response:"}
+#>
 
 <#
 **************************Production Subscription***************
@@ -234,13 +235,13 @@ This section is where we build the NSG for the VNET
 
 # Start the deployment
 
-Test-AzureRmResourceGroupDeployment -name $deploymentName -ResourceGroupName $ResourceGroupName_vnet100 -TemplateFile $TemplatePathVNET100 -TemplateParameterFile $ParametersPathVNET100;
+Test-AzureRmResourceGroupDeployment  -ResourceGroupName $ResourceGroupName_vnet100 -TemplateFile $TemplatePathVNET100 -TemplateParameterFile $ParametersPathVNET100;
 
 New-AzureRmResourceGroupDeployment -name $deploymentName -ResourceGroupName $ResourceGroupName_vnet100 -Templatefile $TemplatePathVNET100 -TemplateParameterfile $ParametersPathVNET100;
 
 
 # Start the deployment
-Test-AzureRmResourceGroupDeployment -name $deploymentName -ResourceGroupName $ResourceGroupName_vnet200 -TemplateFile $TemplatePathVNET200 -TemplateParameterFile $ParametersPathVNET200;
+Test-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName_vnet200 -TemplateFile $TemplatePathVNET200 -TemplateParameterFile $ParametersPathVNET200;
 
 New-AzureRmResourceGroupDeployment -name $deploymentName -ResourceGroupName $ResourceGroupName_vnet200 -Templatefile $TemplatePathVNET200 -TemplateParameterfile $ParametersPathVNET200;
 

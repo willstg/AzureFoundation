@@ -11,43 +11,43 @@
     copy the data from the columns that have the word prerameters in them.  the columns 
     are colored to show the grouping.
     */
-    "vnet103vnetName": { "value": "testvnet_storage_w1" }, /*Changed for testing*/
-    "vnet103vnetAddressPrefix": { "value": "10.128.48.0/21" },
-    "vnet103locationName": { "value": "westcentralus" },
-    "vnet103dnsServers": { "value": [ "10.128.59.36" ] },
-    "vnet103SubscriptionID": { "value": "6e5d19d2-a324-470a-b24f-57ac0d3221a1" },
-    "vnet103ResourceGroupName": { "value": "rg_network_vnet_storage_w1" },
+    "vnet303vnetName": { "value": "vnet1a_storage_tx" },
+    "vnet303vnetAddressPrefix": { "value": "10.128.176.0/21" },
+    "vnet303locationName": { "value": "usgovtexas" },
+    "vnet303dnsServers": { "value": [] },
+    "vnet303SubscriptionID": { "value": "0223b7af-344f-42cd-bed2-5ebbc7d06d5d" },
+    "vnet303ResourceGroupName": { "value": "rg_network_vnet1a_storage_tx" },
+
 
     /*the subnet tab of the metadata spreadsheet and filter the data with VNET103
         copy the data from the columns that have the word prerameters in them.  the columns 
     are colored to show the grouping.
     */
-    "snet166Name": { "value": "s500_Storage_Storage_W1" },
-    "snet166IP": { "value": "10.128.48.0/24" },
-    "snet166NSGName": { "value": "500NSG" },
-    "snet167Name": { "value": "s505_LB_Storage_Storage_W1" },
-    "snet167IP": { "value": "10.128.49.0/24" },
-    "snet167NSGName": { "value": "505NSG" },
-    "snet168Name": { "value": "s560_User_Tier0_Storage_W1" },
-    "snet168IP": { "value": "10.128.50.0/25" },
-    "snet168NSGName": { "value": "560NSG" },
-    "snet169Name": { "value": "s561_User_Tier1_Storage_W1" },
-    "snet169IP": { "value": "10.128.50.128/25" },
-    "snet169NSGName": { "value": "561NSG" },
-
+    "snet366Name": { "value": "s500_Storage_Storage_TX" },
+    "snet366IP": { "value": "10.128.176.0/24" },
+    "snet366NSGName": { "value": "500NSG" },
+    "snet367Name": { "value": "s505_LB_Storage_Storage_TX" },
+    "snet367IP": { "value": "10.128.177.0/24" },
+    "snet367NSGName": { "value": "505NSG" },
+    "snet368Name": { "value": "s560_User_Tier0_Storage_TX" },
+    "snet368IP": { "value": "10.128.178.0/25" },
+    "snet368NSGName": { "value": "560NSG" },
+    "snet369Name": { "value": "s561_User_Tier1_Storage_TX" },
+    "snet369IP": { "value": "10.128.178.128/25" },
+    "snet369NSGName": { "value": "561NSG" },
 
     /*the Peering tab of the metadata spreadsheet and filter the data with VNET103
         copy the data from the columns that have the word prerameters in them.  the columns 
     are colored to show the grouping.
     */
-    "pr103PeeringName": { "value": "vnet_storage_w1_vnet_services_w1" },
-    "pr103destSubscriptionID": { "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9" },
-    "pr103destResourceGroup": { "value": "rg_network_vnet_services_w1" },
-    "pr103DestinationVNET": { "value": "vnet_services_w1" },
-    "pr103allowVNETAccess": { "value": true },
-    "pr103allowFwdAccess": { "value": true },
-    "pr103allowGWAccess": { "value": false },
-    "pr103useRemoteGateway": { "value": true }
+    "pr303PeeringName": { "value": "vnet1a_storage_tx_vnet1a_services_tx" },
+    "pr303destSubscriptionID": { "value": "30457dd5-e56b-416b-9228-d48b37fe7caa" },
+    "pr303destResourceGroup": { "value": "rg_network_vnet1a_services_tx" },
+    "pr303DestinationVNET": { "value": "vnet1a_services_tx" },
+    "pr303allowVNETAccess": { "value": true },
+    "pr303allowFwdAccess": { "value": true },
+    "pr303allowGWAccess": { "value": false },
+    "pr303useRemoteGateway": { "value": true }
 
   }
 }

@@ -1,7 +1,7 @@
 ﻿<#
  .SYNOPSIS
     Deploys the AzureFoundation templates for Site 1 and 2 of a four datacenter pattern.  The metadata template that 
-    created this template refers to these VNETs as VNET100 through VNET 204.
+    created this template refers to these VNETs as VNET300 through VNET 404.
 
 
   
@@ -11,16 +11,16 @@
     VNETID Naming Conventions
     
     VNET100:  Production Site 1
-    VNET101:  HBI Site 1
-    VNET102:  PreProd Site 1
-    VNET103:  Storage Site 1
-    VNET104:  Services Site 1
+    VNET301:  HBI Site 1
+    VNET302:  PreProd Site 1
+    VNET303:  Storage Site 1
+    VNET304:  Services Site 1
 
-    VNET200:  Production Site 1
-    VNET201:  HBI Site 1
-    VNET202:  PreProd Site 1
-    VNET203:  Storage Site 1
-    VNET204:  Services Site 1
+    VNET400:  Production Site 1
+    VNET401:  HBI Site 1
+    VNET402:  PreProd Site 1
+    VNET403:  Storage Site 1
+    VNET404:  Services Site 1
 
  .PARAMETERs 
     subscriptionId_prod
@@ -59,49 +59,72 @@ $ErrorActionPreference = "Stop"
 
 # sign in
 Write-Host "Logging in...";
-#$Environment = "AzureUSGovernment"
-$Environment = 'AzureCloud'
+$Environment = "AzureUSGovernment"
+#$Environment = 'AzureCloud'
 Login-AzureRmAccount -EnvironmentName $Environment;
 
 
 #In these variables, use the Get-AzureRMSubscription command to list the subscriptions 
 #Cut and Paste the values in the variables for the five standard subscriptions.
-$UserName='willst@msftgov.us'
-$subID_CJIS=""
-$SubName_CJIS='mac_slg_Managed_CJIS'
-$subID_HBI="ce38c0ef-22f5-458d-b1f7-e3890e2471f2"
-$SubName_HBI= 'MAC_SLG_Managed_HBI'
-$subID_PreProd="a7d928df-fc97-4f02-adae-3d7cdeb7c8cb"
-$subName_PreProd='MAC_SLG_Managed_PreProd'
-$SubID_Prod="ec1cea2e-92aa-45a7-89b0-d9fc40df2beb"
-$SubName_Prod='MAC_SLG_Managed_Prod'
-$SubID_Services="730f26b5-ebf5-4518-999f-0b4eb0cdc8f9"
-$SubName_Services="MAC_SLG_Managed_Services"
-$SubID_Storage="6e5d19d2-a324-470a-b24f-57ac0d3221a1"
-$SubName_Storage="MAC_SLG_Managed_Storage"
+$UserName='willst@mag.msftgov.us'
+#Use the Subscription Tab of the spreadsheet to copy the values here for the subscription variables.
+$subID_Prod="4a0d1d83-f557-4065-8423-be499038298a"
+$subID_HBI="97eba262-9086-4a3e-9770-dcfef6c3df30"
+$subID_PreProd="a4b962d2-6b17-4c38-af02-010a6e774379"
+$subID_Storage="0223b7af-344f-42cd-bed2-5ebbc7d06d5d"
+$subID_Services="30457dd5-e56b-416b-9228-d48b37fe7caa"
+
 
 #Update these fields for the datacenter pair to target the deployment at
 #https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions
-$resourceGroupLocation = 'West Central US'
-$location1="westcentralus"
+#Goto the Location Tab and select the PowerShell for the Region that will be Site 1 and Site 2
 
-$servicesResourceGroupName1="rg_network_vnet1a_services_w1"
-$prodResourceGroupName1="rg_network_vnet_prodA_w1a"
-$preProdResourceGroupName1 ="rg_network_vnet_preprodA_w1a"
-$hbiResourceGroupName1 ="rg_network_vnet_hbiA_w1a"
-$storageResourceGroupName1 ="rg_network_vnet_storageA_w1a"
-$deploymentName = "AzureFoundationSite1A"
-$servicesParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site1\af_vnet_azuredeploy_parameters_site1_services_A.json"
-$servicesTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\Site1\af_vnet_azuredeploy_template_Site1_services_A.json"
+$locationSite_3="usgovtexas"
+$locationSite_4="usgovarizona"
 
-#Second Site
-$resourceGroupLocation2 = 'West US 2'
-$location2='westus2'
-$servicesResourceGroupName2="rg_network_vnet_servicesA_w2a"
-$prodResourceGroupName2="rg_network_vnet_prodA_w2a"
-$preProdResourceGroupName2 ="rg_network_vnet_preprodA_w2a"
-$hbiResourceGroupName2 ="rg_network_vnet_hbiA_w2a"
-$storageResourceGroupName2 ="rg_network_vnet_storageA_w2a"
+
+#using the spreadsheet goto the VNET tab and copy the computed ResourceGroup Names.
+
+$ResourceGroupName_vnet300="rg_network_vnet1a_prod_tx"
+$ResourceGroupName_vnet301="rg_network_vnet1a_hbi_tx"
+$ResourceGroupName_vnet302="rg_network_vnet1a_preprod_tx"
+$ResourceGroupName_vnet303="rg_network_vnet1a_storage_tx"
+$ResourceGroupName_vnet304="rg_network_vnet1a_services_tx"
+$ResourceGroupName_vnet400="rg_network_vnet1a_prod_az"
+$ResourceGroupName_vnet401="rg_network_vnet1a_hbi_az"
+$ResourceGroupName_vnet402="rg_network_vnet1a_preprod_az"
+$ResourceGroupName_vnet403="rg_network_vnet1a_storage_az"
+$ResourceGroupName_vnet404="rg_network_vnet1a_services_az"
+
+
+#Setup the Deployment Name
+$date=Get-Date
+$deploymentName = "AzureFoundation" + $date.month + $date.day + $date.Year
+
+#Setup where the template files can be found
+$RootPath = "C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking"
+
+$ParametersPathVNET300=$RootPath+"\Site3\af_vnet_azuredeploy_parameters_Site3_prod_A.json"
+$TemplatePathVNET300=$RootPath+"\Site3\af_vnet_azuredeploy_template_Site3_prod_A.json"
+$ParametersPathVNET301=$RootPath+"\Site3\af_vnet_azuredeploy_parameters_Site3_hbi_A.json"
+$TemplatePathVNET301=$RootPath+"\Site3\af_vnet_azuredeploy_template_Site3_hbi_A.json"
+$ParametersPathVNET302=$RootPath+"\Site3\af_vnet_azuredeploy_parameters_Site3_preprod_A.json"
+$TemplatePathVNET302=$RootPath+"\Site3\af_vnet_azuredeploy_template_Site3_preprod_A.json"
+$ParametersPathVNET303=$RootPath+"\Site3\af_vnet_azuredeploy_parameters_Site3_storage_A.json"
+$TemplatePathVNET303=$RootPath+"\Site3\af_vnet_azuredeploy_template_Site3_storage_A.json"
+$ParametersPathVNET304=$RootPath+"\Site3\af_vnet_azuredeploy_parameters_Site3_services_A.json"
+$TemplatePathVNET304=$RootPath+"\Site3\af_vnet_azuredeploy_template_Site3_services_A.json"
+
+$ParametersPathVNET400=$RootPath+"\Site4\af_vnet_azuredeploy_parameters_Site4_prod_A.json"
+$TemplatePathVNET400=$RootPath+"\Site4\af_vnet_azuredeploy_template_Site4_prod_A.json"
+$ParametersPathVNET401=$RootPath+"\Site4\af_vnet_azuredeploy_parameters_Site4_hbi_A.json"
+$TemplatePathVNET401=$RootPath+"\Site4\af_vnet_azuredeploy_template_Site4_hbi_A.json"
+$ParametersPathVNET402=$RootPath+"\Site4\af_vnet_azuredeploy_parameters_Site4_preprod_A.json"
+$TemplatePathVNET402=$RootPath+"\Site4\af_vnet_azuredeploy_template_Site4_preprod_A.json"
+$ParametersPathVNET403 =$RootPath+"\Site4\af_vnet_azuredeploy_parameters_Site4_storage_A.json"
+$TemplatePathVNET403 =$RootPath+"\Site4\af_vnet_azuredeploy_template_Site4_storage_A.json"
+$ParametersPathVNET404=$RootPath+"\Site4\af_vnet_azuredeploy_parameters_Site4_services_A.json"
+$TemplatePathVNET404=$RootPath+"\Site4\af_vnet_azuredeploy_template_Site4_services_A.json"
 
 # select subscription
 #Write-Host "Selecting subscription '$subscriptionId'";
@@ -117,36 +140,36 @@ if($resourceProviders.length) {
 
 
 <#
-*****************Services*******************
+*****************Services (VNET304)*******************
 #>
 Select-AzureRmSubscription -SubscriptionID $SubID_Services;
-$servicesResourceGroup1 = Get-AzureRmResourceGroup -Name $servicesResourceGroupName1 -ErrorAction SilentlyContinue
-$servicesResourceGroup2 = Get-AzureRmResourceGroup -Name $servicesResourceGroupName2 -ErrorAction SilentlyContinue
+$servicesResourceGroup1 = Get-AzureRmResourceGroup -Name $ResourceGroupName_vnet304 -ErrorAction SilentlyContinue
+$servicesResourceGroup2 = Get-AzureRmResourceGroup -Name $ResourceGroupName_vnet404 -ErrorAction SilentlyContinue
 
 #Create or check for existing resource group
 if(!$servicesResourceGroup1)
 {
-    Write-Host "Resource group '$servicesResourceGroupName1' does not exist. To create a new resource group, please enter a location.";
-    if(!$Location1) {
-        $Location1 = Read-Host "resourceGroupLocation";
+    Write-Host "Resource group '$ResourceGroupName_vnet304' does not exist. To create a new resource group, please enter a location.";
+    if(!$locationSite_3) {
+        $locationSite_3 = Read-Host "resourceGroupLocation";
     }
-    Write-Host "Creating resource group '$servicesResourceGroupName1' in location '$Location1'";
-    New-AzureRmResourceGroup -Name $servicesResourceGroupName1 -Location $Location1
+    Write-Host "Creating resource group '$ResourceGroupName_vnet304' in location '$locationSite_3'";
+    New-AzureRmResourceGroup -Name $ResourceGroupName_vnet304 -Location $locationSite_3
 }
 else{
-    Write-Host "Using existing resource group '$servicesResourceGroupName1'";
+    Write-Host "Using existing resource group '$ResourceGroupName_vnet304'";
 }
 if(!$servicesResourceGroup2)
 {
-    Write-Host "Resource group '$servicesResourceGroupName2' does not exist. To create a new resource group, please enter a location.";
-    if(!$Location2) {
-        $Location2 = Read-Host "resourceGroupLocation";
+    Write-Host "Resource group '$ResourceGroupName_vnet404' does not exist. To create a new resource group, please enter a location.";
+    if(!$locationSite_4) {
+        $locationSite_4 = Read-Host "resourceGroupLocation";
     }
-    Write-Host "Creating resource group '$servicesResourceGroupName2' in location '$Location2'";
-    New-AzureRmResourceGroup -Name $servicesResourceGroupName2 -Location $Location2
+    Write-Host "Creating resource group '$ResourceGroupName_vnet404' in location '$locationSite_4'";
+    New-AzureRmResourceGroup -Name $ResourceGroupName_vnet404 -Location $locationSite_4
 }
 else{
-    Write-Host "Using existing resource group '$servicesResourceGroupName2'";
+    Write-Host "Using existing resource group '$ResourceGroupName_vnet404'";
 }
 <#
 This section is where we build the NSG for the VNET afr locatedry where json files eecto ../ and run the powershell from di
@@ -154,134 +177,124 @@ This section is where we build the NSG for the VNET afr locatedry where json fil
 
 # Start the deployment
 
-Test-AzureRmResourceGroupDeployment  -ResourceGroupName $servicesResourcegroupname1 -TemplateFile $servicesTemplateFilePath1 -TemplateParameterFile $servicesParametersFilePath1;
+Test-AzureRmResourceGroupDeployment  -ResourceGroupName $ResourceGroupName_vnet304 -TemplateFile $TemplatePathVNET304 -TemplateParameterFile $ParametersPathVNET304;
 
-New-AzureRmResourceGroupDeployment -name $deploymentName -ResourceGroupName $servicesResourceGroupName1 -Templatefile $servicesTemplateFilePath1 -TemplateParameterfile $servicesParametersFilePath1;
+New-AzureRmResourceGroupDeployment -name $deploymentName -ResourceGroupName $ResourceGroupName_vnet304 -Templatefile $TemplatePathVNET304 -TemplateParameterfile $ParametersPathVNET304;
+
+
+# Start the deployment
+
+Test-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName_vnet404 -TemplateFile $TemplatePathVNET404 -TemplateParameterFile $ParametersPathVNET404;
+
+New-AzureRmResourceGroupDeployment -name $deploymentName -ResourceGroupName $ResourceGroupName_vnet404 -Templatefile $TemplatePathVNET404 -TemplateParameterfile $ParametersPathVNET404;
+
+<#Troubleshooting
 #Debug
-#$deploymentName = "AzureFoundationSite1A_Debug1a"
-#New-AzureRmResourceGroupDeployment -name $deploymentName -ResourceGroupName $servicesResourceGroupName1 -Templatefile $servicesTemplateFilePath1 -TemplateParameterfile $servicesParametersFilePath1 -DeploymentDebugLogLevel All;
+#$deploymentName = "AzureFoundationSite3A_Debug1b"
+#New-AzureRmResourceGroupDeployment -name $deploymentName -ResourceGroupName $ResourceGroupName_vnet304 -Templatefile $TemplatePathVNET304 -TemplateParameterfile $ParametersPathVNET304 -DeploymentDebugLogLevel All;
 
-$Operations = Get-AzureRmResourceGroupDeploymentOperation -DeploymentName $deploymentName -ResourceGroupName $servicesResourceGroupName1
+$Operations = Get-AzureRmResourceGroupDeploymentOperation -DeploymentName $deploymentName -ResourceGroupName $ResourceGroupName_vnet404
 foreach($Operation in $Operations){
 Write-Host $operation.id
 $Operation.properties.request | ConvertTo-Json -Depth 10
     Write-Host "Request:"
 $Operation.properties.response | ConvertTo-Json -Depth 10
  Write-Host "Response:"}
-
-$servicesParametersFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site2\af_vnet_azuredeploy.parameters2_Services.json"
-$servicesTemplateFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site2\af_vnet_azuredeploy2_servicesB.json"
-
-# Start the deployment
-
-Test-AzureRmResourceGroupDeployment -ResourceGroupName $servicesResourcegroupname2 -TemplateFile $servicesTemplateFilePath2 -TemplateParameterFile $servicesParametersFilePath2;
-
-New-AzureRmResourceGroupDeployment -ResourceGroupName $servicesResourceGroupName2 -Templatefile $servicesTemplateFilePath2 -TemplateParameterfile $servicesParametersFilePath2;
+ #>
 
 <#
 **************************Production Subscription***************
 #>
 
 Select-AzureRmSubscription -SubscriptionID $SubID_Prod;
-$prodResourceGroup1 = Get-AzureRmResourceGroup -Name $prodResourceGroupName1 -ErrorAction SilentlyContinue
-$prodResourceGroup2 = Get-AzureRmResourceGroup -Name $prodResourceGroupName2 -ErrorAction SilentlyContinue
+$prodResourceGroup1 = Get-AzureRmResourceGroup -Name $ResourceGroupName_vnet300 -ErrorAction SilentlyContinue
+$prodResourceGroup2 = Get-AzureRmResourceGroup -Name $ResourceGroupName_vnet400 -ErrorAction SilentlyContinue
 
 if(!$prodResourceGroup1)
 {
-    Write-Host "Resource group '$prodResourceGroupName1' does not exist. To create a new resource group, please enter a location.";
-    if(!$Location1) {
-        $Location1 = Read-Host "resourceGroupLocation";
+    Write-Host "Resource group '$ResourceGroupName_vnet300' does not exist. To create a new resource group, please enter a location.";
+    if(!$locationSite_3) {
+        $locationSite_3 = Read-Host "resourceGroupLocation";
     }
-    Write-Host "Creating resource group '$prodResourceGroupName1' in location '$Location1'";
-    New-AzureRmResourceGroup -Name $prodResourceGroupName1 -Location $Location1
+    Write-Host "Creating resource group '$ResourceGroupName_vnet300' in location '$locationSite_3'";
+    New-AzureRmResourceGroup -Name $ResourceGroupName_vnet300 -Location $locationSite_3
 }
 else{
-    Write-Host "Using existing resource group '$prodResourceGroupName1'";
+    Write-Host "Using existing resource group '$ResourceGroupName_vnet300'";
 }
 if(!$prodResourceGroup2)
 {
-    Write-Host "Resource group '$prodResourceGroupName2' does not exist. To create a new resource group, please enter a location.";
-    if(!$Location2) {
-        $Location2 = Read-Host "resourceGroupLocation";
+    Write-Host "Resource group '$ResourceGroupName_vnet400' does not exist. To create a new resource group, please enter a location.";
+    if(!$locationSite_4) {
+        $locationSite_4 = Read-Host "resourceGroupLocation";
     }
-    Write-Host "Creating resource group '$prodResourceGroupName2' in location '$Location2'";
-    New-AzureRmResourceGroup -Name $prodResourceGroupName2 -Location $Location2
+    Write-Host "Creating resource group '$ResourceGroupName_vnet400' in location '$locationSite_4'";
+    New-AzureRmResourceGroup -Name $ResourceGroupName_vnet400 -Location $locationSite_4
 }
 else{
-    Write-Host "Using existing resource group '$prodResourceGroupName2'";
+    Write-Host "Using existing resource group '$ResourceGroupName_vnet400'";
 }
 <#
 This section is where we build the NSG for the VNET
 #>
 
-$prodParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site1\af_vnet_azuredeploy.parameters1_prod.json"
-$prodTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site1\af_vnet_azuredeploy1_prodB.json"
-
 # Start the deployment
 
-Test-AzureRmResourceGroupDeployment -ResourceGroupName $prodResourcegroupname1 -TemplateFile $prodTemplateFilePath1 -TemplateParameterFile $prodParametersFilePath1;
-New-AzureRmResourceGroupDeployment -ResourceGroupName $prodResourceGroupName1 -Templatefile $prodTemplateFilePath1 -TemplateParameterfile $prodParametersFilePath1;
+Test-AzureRmResourceGroupDeployment  -ResourceGroupName $ResourceGroupName_vnet300 -TemplateFile $TemplatePathVNET300 -TemplateParameterFile $ParametersPathVNET300;
 
+New-AzureRmResourceGroupDeployment -name $deploymentName -ResourceGroupName $ResourceGroupName_vnet300 -Templatefile $TemplatePathVNET300 -TemplateParameterfile $ParametersPathVNET300;
 
-$prodParametersFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site2\af_vnet_azuredeploy.parameters2_prod.json"
-$prodTemplateFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site2\af_vnet_azuredeploy2_prodB.json"
 
 # Start the deployment
-Test-AzureRmResourceGroupDeployment -ResourceGroupName $prodResourcegroupname2 -TemplateFile $prodTemplateFilePath2 -TemplateParameterFile $prodParametersFilePath2;
+Test-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName_vnet400 -TemplateFile $TemplatePathVNET400 -TemplateParameterFile $ParametersPathVNET400;
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName $prodResourceGroupName2 -Templatefile $prodTemplateFilePath2 -TemplateParameterfile $prodParametersFilePath2;
+New-AzureRmResourceGroupDeployment -name $deploymentName -ResourceGroupName $ResourceGroupName_vnet400 -Templatefile $TemplatePathVNET400 -TemplateParameterfile $ParametersPathVNET400;
 
 <#
 **************************PrepreProduction Subscription***************
 #>
 
 Select-AzureRmSubscription -SubscriptionID $SubID_preProd
-$preProdResourceGroup1 = Get-AzureRmResourceGroup -Name $preProdResourceGroupName1 -ErrorAction SilentlyContinue
-$preProdResourceGroup2 = Get-AzureRmResourceGroup -Name $preProdResourceGroupName2 -ErrorAction SilentlyContinue
+$preProdResourceGroup1 = Get-AzureRmResourceGroup -Name $ResourceGroupName_vnet302 -ErrorAction SilentlyContinue
+$preProdResourceGroup2 = Get-AzureRmResourceGroup -Name $ResourceGroupName_vnet402 -ErrorAction SilentlyContinue
 
 if(!$preProdResourceGroup1)
 {
-    Write-Host "Resource group '$preProdResourceGroupName1' does not exist. To create a new resource group, please enter a location.";
-    if(!$Location1) {
-        $Location1 = Read-Host "resourceGroupLocation";
+    Write-Host "Resource group '$ResourceGroupName_vnet302' does not exist. To create a new resource group, please enter a location.";
+    if(!$locationSite_3) {
+        $locationSite_3 = Read-Host "resourceGroupLocation";
     }
-    Write-Host "Creating resource group '$preProdResourceGroupName1' in location '$Location1'";
-    New-AzureRmResourceGroup -Name $preProdResourceGroupName1 -Location $Location1
+    Write-Host "Creating resource group '$ResourceGroupName_vnet302' in location '$locationSite_3'";
+    New-AzureRmResourceGroup -Name $ResourceGroupName_vnet302 -Location $locationSite_3
 }
 else{
-    Write-Host "Using existing resource group '$preProdResourceGroupName1'";
+    Write-Host "Using existing resource group '$ResourceGroupName_vnet302'";
 }
 if(!$preProdResourceGroup2)
 {
-    Write-Host "Resource group '$preProdResourceGroupName2' does not exist. To create a new resource group, please enter a location.";
-    if(!$Location2) {
-        $Location2 = Read-Host "resourceGroupLocation";
+    Write-Host "Resource group '$ResourceGroupName_vnet402' does not exist. To create a new resource group, please enter a location.";
+    if(!$locationSite_4) {
+        $locationSite_4 = Read-Host "resourceGroupLocation";
     }
-    Write-Host "Creating resource group '$preProdResourceGroupName2' in location '$Location2'";
-    New-AzureRmResourceGroup -Name $preProdResourceGroupName2 -Location $Location2
+    Write-Host "Creating resource group '$ResourceGroupName_vnet402' in location '$locationSite_4'";
+    New-AzureRmResourceGroup -Name $ResourceGroupName_vnet402 -Location $locationSite_4
 }
 else{
-    Write-Host "Using existing resource group '$preProdResourceGroupName2'";
+    Write-Host "Using existing resource group '$ResourceGroupName_vnet402'";
 }
 <#
 This section is where we build the NSG for the VNET
 #>
 
-$preProdParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site1\af_vnet_azuredeploy.parameters1_preProd.json"
-$preProdTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site1\af_vnet_azuredeploy1_preProdB.json"
+# Start the deployment
+Test-AzureRmResourceGroupDeployment  -ResourceGroupName $ResourceGroupName_vnet302 -TemplateFile $TemplatePathVNET302 -TemplateParameterFile $ParametersPathVNET302;
+
+New-AzureRmResourceGroupDeployment -name $deploymentName -ResourceGroupName $ResourceGroupName_vnet302 -Templatefile $TemplatePathVNET302 -TemplateParameterfile $ParametersPathVNET302;
 
 # Start the deployment
-Test-AzureRmResourceGroupDeployment -ResourceGroupName $preProdResourcegroupname1 -TemplateFile $preProdTemplateFilePath1 -TemplateParameterFile $preProdParametersFilePath1;
+Test-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName_vnet402 -TemplateFile $TemplatePathVNET402 -TemplateParameterFile $ParametersPathVNET402;
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName $preProdResourceGroupName1 -Templatefile $preProdTemplateFilePath1 -TemplateParameterfile $preProdParametersFilePath1;
-
-$preProdParametersFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site2\af_vnet_azuredeploy.parameters2_preProd.json"
-$preProdTemplateFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site2\af_vnet_azuredeploy2_preProdB.json"
-
-# Start the deployment
-Test-AzureRmResourceGroupDeployment -ResourceGroupName $preProdResourcegroupname2 -TemplateFile $preProdTemplateFilePath2 -TemplateParameterFile $preProdParametersFilePath2;
-
-New-AzureRmResourceGroupDeployment -ResourceGroupName $preProdResourceGroupName2 -Templatefile $preProdTemplateFilePath2 -TemplateParameterfile $preProdParametersFilePath2;
+New-AzureRmResourceGroupDeployment -name $deploymentName -ResourceGroupName $ResourceGroupName_vnet402 -Templatefile $TemplatePathVNET402 -TemplateParameterfile $ParametersPathVNET402;
 
 <#
 **************************High Business Impact Subscription***************
@@ -289,97 +302,86 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $preProdResourceGroupName2
 
 Select-AzureRmSubscription -SubscriptionID $SubID_HBI
 
-$hbiResourceGroup1 = Get-AzureRmResourceGroup -Name $hbiResourceGroupName1 -ErrorAction SilentlyContinue
-$hbiResourceGroup2 = Get-AzureRmResourceGroup -Name $hbiResourceGroupName2 -ErrorAction SilentlyContinue
+$hbiResourceGroup1 = Get-AzureRmResourceGroup -Name $ResourceGroupName_vnet301 -ErrorAction SilentlyContinue
+$hbiResourceGroup2 = Get-AzureRmResourceGroup -Name $ResourceGroupName_vnet401 -ErrorAction SilentlyContinue
 
 if(!$hbiResourceGroup1)
 {
-    Write-Host "Resource group '$hbiResourceGroupName1' does not exist. To create a new resource group, please enter a location.";
-    if(!$Location1) {
-        $Location1 = Read-Host "resourceGroupLocation";
+    Write-Host "Resource group '$ResourceGroupName_vnet301' does not exist. To create a new resource group, please enter a location.";
+    if(!$locationSite_3) {
+        $locationSite_3 = Read-Host "resourceGroupLocation";
     }
-    Write-Host "Creating resource group '$hbiResourceGroupName1' in location '$Location1'";
-    New-AzureRmResourceGroup -Name $hbiResourceGroupName1 -Location $Location1
+    Write-Host "Creating resource group '$ResourceGroupName_vnet301' in location '$locationSite_3'";
+    New-AzureRmResourceGroup -Name $ResourceGroupName_vnet301 -Location $locationSite_3
 }
 else{
-    Write-Host "Using existing resource group '$hbiResourceGroupName1'";
+    Write-Host "Using existing resource group '$ResourceGroupName_vnet301'";
 }
 if(!$hbiResourceGroup2)
 {
-    Write-Host "Resource group '$hbiResourceGroupName2' does not exist. To create a new resource group, please enter a location.";
-    if(!$Location2) {
-        $Location2 = Read-Host "resourceGroupLocation";
+    Write-Host "Resource group '$ResourceGroupName_vnet401' does not exist. To create a new resource group, please enter a location.";
+    if(!$locationSite_4) {
+        $locationSite_4 = Read-Host "resourceGroupLocation";
     }
-    Write-Host "Creating resource group '$hbiResourceGroupName2' in location '$Location2'";
-    New-AzureRmResourceGroup -Name $hbiResourceGroupName2 -Location $Location2
+    Write-Host "Creating resource group '$ResourceGroupName_vnet401' in location '$locationSite_4'";
+    New-AzureRmResourceGroup -Name $ResourceGroupName_vnet401 -Location $locationSite_4
 }
 else{
-    Write-Host "Using existing resource group '$hbiResourceGroupName2'";
+    Write-Host "Using existing resource group '$ResourceGroupName_vnet401'";
 }
 <#
 This section is where we build the NSG for the VNET
 #>
 
-$hbiParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site1\af_vnet_azuredeploy.parameters1_hbi.json"
-$hbiTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site1\af_vnet_azuredeploy1_hbiB.json"
+# Start the deployment
+Test-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName_vnet301 -TemplateFile $TemplatePathVNET301 -TemplateParameterFile $ParametersPathVNET301;
+
+New-AzureRmResourceGroupDeployment -name $deploymentName -ResourceGroupName $ResourceGroupName_vnet301 -Templatefile $TemplatePathVNET301 -TemplateParameterfile $ParametersPathVNET301;
 
 # Start the deployment
-Test-AzureRmResourceGroupDeployment -ResourceGroupName $hbiResourcegroupname1 -TemplateFile $hbiTemplateFilePath1 -TemplateParameterFile $hbiParametersFilePath1;
+Test-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName_vnet401 -TemplateFile $TemplatePathVNET401 -TemplateParameterFile $ParametersPathVNET401;
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName $hbiResourceGroupName1 -Templatefile $hbiTemplateFilePath1 -TemplateParameterfile $hbiParametersFilePath1;
-
-$hbiParametersFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site2\af_vnet_azuredeploy.parameters2_hbi.json"
-$hbiTemplateFilePath2="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site2\af_vnet_azuredeploy2_hbiB.json"
-
-# Start the deployment
-Test-AzureRmResourceGroupDeployment -ResourceGroupName $hbiResourcegroupname2 -TemplateFile $hbiTemplateFilePath2 -TemplateParameterFile $hbiParametersFilePath2;
-
-New-AzureRmResourceGroupDeployment -ResourceGroupName $hbiResourceGroupName2 -Templatefile $hbiTemplateFilePath2 -TemplateParameterfile $hbiParametersFilePath2;
+New-AzureRmResourceGroupDeployment -name $deploymentName -ResourceGroupName $ResourceGroupName_vnet401 -Templatefile $TemplatePathVNET401 -TemplateParameterfile $ParametersPathVNET401;
 
 <#
 **************************Storage Subscription***************
 #>
 
 Select-AzureRmSubscription -SubscriptionID $SubID_Storage;
-$storageResourceGroup1 = Get-AzureRmResourceGroup -Name $storageResourceGroupName1 -ErrorAction SilentlyContinue
-$storageResourceGroup2 = Get-AzureRmResourceGroup -Name $storageResourceGroupName2 -ErrorAction SilentlyContinue
+$storageResourceGroup1 = Get-AzureRmResourceGroup -Name $ResourceGroupName_vnet303 -ErrorAction SilentlyContinue
+$storageResourceGroup2 = Get-AzureRmResourceGroup -Name $ResourceGroupName_vnet403 -ErrorAction SilentlyContinue
 
 if(!$storageResourceGroup1)
 {
-    Write-Host "Resource group '$storageResourceGroupName1' does not exist. To create a new resource group, please enter a location.";
-    if(!$Location1) {
-        $Location1 = Read-Host "resourceGroupLocation";
+    Write-Host "Resource group '$ResourceGroupName_vnet303' does not exist. To create a new resource group, please enter a location.";
+    if(!$locationSite_3) {
+        $locationSite_3 = Read-Host "resourceGroupLocation";
     }
-    Write-Host "Creating resource group '$storageResourceGroupName1' in location '$Location1'";
-    New-AzureRmResourceGroup -Name $storageResourceGroupName1 -Location $Location1
+    Write-Host "Creating resource group '$ResourceGroupName_vnet303' in location '$locationSite_3'";
+    New-AzureRmResourceGroup -Name $ResourceGroupName_vnet303 -Location $locationSite_3
 }
 else{
-    Write-Host "Using existing resource group '$storageResourceGroupName1'";
+    Write-Host "Using existing resource group '$ResourceGroupName_vnet303'";
 }
 if(!$storageResourceGroup2)
 {
-    Write-Host "Resource group '$storageResourceGroupName2' does not exist. To create a new resource group, please enter a location.";
-    if(!$Location2) {
-        $Location2 = Read-Host "resourceGroupLocation";
+    Write-Host "Resource group '$ResourceGroupName_vnet403' does not exist. To create a new resource group, please enter a location.";
+    if(!$locationSite_4) {
+        $locationSite_4 = Read-Host "resourceGroupLocation";
     }
-    Write-Host "Creating resource group '$storageResourceGroupName2' in location '$Location2'";
-    New-AzureRmResourceGroup -Name $storageResourceGroupName2 -Location $Location2
+    Write-Host "Creating resource group '$ResourceGroupName_vnet403' in location '$locationSite_4'";
+    New-AzureRmResourceGroup -Name $ResourceGroupName_vnet403 -Location $locationSite_4
 }
 else{
-    Write-Host "Using existing resource group '$storageResourceGroupName2'";
+    Write-Host "Using existing resource group '$ResourceGroupName_vnet403'";
 }
-$StorageParametersFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site1\af_vnet_azuredeploy.parameters1_Storage.json"
-$StorageTemplateFilePath1="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site1\af_vnet_azuredeploy1_StorageB.json"
 
 # Start the deployment
-Test-AzureRmResourceGroupDeployment -ResourceGroupName $StorageResourcegroupname1 -TemplateFile $StorageTemplateFilePath1 -TemplateParameterFile $StorageParametersFilePath1;
-
-$storageParametersFilePath2 ="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site2\af_vnet_azuredeploy.parameters2_storage.json"
-$storageTemplateFilePath2 ="C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking\site2\af_vnet_azuredeploy2_storageB.json"
+Test-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName_vnet303 -TemplateFile $TemplatePathVNET303 -TemplateParameterFile $ParametersPathVNET303;
 
 # Start the deployment
-Test-AzureRmResourceGroupDeployment -ResourceGroupName $storageResourcegroupname2 -TemplateFile $storageTemplateFilePath2 -TemplateParameterFile $storageParametersFilePath2;
-New-AzureRmResourceGroupDeployment -ResourceGroupName $StorageResourceGroupName1 -Templatefile $StorageTemplateFilePath1 -TemplateParameterfile $StorageParametersFilePath1;
+Test-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName_vnet403 -TemplateFile $TemplatePathVNET403 -TemplateParameterFile $ParametersPathVNET403;
+New-AzureRmResourceGroupDeployment -name $deploymentName -ResourceGroupName $ResourceGroupName_vnet303 -Templatefile $TemplatePathVNET303 -TemplateParameterfile $ParametersPathVNET303;
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName $storageResourceGroupName2 -Templatefile $storageTemplateFilePath2 -TemplateParameterfile $storageParametersFilePath2;
+New-AzureRmResourceGroupDeployment -name $deploymentName -ResourceGroupName $ResourceGroupName_vnet403 -Templatefile $TemplatePathVNET403 -TemplateParameterfile $ParametersPathVNET403;
 

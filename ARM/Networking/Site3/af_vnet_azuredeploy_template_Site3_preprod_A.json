@@ -21,373 +21,372 @@
     },
     /*in the metadata spreadsheet, on the VNET tab, filter on VNET102
     select the columns with Temlate and grouped by color. */
-    "vnet102vnetName": {
+    "vnet302vnetName": {
       "type": "string",
-      "defaultValue": "vnet1a_preprod_w1",
+      "defaultValue": "vnet1a_preprod_tx",
       "metadata": { "description": "Arbitrary name for the new VNET." }
-    }
-    "vnet102vnetAddressPrefix": {
+    },
+    "vnet302vnetAddressPrefix": {
       "type": "string",
-      "defaultValue": "10.128.32.0/20",
+      "defaultValue": "10.128.160.0/20",
       "metadata": { "description": "IP address range for the new VNET." }
-    }
-    "vnet102SubscriptionID": {
+    },
+    "vnet302SubscriptionID": {
       "type": "string",
-      "defaultValue": "a7d928df-fc97-4f02-adae-3d7cdeb7c8cb",
+      "defaultValue": "a4b962d2-6b17-4c38-af02-010a6e774379",
       "metadata": { "description": "IP Subscription ID of the VNET." }
-    }
-    "vnet102ResourceGroupName": {
+    },
+    "vnet302ResourceGroupName": {
       "type": "string",
-      "defaultValue": "rg_network_vnet1a_preprod_w1",
+      "defaultValue": "rg_network_vnet1a_preprod_tx",
       "metadata": { "description": "ResouceGroup of the VNET." }
-    }
-    "vnet102locationName": {
+    },
+    "vnet302locationName": {
       "type": "string",
-      "defaultValue": "westcentralus",
+      "defaultValue": "usgovtexas",
       "metadata": { "description": "IP Location of the VNET." }
-    }
-    "vnet102dnsServers": {
+    },
+    "vnet302dnsServers": {
       "type": "array",
-      "defaultValue": [ "10.128.59.36" ],
+      "defaultValue": [],
       "metadata": { "description": "DNS Servers of the VNET." }
-    }
-    "vnet102dnsPrefix": {
+    },
+    "vnet302dnsPrefix": {
       "type": "string",
-      "defaultValue": "slg.us",
+      "defaultValue": "",
       "metadata": { "description": "DNS Prefix of the VNET." }
-    }
-
+    },
 
     /*
     Using the metadata spreadsheet, the subnnet tab, filter results on VNET102, 
     Select the columnns that contain the word template and are color coded accordingly.
     */
-    "snet141Name": {
+    "snet341Name": {
       "type": "string",
-      "defaultValue": "s310_Web_PreProd_W1",
+      "defaultValue": "s310_Web_PreProd_TX",
       "metadata": { "description": "Name of the subnet." }
     },
-    "snet141IP": {
+    "snet341IP": {
       "type": "string",
-      "defaultValue": "10.128.32.0/25",
+      "defaultValue": "10.128.160.0/25",
       "metadata": { "description": "CRI notation of the Subnet." }
     },
-    "snet141NSGName": {
+    "snet341NSGName": {
       "type": "string",
       "defaultValue": "310NSG",
       "metadata": { "description": "Network Security Group to associate to the subnet." }
     },
-    "snet142Name": {
+    "snet342Name": {
       "type": "string",
-      "defaultValue": "s315_LB_Web_PreProd_W1",
+      "defaultValue": "s315_LB_Web_PreProd_TX",
       "metadata": { "description": "Name of the subnet." }
     },
-    "snet142IP": {
+    "snet342IP": {
       "type": "string",
-      "defaultValue": "10.128.32.128/25",
+      "defaultValue": "10.128.160.128/25",
       "metadata": { "description": "CRI notation of the Subnet." }
     },
-    "snet142NSGName": {
+    "snet342NSGName": {
       "type": "string",
       "defaultValue": "315NSG",
       "metadata": { "description": "Network Security Group to associate to the subnet." }
     },
-    "snet143Name": {
+    "snet343Name": {
       "type": "string",
-      "defaultValue": "s320_App_PreProd_W1",
+      "defaultValue": "s320_App_PreProd_TX",
       "metadata": { "description": "Name of the subnet." }
     },
-    "snet143IP": {
+    "snet343IP": {
       "type": "string",
-      "defaultValue": "10.128.33.0/25",
+      "defaultValue": "10.128.161.0/25",
       "metadata": { "description": "CRI notation of the Subnet." }
     },
-    "snet143NSGName": {
+    "snet343NSGName": {
       "type": "string",
       "defaultValue": "320NSG",
       "metadata": { "description": "Network Security Group to associate to the subnet." }
     },
-    "snet144Name": {
+    "snet344Name": {
       "type": "string",
-      "defaultValue": "s325_LB_App_PreProd_W1",
+      "defaultValue": "s325_LB_App_PreProd_TX",
       "metadata": { "description": "Name of the subnet." }
     },
-    "snet144IP": {
+    "snet344IP": {
       "type": "string",
-      "defaultValue": "10.128.33.128/25",
+      "defaultValue": "10.128.161.128/25",
       "metadata": { "description": "CRI notation of the Subnet." }
     },
-    "snet144NSGName": {
+    "snet344NSGName": {
       "type": "string",
       "defaultValue": "325NSG",
       "metadata": { "description": "Network Security Group to associate to the subnet." }
     },
-    "snet145Name": {
+    "snet345Name": {
       "type": "string",
-      "defaultValue": "s330_DB_PreProd_W1",
+      "defaultValue": "s330_DB_PreProd_TX",
       "metadata": { "description": "Name of the subnet." }
     },
-    "snet145IP": {
+    "snet345IP": {
       "type": "string",
-      "defaultValue": "10.128.34.0/25",
+      "defaultValue": "10.128.162.0/25",
       "metadata": { "description": "CRI notation of the Subnet." }
     },
-    "snet145NSGName": {
+    "snet345NSGName": {
       "type": "string",
       "defaultValue": "330NSG",
       "metadata": { "description": "Network Security Group to associate to the subnet." }
     },
-    "snet146Name": {
+    "snet346Name": {
       "type": "string",
-      "defaultValue": "s335_LB_DB_PreProd_W1",
+      "defaultValue": "s335_LB_DB_PreProd_TX",
       "metadata": { "description": "Name of the subnet." }
     },
-    "snet146IP": {
+    "snet346IP": {
       "type": "string",
-      "defaultValue": "10.128.34.128/25",
+      "defaultValue": "10.128.162.128/25",
       "metadata": { "description": "CRI notation of the Subnet." }
     },
-    "snet146NSGName": {
+    "snet346NSGName": {
       "type": "string",
       "defaultValue": "335NSG",
       "metadata": { "description": "Network Security Group to associate to the subnet." }
     },
-    "snet147Name": {
+    "snet347Name": {
       "type": "string",
-      "defaultValue": "s350_DMZ_PreProd_W1",
+      "defaultValue": "s350_DMZ_PreProd_TX",
       "metadata": { "description": "Name of the subnet." }
     },
-    "snet147IP": {
+    "snet347IP": {
       "type": "string",
-      "defaultValue": "10.128.35.0/25",
+      "defaultValue": "10.128.163.0/25",
       "metadata": { "description": "CRI notation of the Subnet." }
     },
-    "snet147NSGName": {
+    "snet347NSGName": {
       "type": "string",
       "defaultValue": "350NSG",
       "metadata": { "description": "Network Security Group to associate to the subnet." }
     },
-    "snet148Name": {
+    "snet348Name": {
       "type": "string",
-      "defaultValue": "s355_LB_DMZ_PreProd_W1",
+      "defaultValue": "s355_LB_DMZ_PreProd_TX",
       "metadata": { "description": "Name of the subnet." }
     },
-    "snet148IP": {
+    "snet348IP": {
       "type": "string",
-      "defaultValue": "10.128.35.128/25",
+      "defaultValue": "10.128.163.128/25",
       "metadata": { "description": "CRI notation of the Subnet." }
     },
-    "snet148NSGName": {
+    "snet348NSGName": {
       "type": "string",
       "defaultValue": "355NSG",
       "metadata": { "description": "Network Security Group to associate to the subnet." }
     },
-    "snet149Name": {
+    "snet349Name": {
       "type": "string",
-      "defaultValue": "s360_User_Tier0_PreProd_W1",
+      "defaultValue": "s360_User_Tier0_PreProd_TX",
       "metadata": { "description": "Name of the subnet." }
     },
-    "snet149IP": {
+    "snet349IP": {
       "type": "string",
-      "defaultValue": "10.128.36.0/25",
+      "defaultValue": "10.128.164.0/25",
       "metadata": { "description": "CRI notation of the Subnet." }
     },
-    "snet149NSGName": {
+    "snet349NSGName": {
       "type": "string",
       "defaultValue": "360NSG",
       "metadata": { "description": "Network Security Group to associate to the subnet." }
     },
-    "snet150Name": {
+    "snet350Name": {
       "type": "string",
-      "defaultValue": "s361_User_Tier1_PreProd_W1",
+      "defaultValue": "s361_User_Tier1_PreProd_TX",
       "metadata": { "description": "Name of the subnet." }
     },
-    "snet150IP": {
+    "snet350IP": {
       "type": "string",
-      "defaultValue": "10.128.36.128/25",
+      "defaultValue": "10.128.164.128/25",
       "metadata": { "description": "CRI notation of the Subnet." }
     },
-    "snet150NSGName": {
+    "snet350NSGName": {
       "type": "string",
       "defaultValue": "361NSG",
       "metadata": { "description": "Network Security Group to associate to the subnet." }
     },
-    "snet151Name": {
+    "snet351Name": {
       "type": "string",
-      "defaultValue": "s362_User_Tier2_PreProd_W1",
+      "defaultValue": "s362_User_Tier2_PreProd_TX",
       "metadata": { "description": "Name of the subnet." }
     },
-    "snet151IP": {
+    "snet351IP": {
       "type": "string",
-      "defaultValue": "10.128.37.0/25",
+      "defaultValue": "10.128.165.0/25",
       "metadata": { "description": "CRI notation of the Subnet." }
     },
-    "snet151NSGName": {
+    "snet351NSGName": {
       "type": "string",
       "defaultValue": "362NSG",
       "metadata": { "description": "Network Security Group to associate to the subnet." }
     },
-    "snet155Name": {
+    "snet355Name": {
       "type": "string",
-      "defaultValue": "s410_Web_PreProd_W1",
+      "defaultValue": "s410_Web_PreProd_TX",
       "metadata": { "description": "Name of the subnet." }
     },
-    "snet155IP": {
+    "snet355IP": {
       "type": "string",
-      "defaultValue": "10.128.40.0/25",
+      "defaultValue": "10.128.168.0/25",
       "metadata": { "description": "CRI notation of the Subnet." }
     },
-    "snet155NSGName": {
+    "snet355NSGName": {
       "type": "string",
       "defaultValue": "410NSG",
       "metadata": { "description": "Network Security Group to associate to the subnet." }
     },
-    "snet156Name": {
+    "snet356Name": {
       "type": "string",
-      "defaultValue": "s415_LB_Web_PreProd_W1",
+      "defaultValue": "s415_LB_Web_PreProd_TX",
       "metadata": { "description": "Name of the subnet." }
     },
-    "snet156IP": {
+    "snet356IP": {
       "type": "string",
-      "defaultValue": "10.128.40.128/25",
+      "defaultValue": "10.128.168.128/25",
       "metadata": { "description": "CRI notation of the Subnet." }
     },
-    "snet156NSGName": {
+    "snet356NSGName": {
       "type": "string",
       "defaultValue": "415NSG",
       "metadata": { "description": "Network Security Group to associate to the subnet." }
     },
-    "snet157Name": {
+    "snet357Name": {
       "type": "string",
-      "defaultValue": "s420_App_PreProd_W1",
+      "defaultValue": "s420_App_PreProd_TX",
       "metadata": { "description": "Name of the subnet." }
     },
-    "snet157IP": {
+    "snet357IP": {
       "type": "string",
-      "defaultValue": "10.128.41.0/25",
+      "defaultValue": "10.128.169.0/25",
       "metadata": { "description": "CRI notation of the Subnet." }
     },
-    "snet157NSGName": {
+    "snet357NSGName": {
       "type": "string",
       "defaultValue": "420NSG",
       "metadata": { "description": "Network Security Group to associate to the subnet." }
     },
-    "snet158Name": {
+    "snet358Name": {
       "type": "string",
-      "defaultValue": "s425_LB_App_PreProd_W1",
+      "defaultValue": "s425_LB_App_PreProd_TX",
       "metadata": { "description": "Name of the subnet." }
     },
-    "snet158IP": {
+    "snet358IP": {
       "type": "string",
-      "defaultValue": "10.128.41.128/25",
+      "defaultValue": "10.128.169.128/25",
       "metadata": { "description": "CRI notation of the Subnet." }
     },
-    "snet158NSGName": {
+    "snet358NSGName": {
       "type": "string",
       "defaultValue": "425NSG",
       "metadata": { "description": "Network Security Group to associate to the subnet." }
     },
-    "snet159Name": {
+    "snet359Name": {
       "type": "string",
-      "defaultValue": "s430_DB_PreProd_W1",
+      "defaultValue": "s430_DB_PreProd_TX",
       "metadata": { "description": "Name of the subnet." }
     },
-    "snet159IP": {
+    "snet359IP": {
       "type": "string",
-      "defaultValue": "10.128.42.0/25",
+      "defaultValue": "10.128.170.0/25",
       "metadata": { "description": "CRI notation of the Subnet." }
     },
-    "snet159NSGName": {
+    "snet359NSGName": {
       "type": "string",
       "defaultValue": "430NSG",
       "metadata": { "description": "Network Security Group to associate to the subnet." }
     },
-    "snet160Name": {
+    "snet360Name": {
       "type": "string",
-      "defaultValue": "s435_LB_DB_PreProd_W1",
+      "defaultValue": "s435_LB_DB_PreProd_TX",
       "metadata": { "description": "Name of the subnet." }
     },
-    "snet160IP": {
+    "snet360IP": {
       "type": "string",
-      "defaultValue": "10.128.42.128/25",
+      "defaultValue": "10.128.170.128/25",
       "metadata": { "description": "CRI notation of the Subnet." }
     },
-    "snet160NSGName": {
+    "snet360NSGName": {
       "type": "string",
       "defaultValue": "435NSG",
       "metadata": { "description": "Network Security Group to associate to the subnet." }
     },
-    "snet161Name": {
+    "snet361Name": {
       "type": "string",
-      "defaultValue": "s450_DMZ_PreProd_W1",
+      "defaultValue": "s450_DMZ_PreProd_TX",
       "metadata": { "description": "Name of the subnet." }
     },
-    "snet161IP": {
+    "snet361IP": {
       "type": "string",
-      "defaultValue": "10.128.43.0/25",
+      "defaultValue": "10.128.171.0/25",
       "metadata": { "description": "CRI notation of the Subnet." }
     },
-    "snet161NSGName": {
+    "snet361NSGName": {
       "type": "string",
       "defaultValue": "450NSG",
       "metadata": { "description": "Network Security Group to associate to the subnet." }
     },
-    "snet162Name": {
+    "snet362Name": {
       "type": "string",
-      "defaultValue": "s455_LB_DMZ_PreProd_W1",
+      "defaultValue": "s455_LB_DMZ_PreProd_TX",
       "metadata": { "description": "Name of the subnet." }
     },
-    "snet162IP": {
+    "snet362IP": {
       "type": "string",
-      "defaultValue": "10.128.43.128/25",
+      "defaultValue": "10.128.171.128/25",
       "metadata": { "description": "CRI notation of the Subnet." }
     },
-    "snet162NSGName": {
+    "snet362NSGName": {
       "type": "string",
       "defaultValue": "455NSG",
       "metadata": { "description": "Network Security Group to associate to the subnet." }
     },
-    "snet152Name": {
+    "snet352Name": {
       "type": "string",
-      "defaultValue": "s460_User_Tier0_PreProd_W1",
+      "defaultValue": "s460_User_Tier0_PreProd_TX",
       "metadata": { "description": "Name of the subnet." }
     },
-    "snet152IP": {
+    "snet352IP": {
       "type": "string",
-      "defaultValue": "10.128.44.0/25",
+      "defaultValue": "10.128.172.0/25",
       "metadata": { "description": "CRI notation of the Subnet." }
     },
-    "snet152NSGName": {
+    "snet352NSGName": {
       "type": "string",
       "defaultValue": "460NSG",
       "metadata": { "description": "Network Security Group to associate to the subnet." }
     },
-    "snet153Name": {
+    "snet353Name": {
       "type": "string",
-      "defaultValue": "s461_User_Tier1_PreProd_W1",
+      "defaultValue": "s461_User_Tier1_PreProd_TX",
       "metadata": { "description": "Name of the subnet." }
     },
-    "snet153IP": {
+    "snet353IP": {
       "type": "string",
-      "defaultValue": "10.128.44.128/25",
+      "defaultValue": "10.128.172.128/25",
       "metadata": { "description": "CRI notation of the Subnet." }
     },
-    "snet153NSGName": {
+    "snet353NSGName": {
       "type": "string",
       "defaultValue": "461NSG",
       "metadata": { "description": "Network Security Group to associate to the subnet." }
     },
-    "snet154Name": {
+    "snet354Name": {
       "type": "string",
-      "defaultValue": "s462_User_Tier2_PreProd_W1",
+      "defaultValue": "s462_User_Tier2_PreProd_TX",
       "metadata": { "description": "Name of the subnet." }
     },
-    "snet154IP": {
+    "snet354IP": {
       "type": "string",
-      "defaultValue": "10.128.45.0/25",
+      "defaultValue": "10.128.173.0/25",
       "metadata": { "description": "CRI notation of the Subnet." }
     },
-    "snet154NSGName": {
+    "snet354NSGName": {
       "type": "string",
       "defaultValue": "462NSG",
       "metadata": { "description": "Network Security Group to associate to the subnet." }
@@ -397,210 +396,210 @@
     Using the metadata spreadsheet, the Peering tab, filter results on VNET102, 
     Select the columnns that contain the word template and are color coded accordingly.
     */
-    "pr102PeeringName": {
+    "pr302PeeringName": {
       "type": "string",
-      "defaultValue": "vnet1a_preprod_w1_vnet1a_services_w1",
+      "defaultValue": "vnet1a_preprod_tx_vnet1a_services_tx",
       "metadata": { "description": "Arbitrary name for the new peering between an Azure VNet and another Azure VNET in the same region." }
     },
-    "pr102Source": {
+    "pr302Source": {
       "type": "string",
-      "defaultValue": "vnet1a_preprod_w1",
+      "defaultValue": "vnet1a_preprod_tx",
       "metadata": { "description": "Arbitrary name for the new peering between an Azure VNet and another Azure VNET in the same region." }
     },
-    "pr102destSubscriptionID": {
+    "pr302destSubscriptionID": {
       "type": "string",
-      "defaultValue": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9",
+      "defaultValue": "30457dd5-e56b-416b-9228-d48b37fe7caa",
       "metadata": { "description": "The subscription ID of the destination VNET Peer, needed to build the ResourceID." }
     },
-    "pr102destResourceGroup": {
+    "pr302destResourceGroup": {
       "type": "string",
-      "defaultValue": "rg_network_vnet1a_services_w1",
+      "defaultValue": "rg_network_vnet1a_services_tx",
       "metadata": { "description": "Resource Group name of the destination VNET Peer, needed to build the resource ID." }
     },
-    "pr102DestinationVNET": {
+    "pr302DestinationVNET": {
       "type": "string",
-      "defaultValue": "vnet1a_services_w1",
+      "defaultValue": "vnet1a_services_tx",
       "metadata": { "description": "Specific name for the source peering Azure Vnet." }
     },
-    "pr102allowVNETAccess": {
+    "pr302allowVNETAccess": {
       "type": "bool",
       "defaultValue": true,
       "metadata": { "description": "Can traffic to access this VNET?" }
     },
-    "pr102allowFwdAccess": {
+    "pr302allowFwdAccess": {
       "type": "bool",
       "defaultValue": true,
       "metadata": { "description": "Can traffic be forwarded to this VNET from another VNET outside the Peering relationship?" }
     },
-    "pr102allowGWAccess": {
+    "pr302allowGWAccess": {
       "type": "bool",
       "defaultValue": false,
       "metadata": { "description": "Can traffic from peering network leverage the gateway?" }
     },
-    "pr102useRemoteGateway": {
+    "pr302useRemoteGateway": {
       "type": "bool",
       "defaultValue": true,
       "metadata": { "description": "Can traffic use the remote gateway?" }
-    },
+    }
 
   },
   "variables": {
-    "apiVersion": "2015-06-15",
-    "vnetID": "[resourceId('Microsoft.Network/virtualNetworks', parameters('VNET102vnetName'))]"
+    "apiVersion": "2017-06-01",
+    "vnetID": "[resourceId('Microsoft.Network/virtualNetworks', parameters('VNET302vnetName'))]"
   },
   "resources": [ /*go to the Metadata spreadsheet, NSGRules tab, filter on VNET 104
     Select the Resources that are grouped by color*/
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('snet141NSGName')]",
+      "name": "[parameters('snet341NSGName')]",
       "location": "[resourceGroup().location]",
       "properties": { "securityRules": [] }
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('snet142NSGName')]",
+      "name": "[parameters('snet342NSGName')]",
       "location": "[resourceGroup().location]",
       "properties": { "securityRules": [] }
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('snet143NSGName')]",
+      "name": "[parameters('snet343NSGName')]",
       "location": "[resourceGroup().location]",
       "properties": { "securityRules": [] }
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('snet144NSGName')]",
+      "name": "[parameters('snet344NSGName')]",
       "location": "[resourceGroup().location]",
       "properties": { "securityRules": [] }
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('snet145NSGName')]",
+      "name": "[parameters('snet345NSGName')]",
       "location": "[resourceGroup().location]",
       "properties": { "securityRules": [] }
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('snet146NSGName')]",
+      "name": "[parameters('snet346NSGName')]",
       "location": "[resourceGroup().location]",
       "properties": { "securityRules": [] }
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('snet147NSGName')]",
+      "name": "[parameters('snet347NSGName')]",
       "location": "[resourceGroup().location]",
       "properties": { "securityRules": [] }
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('snet148NSGName')]",
+      "name": "[parameters('snet348NSGName')]",
       "location": "[resourceGroup().location]",
       "properties": { "securityRules": [] }
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('snet149NSGName')]",
+      "name": "[parameters('snet349NSGName')]",
       "location": "[resourceGroup().location]",
       "properties": { "securityRules": [] }
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('snet150NSGName')]",
+      "name": "[parameters('snet350NSGName')]",
       "location": "[resourceGroup().location]",
       "properties": { "securityRules": [] }
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('snet151NSGName')]",
+      "name": "[parameters('snet351NSGName')]",
       "location": "[resourceGroup().location]",
       "properties": { "securityRules": [] }
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('snet155NSGName')]",
+      "name": "[parameters('snet355NSGName')]",
       "location": "[resourceGroup().location]",
       "properties": { "securityRules": [] }
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('snet156NSGName')]",
+      "name": "[parameters('snet356NSGName')]",
       "location": "[resourceGroup().location]",
       "properties": { "securityRules": [] }
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('snet157NSGName')]",
+      "name": "[parameters('snet357NSGName')]",
       "location": "[resourceGroup().location]",
       "properties": { "securityRules": [] }
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('snet158NSGName')]",
+      "name": "[parameters('snet358NSGName')]",
       "location": "[resourceGroup().location]",
       "properties": { "securityRules": [] }
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('snet159NSGName')]",
+      "name": "[parameters('snet359NSGName')]",
       "location": "[resourceGroup().location]",
       "properties": { "securityRules": [] }
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('snet160NSGName')]",
+      "name": "[parameters('snet360NSGName')]",
       "location": "[resourceGroup().location]",
       "properties": { "securityRules": [] }
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('snet161NSGName')]",
+      "name": "[parameters('snet361NSGName')]",
       "location": "[resourceGroup().location]",
       "properties": { "securityRules": [] }
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('snet162NSGName')]",
+      "name": "[parameters('snet362NSGName')]",
       "location": "[resourceGroup().location]",
       "properties": { "securityRules": [] }
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('snet152NSGName')]",
+      "name": "[parameters('snet352NSGName')]",
       "location": "[resourceGroup().location]",
       "properties": { "securityRules": [] }
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('snet153NSGName')]",
+      "name": "[parameters('snet353NSGName')]",
       "location": "[resourceGroup().location]",
       "properties": { "securityRules": [] }
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('snet154NSGName')]",
+      "name": "[parameters('snet354NSGName')]",
       "location": "[resourceGroup().location]",
       "properties": { "securityRules": [] }
     },
@@ -609,95 +608,227 @@
     /*In the metadata spreadsheet, on the VNET Tab, filter on VNET102
           select the columns with Resource and grouped by Color. */
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[variables('apiversion')]",
       "type": "Microsoft.Network/virtualNetworks",
-      "name": "[parameters('vnet102vnetName')]",
-      "location": "[parameters('vnet102locationName')]",
+      "name": "[parameters('vnet302vnetName')]",
+      "location": "[parameters('vnet302locationName')]",
       "tags": { "displayName": "AzureFoundation VNet Definition" },
       "properties": {
-        "addressSpace": { "addressPrefixes": [ "[parameters('vnet102vnetAddressPrefix')]" ] },
-        "dhcpOptions": { "dnsServers": "[parameters('vnet102dnsServers')]" },
+        "addressSpace": { "addressPrefixes": [ "[parameters('vnet302vnetAddressPrefix')]" ] },
+        "dhcpOptions": { "dnsServers": "[parameters('vnet302dnsServers')]" },
         "subnets": [
 
           /*In the metadata spreadsheet, on the Subnet Tab, filter on VNET102
           select the columns with Resource and grouped by Color. */
-
-        {"name": "[parameters('snet141Name')]", "properties": {"addressPrefix": "[parameters('snet141IP')]", "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet141NSGName'))]"}}}, 
-{"name": "[parameters('snet142Name')]", "properties": {"addressPrefix": "[parameters('snet142IP')]", "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet142NSGName'))]"}}}, 
-{"name": "[parameters('snet143Name')]", "properties": {"addressPrefix": "[parameters('snet143IP')]", "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet143NSGName'))]"}}}, 
-{"name": "[parameters('snet144Name')]", "properties": {"addressPrefix": "[parameters('snet144IP')]", "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet144NSGName'))]"}}}, 
-{"name": "[parameters('snet145Name')]", "properties": {"addressPrefix": "[parameters('snet145IP')]", "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet145NSGName'))]"}}}, 
-{"name": "[parameters('snet146Name')]", "properties": {"addressPrefix": "[parameters('snet146IP')]", "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet146NSGName'))]"}}}, 
-{"name": "[parameters('snet147Name')]", "properties": {"addressPrefix": "[parameters('snet147IP')]", "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet147NSGName'))]"}}}, 
-{"name": "[parameters('snet148Name')]", "properties": {"addressPrefix": "[parameters('snet148IP')]", "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet148NSGName'))]"}}}, 
-{"name": "[parameters('snet149Name')]", "properties": {"addressPrefix": "[parameters('snet149IP')]", "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet149NSGName'))]"}}}, 
-{"name": "[parameters('snet150Name')]", "properties": {"addressPrefix": "[parameters('snet150IP')]", "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet150NSGName'))]"}}}, 
-{"name": "[parameters('snet151Name')]", "properties": {"addressPrefix": "[parameters('snet151IP')]", "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet151NSGName'))]"}}}, 
-{"name": "[parameters('snet155Name')]", "properties": {"addressPrefix": "[parameters('snet155IP')]", "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet155NSGName'))]"}}}, 
-{"name": "[parameters('snet156Name')]", "properties": {"addressPrefix": "[parameters('snet156IP')]", "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet156NSGName'))]"}}}, 
-{"name": "[parameters('snet157Name')]", "properties": {"addressPrefix": "[parameters('snet157IP')]", "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet157NSGName'))]"}}}, 
-{"name": "[parameters('snet158Name')]", "properties": {"addressPrefix": "[parameters('snet158IP')]", "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet158NSGName'))]"}}}, 
-{"name": "[parameters('snet159Name')]", "properties": {"addressPrefix": "[parameters('snet159IP')]", "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet159NSGName'))]"}}},
           {
-            "name": "[parameters('snet160Name')]",
+            "name": "[parameters('snet341Name')]",
             "properties": {
-              "addressPrefix": "[parameters('snet160IP')]",
-              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet160NSGName'))]" }
+              "addressPrefix": "[parameters('snet341IP')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet341NSGName'))]" }
             }
-          }, 
-{"name": "[parameters('snet161Name')]", "properties": {"addressPrefix": "[parameters('snet161IP')]", "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet161NSGName'))]"}}}, 
-{"name": "[parameters('snet162Name')]", "properties": {"addressPrefix": "[parameters('snet162IP')]", "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet162NSGName'))]"}}}, 
-{"name": "[parameters('snet152Name')]", "properties": {"addressPrefix": "[parameters('snet152IP')]", "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet152NSGName'))]"}}}, 
-{"name": "[parameters('snet153Name')]", "properties": {"addressPrefix": "[parameters('snet153IP')]", "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet153NSGName'))]"}}}, 
-{"name": "[parameters('snet154Name')]", "properties": {"addressPrefix": "[parameters('snet154IP')]", "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet154NSGName'))]"}}}, 
+          },
+          {
+            "name": "[parameters('snet342Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('snet342IP')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet342NSGName'))]" }
+            }
+          },
+          {
+            "name": "[parameters('snet343Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('snet343IP')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet343NSGName'))]" }
+            }
+          },
+          {
+            "name": "[parameters('snet344Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('snet344IP')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet344NSGName'))]" }
+            }
+          },
+          {
+            "name": "[parameters('snet345Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('snet345IP')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet345NSGName'))]" }
+            }
+          },
+          {
+            "name": "[parameters('snet346Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('snet346IP')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet346NSGName'))]" }
+            }
+          },
+          {
+            "name": "[parameters('snet347Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('snet347IP')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet347NSGName'))]" }
+            }
+          },
+          {
+            "name": "[parameters('snet348Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('snet348IP')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet348NSGName'))]" }
+            }
+          },
+          {
+            "name": "[parameters('snet349Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('snet349IP')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet349NSGName'))]" }
+            }
+          },
+          {
+            "name": "[parameters('snet350Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('snet350IP')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet350NSGName'))]" }
+            }
+          },
+          {
+            "name": "[parameters('snet351Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('snet351IP')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet351NSGName'))]" }
+            }
+          },
+          {
+            "name": "[parameters('snet355Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('snet355IP')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet355NSGName'))]" }
+            }
+          },
+          {
+            "name": "[parameters('snet356Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('snet356IP')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet356NSGName'))]" }
+            }
+          },
+          {
+            "name": "[parameters('snet357Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('snet357IP')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet357NSGName'))]" }
+            }
+          },
+          {
+            "name": "[parameters('snet358Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('snet358IP')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet358NSGName'))]" }
+            }
+          },
+          {
+            "name": "[parameters('snet359Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('snet359IP')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet359NSGName'))]" }
+            }
+          },
+          {
+            "name": "[parameters('snet360Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('snet360IP')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet360NSGName'))]" }
+            }
+          },
+          {
+            "name": "[parameters('snet361Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('snet361IP')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet361NSGName'))]" }
+            }
+          },
+          {
+            "name": "[parameters('snet362Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('snet362IP')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet362NSGName'))]" }
+            }
+          },
+          {
+            "name": "[parameters('snet352Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('snet352IP')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet352NSGName'))]" }
+            }
+          },
+          {
+            "name": "[parameters('snet353Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('snet353IP')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet353NSGName'))]" }
+            }
+          },
+          {
+            "name": "[parameters('snet354Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('snet354IP')]",
+              "networkSecurityGroup": { "id": "[resourceID('Microsoft.Network/networkSecurityGroups', parameters('snet354NSGName'))]" }
+            }
+          }
 
-
-
-        ], /*Keep this Line*/
-
-        "resources": /*Keep this Line*/
-        [ /*Keep this Line*/
-          /*Go to the Peering tab of the Metadata spreadsheet and filter on VNET 104
+        ] /*Keep this Line*/
+      },
+      "resources": /*Keep this Line*/
+      [ /*Keep this Line*/
+        /*Go to the Peering tab of the Metadata spreadsheet and filter on VNET 104
           select the Resources for Peering and past them below. */
-    {"apiVersion": "2016-06-01","type": "virtualNetworkPeerings","name": "[parameters('pr102PeeringName')]", "location": "[resourceGroup().location]", "comments":"Make sure you put these resources within the Resources of a VNET, like a subnet","properties": {"allowVirtualNetworkAccess": "[parameters('pr102allowVNETAccess')]", "allowForwardedTraffic":  "[parameters('pr102allowFwdAccess')]", "allowGatewayTransit":  "[parameters('pr102allowGWAccess')]", "useRemoteGateways": "[parameters('pr102useRemoteGateway')]", "remoteVirtualNetwork":{"id": "[concat('/subscriptions/', parameters('pr102destSubscriptionID'), '/resourceGroups/', parameters('pr102destResourceGroup'),'/providers/Microsoft.Network/virtualNetworks/',parameters('pr102DestinationVNET'))]"}}},
+        {
+          "apiVersion": "[variables('apiversion')]",
+          "type": "virtualNetworkPeerings",
+          "name": "[parameters('pr302PeeringName')]",
+          "location": "[resourceGroup().location]",
+          "comments": "Make sure you put these resources within the Resources of a VNET, like a subnet",
+          "properties": {
+            "allowVirtualNetworkAccess": "[parameters('pr302allowVNETAccess')]",
+            "allowForwardedTraffic": "[parameters('pr302allowFwdAccess')]",
+            "allowGatewayTransit": "[parameters('pr302allowGWAccess')]",
+            "useRemoteGateways": "[parameters('pr302useRemoteGateway')]",
+            "remoteVirtualNetwork": { "id": "[concat('/subscriptions/', parameters('pr302destSubscriptionID'), '/resourceGroups/', parameters('pr302destResourceGroup'),'/providers/Microsoft.Network/virtualNetworks/',parameters('pr302DestinationVNET'))]" }
+          },
+          "dependsOn": [ "[concat('Microsoft.Network/virtualNetworks/', parameters('vnet302vnetName'))]" ]
+        }
 
-
-        ],
-
-        "dependsOn": /*Keep This Line*/
-        [ /*Keep This Line*/
-          /*Using the metadata template on the Subnet Tab, filter to VNET102 and select
+      ],
+      "dependsOn": /*Keep This Line*/
+      [ /*Keep This Line*/
+        /*Using the metadata template on the Subnet Tab, filter to VNET102 and select
           the columns with DependsOn and grouped by color*/
-   "(concat['Microsoft.Network/networkSecurityGroups/', parameters('snet141NSGName'))",
-"(concat['Microsoft.Network/networkSecurityGroups/', parameters('snet142NSGName'))",
-"(concat['Microsoft.Network/networkSecurityGroups/', parameters('snet143NSGName'))",
-"(concat['Microsoft.Network/networkSecurityGroups/', parameters('snet144NSGName'))",
-"(concat['Microsoft.Network/networkSecurityGroups/', parameters('snet145NSGName'))",
-"(concat['Microsoft.Network/networkSecurityGroups/', parameters('snet146NSGName'))",
-"(concat['Microsoft.Network/networkSecurityGroups/', parameters('snet147NSGName'))",
-"(concat['Microsoft.Network/networkSecurityGroups/', parameters('snet148NSGName'))",
-"(concat['Microsoft.Network/networkSecurityGroups/', parameters('snet149NSGName'))",
-"(concat['Microsoft.Network/networkSecurityGroups/', parameters('snet150NSGName'))",
-"(concat['Microsoft.Network/networkSecurityGroups/', parameters('snet151NSGName'))",
-"(concat['Microsoft.Network/networkSecurityGroups/', parameters('snet155NSGName'))",
-"(concat['Microsoft.Network/networkSecurityGroups/', parameters('snet156NSGName'))",
-"(concat['Microsoft.Network/networkSecurityGroups/', parameters('snet157NSGName'))",
-"(concat['Microsoft.Network/networkSecurityGroups/', parameters('snet158NSGName'))",
-"(concat['Microsoft.Network/networkSecurityGroups/', parameters('snet159NSGName'))",
-"(concat['Microsoft.Network/networkSecurityGroups/', parameters('snet160NSGName'))",
-"(concat['Microsoft.Network/networkSecurityGroups/', parameters('snet161NSGName'))",
-"(concat['Microsoft.Network/networkSecurityGroups/', parameters('snet162NSGName'))",
-"(concat['Microsoft.Network/networkSecurityGroups/', parameters('snet152NSGName'))",
-"(concat['Microsoft.Network/networkSecurityGroups/', parameters('snet153NSGName'))",
-"(concat['Microsoft.Network/networkSecurityGroups/', parameters('snet154NSGName'))",
-  ]
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('snet341NSGName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('snet342NSGName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('snet343NSGName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('snet344NSGName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('snet345NSGName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('snet346NSGName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('snet347NSGName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('snet348NSGName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('snet349NSGName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('snet350NSGName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('snet351NSGName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('snet355NSGName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('snet356NSGName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('snet357NSGName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('snet358NSGName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('snet359NSGName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('snet360NSGName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('snet361NSGName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('snet362NSGName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('snet352NSGName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('snet353NSGName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('snet354NSGName'))]"
 
-
-      }
+      ] /*Keep this line*/
     }
- 
-
   ],
+
   "outputs": {
 
   }

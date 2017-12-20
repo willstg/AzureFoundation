@@ -1,29 +1,29 @@
-﻿$site=3
+﻿$site=2
 
-$VPNGWResourceGroupName1 = "rg_vnet_services_W1"
+
+$ResourceGroupName_vnet104="rg_network_vnet1a_services_w1"
+$ResourceGroupName_vnet204="rg_network_vnet1a_services_w2"
+
 $VPNGWName1 = "gw_Services_W1_Vpn"
-$VPNGWResourceGroupName2 = "rg_vnet_services_W2"
 $VPNGWName2 = "gw_Services_W2_Vpn"
-$VPNGWResourceGroupName3 = "rg_vnet_services_TX"
 $VPNGWName3 = "gw_Services_TX_Vpn"
-$VPNGWResourceGroupName4 = "rg_vnet_services_AZ"
 $VPNGWName4 = "gw_Services_AZ_Vpn"
 
 
 if($site -eq 1){
-$VPNGWResourceGroupName=$VPNGWResourceGroupName1
+$VPNGWResourceGroupName=$ResourceGroupName_vnet104
 $VPNGWName=$VPNGWName1
 }
 if($site -eq 2){
-$VPNGWResourceGroupName=$VPNGWResourceGroupName2
+$VPNGWResourceGroupName=$ResourceGroupName_vnet204
 $VPNGWName=$VPNGWName2
 }
 if($site -eq 3){
-$VPNGWResourceGroupName=$VPNGWResourceGroupName3
+$VPNGWResourceGroupName=$ResourceGroupName_vnet304
 $VPNGWName=$VPNGWName3
 }
 if($site -eq 4){
-$VPNGWResourceGroupName=$VPNGWResourceGroupName4
+$VPNGWResourceGroupName=$ResourceGroupName_vnet404
 $VPNGWName=$VPNGWName4
 }
 
