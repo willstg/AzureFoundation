@@ -14,7 +14,7 @@
     "vnet301vnetName": { "value": "vnet1a_hbi_tx" },
     "vnet301vnetAddressPrefix": { "value": "10.128.144.0/20" },
     "vnet301locationName": { "value": "usgovtexas" },
-    "vnet301dnsServers": { "value": [] },
+    "vnet301dnsServers": { "value": [ "10.128.56.11", "10.128.120.11", "10.128.184.11", "10.128.248.11" ] },
     "vnet301SubscriptionID": { "value": "97eba262-9086-4a3e-9770-dcfef6c3df30" },
     "vnet301ResourceGroupName": { "value": "rg_network_vnet1a_hbi_tx" },
 

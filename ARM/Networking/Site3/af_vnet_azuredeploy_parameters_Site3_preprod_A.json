@@ -14,7 +14,7 @@
     "vnet302vnetName": { "value": "vnet1a_preprod_tx" },
     "vnet302vnetAddressPrefix": { "value": "10.128.160.0/20" },
     "vnet302locationName": { "value": "usgovtexas" },
-    "vnet302dnsServers": { "value": [] },
+    "vnet302dnsServers": { "value": [ "10.128.56.11", "10.128.120.11", "10.128.184.11", "10.128.248.11" ] },
     "vnet302SubscriptionID": { "value": "a4b962d2-6b17-4c38-af02-010a6e774379" },
     "vnet302ResourceGroupName": { "value": "rg_network_vnet1a_preprod_tx" },
 

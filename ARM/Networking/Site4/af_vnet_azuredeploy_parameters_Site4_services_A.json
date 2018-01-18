@@ -14,7 +14,7 @@
     "vnet404vnetName": { "value": "vnet1a_services_az" },
     "vnet404vnetAddressPrefix": { "value": "10.128.248.0/21" },
     "vnet404locationName": { "value": "usgovarizona" },
-    "vnet404dnsServers": { "value": [] },
+    "vnet404dnsServers": { "value": [ "10.128.56.11", "10.128.120.11", "10.128.184.11", "10.128.248.11" ] },
     "vnet404SubscriptionID": { "value": "30457dd5-e56b-416b-9228-d48b37fe7caa" },
     "vnet404ResourceGroupName": { "value": "rg_network_vnet1a_services_az" },
 
@@ -101,17 +101,17 @@
     */
     "lngw01dname": { "value": "lngw_boulder_dc1" },
     "lngw01dgatewayIPAddress": { "value": "1.1.1.1" },
-    "lngw01dlocalNetworkAddressSpace": { "value": [ "10.0.0.0/9" ] },
+    "lngw01dlocalNetworkAddressSpace": { "value": [ "10.0.0.10/32" ] },
     "lngw01dConfigureBGP": { "value": true },
     "lngw01dASNNumber": { "value": 65501 },
-    "lngw01dBGPPeerIPAddress": { "value": "10.0.0.254" },
+    "lngw01dBGPPeerIPAddress": { "value": "10.128.127.228" },
     "lngw01dpeerWeight": { "value": 0 },
     "lngw02dname": { "value": "lngw_austin_dc2" },
     "lngw02dgatewayIPAddress": { "value": "1.1.1.9" },
-    "lngw02dlocalNetworkAddressSpace": { "value": [ "10.0.0.0/9" ] },
+    "lngw02dlocalNetworkAddressSpace": { "value": [ "10.0.0.10/32" ] },
     "lngw02dConfigureBGP": { "value": true },
     "lngw02dASNNumber": { "value": 65502 },
-    "lngw02dBGPPeerIPAddress": { "value": " " },
+    "lngw02dBGPPeerIPAddress": { "value": "10.128.127.228" },
     "lngw02dpeerWeight": { "value": 0 },
     "lngw204aname": { "value": "lngw_site2a_w2" },
     "lngw204agatewayIPAddress": { "value": "51.143.16.243" },
@@ -125,8 +125,9 @@
     "lngw204blocalNetworkAddressSpace": { "value": [ "10.128.127.224/27" ] },
     "lngw204bConfigureBGP": { "value": true },
     "lngw204bASNNumber": { "value": 65522 },
-    "lngw204bBGPPeerIPAddress": { "value": "10.128.127.229" },
+    "lngw204bBGPPeerIPAddress": { "value": "10.128.127.228" },
     "lngw204bpeerWeight": { "value": 0 },
+
 
     /*the gateway tab of the metadata spreadsheet and filter the data with VNET104
         copy the data from the columns that have the word prerameters in them.  the columns 

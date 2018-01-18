@@ -14,7 +14,7 @@
     "vnet201vnetName": { "value": "vnet1a_hbi_w2" },
     "vnet201vnetAddressPrefix": { "value": "10.128.80.0/20" },
     "vnet201locationName": { "value": "westus2" },
-    "vnet201dnsServers": { "value": [ "10.128.59.36" ] },
+    "vnet201dnsServers": { "value": [ "10.128.56.11", "10.128.120.11", "10.128.184.11", "10.128.248.11" ] },
     "vnet201SubscriptionID": { "value": "ce38c0ef-22f5-458d-b1f7-e3890e2471f2" },
     "vnet201ResourceGroupName": { "value": "rg_network_vnet1a_hbi_w2" },
 

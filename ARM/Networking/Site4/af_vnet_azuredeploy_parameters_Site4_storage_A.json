@@ -14,7 +14,7 @@
     "vnet403vnetName": { "value": "vnet1a_storage_az" },
     "vnet403vnetAddressPrefix": { "value": "10.128.240.0/21" },
     "vnet403locationName": { "value": "usgovarizona" },
-    "vnet403dnsServers": { "value": [] },
+    "vnet403dnsServers": { "value": [ "10.128.56.11", "10.128.120.11", "10.128.184.11", "10.128.248.11" ] },
     "vnet403SubscriptionID": { "value": "0223b7af-344f-42cd-bed2-5ebbc7d06d5d" },
     "vnet403ResourceGroupName": { "value": "rg_network_vnet1a_storage_az" },
 

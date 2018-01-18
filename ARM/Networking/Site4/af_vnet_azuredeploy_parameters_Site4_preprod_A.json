@@ -14,7 +14,7 @@
     "vnet402vnetName": { "value": "vnet1a_preprod_az" },
     "vnet402vnetAddressPrefix": { "value": "10.128.224.0/20" },
     "vnet402locationName": { "value": "usgovarizona" },
-    "vnet402dnsServers": { "value": [] },
+    "vnet402dnsServers": { "value": [ "10.128.56.11", "10.128.120.11", "10.128.184.11", "10.128.248.11" ] },
     "vnet402SubscriptionID": { "value": "a4b962d2-6b17-4c38-af02-010a6e774379" },
     "vnet402ResourceGroupName": { "value": "rg_network_vnet1a_preprod_az" },
 
@@ -88,7 +88,7 @@
     "snet454Name": { "value": "s462_User_Tier2_PreProd_AZ" },
     "snet454IP": { "value": "10.128.237.0/25" },
     "snet454NSGName": { "value": "462NSG" },
- 
+
     /*the Peering tab of the metadata spreadsheet and filter the data with VNET102
         copy the data from the columns that have the word prerameters in them.  the columns 
     are colored to show the grouping.

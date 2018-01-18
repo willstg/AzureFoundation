@@ -14,7 +14,7 @@
     "vnet204vnetName": { "value": "vnet1a_services_w2" },
     "vnet204vnetAddressPrefix": { "value": "10.128.120.0/21" },
     "vnet204locationName": { "value": "westus2" },
-    "vnet204dnsServers": { "value": [ "10.128.59.36" ] },
+    "vnet204dnsServers": { "value": [ "10.128.56.11", "10.128.120.11", "10.128.184.11", "10.128.248.11" ] },
     "vnet204SubscriptionID": { "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9" },
     "vnet204ResourceGroupName": { "value": "rg_network_vnet1a_services_w2" },
 
@@ -116,19 +116,20 @@
     "lngw02bBGPPeerIPAddress": { "value": "10.0.0.10" },
     "lngw02bpeerWeight": { "value": 0 },
     "lngw404aname": { "value": "lngw_site4a_az" },
-    "lngw404agatewayIPAddress": { "value": "52.244.160.62" },
+    "lngw404agatewayIPAddress": { "value": "52.244.164.166" },
     "lngw404alocalNetworkAddressSpace": { "value": [ "10.128.254.224/27" ] },
     "lngw404aConfigureBGP": { "value": true },
     "lngw404aASNNumber": { "value": 65524 },
     "lngw404aBGPPeerIPAddress": { "value": "10.128.254.228" },
     "lngw404apeerWeight": { "value": 0 },
     "lngw404bname": { "value": "lngw_site4b_az" },
-    "lngw404bgatewayIPAddress": { "value": "52.244.165.98" },
+    "lngw404bgatewayIPAddress": { "value": "52.244.165.84" },
     "lngw404blocalNetworkAddressSpace": { "value": [ "10.128.254.224/27" ] },
     "lngw404bConfigureBGP": { "value": true },
     "lngw404bASNNumber": { "value": 65524 },
     "lngw404bBGPPeerIPAddress": { "value": "10.128.254.229" },
     "lngw404bpeerWeight": { "value": 0 },
+
 
     /*the gateway tab of the metadata spreadsheet and filter the data with VNET204
         copy the data from the columns that have the word prerameters in them.  the columns 

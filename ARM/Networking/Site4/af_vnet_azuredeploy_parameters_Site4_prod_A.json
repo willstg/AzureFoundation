@@ -14,7 +14,7 @@
     "vnet400vnetName": { "value": "vnet1a_prod_az" },
     "vnet400vnetAddressPrefix": { "value": "10.128.192.0/20" },
     "vnet400locationName": { "value": "usgovarizona" },
-    "vnet400dnsServers": { "value": [] },
+    "vnet400dnsServers": { "value": [ "10.128.56.11", "10.128.120.11", "10.128.184.11", "10.128.248.11" ] },
     "vnet400SubscriptionID": { "value": "4a0d1d83-f557-4065-8423-be499038298a" },
     "vnet400ResourceGroupName": { "value": "rg_network_vnet1a_prod_az" },
 

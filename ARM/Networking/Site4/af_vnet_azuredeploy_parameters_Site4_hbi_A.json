@@ -14,7 +14,7 @@
     "vnet401vnetName": { "value": "vnet1a_hbi_az" },
     "vnet401vnetAddressPrefix": { "value": "10.128.208.0/20" },
     "vnet401locationName": { "value": "usgovarizona" },
-    "vnet401dnsServers": { "value": [] },
+    "vnet401dnsServers": { "value": [ "10.128.56.11", "10.128.120.11", "10.128.184.11", "10.128.248.11" ] },
     "vnet401SubscriptionID": { "value": "97eba262-9086-4a3e-9770-dcfef6c3df30" },
     "vnet401ResourceGroupName": { "value": "rg_network_vnet1a_hbi_az" },
 

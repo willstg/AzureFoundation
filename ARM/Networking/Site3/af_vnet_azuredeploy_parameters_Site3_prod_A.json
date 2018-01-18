@@ -14,7 +14,7 @@
     "vnet300vnetName": { "value": "vnet1a_prod_tx" },
     "vnet300vnetAddressPrefix": { "value": "10.128.128.0/20" },
     "vnet300locationName": { "value": "usgovtexas" },
-    "vnet300dnsServers": { "value": [] },
+    "vnet300dnsServers": { "value": [ "10.128.56.11", "10.128.120.11", "10.128.184.11", "10.128.248.11" ] },
     "vnet300SubscriptionID": { "value": "4a0d1d83-f557-4065-8423-be499038298a" },
     "vnet300ResourceGroupName": { "value": "rg_network_vnet1a_prod_tx" },
 

@@ -14,7 +14,7 @@
     "vnet103vnetName": { "value": "vnet1a_storage_w1" },
     "vnet103vnetAddressPrefix": { "value": "10.128.48.0/21" },
     "vnet103locationName": { "value": "westcentralus" },
-    "vnet103dnsServers": { "value": [ "10.128.59.36" ] },
+    "vnet103dnsServers": { "value": [ "10.128.56.11", "10.128.120.11", "10.128.184.11", "10.128.248.11" ] },
     "vnet103SubscriptionID": { "value": "6e5d19d2-a324-470a-b24f-57ac0d3221a1" },
     "vnet103ResourceGroupName": { "value": "rg_network_vnet1a_storage_w1" },
 

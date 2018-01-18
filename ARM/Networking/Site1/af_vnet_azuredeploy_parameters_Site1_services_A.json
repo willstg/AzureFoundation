@@ -14,7 +14,7 @@
     "vnet104vnetName": { "value": "vnet1a_services_w1" },
     "vnet104vnetAddressPrefix": { "value": "10.128.56.0/21" },
     "vnet104locationName": { "value": "westcentralus" },
-    "vnet104dnsServers": { "value": [ "10.128.59.36" ] },
+    "vnet104dnsServers": { "value": [ "10.128.56.11", "10.128.120.11", "10.128.184.11", "10.128.248.11" ] },
     "vnet104SubscriptionID": { "value": "730f26b5-ebf5-4518-999f-0b4eb0cdc8f9" },
     "vnet104ResourceGroupName": { "value": "rg_network_vnet1a_services_w1" }, /*Update this in the PowerShell*/
 

@@ -14,7 +14,7 @@
     "vnet304vnetName": { "value": "vnet1a_services_tx" },
     "vnet304vnetAddressPrefix": { "value": "10.128.184.0/21" },
     "vnet304locationName": { "value": "usgovtexas" },
-    "vnet304dnsServers": { "value": [] },
+    "vnet304dnsServers": { "value": [ "10.128.56.11", "10.128.120.11", "10.128.184.11", "10.128.248.11" ] },
     "vnet304SubscriptionID": { "value": "30457dd5-e56b-416b-9228-d48b37fe7caa" },
     "vnet304ResourceGroupName": { "value": "rg_network_vnet1a_services_tx" },
 
@@ -111,7 +111,7 @@
     "lngw02clocalNetworkAddressSpace": { "value": [ "10.0.0.0/9" ] },
     "lngw02cConfigureBGP": { "value": true },
     "lngw02cASNNumber": { "value": 65502 },
-    "lngw02cBGPPeerIPAddress": { "value": "10.0.0.255" },
+    "lngw02cBGPPeerIPAddress": { "value": "10.0.0.251" },
     "lngw02cpeerWeight": { "value": 0 },
     "lngw104aname": { "value": "lngw_site1a_w1" },
     "lngw104agatewayIPAddress": { "value": "13.78.183.216" },
@@ -174,7 +174,7 @@
     "cnct303connectionType": { "value": "IPSec" },
     "cnct303sharedKey": { "value": "mysharedkey" },
     "cnct303routingWeight": { "value": 0 },
-    "cnct303enableBGP": { "value": true },
+    "cnct303enableBGP": { "value": true }
 
   }
 }
