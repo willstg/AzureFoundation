@@ -167,6 +167,8 @@
     "cnct201sharedKey": { "value": "mysharedkey" },
     "cnct201routingWeight": { "value": 0 },
     "cnct201enableBGP": { "value": true },
+    "cnct201remoteLocation": { "value": "westcentralus" },
+
     "cnct202ConnectionName": { "value": "cnct_IPSec_gw_vnet1a_services_w2_To_lngw_site4a_az" },
     "cnct202gwName": { "value": "gw_vnet1a_services_w2" },
     "cnct202connectionType": { "value": "IPSec" },

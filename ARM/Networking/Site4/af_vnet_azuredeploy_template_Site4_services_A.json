@@ -711,6 +711,12 @@
       "defaultValue": true,
       "metadata": { "description": "EnableBGP flag" }
     },
+    "cnct401remoteLocation": {
+      "type": "string",
+      "defaultValue": "usgovtexas",
+      "metadata": { "description": "The Region where the Vnet2Vnet connection is terminated" }
+    },
+
     "cnct402ConnectionName": {
       "type": "string",
       "defaultValue": "cnct_IPSec_gw_vnet1a_services_az_To_lngw_site2a_w2",
@@ -1186,7 +1192,7 @@
     },
     {
       "apiVersion": "[variables('apiversion')]",
-      "name": "[parameters('cnct401ConnectionName')]",
+      "name": "[concat('cnct1',parameters('cnct401ConnectionName'))]",
       "type": "Microsoft.Network/connections",
       "location": "[resourceGroup().location]",
       "dependsOn": [ "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('cnct401gwName'))]" ],
@@ -1201,19 +1207,21 @@
     },
     {
       "apiVersion": "[variables('apiversion')]",
-      "name": "[parameters('cnct402ConnectionName')]",
+      "name": "[concat('cnct2',parameters('cnct401ConnectionName'))]",
       "type": "Microsoft.Network/connections",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [ "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('cnct402gwName'))]", "[concat('Microsoft.Network/localNetworkGateways/', parameters('cnct402remoteGWName'))]" ],
+      "location": "[parameters('cnct401remoteLocation')]",
+      "dependsOn": [ "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('cnct401gwName'))]" ],
       "properties": {
-        "virtualNetworkGateway1": { "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('cnct402gwName'))]" },
-        "localNetworkGateway2": { "id": "[resourceId('Microsoft.Network/localNetworkGateways', parameters('cnct402remoteGWName'))]" },
-        "sharedKey": "[parameters('cnct402sharedKey')]",
-        "connectionType": "[parameters('cnct402connectionType')]",
-        "routingWeight": "[parameters('cnct402routingWeight')]",
-        "enableBGP": "[parameters('cnct402enableBGP')]"
+        "virtualNetworkGateway1": { "id": "[concat('/subscriptions/',parameters('cnct401remoteSubscriptionID'),'/resourceGroups/',parameters('cnct401remoteResourceGroupName'),'/providers/Microsoft.Network/VirtualNetworkGateways/', parameters('cnct401remoteGWName'))]" },
+        "virtualNetworkGateway2": { "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('cnct401gwName'))]" },
+        "sharedKey": "[parameters('cnct401sharedKey')]",
+        "connectionType": "[parameters('cnct401connectionType')]",
+        "routingWeight": "[parameters('cnct401routingWeight')]",
+        "enableBGP": "[parameters('cnct401enableBGP')]"
       }
     },
+
+
     {
       "apiVersion": "[variables('apiversion')]",
       "name": "[parameters('cnct403ConnectionName')]",

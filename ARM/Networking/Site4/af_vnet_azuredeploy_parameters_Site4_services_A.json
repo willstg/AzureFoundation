@@ -164,6 +164,8 @@
     "cnct401sharedKey": { "value": "mysharedkey" },
     "cnct401routingWeight": { "value": 0 },
     "cnct401enableBGP": { "value": true },
+    "cnct401remoteLocation": { "value": "usgovtexas" },
+
     "cnct402ConnectionName": { "value": "cnct_IPSec_gw_vnet1a_services_az_To_lngw_site2a_w2" },
     "cnct402gwName": { "value": "gw_vnet1a_services_az" },
     "cnct402connectionType": { "value": "IPSec" },
