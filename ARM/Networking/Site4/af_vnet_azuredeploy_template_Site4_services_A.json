@@ -1220,8 +1220,21 @@
         "enableBGP": "[parameters('cnct401enableBGP')]"
       }
     },
-
-
+    {
+      "apiVersion": "[variables('apiversion')]",
+      "name": "[parameters('cnct402ConnectionName')]",
+      "type": "Microsoft.Network/connections",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [ "[concat('Microsoft.Network/virtualNetworkGateways/', parameters('cnct402gwName'))]", "[concat('Microsoft.Network/localNetworkGateways/', parameters('cnct402remoteGWName'))]" ],
+      "properties": {
+        "virtualNetworkGateway1": { "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('cnct402gwName'))]" },
+        "localNetworkGateway2": { "id": "[resourceId('Microsoft.Network/localNetworkGateways', parameters('cnct402remoteGWName'))]" },
+        "sharedKey": "[parameters('cnct402sharedKey')]",
+        "connectionType": "[parameters('cnct402connectionType')]",
+        "routingWeight": "[parameters('cnct402routingWeight')]",
+        "enableBGP": "[parameters('cnct402enableBGP')]"
+      }
+    },
     {
       "apiVersion": "[variables('apiversion')]",
       "name": "[parameters('cnct403ConnectionName')]",
@@ -1237,7 +1250,6 @@
         "enableBGP": "[parameters('cnct403enableBGP')]"
       }
     }
-
 
   ],
   "outputs": {

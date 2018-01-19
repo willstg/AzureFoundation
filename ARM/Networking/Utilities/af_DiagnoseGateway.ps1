@@ -1,51 +1,65 @@
-﻿$site=2
+﻿$Environment = 'AzureCloud'
+$Environment = 'AzureUSGovernment'
 
+Login-AzureRmAccount -Environment $Environment
+$subscription = Get-AzureRmSubscription |  Out-GridView -PassThru
+Set-AzureRmContext -SubscriptionId $subscription.Id
+Write-Host "Successfully logged in to Azure." -ForegroundColor Green 
 
-$ResourceGroupName_vnet104="rg_network_vnet1a_services_w1"
-$ResourceGroupName_vnet204="rg_network_vnet1a_services_w2"
+$site=1
 
-$VPNGWName1 = "gw_Services_W1_Vpn"
-$VPNGWName2 = "gw_Services_W2_Vpn"
-$VPNGWName3 = "gw_Services_TX_Vpn"
-$VPNGWName4 = "gw_Services_AZ_Vpn"
 
 
 if($site -eq 1){
-$VPNGWResourceGroupName=$ResourceGroupName_vnet104
-$VPNGWName=$VPNGWName1
+$VPNGWResourceGroup=Get-AzureRMResourceGroup | Out-GridView -PassThru -title "vnet104, aka Site 1, Services"
+
 }
 if($site -eq 2){
-$VPNGWResourceGroupName=$ResourceGroupName_vnet204
-$VPNGWName=$VPNGWName2
+$VPNGWResourceGroup=Get-AzureRMResourceGroup | Out-GridView -PassThru -title "vnet204, aka Site 2, Services"
+
 }
 if($site -eq 3){
-$VPNGWResourceGroupName=$ResourceGroupName_vnet304
-$VPNGWName=$VPNGWName3
+$VPNGWResourceGroup=Get-AzureRMResourceGroup | Out-GridView -PassThru -title "vnet304, aka Site 3, Services"
+
 }
 if($site -eq 4){
-$VPNGWResourceGroupName=$ResourceGroupName_vnet404
+$VPNGWResourceGroup=Get-AzureRMResourceGroup | Out-GridView -PassThru -title "vnet404, aka Site 4, Services"
 $VPNGWName=$VPNGWName4
 }
 
+$VPNGW= Get-AzureRMVirtualNetworkGateway -ResourceGroupName $VPNGWResourceGroup.ResourceGroupName | Out-GridView -PassThru -title "Select the Gateway"
+ForEach($GW in $VPNGW){
+    Write-Output "Name: "$GW.Name "Provisioning State: "$GW.ProvisioningState "BGP Enabled: " $gw.EnableBgp "BGP Settings:" $gw.BgpSettings
+
+    #check if resetting the gateway will clear a failed provisioning state
+    if($GW.ProvisioningState -eq 'Failed'){
+        Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $GW
+    }
+}
 
 #LocalNetworkConnection - The location we are connecting to's details.
-$LocalGW = Get-AzureRmLocalNetworkGateway -ResourceGroupName $VPNGWResourceGroupName
+$LocalGWs = Get-AzureRmLocalNetworkGateway -ResourceGroupName $VPNGWResourceGroup.ResourceGroupName
+foreach($LocalGW in $localGWs){
+    Write-Output $LocalGW|Format-Table
+
+}
+
+
+
+
 #The VNET's Gateway, what allows traffic from other locations into the VNET
-$VPNGW = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $VPNGWResourceGroupName
-$VPNConnections = Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $VPNGWResourceGroupName
-$VPNConnections
-$VPNGWResourceGroupName
+
+$VPNConnections = Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $VPNGWResourceGroup.ResourceGroupName
 
 foreach($Connection in $VPNConnections){
-Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $VPNGWResourceGroupName -name $Connection.name
-$Connection
-$Connection.Name
+$connectionDetails = Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $VPNGWResourceGroup.ResourceGroupName -name $Connection.name
+$ConnectionDetails
 
 }
 
 #Is Routing Working?
-$VPNPeerStatus = Get-AzureRmVirtualNetworkGatewayBGPPeerStatus -ResourceGroupName $VPNGWResourceGroupName -VirtualNetworkGatewayName $VPNGWName
-$VPNLearnedRoutes = Get-AzureRmVirtualNetworkGatewayLearnedRoute -ResourceGroupName $VPNGWResourceGroupName -VirtualNetworkGatewayName $VPNGWName
+$VPNPeerStatus = Get-AzureRmVirtualNetworkGatewayBGPPeerStatus -ResourceGroupName $VPNGWResourceGroup -VirtualNetworkGatewayName $VPNGWName
+$VPNLearnedRoutes = Get-AzureRmVirtualNetworkGatewayLearnedRoute -ResourceGroupName $VPNGWResourceGroup -VirtualNetworkGatewayName $VPNGWName
 
 
 
@@ -63,7 +77,7 @@ Write-output "VPN Peer Status: " $VPNPeerStatus.Asn $VPNPeerStatus.Neighbor $VPN
 $i=0
 foreach ($BGPPeer in $VPNPeerStatus){
 
-Get-AzureRmVirtualNetworkGatewayAdvertisedRoute -Peer $LocalGW.GatewayIpAddress -ResourceGroupName $VPNGWResourceGroupName -VirtualNetworkGatewayName $VPNGWName
+Get-AzureRmVirtualNetworkGatewayAdvertisedRoute -Peer $LocalGW.GatewayIpAddress -ResourceGroupName $VPNGWResourceGroup -VirtualNetworkGatewayName $VPNGWName
 $i=$1+1
 }
 
