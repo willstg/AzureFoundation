@@ -35,16 +35,19 @@ ForEach($GW in $VPNGW){
     if($GW.ProvisioningState -eq 'Failed'){
         Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $GW
     }
+
+    #Is Routing Working?
+        $VPNPeerStatus = Get-AzureRmVirtualNetworkGatewayBGPPeerStatus -ResourceGroupName $VPNGWResourceGroup.ResourceGroupName -VirtualNetworkGatewayName $GW.Name
+        $VPNLearnedRoutes = Get-AzureRmVirtualNetworkGatewayLearnedRoute  -ResourceGroupName $VPNGWResourceGroup.ResourceGroupName -VirtualNetworkGatewayName $GW.Name
+        $VPNLearnedRoutes|Format-Table
 }
 
 #LocalNetworkConnection - The location we are connecting to's details.
 $LocalGWs = Get-AzureRmLocalNetworkGateway -ResourceGroupName $VPNGWResourceGroup.ResourceGroupName
 foreach($LocalGW in $localGWs){
-    Write-Output $LocalGW|Format-Table
+    Write-Output "LocalNetworkGateway: " $LocalGW.Name "Gateway Address: " $LocalGW.GatewayIpAddress "BGP Settings: " $localgw.BgpSettings
 
 }
-
-
 
 
 #The VNET's Gateway, what allows traffic from other locations into the VNET
@@ -56,12 +59,6 @@ $connectionDetails = Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupNa
 $ConnectionDetails
 
 }
-
-#Is Routing Working?
-$VPNPeerStatus = Get-AzureRmVirtualNetworkGatewayBGPPeerStatus -ResourceGroupName $VPNGWResourceGroup -VirtualNetworkGatewayName $VPNGWName
-$VPNLearnedRoutes = Get-AzureRmVirtualNetworkGatewayLearnedRoute -ResourceGroupName $VPNGWResourceGroup -VirtualNetworkGatewayName $VPNGWName
-
-
 
 #Now can we see what happens between a Source and Destination IP?
 $NIC1 =
@@ -75,11 +72,7 @@ Write-Output "connection Status: " $VPNConnections[0].TunnelConnectionStatus
 Write-output "VPN Peer Status: " $VPNPeerStatus.Asn $VPNPeerStatus.Neighbor $VPNPeerStatus.State
 
 $i=0
-foreach ($BGPPeer in $VPNPeerStatus){
 
-Get-AzureRmVirtualNetworkGatewayAdvertisedRoute -Peer $LocalGW.GatewayIpAddress -ResourceGroupName $VPNGWResourceGroup -VirtualNetworkGatewayName $VPNGWName
-$i=$1+1
-}
 
 #Actions
 
