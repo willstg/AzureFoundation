@@ -1,22 +1,20 @@
-#$Environment = "AzureUSGovernment"
-$Environment = 'AzureCloud'
 $AADEnvironment = "USGovernment"
 #$AADEnvironment = "AzureCloud"
-Login-AzureRmAccount -EnvironmentName $Environment;
 Connect-MsolService -AzureEnvironment $AADEnvironment
-$SubID_Services="730f26b5-ebf5-4518-999f-0b4eb0cdc8f9"
-$SubName_Services="MAC_SLG_Managed_Services"
-Select-AzureRmSubscription -SubscriptionID $SubID_Services;
 
-#MAC:  $SubID_Services="730f26b5-ebf5-4518-999f-0b4eb0cdc8f9"
-$SubName_Services="MAC_SLG_Managed_Services"
-$SubID_Services='30457dd5-e56b-416b-9228-d48b37fe7caa'
-Select-AzureRmSubscription -SubscriptionID $SubID_Services;
 #Change a guest to a Member
 $users = get-msoluser 
-foreach($User in $users)
+$guestUser = $users |  where {$_.UserType -eq "Guest"} 
+foreach($User in $guestUsers)
 {
 
 $user | Set-MsolUser -UserType Member
 }
 
+#Other CIS Checks
+
+#IS Multi Factor Authentication MFA enabled for Administrators?  
+Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-Object -Property UserPrincipalName
+
+#Is Multi Factor Authentication MFA enabled?  For the users listed it isn't
+Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-Object -Property UserPrincipalName
