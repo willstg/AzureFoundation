@@ -99,7 +99,7 @@ $date=Get-Date
 $deploymentName = "AzureFoundation" + $date.month + $date.day + $date.Year
 
 #Setup where the template files can be found
-$RootPath = "C:\Users\WILLS\Source\Repos\AzureFoundation\ARM\Networking"
+$RootPath = "C:\Users\willst\Source\Repos\AzureFoundation\ARM\Networking"
 
 $ParametersPathVNET100=$RootPath+"\Site1\af_vnet_azuredeploy_parameters_Site1_prod_A.json"
 $TemplatePathVNET100=$RootPath+"\Site1\af_vnet_azuredeploy_template_Site1_prod_A.json"
