@@ -75,7 +75,7 @@ Foreach($VM in $VMS)
                     add-AzureRmVMDataDisk -Name $disk.name -Lun $disk.lun -VM $newVMConfig -Caching $disk.caching -CreateOption attach -VhdUri $disk.vhd.Uri
                 }
                 else{
-                    add-AzureRmVMDataDisk -Name $disk.name -Lun $disk.lun -VM $newVMConfig -Caching $disk.caching -CreateOption attach -ManagedDiskId $disk.ManagedDisk
+                    add-AzureRmVMDataDisk -Name $disk.name -Lun $disk.lun -VM $newVMConfig -Caching $disk.caching -CreateOption attach -ManagedDiskId $disk.ManagedDisk.Id
 
                 }
             }
